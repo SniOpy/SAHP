@@ -1,0 +1,231 @@
+<section class="hero">
+      <div class="hero-content">
+        <h1>
+          Votre réseau d’assainissement<br />
+          sous contrôle, sans mauvaises surprises.
+        </h1>
+
+        <p class="subtitle">
+          Inspection, curage et dépannage rapide pour particuliers, syndics et professionnels.
+        </p>
+
+        <ul class="hero-list">
+          <li>Curage haute pression colonnes EU</li>
+          <li>Interventions copropriété & syndic</li>
+          <li>Urgence débouchage 24/7</li>
+          <li>Contrôle caméra & diagnostic</li>
+        </ul>
+
+        <div class="hero-cta">
+          <button class="btn-rounded btn-primary">Obtenir un devis rapide</button>
+          <button class="btn-rounded">Appeler un technicien</button>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <img src="/sahp/assets/img/intervention.jpg" alt="Mascotte SAHP" />
+      </div>
+    </section>
+
+    <section class="about">
+      <div class="about-container">
+        <div class="about-content">
+          <h2>À propos de SAHP Assainissement</h2>
+
+          <p class="about-intro">
+            SAHP Assainissement accompagne particuliers, syndics et professionnels pour l’entretien,
+            le dépannage et le contrôle de leurs réseaux d’assainissement.
+          </p>
+
+          <p>
+            Grâce à des équipements professionnels et une expertise terrain, nous intervenons
+            rapidement pour résoudre durablement les problèmes de canalisations, tout en
+            garantissant transparence, efficacité et sécurité.
+          </p>
+
+          <ul class="about-points">
+            <li>Interventions rapides et maîtrisées</li>
+            <li>Matériel haute pression & inspection vidéo</li>
+            <li>Spécialiste copropriétés et professionnels</li>
+            <li>Disponibilité urgence 24/7</li>
+          </ul>
+
+          <div class="about-cta">
+            <a class="btn-rounded btn-primary">En savoir plus...</a>
+            <!-- <a class="btn-rounded btn-primary btn-about">Nous contacter</a> -->
+          </div>
+        </div>
+
+        <div class="about-visual">
+          <div class="about-image-wrapper">
+            <img src="/sahp/assets/img/hero.jpg" alt="Intervention assainissement SAHP" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="services">
+      <div class="services-container">
+        <h2>Nos solutions d’assainissement</h2>
+        <p class="services-intro">
+          Des interventions ciblées, réalisées avec des équipements professionnels pour garantir la
+          durabilité de vos installations.
+        </p>
+
+        <div class="services-grid">
+          <article class="service-card">
+            <div class="service-icon">
+              <img src="/sahp/assets/img/icons/curage.jpg" alt="Curage haute pression" />
+            </div>
+            <h3>Curage haute pression</h3>
+            <p>Nettoyage en profondeur des canalisations pour éliminer les dépôts.</p>
+            <a href="#">En savoir plus</a>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">
+              <img src="/sahp/assets/img/icons/video.jpg" alt="Inspection vidéo" />
+            </div>
+            <h3>Inspection vidéo</h3>
+            <p>Diagnostic précis grâce à des caméras professionnelles.</p>
+            <a href="#">En savoir plus</a>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">
+              <img src="/sahp/assets/img/icons/pompage.jpg" alt="Pompage et vidange" />
+            </div>
+            <h3>Pompage & vidange</h3>
+            <p>Vidange de fosses, bacs et réseaux encombrés.</p>
+            <a href="#">En savoir plus</a>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">
+              <img src="/sahp/assets/img/icons/detartrage.jpg" alt="Débouchage canalisations" />
+            </div>
+            <h3>Débouchage & Détartrage</h3>
+            <p>Intervention rapide pour éliminer les bouchons.</p>
+            <a href="#">En savoir plus</a>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">
+              <img src="/sahp/assets/img/icons/maintenance.jpg" alt="Maintenance préventive" />
+            </div>
+            <h3>Maintenance & Entretien</h3>
+            <p>Entretien préventif pour éviter pannes et sinistres.</p>
+            <a href="#">En savoir plus</a>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">
+              <img src="/sahp/assets/img/icons/urgence.jpg" alt="Urgence assainissement 24/7" />
+            </div>
+            <h3>Urgence 24/7</h3>
+            <p>Service d’intervention immédiate, jour et nuit.</p>
+            <a href="#">En savoir plus</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    
+    <div class="reviews-separator">
+      <img
+        src="/sahp/assets/img/sahp.png"
+        alt="SAHP"
+        class="separator-logo"
+      />
+    </div>
+
+
+    <section class="reviews">
+      <div class="reviews-container">
+      <span class="reviews-label">Avis clients</span>
+      <h2>La satisfaction client au cœur de notre métier</h2>
+
+      <!-- SCORE GLOBAL -->
+      <div class="reviews-score card-glass-reviews">
+        <div class="score-left">
+          <strong>Excellent 4.9/5</strong>
+          <div class="stars-google">★★★★★</div>
+        </div>
+        <div class="score-right">
+          <img src="/sahp/assets/img/brand/google.svg" alt="Google brand" />
+        </div>
+      </div>
+
+      <!-- AVIS -->
+      <div class="reviews-grid">
+        <article class="review-card card-glass-reviews">
+          <div class="stars">★★★★★</div>
+          <p>
+            Un grand merci à l’équipe, du manager au technicien sur place, ils sont intervenus en urgence dans la foulée( la journée) pour déboucher mon assainissement, le technicien connaissait très bien son sujet aucune hésitation, c’est plié en 15 minutes … bravo à vous et merci encore …</p>
+          <div class="review-author">
+            <img src="/sahp/assets/img/icons/avatar-homme.png" alt="Client SAHP" />
+            <div>
+              <strong>Mehand Baleh</strong>
+              <span>2 mois</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="review-card card-glass-reviews">
+          <div class="stars">★★★★★</div>
+          <p>
+Excellente entreprise sérieuse et CONSCIENCIEUSE a qui j'ai fait appel à 2 reprises ces derniers mois.
+Intervention rapide et soignée, pas de mauvaise surprise au moment de la facture car le prix vous est communiqué avant intervention.
+Le gérant est disponible et prend son temps pour répondre à vos demandes.          </p>
+          <div class="review-author">
+            <img src="/sahp/assets/img/icons/avatar-femme.png" alt="Client SAHP" />
+            <div>
+              <strong>Irène FILIPE</strong>
+              <span>1 an</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="review-card card-glass-reviews">
+          <div class="stars">★★★★★</div>
+          <p>
+            Merci beaucoup à Mourad pour son intervention ! Un grand merci également à l’équipe pour avoir pris en charge une urgence : une canalisation d’évier totalement bouchée. Travail impeccable, soigné et réalisé avec le sourire 👍
+          </p>
+          <div class="review-author">
+            <img src="/sahp/assets/img/icons/avatar-homme.png" alt="Client SAHP" />
+            <div>
+              <strong>Enzo VMB</strong>
+              <span>4 mois</span>
+            </div>
+          </div>
+        </article>
+      </div>
+      <div>
+</div>
+      <!-- CTA -->
+      <a href="#" class="reviews-cta">Lire tous nos avis sur Google</a>
+    
+      <!-- PARTENAIRES -->
+      <h3 class="partners-title">Ils nous confient leurs réseaux</h3>
+      <p class="partners-subtitle">Syndics, agences immobilières et entreprises partenaires</p>
+
+      <div class="partners-logos card-glass-reviews-brand">
+        <img src="/sahp/assets/img/brand/BOUYGUES.png" alt="Bouygues" />
+        <img src="/sahp/assets/img/brand/CROUS.png" alt="Crous de Paris" />
+        <img src="/sahp/assets/img/brand/ENGIE.png" alt="Engie" />
+        <img src="/sahp/assets/img/brand/ISSY.png" alt="Mairie d'issy les moulineaux" />
+        <img src="/sahp/assets/img/brand/YERRES.png" alt="Ville de YERRES" />
+        <img src="/sahp/assets/img/brand/MONGERON.png" alt="Ville de Mongeron" />
+        <img src="/sahp/assets/img/brand/PANTIN.png" alt="Mairie de Pantin" />
+        <img src="/sahp/assets/img/brand/OPH.png" alt="OPH"/>
+        <img src="/sahp/assets/img/brand/VSG.png" alt="Mairie de Villeneuve Saint Georges" />
+        <img src="/sahp/assets/img/brand/EMMAUS.png" alt="Emmaus" />
+        <img src="/sahp/assets/img/brand/SPIE.png" alt="SPIE" />
+
+      </div>
+
+      <!-- MASCOTTE -->
+      <div class="reviews-mascotte">
+        <img src="/sahp/assets/img/mascotte.png" alt="Mascotte SAHP" />
+      </div>
+    </section>
