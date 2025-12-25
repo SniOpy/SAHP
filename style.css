@@ -1,0 +1,80 @@
+@import url(./assets/css/header.css);
+@import url(./assets/css/hero.css);
+@import url(./assets/css/about.css);
+@import url(./assets/css/services.css);
+@import url(./assets/css/reviews.css);
+@import url(./assets/css/footer.css);
+
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* FOND GÉNÉRAL */
+body {
+  background: linear-gradient(90deg, #0f4c81 0%, #00b09b 100%);
+  font-family: 'Roboto', sans-serif;
+  color: #ffffff;
+  min-height: 100vh;
+}
+
+/* TITRES */
+h1,
+h2,
+h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+}
+
+/* GLASSMORPHISM */
+.card-glass-reviews {
+  background: rgba(255, 255, 255, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 20px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+}
+
+.card-glass-reviews-brand {
+  background: rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+}
+
+.card-glass {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 20px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* =========================
+   SEPARATOR FIN REVIEWS
+========================= */
+
+.reviews-separator {
+  height: 150px;
+  width: 100%;
+  background: #fff;
+  clip-path: polygon(0 0, 100% 18%, 100% 100%, 0 100%);
+  position: relative;
+  margin-top: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* LOGO CENTRÉ */
+.reviews-separator .separator-logo {
+  width: 250px;
+  height: auto;
+  z-index: 10;
+  filter: none; /* 🔥 SUPPRESSION TOTALE */
+}

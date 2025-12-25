@@ -1,0 +1,118 @@
+/* =========================
+   FOOTER – SAHP
+========================= */
+
+.footer {
+  background: #0f4c81;
+  color: #ffffff;
+  padding: 80px 20px 0;
+}
+
+/* CONTAINER */
+.footer-container {
+  max-width: 1350px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
+  gap: 50px;
+}
+
+/* COLONNES */
+.footer-col h4 {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.footer-col ul {
+  list-style: none;
+}
+
+.footer-col ul li {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.footer-col a {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-col a:hover {
+  color: #00b09b;
+}
+
+/* BRAND */
+.footer-brand p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+  margin-top: 15px;
+}
+
+.footer-logo {
+  width: 220px;
+}
+
+/* CONTACT */
+.footer-contact p {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+/* WHATSAPP */
+.footer-whatsapp {
+  margin-top: 15px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 18px;
+  border-radius: 50px;
+  background: #00b09b;
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.footer-whatsapp img {
+  width: 20px;
+  height: 20px;
+}
+
+.footer-whatsapp:hover {
+  background: #ffffff;
+  color: #0f4c81;
+}
+
+/* BARRE BASSE */
+.footer-bottom {
+  margin-top: 60px;
+  padding: 20px;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.footer-bottom p {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+
+  .footer-logo {
+    margin: 0 auto;
+  }
+
+  .footer-whatsapp {
+    justify-content: center;
+  }
+}

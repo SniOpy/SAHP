@@ -1,0 +1,156 @@
+/* =========================
+   SERVICES – SAHP
+========================= */
+
+.services {
+  background: linear-gradient(100deg, #0f4c81 0%, #00b09b 100%);
+  padding: 90px 20px;
+}
+
+/* CONTAINER */
+.services-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* TITRES */
+.services-container h2 {
+  font-size: 34px;
+  margin-bottom: 15px;
+  color: #ffffff;
+}
+
+.services-intro {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 60px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* GRID */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+/* CARD */
+.service-card {
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 22px;
+  padding: 36px 26px;
+  text-align: center;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.18);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 30px 55px rgba(0, 0, 0, 0.25);
+}
+
+/* ICONES */
+.service-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.service-icon img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover .service-icon img {
+  transform: scale(1.08);
+}
+
+/* TEXTE */
+.service-card h3 {
+  font-size: 18px;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.service-card p {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.5;
+  margin-bottom: 18px;
+}
+
+/* LIEN */
+.service-card a {
+  border: 1px solid #fff;
+  border-radius: 50px;
+  padding: 10px 30px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  text-decoration: none;
+  transition: border-color 0.3s ease;
+}
+
+.service-card a:hover {
+  border-bottom-color: #ffffff;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+/* TABLETTE & MOBILE */
+@media (max-width: 900px) {
+  .services {
+    padding: 70px 16px;
+  }
+
+  .services-container h2 {
+    font-size: 28px;
+  }
+
+  .services-intro {
+    font-size: 14px;
+    margin-bottom: 40px;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .service-card {
+    padding: 30px 22px;
+  }
+
+  .service-icon {
+    width: 52px;
+    height: 52px;
+  }
+}
+
+/* PETITS ÉCRANS */
+@media (max-width: 480px) {
+  .services-container h2 {
+    font-size: 24px;
+  }
+
+  .service-card h3 {
+    font-size: 16px;
+  }
+
+  .service-card p {
+    font-size: 13px;
+  }
+}

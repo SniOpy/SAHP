@@ -1,0 +1,34 @@
+<section class="about">
+  <div class="about-container">
+    <div class="about-content">
+      <h2>À propos de SAHP Assainissement</h2>
+
+      <p class="about-intro">
+        SAHP Assainissement accompagne particuliers, syndics et professionnels pour l’entretien, le
+        dépannage et le contrôle de leurs réseaux d’assainissement.
+      </p>
+
+      <p>
+        Grâce à des équipements professionnels et une expertise terrain, nous intervenons rapidement
+        pour résoudre durablement les problèmes de canalisations, tout en garantissant transparence,
+        efficacité et sécurité.
+      </p>
+
+      <ul class="about-points">
+        <li>Interventions rapides et maîtrisées</li>
+        <li>Matériel haute pression & inspection vidéo</li>
+        <li>Spécialiste copropriétés et professionnels</li>
+        <li>Disponibilité urgence 24/7</li>
+      </ul>
+
+      <div class="about-cta">
+        <button class="btn-rounded btn-primary">Demander un devis</button>
+        <button class="btn-rounded">Nous contacter</button>
+      </div>
+    </div>
+
+    <div class="about-visual">
+      <img src="./assets/img/about.jpg" alt="Intervention assainissement SAHP" />
+    </div>
+  </div>
+</section>
