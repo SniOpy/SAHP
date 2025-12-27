@@ -93,7 +93,7 @@
 
       <article class="service-card">
         <div class="service-icon">
-          <img src="/sahp/assets/img/icons/pompage.jpg" alt="Pompage et vidange" />
+          <img src="/sahp/assets/img/icons/pompage.jpg" alt="Pompage et vidange" style="width: 197px;"/>
         </div>
         <h3>Pompage & vidange</h3>
         <p>Vidange de fosses, bacs et réseaux encombrés.</p>
@@ -287,20 +287,59 @@
     <h3 class="partners-title">Ils nous confient leurs réseaux</h3>
     <p class="partners-subtitle">Syndics, agences immobilières et entreprises partenaires</p>
 
-    <div class="partners-logos card-glass-reviews-brand">
+    <div class="partners-wrapper">
+
+  <!-- VERSION DESKTOP (STATIQUE) -->
+  <div class="partners-logos card-glass-reviews-brand">
+    <img src="/sahp/assets/img/brand/BOUYGUES.png" alt="Bouygues" />
+    <img src="/sahp/assets/img/brand/CROUS.png" alt="Crous de Paris" />
+    <img src="/sahp/assets/img/brand/ENGIE.png" alt="Engie" />
+    <img src="/sahp/assets/img/brand/ISSY.png" alt="Mairie d'Issy-les-Moulineaux" />
+    <img src="/sahp/assets/img/brand/YERRES.png" alt="Ville de Yerres" />
+    <img src="/sahp/assets/img/brand/MONGERON.png" alt="Ville de Montgeron" />
+    <img src="/sahp/assets/img/brand/PANTIN.png" alt="Mairie de Pantin" />
+    <img src="/sahp/assets/img/brand/OPH.png" alt="OPH" />
+    <img src="/sahp/assets/img/brand/VSG.png" alt="Mairie de Villeneuve-Saint-Georges" />
+    <img src="/sahp/assets/img/brand/EMMAUS.png" alt="Emmaüs" />
+    <img src="/sahp/assets/img/brand/SPIE.png" alt="SPIE" />
+  </div>
+
+  <!-- VERSION MOBILE / TABLETTE (SLIDER) -->
+  <div class="partners-slider card-glass-reviews-brand">
+    <div class="partners-track">
+
+      <!-- LISTE 1 -->
       <img src="/sahp/assets/img/brand/BOUYGUES.png" alt="Bouygues" />
       <img src="/sahp/assets/img/brand/CROUS.png" alt="Crous de Paris" />
       <img src="/sahp/assets/img/brand/ENGIE.png" alt="Engie" />
-      <img src="/sahp/assets/img/brand/ISSY.png" alt="Mairie d'issy les moulineaux" />
-      <img src="/sahp/assets/img/brand/YERRES.png" alt="Ville de YERRES" />
-      <img src="/sahp/assets/img/brand/MONGERON.png" alt="Ville de Mongeron" />
+      <img src="/sahp/assets/img/brand/ISSY.png" alt="Mairie d'Issy-les-Moulineaux" />
+      <img src="/sahp/assets/img/brand/YERRES.png" alt="Ville de Yerres" />
+      <img src="/sahp/assets/img/brand/MONGERON.png" alt="Ville de Montgeron" />
       <img src="/sahp/assets/img/brand/PANTIN.png" alt="Mairie de Pantin" />
       <img src="/sahp/assets/img/brand/OPH.png" alt="OPH" />
-      <img src="/sahp/assets/img/brand/VSG.png" alt="Mairie de Villeneuve Saint Georges" />
-      <img src="/sahp/assets/img/brand/EMMAUS.png" alt="Emmaus" />
+      <img src="/sahp/assets/img/brand/VSG.png" alt="Mairie de Villeneuve-Saint-Georges" />
+      <img src="/sahp/assets/img/brand/EMMAUS.png" alt="Emmaüs" />
+      <img src="/sahp/assets/img/brand/SPIE.png" alt="SPIE" />
+
+      <!-- LISTE 2 (DUPLICATION POUR LOOP) -->
+      <img src="/sahp/assets/img/brand/BOUYGUES.png" alt="Bouygues" />
+      <img src="/sahp/assets/img/brand/CROUS.png" alt="Crous de Paris" />
+      <img src="/sahp/assets/img/brand/ENGIE.png" alt="Engie" />
+      <img src="/sahp/assets/img/brand/ISSY.png" alt="Mairie d'Issy-les-Moulineaux" />
+      <img src="/sahp/assets/img/brand/YERRES.png" alt="Ville de Yerres" />
+      <img src="/sahp/assets/img/brand/MONGERON.png" alt="Ville de Montgeron" />
+      <img src="/sahp/assets/img/brand/PANTIN.png" alt="Mairie de Pantin" />
+      <img src="/sahp/assets/img/brand/OPH.png" alt="OPH" />
+      <img src="/sahp/assets/img/brand/VSG.png" alt="Mairie de Villeneuve-Saint-Georges" />
+      <img src="/sahp/assets/img/brand/EMMAUS.png" alt="Emmaüs" />
       <img src="/sahp/assets/img/brand/SPIE.png" alt="SPIE" />
 
     </div>
+  </div>
+
+</div>
+
+
 
     <!-- MASCOTTE -->
     <div class="reviews-mascotte">

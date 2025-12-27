@@ -66,8 +66,9 @@
 }
 
 .service-icon img {
-  width: 100px;
-  height: 100px;
+  margin-top : 34px;
+  width: 235px;
+  /* height: 100px; */
   object-fit: contain;
   transition: transform 0.3s ease;
 }
@@ -80,6 +81,7 @@
 .service-card h3 {
   font-size: 18px;
   color: #ffffff;
+  margin-top: 62px;
   margin-bottom: 10px;
 }
 
