@@ -3,7 +3,7 @@
 
     <!-- COL 1 : LOGO + TEXTE -->
     <div class="footer-col footer-brand">
-      <img src="./assets/img/sahp.png" alt="SAHP Assainissement" class="footer-logo">
+      <img src="/sahp/assets/img/sahp.png" alt="SAHP Assainissement" class="footer-logo">
       <p>
         Spécialiste de l’assainissement, du curage et des interventions
         d’urgence 24/7 pour particuliers, syndics et professionnels.

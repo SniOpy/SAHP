@@ -1,0 +1,330 @@
+/* =========================
+   REVIEWS – SAHP (FINAL)
+========================= */
+
+.reviews {
+  position: relative;
+  background: linear-gradient(115deg, #0f4c81 0%, #00b09b 100%);
+  padding: 100px 20px 180px;
+}
+
+/* CONTAINER CENTRAL */
+.reviews-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+}
+
+/* LABEL */
+.reviews-label {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+  text-transform: uppercase;
+}
+
+/* TITRE */
+.reviews h2 {
+  font-size: 34px;
+  color: #ffffff;
+  margin: 10px 0 40px;
+}
+
+/* =========================
+   SCORE GOOGLE
+========================= */
+
+.reviews-score {
+  max-width: 420px;
+  margin: 0 auto 50px;
+  padding: 20px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.score-left strong {
+  font-size: 35px;
+  color: #ffffff;
+}
+
+.stars,
+.stars-google {
+  color: #f5c542;
+  font-size: 35px;
+  margin-top: 5px;
+}
+
+.stars-google {
+  font-size: 55px;
+  margin-top: -15px;
+}
+
+.score-right img {
+  width: 80px;
+
+  /* Halo blanc doux */
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.85))
+    drop-shadow(0 0 12px rgba(255, 255, 255, 0.45));
+}
+
+/* =========================
+   AVIS CLIENTS
+========================= */
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
+.review-card {
+  padding: 25px;
+  text-align: left;
+}
+
+.review-card p {
+  font-size: 14px;
+  color: #ffffff;
+  line-height: 1.5;
+  margin: 12px 0 18px;
+}
+
+/* AUTEUR */
+.review-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.review-author img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+}
+
+.review-author strong {
+  font-size: 14px;
+  color: #ffffff;
+}
+
+.review-author span {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* =========================
+   CTA
+========================= */
+
+.reviews-cta {
+  display: inline-block;
+  margin: 20px auto 60px;
+  padding: 10px 26px;
+  border-radius: 50px;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.reviews-cta:hover {
+  background: #ffffff;
+  color: #0f4c81;
+}
+
+/* =========================
+   TITRES PARTENAIRES
+========================= */
+
+.partners-title {
+  font-size: 50px;
+  color: #ffffff;
+  margin-bottom: 5px;
+}
+
+.partners-subtitle {
+  font-size: 22px;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 25px;
+}
+
+/* =========================
+   BANDE PARTENAIRES (FULL WIDTH)
+========================= */
+
+.partners-logos {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+
+  gap: 24px; 
+
+  width: 100vw;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+
+  padding: 0 40px;
+
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  border-top: 1px solid rgba(255, 255, 255, 0.35);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+
+  z-index: 1;
+}
+
+/* LOGOS */
+/* .partners-logos img {
+  height: 200px;
+  width: auto;
+  opacity: 0.85;
+  filter: grayscale(100%) brightness(1.15);
+  transition: opacity 0.3s ease, filter 0.3s ease;
+} */
+
+/* .partners-logos img {
+  height: 129px;       
+  width: auto;
+  object-fit: contain;
+  flex-shrink: 0;      ancienne version /
+} */
+
+.partners-logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+
+
+.partners-logos img:hover {
+  opacity: 1;
+  filter: none;
+}
+
+/* =========================
+   MASCOTTE CENTRALE
+========================= */
+
+.reviews-mascotte {
+  position: absolute;
+  bottom: -253px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  pointer-events: none;
+}
+
+.reviews-mascotte img {
+  width: 420px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+  .reviews h2 {
+    font-size: 26px;
+  }
+
+  .reviews-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .partners-title {
+    font-size: 22px;
+  }
+
+  .partners-logos {
+    padding: 26px 20px;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+  }
+
+  .partners-logos img {
+    height: 42px;
+  }
+
+  .reviews-mascotte img {
+    width: 120px;
+  }
+}
+
+/* =========================
+   MOBILE & TABLET FIX REVIEWS
+========================= */
+@media (max-width: 900px) {
+  /* 🔥 ANNULATION DU FULL-WIDTH HACK */
+  .partners-logos {
+    width: 100%;
+    left: 0;
+    right: 0;
+    margin-left: 0;
+    margin-right: 0;
+
+    padding: 20px 16px;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  /* 🔥 LOGOS LISIBLES MAIS PAS ÉCRASANTS */
+  .partners-logos img {
+    height: 250px; /* ✅ lisible */
+    max-width: 120px;
+  }
+
+  /* 🔥 MASCOTTE RÉAJUSTÉE */
+  .reviews-mascotte {
+    bottom: -150px;
+  }
+
+  .reviews-mascotte img {
+    width: 250px;
+  }
+
+  /* 🔥 TITRES */
+  .partners-title {
+    font-size: 26px;
+  }
+
+  .partners-subtitle {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .partners-logos img {
+    height: 80px;
+  }
+
+  .partners-logos {
+    gap: 16px;
+    padding: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .partners-logos img {
+    height: 56px;
+  }
+
+  .partners-logos {
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 16px;
+  }
+}
+
