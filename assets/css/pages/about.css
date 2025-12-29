@@ -1,0 +1,174 @@
+/* =====================================================
+   ABOUT – SAHP | VERSION FINALE
+===================================================== */
+
+.sahp-presentation {
+  padding: 90px 20px 110px;
+  background: linear-gradient(135deg, #2f6fa3 0%, #5fae8b 100%);
+  color: #ffffff;
+  text-align: center;
+}
+
+/* =====================================================
+   TITRE
+===================================================== */
+
+.sahp-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1.35;
+  max-width: 900px;
+  margin: 0 auto 55px;
+}
+
+/* =====================================================
+   IMAGE ÉQUIPE (VOILE + RELIEF)
+===================================================== */
+
+.sahp-image-wrapper {
+  position: relative;
+  max-width: 960px;
+  margin: 0 auto 60px;
+  border-radius: 32px;
+  overflow: hidden;
+
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 28px 50px rgba(0, 0, 0, 0.32);
+}
+
+.sahp-image-wrapper::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(1.8px);
+  pointer-events: none;
+}
+
+.sahp-image-wrapper img {
+  width: 100%;
+  height: auto;
+  display: block;
+  opacity: 0.9;
+}
+
+/* =====================================================
+   TEXTE PRÉSENTATION
+===================================================== */
+
+.sahp-text {
+  max-width: 900px;
+  margin: 0 auto 80px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  text-align: left;
+}
+
+.sahp-text p {
+  margin-bottom: 24px;
+  opacity: 0.97;
+}
+
+/* =====================================================
+   FEATURES / VALEURS
+===================================================== */
+
+.sahp-features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 55px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.feature {
+  text-align: center;
+}
+
+/* =====================================================
+   ICÔNES RONDES (GRAND FORMAT)
+===================================================== */
+
+.icon-circle {
+  width: 130px;
+  height: 130px;
+  margin: 0 auto 26px;
+  border-radius: 50%;
+  background: #ffffff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow:
+    0 16px 38px rgba(0, 0, 0, 0.30),
+    inset 0 3px 6px rgba(255, 255, 255, 0.85);
+}
+
+.icon-circle img {
+  width: 295px;
+  height: 272px;
+  object-fit: contain;
+  filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.45));
+}
+
+/* =====================================================
+   TITRES FEATURES
+===================================================== */
+
+.feature h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #ffffff;
+}
+
+/* =====================================================
+   TEXTE FEATURES
+===================================================== */
+
+.feature p {
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.96);
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 1024px) {
+  .sahp-features {
+    gap: 45px;
+  }
+}
+
+@media (max-width: 900px) {
+  .sahp-features {
+    grid-template-columns: 1fr;
+  }
+
+  .sahp-title {
+    font-size: 2rem;
+  }
+
+  .sahp-text {
+    text-align: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .icon-circle {
+    width: 100px;
+    height: 100px;
+  }
+
+  .icon-circle img {
+    width: 48px;
+    height: 48px;
+  }
+}

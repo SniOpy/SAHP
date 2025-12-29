@@ -1,3 +1,5 @@
+/* Home page CSS */
+
 @import url(header.css);
 @import url(hero.css);
 @import url(about.css);
@@ -5,6 +7,17 @@
 @import url(reviews.css);
 @import url(last-articles.css);
 @import url(footer.css);
+
+/* pages CSS */
+@import url(./pages/about.css);
+@import url(./pages/mentions.css);
+@import url(./pages/cgps.css);
+@import url(./pages/plansite.css);
+@import url(./pages/curage.css);
+@import url(./pages/pompage.css);
+@import url(./pages/inspection.css);
+
+
 
 /* RESET */
 * {

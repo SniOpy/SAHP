@@ -1,0 +1,89 @@
+/* =========================
+   MENTIONS LÉGALES
+========================= */
+
+.legal-page {
+  padding: 80px 20px;
+  background: #f5f7f9;
+}
+
+.legal-container {
+  max-width: 900px;
+  margin: 0 auto;
+  background: #ffffff;
+  padding: 50px 60px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* TITRES */
+
+.legal-container h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.2rem;
+  margin-bottom: 30px;
+  color: #1f1f1f;
+}
+
+.legal-container h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.4rem;
+  margin: 40px 0 15px;
+  color: #0f4c81;
+}
+
+/* TEXTE */
+
+.legal-container p {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #333333;
+  margin-bottom: 15px;
+}
+
+.legal-intro {
+  font-weight: 500;
+  margin-bottom: 35px;
+}
+
+/* LISTES */
+
+.legal-container ul {
+  margin: 15px 0 25px 20px;
+}
+
+.legal-container li {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 8px;
+  color: #333333;
+}
+
+/* LIENS */
+
+.legal-container a {
+  color: #0f4c81;
+  text-decoration: none;
+}
+
+.legal-container a:hover {
+  text-decoration: underline;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+  .legal-container {
+    padding: 35px 25px;
+  }
+
+  .legal-container h1 {
+    font-size: 1.9rem;
+  }
+
+  .legal-container h2 {
+    font-size: 1.25rem;
+  }
+}

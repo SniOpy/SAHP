@@ -1,0 +1,140 @@
+/* =========================
+   PAGE INSPECTION VIDÉO - SAHP
+========================= */
+
+.inspection-page {
+  padding: 80px 20px;
+  background: #f5f7f9;
+}
+
+.inspection-container {
+  max-width: 900px;
+  margin: 0 auto;
+  background: #ffffff;
+  padding: 60px;
+  border-radius: 14px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+  color: #1f1f1f;
+}
+
+/* TITRES */
+
+.inspection-container h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.3rem;
+  margin-bottom: 20px;
+  color: #0f4c81;
+}
+
+.inspection-container h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.5rem;
+  margin: 45px 0 18px;
+  color: #0f4c81;
+}
+
+.inspection-container h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.2rem;
+  margin: 30px 0 12px;
+  color: #2f6fa3;
+}
+
+/* TEXTE */
+
+.inspection-intro {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 40px;
+  color: #333333;
+}
+
+.inspection-container p {
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 15px;
+  color: #333333;
+}
+
+/* IMAGE INTERVENTION */
+
+.inspection-intervention {
+  margin: 40px 0 60px;
+  text-align: center;
+}
+
+.inspection-intervention img {
+  width: 100%;
+  border-radius: 14px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+}
+
+.inspection-caption {
+  margin-top: 14px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #555555;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* LISTES */
+
+.inspection-list {
+  margin-left: 20px;
+}
+
+.inspection-list li {
+  margin-bottom: 8px;
+  color: #333333;
+}
+
+/* NOTE */
+
+.inspection-note {
+  font-style: italic;
+  background: #eef3f7;
+  padding: 15px 20px;
+  border-left: 4px solid #0f4c81;
+  margin-top: 25px;
+  color: #333333;
+}
+
+/* CTA */
+
+.inspection-cta {
+  margin-top: 60px;
+  text-align: center;
+  padding: 40px;
+  background: linear-gradient(135deg, #0f4c81, #2f6fa3);
+  border-radius: 14px;
+}
+
+.inspection-cta p {
+  font-size: 1.15rem;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+.btn-primary {
+  background: #ffffff;
+  color: #0f4c81;
+  padding: 14px 30px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-block;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+  .inspection-container {
+    padding: 40px 25px;
+  }
+
+  .inspection-container h1 {
+    font-size: 2rem;
+  }
+}

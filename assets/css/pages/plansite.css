@@ -1,0 +1,86 @@
+/* =========================
+   PLAN DU SITE
+========================= */
+
+.legal-page {
+  padding: 80px 20px;
+  background: #f5f7f9;
+}
+
+.legal-container {
+  max-width: 950px;
+  margin: 0 auto;
+  background: #ffffff;
+  padding: 55px 60px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* TITRES */
+
+.sitemap h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+  color: #1f1f1f;
+}
+
+.sitemap h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.35rem;
+  margin: 40px 0 15px;
+  color: #0f4c81;
+}
+
+/* TEXTE */
+
+.legal-intro {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #333333;
+  margin-bottom: 30px;
+}
+
+/* LISTES */
+
+.sitemap ul {
+  margin-left: 20px;
+  margin-bottom: 15px;
+}
+
+.sitemap li {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #333333;
+  margin-bottom: 6px;
+}
+
+/* LISTES IMBRIQUÉES */
+
+.sitemap ul ul {
+  margin-top: 8px;
+  margin-left: 20px;
+}
+
+.sitemap ul ul li {
+  font-size: 0.95rem;
+  color: #444444;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+  .legal-container {
+    padding: 35px 25px;
+  }
+
+  .sitemap h1 {
+    font-size: 1.9rem;
+  }
+
+  .sitemap h2 {
+    font-size: 1.25rem;
+  }
+}

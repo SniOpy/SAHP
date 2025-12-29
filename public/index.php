@@ -13,6 +13,13 @@ $request = trim(
 $routes = [
   ''          => 'home.php',
   'a-propos'  => 'about.php',
+  'mentions-legales'  => 'mentions.php',
+  'conditions-generales-prestations'  => 'cgps.php',
+  'politique-confidentialite'  => 'pc.php',
+  'plan-site'  => 'plansite.php',
+  'curage'  => 'curage.php',
+  'pompage'  => 'pompage.php',
+  'inspection'  => 'inspection.php',
 ];
 
 // ROUTING
