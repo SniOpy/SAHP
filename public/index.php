@@ -11,7 +11,7 @@ $request = trim(
 
 // ROUTES
 $routes = [
-  ''          => 'home.php',
+  ''          => 'accueil.php',
   'a-propos'  => 'about.php',
   'mentions-legales'  => 'mentions.php',
   'conditions-generales-prestations'  => 'cgps.php',

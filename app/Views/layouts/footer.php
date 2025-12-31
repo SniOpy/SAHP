@@ -53,6 +53,8 @@
         <a href="<?= BASE_URL ?>/mentions-legales">Mentions légales</a>
         <span>-</span>
         <a href="<?= BASE_URL ?>/conditions-generales">CGS</a>
+        <span>-</span>
+        <a href="<?= BASE_URL ?>/plan-site">Plan du site</a>
       </div>
     </div>
 
