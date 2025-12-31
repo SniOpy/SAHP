@@ -1,0 +1,219 @@
+/* =====================================================
+   BLOG – PAROLE DE PRO (SAHP)
+   ===================================================== */
+
+/* ============================
+   SECTION GLOBALE
+============================ */
+
+#parole-de-pro {
+  background: linear-gradient(135deg, #5fbfa0, #4a8fcf);
+  padding: 70px 6% 90px;
+  border-radius: 28px;
+  margin-bottom: 80px;
+}
+
+/* TITRE PRINCIPAL */
+.parole-title {
+  text-align: center;
+  color: #ffffff;
+  font-size: 34px;
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+
+/* ============================
+   BLOC FEATURED – ARTICLE MIS EN AVANT
+============================ */
+
+.parole-featured {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  align-items: center;
+  gap: 20px;
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 26px;
+  padding: 35px 40px;
+  margin-bottom: 65px;
+}
+
+/* TEXTE */
+.featured-text {
+  grid-column: 1 / span 5;
+  color: #ffffff;
+}
+
+.featured-label {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 600;
+  background: rgba(255,255,255,0.3);
+  padding: 6px 14px;
+  border-radius: 20px;
+  margin-bottom: 14px;
+}
+
+.featured-text h3 {
+  font-size: 30px;
+  line-height: 1.2;
+  margin-bottom: 14px;
+}
+
+.featured-intro {
+  font-size: 17px;
+  line-height: 1.6;
+  margin-bottom: 14px;
+  opacity: 0.95;
+}
+
+.seo-text {
+  font-size: 15px;
+  line-height: 1.7;
+  opacity: 0.95;
+}
+
+/* IMAGE */
+.featured-visual {
+  grid-column: 6 / span 6;
+  text-align: right;
+}
+
+.featured-visual img {
+  width: 100%;
+  max-width: 440px;
+  max-height: 360px;
+  height: auto;
+}
+
+/* ============================
+   ARTICLES BLOG (STYLE HOMEPAGE)
+============================ */
+
+.parole-articles {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 35px;
+}
+
+/* CARD */
+.parole-articles .article-card {
+  background: #ffffff;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.parole-articles .article-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* IMAGE */
+.parole-articles .article-image img {
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+  display: block;
+}
+
+/* CONTENT */
+.parole-articles .article-content {
+  padding: 25px 22px 30px;
+}
+
+.parole-articles .article-category {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #0f4c81;
+  background: rgba(15, 76, 129, 0.1);
+  padding: 6px 12px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+}
+
+.parole-articles .article-content h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1f1f1f;
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+
+.parole-articles .article-content p {
+  font-size: 0.95rem;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 18px;
+}
+
+/* LINK */
+.parole-articles .article-link {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #0f4c81;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.parole-articles .article-link:hover {
+  color: #09375e;
+}
+
+/* ============================
+   RESPONSIVE
+============================ */
+
+@media (max-width: 992px) {
+
+  .parole-articles {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .parole-featured {
+    padding: 30px 30px;
+  }
+}
+
+@media (max-width: 900px) {
+
+  .parole-featured {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .featured-text,
+  .featured-visual {
+    grid-column: auto;
+  }
+
+  .featured-visual img {
+    margin-top: 25px;
+    max-width: 320px;
+  }
+}
+
+@media (max-width: 640px) {
+
+  #parole-de-pro {
+    padding: 60px 20px 80px;
+  }
+
+  .parole-title {
+    font-size: 26px;
+  }
+
+  .featured-text h3 {
+    font-size: 24px;
+  }
+
+  .parole-articles {
+    grid-template-columns: 1fr;
+  }
+
+  .parole-articles .article-image img {
+    height: 190px;
+  }
+}

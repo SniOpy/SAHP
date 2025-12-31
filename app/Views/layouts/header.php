@@ -53,7 +53,7 @@
             </div>
           </div>
 
-          <a href="<?= BASE_URL ?>/parole-de-pros">Parole de Pros</a>
+          <a href="<?= BASE_URL ?>/paroles-de-pro">Parole de Pros</a>
           <a href="<?= BASE_URL ?>/contact">Contact</a>
         </nav>
 

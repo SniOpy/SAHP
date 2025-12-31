@@ -60,8 +60,8 @@
 
   <!-- BARRE BASSE -->
   <div class="footer-bottom">
-    <span>© 2025 SAHP Assainissement</span>
-  </div>
+    <span>© 2025 - SAHP Assainissement</span>
+  </div> 
 
 </footer>
 

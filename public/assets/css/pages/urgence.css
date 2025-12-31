@@ -4,7 +4,7 @@
 
 .urgence-page {
   padding: 90px 20px;
-  background: #f2f4f7;
+  background: linear-gradient(90deg, #0f4c81 0%, #00b09b 100%);
 }
 
 .urgence-container {

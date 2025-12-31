@@ -4,7 +4,7 @@
 
 .maintenance-page {
   padding: 80px 20px;
-  background: #f5f7f9;
+  background: linear-gradient(90deg, #0f4c81 0%, #00b09b 100%);
 }
 
 .maintenance-container {

@@ -23,6 +23,8 @@ $routes = [
   'debouchage'  => 'debouchage.php',
   'maintenance-pro'  => 'maintenance-pro.php',
   'urgence'  => 'urgence.php',
+  'paroles-de-pro'  => 'paroles-de-pro.php',
+  'contact'  => 'contact.php',
 ];
 
 // ROUTING
