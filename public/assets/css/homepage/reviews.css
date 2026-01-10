@@ -1,5 +1,5 @@
 /* =========================
-   REVIEWS – SAHP (FINAL)
+   REVIEWS – SAHP
 ========================= */
 
 .reviews {
@@ -19,14 +19,16 @@
   position: relative;
 }
 
-/* LABEL */
+/* =========================
+   LABEL + TITRE
+========================= */
+
 .reviews-label {
   font-size: 14px;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255,255,255,0.8);
   text-transform: uppercase;
 }
 
-/* TITRE */
 .reviews h2 {
   font-size: 34px;
   color: #ffffff;
@@ -95,7 +97,7 @@
   margin: 12px 0 18px;
 }
 
-/* AUTEUR */
+/* Auteur */
 .review-author {
   display: flex;
   align-items: center;
@@ -119,7 +121,7 @@
 }
 
 /* =========================
-   CTA
+   CTA AVIS
 ========================= */
 
 .reviews-cta {
@@ -156,28 +158,21 @@
 }
 
 /* =====================================================
-   DESKTOP — BANDE PARTENAIRES STATIQUE (DEFAULT)
+   BANDE PARTENAIRES – DESKTOP (FULL WIDTH)
 ===================================================== */
-/* =========================
-   SLIDER PARTENAIRES – PAR DÉFAUT (DESKTOP)
-   TOUJOURS CACHÉ
-========================= */
 
-.partners-slider {
-  display: none !important;
-}
+.partners-logos.card-glass-reviews-brand {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  padding: 0;                      /* AUCUN padding */
+  height: auto;
 
-.partners-logos {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 24px;
+  gap: 48px;                       /* espace entre logos */
 
-  width: 100vw;
-  margin-left: calc(-50vw + 50%);
-  padding: 30px 40px;
-
-  background: rgba(255,255,255,.18);
+  background: rgba(255,255,255,0.18);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 
@@ -185,27 +180,105 @@
   border-bottom: 1px solid rgba(255,255,255,.15);
 }
 
-.partners-logos img {
-  height: 129px;
+/* Logos desktop */
+.partners-logos.card-glass-reviews-brand img {
+  height: 110px;                   /* taille proche de ta PJ */
   width: auto;
+  display: block;
+
   object-fit: contain;
-  opacity: .85;
+  opacity: 0.85;
   filter: grayscale(100%) brightness(1.1);
   transition: opacity .3s ease, filter .3s ease;
 }
 
-.partners-logos img:hover {
+.partners-logos.card-glass-reviews-brand img:hover {
   opacity: 1;
   filter: none;
 }
 
-/* Slider masqué sur desktop */
+/* Neutralisation des anciens comportements */
+.card-glass-reviews-brand {
+  max-width: none;
+  flex-wrap: nowrap;
+  box-shadow: none;
+}
+
+/* =====================================================
+   MOBILE / TABLETTE – SLIDER
+===================================================== */
+
 .partners-slider {
   display: none;
 }
 
+@media (max-width: 1024px) {
+
+  .partners-logos {
+    display: none;
+  }
+
+  .partners-slider.card-glass-reviews-brand {
+    display: block;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    padding: 0;
+
+    background: rgba(255,255,255,.18);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    border-top: 1px solid rgba(255,255,255,.35);
+    border-bottom: 1px solid rgba(255,255,255,.15);
+  }
+
+  .partners-track {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    width: max-content;
+    animation: partners-scroll 35s linear infinite;
+  }
+
+  .partners-track img {
+    height: 90px;
+    width: auto;
+    object-fit: contain;
+    opacity: .75;
+    filter: grayscale(100%);
+  }
+
+  .partners-title {
+    font-size: 28px;
+  }
+
+  .partners-subtitle {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .partners-track {
+    gap: 28px;
+    animation-duration: 28s;
+  }
+
+  .partners-track img {
+    height: 80px;
+  }
+
+  .reviews h2 {
+    font-size: 26px;
+  }
+
+  .reviews-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* =========================
-   MASCOTTE (DESKTOP)
+   MASCOTTE
 ========================= */
 
 .reviews-mascotte {
@@ -221,100 +294,8 @@
   width: 420px;
 }
 
-
-
-@media (max-width: 1024px) {
-
-
-    .partners-slider {
-    display: block !important;
-  }
-  /* on cache la version desktop */
-  .partners-logos {
-    display: none;
-  }
-
-  /* on active le slider */
-  .partners-slider {
-    display: block;
-    overflow: hidden;
-    width: 100vw;
-    margin-left: calc(-50vw + 50%);
-    padding: 24px 0;
-
-    background: rgba(255,255,255,.18);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-
-    border-top: 1px solid rgba(255,255,255,.35);
-    border-bottom: 1px solid rgba(255,255,255,.15);
-  }
-
-  .partners-track {
-    display: flex;
-    align-items: center;
-    gap: 48px;
-    width: max-content;
-    animation: partners-scroll 35s linear infinite;
-  }
-
-  .partners-track img {
-    height: 64px;
-    width: auto;
-    object-fit: contain;
-    opacity: .75;
-    filter: grayscale(100%);
-    transition: opacity .3s ease, filter .3s ease;
-  }
-
-  .partners-track img:hover {
-    opacity: 1;
-    filter: none;
-  }
-
-
-
-
-  .partners-title {
-    font-size: 28px;
-  }
-
-  .partners-subtitle {
-    font-size: 16px;
-  }
-}
-
 /* =========================
-   MOBILE
-========================= */
-
-@media (max-width: 768px) {
-
-      .reviews-mascotte img {
-    width: 380px;
-  }
-
-
-  .partners-track {
-    gap: 36px;
-    animation-duration: 28s;
-  }
-
-  .partners-track img {
-    height: 203px;
-  }
-
-  .reviews h2 {
-    font-size: 26px;
-  }
-
-  .reviews-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* =========================
-   ANIMATION
+   ANIMATION SLIDER
 ========================= */
 
 @keyframes partners-scroll {
@@ -325,6 +306,3 @@
     transform: translateX(-50%);
   }
 }
-
-
-

@@ -33,7 +33,7 @@
 }
 
 /* ============================
-   IMAGE ÉQUIPE (NETTE & PRO)
+   IMAGE ÉQUIPE (NETTE & PRO) AVEC OVERLAY
 ============================ */
 
 .sahp-image-wrapper {
@@ -42,6 +42,7 @@
   border-radius: 28px;
   overflow: hidden;
   box-shadow: 0 22px 45px rgba(0, 0, 0, 0.35);
+  position: relative;
 }
 
 .sahp-image-wrapper img {
@@ -50,6 +51,23 @@
   display: block;
 }
 
+
+.sahp-image-wrapper::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  
+  /* REMPLACEMENT : Le dégradé bleu vers vert avec transparence */
+ background: linear-gradient(90deg, rgba(15, 76, 129, 0.35), rgba(0, 176, 155, 0.35));
+  
+  /* OPTIONNEL : Pour un rendu plus pro qui fusionne les couleurs */
+  mix-blend-mode: multiply; 
+  
+  pointer-events: none;
+}
 /* ============================
    TEXTE PRÉSENTATION
 ============================ */
@@ -93,6 +111,22 @@
 }
 
 /* ============================
+   MASCOTTE PLOMBIER
+============================ */
+
+.mascotte-plombier {
+  position: absolute;
+  left: 1242px;
+  top: 791px;
+}
+
+.mascotte-plombier img {
+  text-align: center;
+  margin-bottom: 50px;
+  width: 400px;
+}
+
+/* ============================
    ICÔNES
 ============================ */
 
@@ -101,8 +135,6 @@
   height: 110px;
   margin: 0 auto 22px;
   border-radius: 50%;
-  background: #ffffff;
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -111,8 +143,8 @@
 }
 
 .icon-circle img {
-  width: 52px;
-  height: 52px;
+  width: 370px;
+  margin-bottom: 30px;
   object-fit: contain;
 }
 

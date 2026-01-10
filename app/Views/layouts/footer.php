@@ -31,15 +31,15 @@
         <li>Paris – Île-de-France</li>
         <li>Oise (60)</li>
         <li>Eure (27)</li>
-        <li>Eure-et-Loir (28)</li>
+        <li>Eure-et-Loire (28)</li>
       </ul>
     </div>
 
     <!-- COL 4 : CONTACT + LIENS LÉGAUX -->
     <div class="footer-col footer-contact">
       <h4>Contact</h4>
-      <p>📞 <a href="tel:+33612345678">06 12 34 56 78</a></p>
-      <p>✉️ <a href="mailto:contact@sahp.fr">contact@sahp.fr</a></p>
+      <p>📞 <a href="tel:+33176242884">01 76 24 28 84</a></p>
+      <p>✉️ <a href="mailto:contact@sahp-idf.fr">contact@sahp-idf.fr</a></p>
 
       <a href="https://wa.me/336123456789" class="footer-whatsapp">
         <img src="/assets/img/brand/whatsapp.png" alt="WhatsApp">

@@ -15,6 +15,10 @@
     <img src="<?= BASE_URL ?>/assets/img/equipe.jpg" alt="Équipe SAHP Assainissement">
   </div>
 
+  <div class="mascotte-plombier">
+    <img src="<?= BASE_URL ?>/assets/img/plombier.png" alt="Mascotte Plombier SAHP">
+  </div>
+
   <!-- TEXTE -->
   <div class="sahp-text">
     <p>

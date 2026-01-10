@@ -1,10 +1,3 @@
-// Scroll doux vers contact (future section)
-document.querySelectorAll('.btn-primary').forEach((btn) => {
-  btn.addEventListener('click', () => {
-    alert('Simulation : ouverture formulaire devis');
-  });
-});
-
 // Tracking simple (à brancher GA / Meta)
 document.querySelectorAll('button').forEach((btn) => {
   btn.addEventListener('click', () => {
