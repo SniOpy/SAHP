@@ -157,3 +157,77 @@
     height: 190px;
   }
 }
+
+
+/* =====================================================
+   LARGE DESKTOP (27"+ / QHD / 4K)
+===================================================== */
+@media (min-width: 1920px) {
+
+  /* ----- CONTENEUR ----- */
+  #last-articles .container {
+    max-width: 1500px;
+  }
+
+  /* ----- ESPACEMENT SECTION ----- */
+  #last-articles {
+    padding: 120px 0;
+  }
+
+  /* ----- TITRES ----- */
+  #last-articles .section-header h2 {
+    font-size: 2.8rem;
+  }
+
+  #last-articles .section-header p {
+    font-size: 1.15rem;
+    max-width: 900px;
+  }
+
+  /* ----- GRID ----- */
+  #last-articles .articles-grid {
+    gap: 50px;
+  }
+
+  /* ----- CARDS ----- */
+  #last-articles .article-card {
+    border-radius: 18px;
+  }
+
+  /* ----- IMAGES ----- */
+  #last-articles .article-image img {
+    height: 260px;
+  }
+
+  /* ----- CONTENU ----- */
+  #last-articles .article-content {
+    padding: 32px 30px 36px;
+  }
+
+  #last-articles .article-category {
+    font-size: 0.8rem;
+    padding: 7px 14px;
+  }
+
+  #last-articles .article-content h3 {
+    font-size: 1.45rem;
+  }
+
+  #last-articles .article-content p {
+    font-size: 1.05rem;
+  }
+
+  #last-articles .article-link {
+    font-size: 1rem;
+  }
+
+  /* ----- CTA ----- */
+  #last-articles .section-cta {
+    margin-top: 75px;
+  }
+
+  #last-articles .btn-primary {
+    padding: 16px 42px;
+    font-size: 1.05rem;
+  }
+}

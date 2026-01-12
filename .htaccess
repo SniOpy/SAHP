@@ -1,11 +1,24 @@
 RewriteEngine On
 
-# Empêche le listing de dossiers
+# =====================================================
+# SÉCURITÉ : BLOQUER L’ACCÈS AU FICHIER .env
+# =====================================================
+<Files ".env">
+  Require all denied
+</Files>
+
+# =====================================================
+# EMPÊCHER LE LISTING DE DOSSIERS
+# =====================================================
 Options -Indexes
 
-# Redirection vers public
+# =====================================================
+# REDIRECTION VERS /sahp/public
+# =====================================================
+
+# Redirection racine → sahp/public
 RewriteRule ^$ sahp/public/ [L,R=301]
 
-# Tout le reste vers public
+# Tout le reste vers sahp/public (si pas déjà dedans)
 RewriteCond %{REQUEST_URI} !^/sahp/public/
 RewriteRule ^(.*)$ sahp/public/$1 [L]
