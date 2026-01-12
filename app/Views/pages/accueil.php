@@ -302,7 +302,7 @@
  <!-- VERSION DESKTOP (STATIQUE) -->
   <div class="partners-logos card-glass-reviews-brand">
     <img src="<?= BASE_URL ?>/assets/img/brand/BOUYGUES2.png" alt="Bouygues" />
-    <!-- <img src="<?= BASE_URL ?>/assets/img/brand/CROUS.png" alt="Crous de Paris" />
+    <img src="<?= BASE_URL ?>/assets/img/brand/CROUS.png" alt="Crous de Paris" />
     <img src="<?= BASE_URL ?>/assets/img/brand/ENGIE.png" alt="Engie" />
     <img src="<?= BASE_URL ?>/assets/img/brand/ISSY.png" alt="Mairie d'Issy-les-Moulineaux" />
     <img src="<?= BASE_URL ?>/assets/img/brand/YERRES.png" alt="Ville de Yerres" />
@@ -311,16 +311,17 @@
     <img src="<?= BASE_URL ?>/assets/img/brand/OPH.png" alt="OPH" />
     <img src="<?= BASE_URL ?>/assets/img/brand/VSG.png" alt="Mairie de Villeneuve-Saint-Georges" />
     <img src="<?= BASE_URL ?>/assets/img/brand/EMMAUS.png" alt="Emmaüs" />
-    <img src="<?= BASE_URL ?>/assets/img/brand/SPIE.png" alt="SPIE" /> -->
+    <img src="<?= BASE_URL ?>/assets/img/brand/SPIE.png" alt="SPIE" />
   </div>
 
+  
   <!-- VERSION MOBILE / TABLETTE (SLIDER) -->
   <div class="partners-slider card-glass-reviews-brand">
     <div class="partners-track">
       <!-- LISTE 1 -->
       <img src="<?= BASE_URL ?>/assets/img/brand/BOUYGUES.png" alt="Bouygues" />
       <img src="<?= BASE_URL ?>/assets/img/brand/CROUS.png" alt="Crous de Paris" />
-      <img src="<?= BASE_URL ?>/assets/img/brand/ENGIE.png" alt="Engie" />
+      <img src="<?= BASE_URL ?>/assets/img/brand/ENGIE.svg" alt="Engie" />
       <img src="<?= BASE_URL ?>/assets/img/brand/ISSY.png" alt="Mairie d'Issy-les-Moulineaux" />
       <img src="<?= BASE_URL ?>/assets/img/brand/YERRES.png" alt="Ville de Yerres" />
       <img src="<?= BASE_URL ?>/assets/img/brand/MONGERON.png" alt="Ville de Montgeron" />
