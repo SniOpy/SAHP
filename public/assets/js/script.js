@@ -1,78 +1,132 @@
-document.addEventListener('DOMContentLoaded', function () {
-  const burger = document.querySelector('.burger');
-  const navMenu = document.querySelector('.nav-menu');
-  const menuOverlay = document.querySelector('.menu-overlay');
-  const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+document.addEventListener("DOMContentLoaded", () => {
+  const burger = document.querySelector(".burger");
+  const navMenu = document.querySelector(".nav-menu");
+  const overlay = document.querySelector(".menu-overlay");
   const body = document.body;
+
+  if (!burger || !navMenu) return;
 
   const isMobile = () => window.innerWidth <= 900;
 
   /* =========================
-     BURGER MENU
+     HELPERS DROPDOWNS
   ========================= */
-  burger.addEventListener('click', function () {
-    burger.classList.toggle('active');
-    navMenu.classList.toggle('active');
+  const dropdowns = () => Array.from(document.querySelectorAll(".nav-dropdown"));
 
-    if (menuOverlay) {
-      menuOverlay.classList.toggle('active');
-    }
+  function closeAllDropdowns(except = null) {
+    dropdowns().forEach((drop) => {
+      if (except && drop === except) return;
 
-    body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
-  });
+      const btn = drop.querySelector(".dropdown-toggle");
+      const menu = drop.querySelector(".dropdown-menu");
+      const chevron = drop.querySelector(".chevron");
 
-  if (menuOverlay) {
-    menuOverlay.addEventListener('click', closeMenu);
+      menu?.classList.remove("active");
+      chevron?.classList.remove("active");
+      btn?.setAttribute("aria-expanded", "false");
+    });
+  }
+
+  // ✅ iOS repaint forcing (le vrai fix du "2 taps")
+  function forceRepaint(el) {
+    if (!el) return;
+    void el.offsetHeight;
+    requestAnimationFrame(() => {
+      el.style.transform = "translateZ(0)";
+      requestAnimationFrame(() => {
+        el.style.transform = "";
+      });
+    });
+  }
+
+  function openMenu() {
+    burger.classList.add("active");
+    navMenu.classList.add("active");
+    overlay?.classList.add("active");
+    body.style.overflow = "hidden";
+    closeAllDropdowns();
   }
 
   function closeMenu() {
-    burger.classList.remove('active');
-    navMenu.classList.remove('active');
-    if (menuOverlay) menuOverlay.classList.remove('active');
-    body.style.overflow = '';
+    burger.classList.remove("active");
+    navMenu.classList.remove("active");
+    overlay?.classList.remove("active");
+    body.style.overflow = "";
     closeAllDropdowns();
   }
 
   /* =========================
-     DROPDOWN MOBILE — TOGGLE
+     BURGER
   ========================= */
- dropdownToggles.forEach(toggle => {
-  toggle.addEventListener('click', function(e) {
-    if (window.innerWidth > 900) return;
-
+  burger.addEventListener("click", (e) => {
     e.preventDefault();
-    e.stopPropagation();
-
-    const dropdown = this.nextElementSibling;
-    const chevron = this.querySelector('.chevron');
-
-    const isOpen = dropdown.classList.contains('active');
-
-    dropdown.classList.toggle('active', !isOpen);
-    chevron.classList.toggle('active', !isOpen);
-
-    this.setAttribute('aria-expanded', (!isOpen).toString());
+    const open = navMenu.classList.contains("active");
+    open ? closeMenu() : openMenu();
   });
-});
 
+  overlay?.addEventListener("click", closeMenu);
 
   /* =========================
-     CLIC SUR LIEN → FERMETURE MENU
+     DROPDOWN MOBILE (iPhone OK)
   ========================= */
-  document.querySelectorAll('.dropdown-menu a, nav > a').forEach(link => {
-    link.addEventListener('click', function () {
-      if (isMobile()) {
-        closeMenu();
+  dropdowns().forEach((drop) => {
+    const btn = drop.querySelector(".dropdown-toggle");
+    const menu = drop.querySelector(".dropdown-menu");
+    const chevron = drop.querySelector(".chevron");
+
+    if (!btn || !menu) return;
+
+    btn.addEventListener("pointerdown", (e) => {
+      if (!isMobile()) return;
+
+      e.preventDefault();
+
+      const willOpen = !menu.classList.contains("active");
+
+      closeAllDropdowns(drop);
+
+      if (willOpen) {
+        menu.classList.add("active");
+        chevron?.classList.add("active");
+        btn.setAttribute("aria-expanded", "true");
+
+        // ✅ Force affichage iOS immédiat
+        forceRepaint(menu);
+        forceRepaint(navMenu);
+      } else {
+        menu.classList.remove("active");
+        chevron?.classList.remove("active");
+        btn.setAttribute("aria-expanded", "false");
       }
     });
   });
 
   /* =========================
-     RESIZE
+     TAP DANS LE MENU (hors dropdown)
+     -> ferme dropdowns seulement
   ========================= */
-  window.addEventListener('resize', function () {
-    if (!isMobile()) {
-      closeMenu();
+  navMenu.addEventListener("pointerdown", (e) => {
+    if (!isMobile()) return;
+
+    const insideDropdown = e.target.closest(".nav-dropdown");
+    if (!insideDropdown) {
+      closeAllDropdowns();
     }
+  });
+
+  /* =========================
+     CLICK SUR LIENS => ferme tout
+  ========================= */
+  document.querySelectorAll("nav > a, .dropdown-menu a").forEach((link) => {
+    link.addEventListener("click", () => {
+      if (isMobile()) closeMenu();
+    });
+  });
+
+  /* =========================
+     RESIZE => reset
+  ========================= */
+  window.addEventListener("resize", () => {
+    if (!isMobile()) closeMenu();
   });
 });

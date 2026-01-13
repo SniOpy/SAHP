@@ -49,12 +49,14 @@ nav .dropdown-toggle {
   color: #737373;
   text-decoration: none;
   cursor: pointer;
-  line-height: 1;              
-  vertical-align: middle;      
+  line-height: 1;
+  vertical-align: middle;
 }
 
 /* RESET BOUTON DROPDOWN */
 .dropdown-toggle {
+  -webkit-appearance: none;
+  appearance: none;
   background: none;
   border: none;
   padding: 0;
@@ -68,7 +70,7 @@ nav a:hover,
 }
 
 /* =====================================================
-   DROPDOWN (STRUCTURE)
+   DROPDOWN DESKTOP
 ===================================================== */
 .nav-dropdown {
   position: relative;
@@ -76,9 +78,10 @@ nav a:hover,
 
 .chevron {
   font-size: 12px;
-  transition: transform 0.3s ease;
+  transition: transform 0.25s ease;
 }
 
+/* Menu dropdown desktop */
 .dropdown-menu {
   position: absolute;
   top: 100%;
@@ -103,9 +106,7 @@ nav a:hover,
   background: rgba(15, 76, 129, 0.08);
 }
 
-/* =====================================================
-   HOVER DESKTOP UNIQUEMENT (ANTI BUG MOBILE)
-===================================================== */
+/* Hover desktop uniquement */
 @media (hover: hover) and (pointer: fine) {
   .nav-dropdown:hover .dropdown-menu {
     display: flex;
@@ -212,7 +213,11 @@ nav a:hover,
   .burger {
     display: flex;
     margin-left: auto;
-    z-index: 10000;
+    z-index: 100000;
+  }
+
+  .menu-overlay {
+    z-index: 99998;
   }
 
   .nav-menu {
@@ -226,10 +231,11 @@ nav a:hover,
     display: none;
     flex-direction: column;
     gap: 24px;
-    z-index: 9999;
+    z-index: 99999;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
     max-height: calc(100vh - 100px);
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   .nav-menu.active {
@@ -243,32 +249,60 @@ nav a:hover,
     gap: 14px;
   }
 
-
-
+  /* ITEMS NAV */
   nav a,
   nav .dropdown-toggle {
-    height: 42px;               
+    width: 100%;
+    min-height: 48px;
     display: inline-flex;
     align-items: center;
-    justify-content: flex-start;     
-    padding: 0 6px;              
+    justify-content: space-between; /* ✅ chevron à droite */
+    padding: 14px 8px;
+    font-size: 17px;
+    color: #0f4c81;
+    border-bottom: 1px solid #f0f0f0;
+    margin: 0;
+    text-align: left;
+    touch-action: manipulation;
   }
 
-  /* DROPDOWN MOBILE */
-  .dropdown-menu {
-    position: static;
-    display: none;
+  /* Dropdown wrapper */
+  .nav-dropdown {
     width: 100%;
-    background: #f9f9f9;
+  }
+
+  /* ✅ DROPDOWN MOBILE FIX iPhone Safari */
+  .dropdown-menu {
+    position: static !important;
+    top: auto !important;
+    left: auto !important;
+    min-width: 100% !important;
+    box-shadow: none !important;
+
+    display: flex !important;
+    flex-direction: column;
+    width: 100%;
+
+    background: #f4f7fb;
     border: 1px solid #eaeaea;
     border-radius: 12px;
     margin-top: 6px;
-    box-shadow: none;
-    padding: 8px 0;
+
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-4px);
+    padding: 0;
+
+    transition: max-height 0.25s ease, opacity 0.25s ease, transform 0.25s ease;
+    z-index: 1;
   }
 
   .dropdown-menu.active {
-    display: flex;
+    max-height: 600px;
+    opacity: 1;
+    transform: translateY(0);
+    padding: 8px 0;
   }
 
   .dropdown-menu a {
@@ -283,17 +317,6 @@ nav a:hover,
 
   .chevron.active {
     transform: rotate(180deg);
-  }
-
-  /* ANTI HOVER MOBILE DÉFINITIF */
-  @media (hover: none) {
-    .nav-dropdown:hover .dropdown-menu {
-      display: none !important;
-    }
-
-    .nav-dropdown:hover .chevron {
-      transform: none !important;
-    }
   }
 
   .actions {

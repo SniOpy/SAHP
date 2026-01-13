@@ -4,7 +4,7 @@
 
     <!-- COL 1 -->
     <div class="footer-col footer-brand">
-      <img src="/assets/img/sahp.png" alt="SAHP Assainissement" class="footer-logo">
+      <img src="<?= BASE_URL ?>/assets/img/sahp.png" alt="SAHP Assainissement" class="footer-logo">
       <p>
         Spécialiste de l’assainissement, du curage et des interventions
         d’urgence 24/7 pour particuliers, syndics et professionnels.
@@ -42,7 +42,7 @@
       <p>✉️ <a href="mailto:contact@sahp-idf.fr">contact@sahp-idf.fr</a></p>
 
       <a href="https://wa.me/336123456789" class="footer-whatsapp">
-        <img src="/assets/img/brand/whatsapp.png" alt="WhatsApp">
+        <img src="<?= BASE_URL ?>/assets/img/brand/whatsapp.png" alt="WhatsApp">
         Urgence WhatsApp 24/7
       </a>
 
@@ -55,7 +55,6 @@
         <a href="<?= BASE_URL ?>/mentions-legales">Mentions légales</a>
         <span>-</span>
         <a href="<?= BASE_URL ?>/conditions-generales-prestations-services">CGS</a>
-        
       </div>
     </div>
 
@@ -64,9 +63,11 @@
   <!-- BARRE BASSE -->
   <div class="footer-bottom">
     <span>© 2025 - SAHP Assainissement</span>
-  </div> 
+  </div>
 
 </footer>
-  <script src="<?= BASE_URL ?>/assets/js/script.js" defer></script>
+
+<!-- ✅ SCRIPT -->
+<script src="<?= BASE_URL ?>/assets/js/script.js?v=20260113-99" defer></script>
 </body>
 </html>

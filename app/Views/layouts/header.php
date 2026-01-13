@@ -11,7 +11,7 @@
   </div>
 
   <!-- BURGER -->
-  <button class="burger" aria-label="Ouvrir le menu" aria-expanded="false">
+  <button class="burger" aria-label="Ouvrir le menu" aria-expanded="false" type="button">
     <span></span>
     <span></span>
     <span></span>
@@ -30,8 +30,8 @@
       <!-- DROPDOWN -->
       <div class="nav-dropdown">
 
-        <!-- TOGGLE  -->
-        <a
+        <!-- TOGGLE (VRAI BOUTON POUR MOBILE) -->
+        <button
           type="button"
           class="dropdown-toggle"
           aria-expanded="false"
@@ -39,7 +39,7 @@
         >
           Nos interventions
           <span class="chevron" aria-hidden="true">▾</span>
-        </a>
+        </button>
 
         <!-- MENU DROPDOWN -->
         <div
