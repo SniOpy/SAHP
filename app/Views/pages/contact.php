@@ -24,10 +24,10 @@
       </div>
 
       <div class="contact-details">
-        <p class="phone">01.76.24.28.84</p>
+              <a href="tel:0176242884" class="phone">01.76.24.28.84</a>
         <p class="email">
-          <a href="mailto:contact@sahp-assainissement.com">
-            contact@sahp-assainissement.com
+          <a href="mailto:contact@sahp-idf.fr">
+            contact@sahp-idf.fr
           </a>
         </p>
         <p class="hotline">📞 Hotlines : 24h/7j</p>

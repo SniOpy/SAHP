@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    
+  <head> 
     <meta charset="UTF-8" />
       <title><?= $title ?? 'SAHP Assainissement' ?></title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -14,7 +13,8 @@
       />
     <!-- Favicon -->
       <link rel="icon" type="image/x-icon" href="<?= BASE_URL ?>/assets/img/favicon.svg">
-    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/style.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/style.css?v=20260122-1">
+
   </head>
 
   <body>

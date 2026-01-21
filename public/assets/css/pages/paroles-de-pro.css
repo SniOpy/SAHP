@@ -2,7 +2,7 @@
    BLOG – PAROLE DE PRO (SAHP)
    ===================================================== */
 .pp-card p {
-  color : #000;
+  color: #000;
 }
 /* ============================
    SECTION GLOBALE
@@ -18,7 +18,7 @@
 .parole-title {
   text-align: center;
   color: #ffffff;
-  font-size: 34px;
+  font-size: 65px;
   font-weight: 700;
   margin-bottom: 40px;
 }
@@ -48,7 +48,7 @@
   display: inline-block;
   font-size: 13px;
   font-weight: 600;
-  background: rgba(255,255,255,0.3);
+  background: rgba(255, 255, 255, 0.3);
   padding: 6px 14px;
   border-radius: 20px;
   margin-bottom: 14px;
@@ -102,7 +102,9 @@
   border-radius: 14px;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .parole-articles .article-card:hover {
@@ -168,7 +170,6 @@
 ============================ */
 
 @media (max-width: 992px) {
-
   .parole-articles {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -179,7 +180,6 @@
 }
 
 @media (max-width: 900px) {
-
   .parole-featured {
     grid-template-columns: 1fr;
     text-align: center;
@@ -197,7 +197,6 @@
 }
 
 @media (max-width: 640px) {
-
   #parole-de-pro {
     padding: 60px 20px 80px;
   }

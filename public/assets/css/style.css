@@ -26,9 +26,10 @@
 @import url(./pages/devis.css);
 @import url(./pages/blog-articles.css);
 
+/* =========================
+   RESET
+========================= */
 
-
-/* RESET */
 * {
   margin: 0;
   padding: 0;
@@ -39,15 +40,29 @@ option {
   color: #000;
 }
 
-/* FOND GÉNÉRAL */
+/* ✅ IMPORTANT : stop overscroll global */
+html,
+body {
+  overflow-x: hidden;
+}
+
+/* =========================
+   FOND GÉNÉRAL
+========================= */
+
 body {
   background: linear-gradient(90deg, #0f4c81 0%, #00b09b 100%);
   font-family: 'Roboto', sans-serif;
   color: #ffffff;
   min-height: 100vh;
+  font-size: 1rem;
+  line-height: 1.6;
 }
 
-/* TITRES */
+/* =========================
+   TITRES
+========================= */
+
 h1,
 h2,
 h3 {
@@ -55,7 +70,10 @@ h3 {
   font-weight: 700;
 }
 
-/* GLASSMORPHISM */
+/* =========================
+   GLASSMORPHISM
+========================= */
+
 .card-glass-reviews {
   background: rgba(255, 255, 255, 0.35);
   border: 1px solid rgba(255, 255, 255, 0.25);
@@ -65,14 +83,6 @@ h3 {
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
 }
 
-/* .card-glass-reviews-brand {
-  background: rgba(255, 255, 255, 0.25);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-} */
-
 .card-glass {
   background: rgba(255, 255, 255, 0.9);
   border: 1px solid rgba(255, 255, 255, 0.25);
@@ -81,8 +91,6 @@ h3 {
   -webkit-backdrop-filter: blur(12px);
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
 }
-
-
 
 /* =========================
    SEPARATOR FIN REVIEWS
@@ -105,5 +113,72 @@ h3 {
   width: 250px;
   height: auto;
   z-index: 10;
-  filter: none; /* 🔥 SUPPRESSION TOTALE */
+  filter: none;
+}
+
+/* =====================================================
+   CONTAINER GLOBAL (si utilisé)
+===================================================== */
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* =====================================================
+   ✅ MODE GRAND ÉCRAN (contrôlé par JS)
+   -> class ajoutée : html.large-screen
+===================================================== */
+
+html.large-screen body {
+  font-size: 19px;
+}
+
+html.large-screen h1 {
+  font-size: 3.3rem;
+  line-height: 1.15;
+}
+
+html.large-screen h2 {
+  font-size: 2.5rem;
+  line-height: 1.2;
+}
+
+html.large-screen h3 {
+  font-size: 1.8rem;
+  line-height: 1.25;
+}
+
+html.large-screen p,
+html.large-screen li,
+html.large-screen a {
+  font-size: 1.12rem;
+}
+
+html.large-screen .container,
+html.large-screen .reviews-container,
+html.large-screen .services-container,
+html.large-screen .about-container {
+  max-width: 1650px !important;
+}
+
+html.large-screen .hero-visual img,
+html.large-screen .about-image-wrapper img {
+  transform: scale(1.06);
+  transform-origin: center;
+}
+
+html.large-screen .hero,
+html.large-screen .about,
+html.large-screen .services,
+html.large-screen .reviews,
+html.large-screen .last-articles-section {
+  padding-top: 140px;
+  padding-bottom: 140px;
+}
+
+html.large-screen .btn-rounded,
+html.large-screen .btn-primary {
+  font-size: 1.1rem;
+  padding: 16px 30px;
 }

@@ -1,7 +1,7 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const burger = document.querySelector(".burger");
-  const navMenu = document.querySelector(".nav-menu");
-  const overlay = document.querySelector(".menu-overlay");
+document.addEventListener('DOMContentLoaded', () => {
+  const burger = document.querySelector('.burger');
+  const navMenu = document.querySelector('.nav-menu');
+  const overlay = document.querySelector('.menu-overlay');
   const body = document.body;
 
   if (!burger || !navMenu) return;
@@ -11,19 +11,19 @@ document.addEventListener("DOMContentLoaded", () => {
   /* =========================
      HELPERS DROPDOWNS
   ========================= */
-  const dropdowns = () => Array.from(document.querySelectorAll(".nav-dropdown"));
+  const dropdowns = () => Array.from(document.querySelectorAll('.nav-dropdown'));
 
   function closeAllDropdowns(except = null) {
     dropdowns().forEach((drop) => {
       if (except && drop === except) return;
 
-      const btn = drop.querySelector(".dropdown-toggle");
-      const menu = drop.querySelector(".dropdown-menu");
-      const chevron = drop.querySelector(".chevron");
+      const btn = drop.querySelector('.dropdown-toggle');
+      const menu = drop.querySelector('.dropdown-menu');
+      const chevron = drop.querySelector('.chevron');
 
-      menu?.classList.remove("active");
-      chevron?.classList.remove("active");
-      btn?.setAttribute("aria-expanded", "false");
+      menu?.classList.remove('active');
+      chevron?.classList.remove('active');
+      btn?.setAttribute('aria-expanded', 'false');
     });
   }
 
@@ -32,71 +32,71 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!el) return;
     void el.offsetHeight;
     requestAnimationFrame(() => {
-      el.style.transform = "translateZ(0)";
+      el.style.transform = 'translateZ(0)';
       requestAnimationFrame(() => {
-        el.style.transform = "";
+        el.style.transform = '';
       });
     });
   }
 
   function openMenu() {
-    burger.classList.add("active");
-    navMenu.classList.add("active");
-    overlay?.classList.add("active");
-    body.style.overflow = "hidden";
+    burger.classList.add('active');
+    navMenu.classList.add('active');
+    overlay?.classList.add('active');
+    body.style.overflow = 'hidden';
     closeAllDropdowns();
   }
 
   function closeMenu() {
-    burger.classList.remove("active");
-    navMenu.classList.remove("active");
-    overlay?.classList.remove("active");
-    body.style.overflow = "";
+    burger.classList.remove('active');
+    navMenu.classList.remove('active');
+    overlay?.classList.remove('active');
+    body.style.overflow = '';
     closeAllDropdowns();
   }
 
   /* =========================
      BURGER
   ========================= */
-  burger.addEventListener("click", (e) => {
+  burger.addEventListener('click', (e) => {
     e.preventDefault();
-    const open = navMenu.classList.contains("active");
+    const open = navMenu.classList.contains('active');
     open ? closeMenu() : openMenu();
   });
 
-  overlay?.addEventListener("click", closeMenu);
+  overlay?.addEventListener('click', closeMenu);
 
   /* =========================
      DROPDOWN MOBILE (iPhone OK)
   ========================= */
   dropdowns().forEach((drop) => {
-    const btn = drop.querySelector(".dropdown-toggle");
-    const menu = drop.querySelector(".dropdown-menu");
-    const chevron = drop.querySelector(".chevron");
+    const btn = drop.querySelector('.dropdown-toggle');
+    const menu = drop.querySelector('.dropdown-menu');
+    const chevron = drop.querySelector('.chevron');
 
     if (!btn || !menu) return;
 
-    btn.addEventListener("pointerdown", (e) => {
+    btn.addEventListener('pointerdown', (e) => {
       if (!isMobile()) return;
 
       e.preventDefault();
 
-      const willOpen = !menu.classList.contains("active");
+      const willOpen = !menu.classList.contains('active');
 
       closeAllDropdowns(drop);
 
       if (willOpen) {
-        menu.classList.add("active");
-        chevron?.classList.add("active");
-        btn.setAttribute("aria-expanded", "true");
+        menu.classList.add('active');
+        chevron?.classList.add('active');
+        btn.setAttribute('aria-expanded', 'true');
 
         // ✅ Force affichage iOS immédiat
         forceRepaint(menu);
         forceRepaint(navMenu);
       } else {
-        menu.classList.remove("active");
-        chevron?.classList.remove("active");
-        btn.setAttribute("aria-expanded", "false");
+        menu.classList.remove('active');
+        chevron?.classList.remove('active');
+        btn.setAttribute('aria-expanded', 'false');
       }
     });
   });
@@ -105,10 +105,10 @@ document.addEventListener("DOMContentLoaded", () => {
      TAP DANS LE MENU (hors dropdown)
      -> ferme dropdowns seulement
   ========================= */
-  navMenu.addEventListener("pointerdown", (e) => {
+  navMenu.addEventListener('pointerdown', (e) => {
     if (!isMobile()) return;
 
-    const insideDropdown = e.target.closest(".nav-dropdown");
+    const insideDropdown = e.target.closest('.nav-dropdown');
     if (!insideDropdown) {
       closeAllDropdowns();
     }
@@ -117,8 +117,8 @@ document.addEventListener("DOMContentLoaded", () => {
   /* =========================
      CLICK SUR LIENS => ferme tout
   ========================= */
-  document.querySelectorAll("nav > a, .dropdown-menu a").forEach((link) => {
-    link.addEventListener("click", () => {
+  document.querySelectorAll('nav > a, .dropdown-menu a').forEach((link) => {
+    link.addEventListener('click', () => {
       if (isMobile()) closeMenu();
     });
   });
@@ -126,7 +126,27 @@ document.addEventListener("DOMContentLoaded", () => {
   /* =========================
      RESIZE => reset
   ========================= */
-  window.addEventListener("resize", () => {
+  window.addEventListener('resize', () => {
     if (!isMobile()) closeMenu();
   });
 });
+console.log('✅ script.js chargé');
+
+(function () {
+  function setLargeScreenClass() {
+    const w = window.innerWidth;
+    const h = window.innerHeight;
+
+    console.log('DEBUG screen:', w, h);
+
+    // ✅ Détection grand écran PLUS permissive
+    const isLarge = (w >= 1920 && h >= 850) || w >= 2100;
+
+    document.documentElement.classList.toggle('large-screen', isLarge);
+
+    console.log('large-screen:', isLarge);
+  }
+
+  setLargeScreenClass();
+  window.addEventListener('resize', setLargeScreenClass);
+})();

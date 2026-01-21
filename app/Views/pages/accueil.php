@@ -1,4 +1,5 @@
 <?php $title = "Accueil"; ?>
+
 <section class="hero">
   <div class="hero-content">
     <h1>
@@ -19,7 +20,7 @@
 
     <div class="hero-cta">
       <a class="btn-rounded btn-primary" href="<?= BASE_URL ?>/devis">Obtenir un devis rapide</a>
-      <a class="btn-rounded" href="tel:+33176242884">Appeler un technicien</a>
+      <a class="btn-rounded" href="tel:+33176242884" style="text-decoration: none;">Contacter un agent</a>
     </div>
   </div>
 
@@ -93,7 +94,7 @@
 
       <article class="service-card">
         <div class="service-icon">
-          <img src="<?= BASE_URL ?>/assets/img/icons/pompage.jpg" alt="Pompage et vidange" style="width: 197px;"/>
+          <img src="<?= BASE_URL ?>/assets/img/icons/pompage.jpg" alt="Pompage et vidange" style="width: 197px;" />
         </div>
         <h3>Pompage & vidange</h3>
         <p>Vidange de fosses, bacs et réseaux encombrés.</p>
@@ -128,26 +129,21 @@
       </article>
     </div>
   </div>
+
   <div class="services-mascotte-float">
-      <img 
-        src="<?= BASE_URL ?>/assets/img/intervention.jpg" 
-        alt="Mascotte intervention assainissement SAHP"
-        loading="lazy"
-        width="420"
-        height="420"
-      />
-</div>
+    <img
+      src="<?= BASE_URL ?>/assets/img/intervention.jpg"
+      alt="Mascotte intervention assainissement SAHP"
+      loading="lazy"
+      width="420"
+      height="420"
+    />
+  </div>
 </section>
 
-
-
 <div class="reviews-separator">
-  <img
-    src="<?= BASE_URL ?>/assets/img/sahp.png"
-    alt="SAHP"
-    class="separator-logo" />
+  <img src="<?= BASE_URL ?>/assets/img/sahp.png" alt="SAHP" class="separator-logo" />
 </div>
-
 
 <section id="last-articles" class="last-articles-section">
   <div class="container">
@@ -162,7 +158,6 @@
 
     <div class="articles-grid">
 
-      <!-- Article 1 -->
       <article class="article-card">
         <div class="article-image">
           <img src="<?= BASE_URL ?>/assets/img/blog/debouchage-canalisation.png" alt="Débouchage de canalisation">
@@ -180,7 +175,6 @@
         </div>
       </article>
 
-      <!-- Article 2 -->
       <article class="article-card">
         <div class="article-image">
           <img src="<?= BASE_URL ?>/assets/img/blog/curage.png" alt="Curage de canalisation">
@@ -198,7 +192,6 @@
         </div>
       </article>
 
-      <!-- Article 3 -->
       <article class="article-card">
         <div class="article-image">
           <img src="<?= BASE_URL ?>/assets/img/blog/urgence.png" alt="Urgence assainissement">
@@ -227,14 +220,11 @@
   </div>
 </section>
 
-
-
 <section class="reviews">
   <div class="reviews-container">
     <span class="reviews-label">Avis clients</span>
     <h2>La satisfaction client au cœur de notre métier</h2>
 
-    <!-- SCORE GLOBAL -->
     <div class="reviews-score card-glass-reviews">
       <div class="score-left">
         <strong>Excellent 4.9/5</strong>
@@ -245,12 +235,12 @@
       </div>
     </div>
 
-    <!-- AVIS -->
     <div class="reviews-grid">
       <article class="review-card card-glass-reviews">
         <div class="stars">★★★★★</div>
         <p>
-          Un grand merci à l’équipe, du manager au technicien sur place, ils sont intervenus en urgence dans la foulée( la journée) pour déboucher mon assainissement, le technicien connaissait très bien son sujet aucune hésitation, c’est plié en 15 minutes … bravo à vous et merci encore …</p>
+          Un grand merci à l’équipe, du manager au technicien sur place, ils sont intervenus en urgence dans la foulée( la journée) pour déboucher mon assainissement, le technicien connaissait très bien son sujet aucune hésitation, c’est plié en 15 minutes … bravo à vous et merci encore …
+        </p>
         <div class="review-author">
           <img src="<?= BASE_URL ?>/assets/img/icons/avatar-homme.png" alt="Client SAHP" />
           <div>
@@ -265,7 +255,8 @@
         <p>
           Excellente entreprise sérieuse et CONSCIENCIEUSE a qui j'ai fait appel à 2 reprises ces derniers mois.
           Intervention rapide et soignée, pas de mauvaise surprise au moment de la facture car le prix vous est communiqué avant intervention.
-          Le gérant est disponible et prend son temps pour répondre à vos demandes. </p>
+          Le gérant est disponible et prend son temps pour répondre à vos demandes.
+        </p>
         <div class="review-author">
           <img src="<?= BASE_URL ?>/assets/img/icons/avatar-femme.png" alt="Client SAHP" />
           <div>
@@ -289,39 +280,25 @@
         </div>
       </article>
     </div>
-    <div>
-    </div>
-    <!-- CTA -->
-    <a target="_blank" href="https://www.google.com/search?client=firefox-b-d&hs=J1PU&sca_esv=6dfd04640b18e1d6&si=AMgyJEtREmoPL4P1I5IDCfuA8gybfVI2d5Uj7QMwYCZHKDZ-E31I1vvQnQypGQcnex3_0SWHe8dkK7ZUrrXrils2k5oCpV91Oi-0jEnXnDk9k2sgOF7OyncDeRti45xY5E7kff9sKIE-3PYlRC8yePuevbVp-Nk-Sm6jFI2r21L2Cm4H5I5pEg0%3D&q=D%C3%A9bouchage+Canalisation+Paris+IDF+-+SAHP+Avis&sa=X&ved=2ahUKEwiSjbaS3eqRAxWxWUEAHcErCMcQ0bkNegQIQRAE&biw=1920&bih=947&dpr=1" class="reviews-cta">Lire tous nos avis sur Google</a>
 
-    <!-- PARTENAIRES -->
+    <a
+      target="_blank"
+      href="https://www.google.com/search?client=firefox-b-d&sca_esv=6dfd04640b18e1d6&sxsrf=ANbL-n5exdaoJQKhjnhO-qYpfUvVy7eNkw:1769033489011&si=AL3DRZEsmMGCryMMFSHJ3StBhOdZ2-6yYkXd_doETEE1OR-qOQQx6nqeVfb8TxDpasQh8xWjuj-DUdx6LzI_Cfnf1y6AYrwUe9Rv6mMEFLONw4t3brReK6Z4NCNQ_SoE3nCCICgkl80QqpF1HRbMgRC2l55JLqIqCZmHCqWZcHNCZfOt2YqYRmo%3D&q=Débouchage+Canalisation+Paris+IDF+-+SAHP+Avis&sa=X&ved=2ahUKEwimitWl052SAxWvKvsDHUJJKHsQ0bkNegQIThAH&biw=1696&bih=829&dpr=1.1&aic=0"
+      class="reviews-cta"
+    >Lire tous nos avis sur Google</a>
+
     <h3 class="partners-title">Ils nous confient leurs réseaux</h3>
     <p class="partners-subtitle">Syndics, agences immobilières et entreprises partenaires</p>
 
     <div class="partners-wrapper">
- <!-- VERSION DESKTOP (STATIQUE) -->
-  <div class="partners-logos card-glass-reviews-brand">
-    <img src="<?= BASE_URL ?>/assets/img/brand/BOUYGUES2.png" alt="Bouygues" />
-    <img src="<?= BASE_URL ?>/assets/img/brand/CROUS.png" alt="Crous de Paris" />
-    <img src="<?= BASE_URL ?>/assets/img/brand/ENGIE.png" alt="Engie" />
-    <img src="<?= BASE_URL ?>/assets/img/brand/ISSY.png" alt="Mairie d'Issy-les-Moulineaux" />
-    <img src="<?= BASE_URL ?>/assets/img/brand/YERRES.png" alt="Ville de Yerres" />
-    <img src="<?= BASE_URL ?>/assets/img/brand/MONGERON.png" alt="Ville de Montgeron" />
-    <img src="<?= BASE_URL ?>/assets/img/brand/PANTIN.png" alt="Mairie de Pantin" />
-    <img src="<?= BASE_URL ?>/assets/img/brand/OPH.png" alt="OPH" />
-    <img src="<?= BASE_URL ?>/assets/img/brand/VSG.png" alt="Mairie de Villeneuve-Saint-Georges" />
-    <img src="<?= BASE_URL ?>/assets/img/brand/EMMAUS.png" alt="Emmaüs" />
-    <img src="<?= BASE_URL ?>/assets/img/brand/SPIE.png" alt="SPIE" />
-  </div>
 
-  
-  <!-- VERSION MOBILE / TABLETTE (SLIDER) -->
-  <div class="partners-slider card-glass-reviews-brand">
+  <div class="partners-slider card-glass-reviews-brand desktop-slider">
     <div class="partners-track">
+
       <!-- LISTE 1 -->
-      <img src="<?= BASE_URL ?>/assets/img/brand/BOUYGUES.png" alt="Bouygues" />
+      <img src="<?= BASE_URL ?>/assets/img/brand/BOUYGUES2.png" alt="Bouygues" />
       <img src="<?= BASE_URL ?>/assets/img/brand/CROUS.png" alt="Crous de Paris" />
-      <img src="<?= BASE_URL ?>/assets/img/brand/ENGIE.svg" alt="Engie" />
+      <img src="<?= BASE_URL ?>/assets/img/brand/ENGIE.png" alt="Engie" />
       <img src="<?= BASE_URL ?>/assets/img/brand/ISSY.png" alt="Mairie d'Issy-les-Moulineaux" />
       <img src="<?= BASE_URL ?>/assets/img/brand/YERRES.png" alt="Ville de Yerres" />
       <img src="<?= BASE_URL ?>/assets/img/brand/MONGERON.png" alt="Ville de Montgeron" />
@@ -332,7 +309,7 @@
       <img src="<?= BASE_URL ?>/assets/img/brand/SPIE.png" alt="SPIE" />
 
       <!-- LISTE 2 (DUPLICATION POUR LOOP) -->
-      <img src="<?= BASE_URL ?>/assets/img/brand/BOUYGUES.png" alt="Bouygues" />
+      <img src="<?= BASE_URL ?>/assets/img/brand/BOUYGUES2.png" alt="Bouygues" />
       <img src="<?= BASE_URL ?>/assets/img/brand/CROUS.png" alt="Crous de Paris" />
       <img src="<?= BASE_URL ?>/assets/img/brand/ENGIE.png" alt="Engie" />
       <img src="<?= BASE_URL ?>/assets/img/brand/ISSY.png" alt="Mairie d'Issy-les-Moulineaux" />
@@ -346,11 +323,13 @@
 
     </div>
   </div>
-    </div>
 
-    <!-- MASCOTTE -->
+</div>
+
+
     <div class="reviews-mascotte">
       <img src="<?= BASE_URL ?>/assets/img/mascotte.png" alt="Mascotte SAHP" />
     </div>
-</section>
 
+  </div>
+</section>

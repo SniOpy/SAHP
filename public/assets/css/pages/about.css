@@ -1,5 +1,5 @@
 /* =====================================================
-   ABOUT – SAHP | VERSION OPTIMISÉE
+   ABOUT – SAHP | VERSION OPTIMISÉE (FIX MASCOTTE)
 ===================================================== */
 
 .sahp-presentation {
@@ -33,7 +33,7 @@
 }
 
 /* ============================
-   IMAGE ÉQUIPE (NETTE & PRO) AVEC OVERLAY
+   IMAGE ÉQUIPE
 ============================ */
 
 .sahp-image-wrapper {
@@ -45,29 +45,46 @@
   position: relative;
 }
 
-.sahp-image-wrapper img {
+/* ✅ IMPORTANT : on cible seulement l'image équipe */
+.sahp-team-img {
   width: 100%;
   height: auto;
   display: block;
 }
 
-
+/* ✅ OVERLAY : sans mix-blend-mode (trop instable) */
 .sahp-image-wrapper::after {
-  content: "";
+  content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  
-  /* REMPLACEMENT : Le dégradé bleu vers vert avec transparence */
- background: linear-gradient(90deg, rgba(15, 76, 129, 0.35), rgba(0, 176, 155, 0.35));
-  
-  /* OPTIONNEL : Pour un rendu plus pro qui fusionne les couleurs */
-  mix-blend-mode: multiply; 
-  
+  inset: 0;
+  background: linear-gradient(90deg, rgba(15, 76, 129, 0.25), rgba(0, 176, 155, 0.25));
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ============================
+   MASCOTTE : coin bas droite image
+============================ */
+
+.mascotte-plombier {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+
+  /* option : tu veux qu'elle dépasse légèrement */
+  transform: translate(13%, 8%);
   pointer-events: none;
 }
+
+/* ✅ on fixe la taille de la mascotte (pas 100%) */
+.mascotte-plombier img {
+  width: clamp(140px, 18vw, 260px);
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 16px 28px rgba(0, 0, 0, 0.35));
+}
+
 /* ============================
    TEXTE PRÉSENTATION
 ============================ */
@@ -111,22 +128,6 @@
 }
 
 /* ============================
-   MASCOTTE PLOMBIER
-============================ */
-
-.mascotte-plombier {
-  position: absolute;
-  left: 1242px;
-  top: 791px;
-}
-
-.mascotte-plombier img {
-  text-align: center;
-  margin-bottom: 50px;
-  width: 400px;
-}
-
-/* ============================
    ICÔNES
 ============================ */
 
@@ -138,7 +139,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
   box-shadow: 0 14px 32px rgba(0, 0, 0, 0.28);
 }
 
@@ -180,5 +180,9 @@
 
   .sahp-text {
     text-align: center;
+  }
+
+  .mascotte-plombier img {
+    width: 160px;
   }
 }
