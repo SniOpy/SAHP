@@ -28,9 +28,9 @@
       <a href="<?= BASE_URL ?>/a-propos">Qui sommes-nous</a>
 
       <!-- DROPDOWN -->
-      <div class="nav-dropdown">
+      <div class="nav-dropdown" style="margin-bottom : 1px;">
 
-        <!-- TOGGLE (VRAI BOUTON POUR MOBILE) -->
+        <!-- TOGGLE-->
         <button
           type="button"
           class="dropdown-toggle"

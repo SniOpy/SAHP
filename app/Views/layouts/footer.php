@@ -68,6 +68,7 @@
 </footer>
 
 <!-- ✅ SCRIPT -->
-<script src="<?= BASE_URL ?>/assets/js/script.js?v=20260113-99" defer></script>
+<script src="<?= BASE_URL ?>/assets/js/script.js?v=20260122-99" defer></script>
+
 </body>
 </html>

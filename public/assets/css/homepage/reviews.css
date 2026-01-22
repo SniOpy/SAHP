@@ -8,6 +8,12 @@
   padding: 100px 20px 180px;
 }
 
+/* ✅ IMPORTANT : stop overscroll global */
+html,
+body {
+  overflow-x: hidden;
+}
+
 /* =========================
    CONTAINER CENTRAL
 ========================= */
@@ -25,7 +31,7 @@
 
 .reviews-label {
   font-size: 14px;
-  color: rgba(255,255,255,0.8);
+  color: rgba(255, 255, 255, 0.8);
   text-transform: uppercase;
 }
 
@@ -70,8 +76,8 @@
 
 .score-right img {
   width: 80px;
-  filter: drop-shadow(0 0 6px rgba(255,255,255,.85))
-          drop-shadow(0 0 12px rgba(255,255,255,.45));
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.85))
+    drop-shadow(0 0 12px rgba(255, 255, 255, 0.45));
 }
 
 /* =========================
@@ -117,7 +123,7 @@
 
 .review-author span {
   font-size: 12px;
-  color: rgba(255,255,255,.7);
+  color: rgba(255, 255, 255, 0.7);
 }
 
 /* =========================
@@ -133,7 +139,9 @@
   color: #ffffff;
   text-decoration: none;
   font-weight: 600;
-  transition: background .3s ease, color .3s ease;
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
 }
 
 .reviews-cta:hover {
@@ -153,98 +161,86 @@
 
 .partners-subtitle {
   font-size: 22px;
-  color: rgba(255,255,255,.85);
+  color: rgba(255, 255, 255, 0.85);
   margin-bottom: 25px;
 }
 
 /* =====================================================
-   BANDE PARTENAIRES – DESKTOP (FULL WIDTH)
+   PARTENAIRES – SLIDER (DESKTOP + MOBILE)
 ===================================================== */
 
-.partners-logos.card-glass-reviews-brand {
+.partners-wrapper {
+  width: 100%;
+}
+
+/* ✅ Bande full-width + glass */
+.partners-slider.card-glass-reviews-brand {
+  display: block;
   width: 100vw;
   margin-left: calc(-50vw + 50%);
-  padding: 0;                      /* AUCUN padding */
-  height: auto;
+  padding: 0;
+  overflow: hidden;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 48px;                       /* espace entre logos */
-
-  background: rgba(255,255,255,0.18);
+  background: rgba(255, 255, 255, 0.18);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 
-  border-top: 1px solid rgba(255,255,255,.35);
-  border-bottom: 1px solid rgba(255,255,255,.15);
+  border-top: 1px solid rgba(255, 255, 255, 0.35);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
 
-/* Logos desktop */
-.partners-logos.card-glass-reviews-brand img {
-  height: 110px;                   /* taille proche de ta PJ */
-  width: auto;
-  display: block;
+/* ✅ Track animé (infinite loop) */
+.partners-track {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  width: max-content;
 
+  flex-wrap: nowrap;
+  white-space: nowrap;
+
+  animation: partners-scroll 55s linear infinite;
+  will-change: transform;
+}
+
+/* ✅ Logos desktop : */
+.partners-track img {
+  height: 180px;
+  width: auto;
+  display: inline-block;
   object-fit: contain;
+
   opacity: 0.85;
   filter: grayscale(100%) brightness(1.1);
-  transition: opacity .3s ease, filter .3s ease;
+  transition:
+    opacity 0.3s ease,
+    filter 0.3s ease;
 }
 
-.partners-logos.card-glass-reviews-brand img:hover {
+.partners-track img:hover {
   opacity: 1;
   filter: none;
 }
 
-/* Neutralisation des anciens comportements */
-.card-glass-reviews-brand {
-  max-width: none;
-  flex-wrap: nowrap;
-  box-shadow: none;
-}
-
 /* =====================================================
-   MOBILE / TABLETTE – SLIDER
+   MOBILE / TABLETTE (sans overscroll)
 ===================================================== */
 
-.partners-slider {
-  display: none;
-}
-
 @media (max-width: 1024px) {
-
-  .partners-logos {
-    display: none;
-  }
-
   .partners-slider.card-glass-reviews-brand {
-    display: block;
     width: 100vw;
     margin-left: calc(-50vw + 50%);
-    padding: 0;
-
-    background: rgba(255,255,255,.18);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-
-    border-top: 1px solid rgba(255,255,255,.35);
-    border-bottom: 1px solid rgba(255,255,255,.15);
+    overflow: hidden;
   }
 
   .partners-track {
-    display: flex;
-    align-items: center;
     gap: 36px;
-    width: max-content;
-    animation: partners-scroll 35s linear infinite;
+    animation-duration: 20s;
   }
 
   .partners-track img {
-    height: 90px;
-    width: auto;
-    object-fit: contain;
-    opacity: .75;
+    height: 85px;
+    opacity: 0.8;
     filter: grayscale(100%);
   }
 
@@ -258,14 +254,13 @@
 }
 
 @media (max-width: 768px) {
-
   .partners-track {
     gap: 28px;
-    animation-duration: 28s;
+    animation-duration: 20s;
   }
 
   .partners-track img {
-    height: 80px;
+    height: 150px;
   }
 
   .reviews h2 {
@@ -284,7 +279,7 @@
 .reviews-mascotte {
   position: absolute;
   bottom: -253px;
-  left: 50%;
+  left: 48%;
   transform: translateX(-50%);
   z-index: 5;
   pointer-events: none;

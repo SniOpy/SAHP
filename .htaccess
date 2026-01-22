@@ -1,11 +1,11 @@
 RewriteEngine On
 
 # =====================================================
-# SÉCURITÉ : BLOQUER L’ACCÈS AU FICHIER .env
+# SÉCURITÉ : BLOQUER FICHIERS SENSIBLES
 # =====================================================
-<Files ".env">
+<FilesMatch "(\.env|\.git|\.htaccess|composer\.(json|lock)|phpunit\.xml|\.DS_Store)$">
   Require all denied
-</Files>
+</FilesMatch>
 
 # =====================================================
 # EMPÊCHER LE LISTING DE DOSSIERS
@@ -16,9 +16,15 @@ Options -Indexes
 # REDIRECTION VERS /sahp/public
 # =====================================================
 
-# Redirection racine → sahp/public
+# 1) Rediriger la racine vers /sahp/public/
 RewriteRule ^$ sahp/public/ [L,R=301]
 
-# Tout le reste vers sahp/public (si pas déjà dedans)
-RewriteCond %{REQUEST_URI} !^/sahp/public/
+# 2) Si la requête vise déjà /sahp/public/ => ne touche pas
+RewriteCond %{REQUEST_URI} !^/sahp/public/ [NC]
+
+# 3) Si le fichier/dossier existe à la racine => ne pas réécrire (évite bugs)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# 4) Tout le reste vers /sahp/public/
 RewriteRule ^(.*)$ sahp/public/$1 [L]

@@ -13,10 +13,11 @@
   <!-- IMAGE ÉQUIPE -->
   <div class="sahp-image-wrapper">
     <img src="<?= BASE_URL ?>/assets/img/equipe.jpg" alt="Équipe SAHP Assainissement">
-  </div>
 
-  <div class="mascotte-plombier">
-    <img src="<?= BASE_URL ?>/assets/img/plombier.png" alt="Mascotte Plombier SAHP">
+    <!-- MASCOTTE collée au coin de l'image -->
+    <div class="mascotte-plombier">
+      <img src="<?= BASE_URL ?>/assets/img/plombier.png" alt="Mascotte Plombier SAHP">
+    </div>
   </div>
 
   <!-- TEXTE -->

@@ -9,6 +9,10 @@ $request = trim(
   '/'
 );
 
+require_once __DIR__ . '/../app/helpers/page_cache.php';
+sahp_try_serve_cache(3600); // 1h
+
+
 // ✅ ROUTES statiques
 $routes = [
   ''          => 'accueil.php',
