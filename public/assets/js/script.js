@@ -130,21 +130,16 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!isMobile()) closeMenu();
   });
 });
-console.log('✅ script.js chargé');
 
 (function () {
   function setLargeScreenClass() {
     const w = window.innerWidth;
     const h = window.innerHeight;
 
-    console.log('DEBUG screen:', w, h);
-
     // ✅ Détection grand écran PLUS permissive
     const isLarge = (w >= 1920 && h >= 850) || w >= 2100;
 
     document.documentElement.classList.toggle('large-screen', isLarge);
-
-    console.log('large-screen:', isLarge);
   }
 
   setLargeScreenClass();
