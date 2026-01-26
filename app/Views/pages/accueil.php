@@ -20,7 +20,7 @@
 
     <div class="hero-cta">
       <a class="btn-rounded btn-primary" href="<?= BASE_URL ?>/devis">Obtenir un devis rapide</a>
-      <a class="btn-rounded" href="tel:+33176242884" style="text-decoration: none;">Contacter un agent</a>
+      <a class="btn-rounded" href="tel:+33176242884">Contacter un agent</a>
     </div>
   </div>
 

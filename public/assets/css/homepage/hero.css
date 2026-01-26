@@ -40,6 +40,31 @@
 }
 
 /* CTA */
+.hero-cta {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.hero-cta .btn-rounded {
+  padding: 12px 28px;
+  font-weight: 700;
+  font-size: 16px;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.hero-cta .btn-primary {
+  background: #ffffff;
+  color: #0f4c81;
+  border: 1px solid #0f4c81;
+}
+
+.hero-cta .btn-primary:hover {
+  background: #0f4c81;
+  color: #ffffff;
+}
+
 .hero-cta button {
   margin-right: 15px;
 }
