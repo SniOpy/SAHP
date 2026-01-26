@@ -203,6 +203,11 @@ body {
   will-change: transform;
 }
 
+/* ✅ Vitesse constante sur grands écrans (27"+) */
+html.large-screen .partners-track {
+  animation-duration: 35s;
+}
+
 /* ✅ Logos desktop : */
 .partners-track img {
   height: 180px;

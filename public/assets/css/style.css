@@ -1,30 +1,8 @@
-/* Home page CSS */
-
-@import url(./homepage/header.css);
-@import url(./homepage/hero.css);
-@import url(./homepage/about.css);
-@import url(./homepage/services.css);
-@import url(./homepage/reviews.css);
-@import url(./homepage/last-articles.css);
-@import url(./homepage/footer.css);
-@import url(./homepage/blog.css);
-
-/* pages CSS */
-@import url(./pages/about.css);
-@import url(./pages/mentions.css);
-@import url(./pages/cgps.css);
-@import url(./pages/plansite.css);
-@import url(./pages/curage.css);
-@import url(./pages/pompage.css);
-@import url(./pages/inspection.css);
-@import url(./pages/debouchage.css);
-@import url(./pages/maintenance-pro.css);
-@import url(./pages/urgence.css);
-@import url(./pages/404.css);
-@import url(./pages/paroles-de-pro.css);
-@import url(./pages/contact.css);
-@import url(./pages/devis.css);
-@import url(./pages/blog-articles.css);
+/* 
+   NOTE: Les fichiers CSS sont maintenant chargés via des balises <link> dans main.php
+   pour éviter les problèmes de chemins relatifs avec @import et améliorer les performances.
+   Ce fichier contient uniquement le CSS global partagé.
+*/
 
 /* =========================
    RESET

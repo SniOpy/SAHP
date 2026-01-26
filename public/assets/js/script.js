@@ -136,8 +136,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const w = window.innerWidth;
     const h = window.innerHeight;
 
-    // ✅ Détection grand écran PLUS permissive
-    const isLarge = (w >= 1920 && h >= 850) || w >= 2100;
+    // ✅ Détection grand écran : uniquement pour écrans 27" et plus
+    // Stratégie : utiliser un seuil de largeur élevé pour exclure les écrans 24"
+    // - Écran 24" Full HD (1920x1080) : exclu ✅
+    // - Écran 24" 2K (2560x1440) : exclu ✅ (largeur < 2700)
+    // - Écran 27" 2K (2560x1440) : peut être exclu, mais généralement utilisé avec zoom
+    // - Écran 27" 4K (3840x2160) : inclus ✅
+    // - Écrans ultra-larges (3440x1440, etc.) : inclus ✅
+    const isLarge = w >= 2700;
 
     document.documentElement.classList.toggle('large-screen', isLarge);
   }
