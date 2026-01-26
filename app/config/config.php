@@ -8,7 +8,7 @@ declare(strict_types=1);
 | true  = développement (local)
 | false = production
 */
-define('APP_ENV', false); 
+define('APP_ENV', true); 
 
 /*
 |--------------------------------------------------------------------------
