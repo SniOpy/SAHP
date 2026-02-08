@@ -1,3 +1,19 @@
+<?php
+// Charger les helpers nécessaires
+require_once __DIR__ . '/../../helpers/form_handler.php';
+require_once __DIR__ . '/../../helpers/csrf.php';
+
+// Traiter le formulaire si soumis
+$formResult = handle_contact_form();
+$formData = $formResult['data'] ?? [];
+$formErrors = $formResult['errors'] ?? [];
+$formMessage = $formResult['message'] ?? '';
+$formSuccess = $formResult['success'] ?? false;
+
+// Générer le token CSRF
+$csrfToken = generate_csrf_token();
+?>
+
 <section id="contact-sahp">
 
   <div class="contact-container">
@@ -6,11 +22,61 @@
     <div class="contact-form">
       <h2>Contactez SAHP<br><span>(Urgence 24/7)</span></h2>
 
-      <form action="#" method="post">
-        <input type="text" name="name" placeholder="Nom" required>
-        <input type="email" name="email" placeholder="Email" required>
-        <input type="tel" name="phone" placeholder="Téléphone" required>
-        <textarea name="message" rows="4" placeholder="Message" required></textarea>
+      <?php if ($formMessage): ?>
+        <div class="form-message <?= $formSuccess ? 'form-success' : 'form-error' ?>">
+          <?= htmlspecialchars($formMessage, ENT_QUOTES, 'UTF-8') ?>
+        </div>
+      <?php endif; ?>
+
+      <form action="" method="post">
+        <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($csrfToken, ENT_QUOTES, 'UTF-8') ?>">
+        
+        <input 
+          type="text" 
+          name="name" 
+          placeholder="Nom" 
+          value="<?= isset($formData['name']) ? htmlspecialchars($formData['name'], ENT_QUOTES, 'UTF-8') : '' ?>"
+          required
+          <?= isset($formErrors['name']) ? 'class="error"' : '' ?>
+        >
+        <?php if (isset($formErrors['name'])): ?>
+          <span class="error-message"><?= htmlspecialchars($formErrors['name'], ENT_QUOTES, 'UTF-8') ?></span>
+        <?php endif; ?>
+        
+        <input 
+          type="email" 
+          name="email" 
+          placeholder="Email" 
+          value="<?= isset($formData['email']) ? htmlspecialchars($formData['email'], ENT_QUOTES, 'UTF-8') : '' ?>"
+          required
+          <?= isset($formErrors['email']) ? 'class="error"' : '' ?>
+        >
+        <?php if (isset($formErrors['email'])): ?>
+          <span class="error-message"><?= htmlspecialchars($formErrors['email'], ENT_QUOTES, 'UTF-8') ?></span>
+        <?php endif; ?>
+        
+        <input 
+          type="tel" 
+          name="phone" 
+          placeholder="Téléphone" 
+          value="<?= isset($formData['phone']) ? htmlspecialchars($formData['phone'], ENT_QUOTES, 'UTF-8') : '' ?>"
+          required
+          <?= isset($formErrors['phone']) ? 'class="error"' : '' ?>
+        >
+        <?php if (isset($formErrors['phone'])): ?>
+          <span class="error-message"><?= htmlspecialchars($formErrors['phone'], ENT_QUOTES, 'UTF-8') ?></span>
+        <?php endif; ?>
+        
+        <textarea 
+          name="message" 
+          rows="4" 
+          placeholder="Message" 
+          required
+          <?= isset($formErrors['message']) ? 'class="error"' : '' ?>
+        ><?= isset($formData['message']) ? htmlspecialchars($formData['message'], ENT_QUOTES, 'UTF-8') : '' ?></textarea>
+        <?php if (isset($formErrors['message'])): ?>
+          <span class="error-message"><?= htmlspecialchars($formErrors['message'], ENT_QUOTES, 'UTF-8') ?></span>
+        <?php endif; ?>
 
         <button type="submit">Envoyer</button>
       </form>
