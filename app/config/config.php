@@ -28,7 +28,7 @@ if (file_exists($envPath)) {
 | true  = développement (local)
 | false = production
 */
-define('APP_ENV', true); 
+define('APP_ENV', false); 
 
 /*
 |--------------------------------------------------------------------------

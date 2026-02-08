@@ -41,7 +41,8 @@ function handle_contact_form(): array {
     if (!$nameValidation['valid']) {
         $errors['name'] = $nameValidation['error'];
     } else {
-        $data['name'] = sanitize_input($name);
+        $data['name'] = sanitize_input($name); // Pour affichage dans le formulaire
+        $data['name_email'] = sanitize_for_email($name); // Pour email (sans double encodage)
     }
     
     // Validation de l'email
@@ -59,7 +60,8 @@ function handle_contact_form(): array {
     } elseif (!validate_french_phone($phone)) {
         $errors['phone'] = 'Format de téléphone invalide. Utilisez un numéro français (ex: 01.23.45.67.89)';
     } else {
-        $data['phone'] = sanitize_input($phone);
+        $data['phone'] = sanitize_input($phone); // Pour affichage
+        $data['phone_email'] = sanitize_for_email($phone); // Pour email
     }
     
     // Validation du message
@@ -67,7 +69,8 @@ function handle_contact_form(): array {
     if (!$messageValidation['valid']) {
         $errors['message'] = $messageValidation['error'];
     } else {
-        $data['message'] = sanitize_input($message);
+        $data['message'] = sanitize_input($message); // Pour affichage
+        $data['message_email'] = sanitize_for_email($message); // Pour email
     }
     
     // Si erreurs, retourner les erreurs
@@ -80,16 +83,22 @@ function handle_contact_form(): array {
         ];
     }
     
-    // Préparer l'email HTML
+    // Préparer l'email HTML (utiliser les versions non-encodées pour l'email)
     $subject = "Nouveau message de contact - SAHP";
-    $htmlBody = get_contact_email_html($data);
+    $emailData = [
+        'name' => $data['name_email'] ?? $data['name'],
+        'email' => $data['email'],
+        'phone' => $data['phone_email'] ?? $data['phone'],
+        'message' => $data['message_email'] ?? $data['message']
+    ];
+    $htmlBody = get_contact_email_html($emailData);
     
     // Envoyer l'email
     $emailSent = sahp_send_mail(
         $subject,
         $htmlBody,
         $data['email'],
-        $data['name']
+        $emailData['name']
     );
     
     if (!$emailSent) {
@@ -169,6 +178,7 @@ function handle_devis_form(): array {
         $errors['nom'] = $nomValidation['error'];
     } else {
         $data['nom'] = sanitize_input($nom);
+        $data['nom_email'] = sanitize_for_email($nom);
     }
     
     // Validation du prénom
@@ -177,6 +187,7 @@ function handle_devis_form(): array {
         $errors['prenom'] = $prenomValidation['error'];
     } else {
         $data['prenom'] = sanitize_input($prenom);
+        $data['prenom_email'] = sanitize_for_email($prenom);
     }
     
     // Validation du téléphone
@@ -186,6 +197,7 @@ function handle_devis_form(): array {
         $errors['phone'] = 'Format de téléphone invalide. Utilisez un numéro français (ex: 01.23.45.67.89)';
     } else {
         $data['phone'] = sanitize_input($phone);
+        $data['phone_email'] = sanitize_for_email($phone);
     }
     
     // Validation de la prestation
@@ -194,6 +206,7 @@ function handle_devis_form(): array {
         $errors['prestation'] = $prestationValidation['error'];
     } else {
         $data['prestation'] = sanitize_input($prestation);
+        $data['prestation_email'] = sanitize_for_email($prestation);
     }
     
     // Validation du sujet
@@ -202,6 +215,7 @@ function handle_devis_form(): array {
         $errors['sujet'] = $sujetValidation['error'];
     } else {
         $data['sujet'] = sanitize_input($sujet);
+        $data['sujet_email'] = sanitize_for_email($sujet);
     }
     
     // Validation du message
@@ -210,6 +224,7 @@ function handle_devis_form(): array {
         $errors['message'] = $messageValidation['error'];
     } else {
         $data['message'] = sanitize_input($message);
+        $data['message_email'] = sanitize_for_email($message);
     }
     
     // Si erreurs, retourner les erreurs
@@ -222,16 +237,24 @@ function handle_devis_form(): array {
         ];
     }
     
-    // Préparer l'email HTML
-    $subject = "Demande de devis - " . $data['prestation'] . " - SAHP";
-    $htmlBody = get_devis_email_html($data);
+    // Préparer l'email HTML (utiliser les versions non-encodées pour l'email)
+    $emailData = [
+        'nom' => $data['nom_email'] ?? $data['nom'],
+        'prenom' => $data['prenom_email'] ?? $data['prenom'],
+        'phone' => $data['phone_email'] ?? $data['phone'],
+        'prestation' => $data['prestation_email'] ?? $data['prestation'],
+        'sujet' => $data['sujet_email'] ?? $data['sujet'],
+        'message' => $data['message_email'] ?? $data['message']
+    ];
+    $subject = "Demande de devis - " . $emailData['prestation'] . " - SAHP";
+    $htmlBody = get_devis_email_html($emailData);
     
     // Envoyer l'email
     $emailSent = sahp_send_mail(
         $subject,
         $htmlBody,
         null, // Pas d'email de réponse pour le devis
-        $data['nom'] . ' ' . $data['prenom']
+        $emailData['nom'] . ' ' . $emailData['prenom']
     );
     
     if (!$emailSent) {

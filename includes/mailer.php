@@ -55,8 +55,9 @@ function sahp_send_mail(
       );
     }
 
-    // Encodage
+    // Encodage UTF-8 explicite
     $mail->CharSet = 'UTF-8';
+    $mail->Encoding = 'base64'; // Encoding pour meilleure compatibilité UTF-8
 
     // Expéditeur
     $mail->setFrom($_ENV['SMTP_FROM'], $_ENV['SMTP_NAME']);
@@ -69,7 +70,8 @@ function sahp_send_mail(
 
     // Contenu
     $mail->isHTML(true);
-    $mail->Subject = $subject;
+    // Encoder le sujet en UTF-8 explicitement
+    $mail->Subject = mb_encode_mimeheader($subject, 'UTF-8', 'B');
     $mail->Body = $body;
     
     // Version texte alternative pour les clients email qui ne supportent pas HTML

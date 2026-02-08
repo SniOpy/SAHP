@@ -45,6 +45,31 @@ function sanitize_input(string $input): string {
 }
 
 /**
+ * Nettoie une chaîne pour l'utiliser dans les emails HTML
+ * Nettoie sans encoder HTML (les templates géreront l'encodage)
+ * 
+ * @param string $input La chaîne à nettoyer
+ * @return string La chaîne nettoyée (UTF-8, sans HTML encodé)
+ */
+function sanitize_for_email(string $input): string {
+    // Supprimer les espaces en début/fin
+    $input = trim($input);
+    
+    // Supprimer les slashes si magic_quotes est activé
+    if (function_exists('get_magic_quotes_gpc') && get_magic_quotes_gpc()) {
+        $input = stripslashes($input);
+    }
+    
+    // Décoder les entités HTML si elles existent déjà (éviter double encodage)
+    $input = html_entity_decode($input, ENT_QUOTES, 'UTF-8');
+    
+    // Nettoyer les caractères de contrôle mais garder UTF-8 intact
+    $input = preg_replace('/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/', '', $input);
+    
+    return $input;
+}
+
+/**
  * Valide une adresse email
  * 
  * @param string $email L'email à valider
