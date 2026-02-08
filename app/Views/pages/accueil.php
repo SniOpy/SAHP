@@ -1,4 +1,12 @@
-<?php $title = "Accueil"; ?>
+<?php $title = "Accueil"; 
+
+
+require_once __DIR__ . '/../../helpers/blog.php';
+
+// On affiche ensuite 3 cards (ou plus si tu veux)
+$posts = blog_load_posts();
+$cards = array_slice($posts, 0, 3);
+?>
 
 <section class="hero">
   <div class="hero-content">
@@ -8,12 +16,12 @@
     </h1>
 
     <p class="subtitle">
-      Inspection, curage et dépannage rapide pour particuliers, syndics et professionnels.
+      Inspection, curage et dépannage rapide pour particuliers et professionnels.
     </p>
 
     <ul class="hero-list">
-      <li>Curage haute pression colonnes EU</li>
-      <li>Interventions copropriété & syndic</li>
+      <li>Curage haute pression des évacuations</li>
+      <li>Interventions particuliers et professionnels</li>
       <li>Urgence débouchage 24/7</li>
       <li>Contrôle caméra & diagnostic</li>
     </ul>
@@ -35,7 +43,7 @@
       <h2>À propos de SAHP Assainissement</h2>
 
       <p class="about-intro">
-        SAHP Assainissement accompagne particuliers, syndics et professionnels pour l’entretien,
+        SAHP Assainissement accompagne particuliers et professionnels pour l’entretien,
         le dépannage et le contrôle de leurs réseaux d’assainissement.
       </p>
 
@@ -74,6 +82,16 @@
     </p>
 
     <div class="services-grid">
+
+    <article class="service-card">
+        <div class="service-icon">
+          <img src="<?= BASE_URL ?>/assets/img/icons/detartrage.jpg" alt="Débouchage canalisations" />
+        </div>
+        <h3>Débouchage & Détartrage</h3>
+        <p>Intervention rapide pour éliminer les bouchons.</p>
+        <a href="<?= BASE_URL ?>/debouchage">En savoir plus</a>
+      </article>
+      
       <article class="service-card">
         <div class="service-icon">
           <img src="<?= BASE_URL ?>/assets/img/icons/curage.jpg" alt="Curage haute pression" />
@@ -101,14 +119,7 @@
         <a href="<?= BASE_URL ?>/pompage">En savoir plus</a>
       </article>
 
-      <article class="service-card">
-        <div class="service-icon">
-          <img src="<?= BASE_URL ?>/assets/img/icons/detartrage.jpg" alt="Débouchage canalisations" />
-        </div>
-        <h3>Débouchage & Détartrage</h3>
-        <p>Intervention rapide pour éliminer les bouchons.</p>
-        <a href="<?= BASE_URL ?>/debouchage">En savoir plus</a>
-      </article>
+      
 
       <article class="service-card">
         <div class="service-icon">
@@ -158,7 +169,7 @@
 
     <div class="articles-grid">
 
-      <article class="article-card">
+      <!-- <article class="article-card">
         <div class="article-image">
           <img src="<?= BASE_URL ?>/assets/img/blog/debouchage-canalisation.png" alt="Débouchage de canalisation">
         </div>
@@ -173,41 +184,34 @@
             Lire l’article →
           </a>
         </div>
-      </article>
+      </article> -->
 
+      <?php foreach ($cards as $post): ?>
       <article class="article-card">
         <div class="article-image">
-          <img src="<?= BASE_URL ?>/assets/img/blog/curage.png" alt="Curage de canalisation">
+          <img
+            src="<?= BASE_URL ?>/assets/img/blog/<?= blog_escape($post['cover_image'] ?? '') ?>"
+            alt="<?= blog_escape($post['title']) ?>"
+            loading="lazy"
+          >
         </div>
+
         <div class="article-content">
-          <span class="article-category">Curage</span>
-          <h3>Pourquoi le curage préventif est indispensable</h3>
-          <p>
-            Le curage permet d’anticiper les bouchons et d’augmenter la durée de
-            vie de vos installations.
-          </p>
-          <a href="/blog/curage-preventif-canalisation" class="article-link">
+          <span class="article-category"><?= blog_escape($post['category'] ?? 'Conseils') ?></span>
+
+          <h3><?= blog_escape($post['title']) ?></h3>
+
+          <p><?= blog_escape($post['excerpt'] ?? '') ?></p>
+
+          <a href="<?= BASE_URL ?>/paroles-de-pro/<?= blog_escape($post['slug']) ?>" class="article-link">
             Lire l’article →
           </a>
         </div>
       </article>
+    <?php endforeach; ?>
 
-      <article class="article-card">
-        <div class="article-image">
-          <img src="<?= BASE_URL ?>/assets/img/blog/urgence.png" alt="Urgence assainissement">
-        </div>
-        <div class="article-content">
-          <span class="article-category">Assainissement</span>
-          <h3>Urgence assainissement : quand faut-il intervenir immédiatement ?</h3>
-          <p>
-            Refoulement, mauvaises odeurs, inondations : identifiez les signaux
-            d’alerte à ne jamais ignorer.
-          </p>
-          <a href="/blog/urgence-assainissement" class="article-link">
-            Lire l’article →
-          </a>
-        </div>
-      </article>
+
+      
 
     </div>
 
@@ -238,12 +242,12 @@
     <div class="reviews-grid">
       <article class="review-card card-glass-reviews">
         <div class="stars">★★★★★</div>
-        <p>
+        <p class="review-text">
           Un grand merci à l’équipe, du manager au technicien sur place, ils sont intervenus en urgence dans la foulée( la journée) pour déboucher mon assainissement, le technicien connaissait très bien son sujet aucune hésitation, c’est plié en 15 minutes … bravo à vous et merci encore …
         </p>
         <div class="review-author">
           <img src="<?= BASE_URL ?>/assets/img/icons/avatar-homme.png" alt="Client SAHP" />
-          <div>
+          <div class="author-info">
             <strong>Mehand Baleh</strong>
             <span>2 mois</span>
           </div>
@@ -252,7 +256,7 @@
 
       <article class="review-card card-glass-reviews">
         <div class="stars">★★★★★</div>
-        <p>
+        <p class="review-text">
           Excellente entreprise sérieuse et CONSCIENCIEUSE a qui j'ai fait appel à 2 reprises ces derniers mois.
           Intervention rapide et soignée, pas de mauvaise surprise au moment de la facture car le prix vous est communiqué avant intervention.
           Le gérant est disponible et prend son temps pour répondre à vos demandes.
@@ -268,7 +272,7 @@
 
       <article class="review-card card-glass-reviews">
         <div class="stars">★★★★★</div>
-        <p>
+        <p class="review-text">
           Merci beaucoup à Mourad pour son intervention ! Un grand merci également à l’équipe pour avoir pris en charge une urgence : une canalisation d’évier totalement bouchée. Travail impeccable, soigné et réalisé avec le sourire 👍
         </p>
         <div class="review-author">

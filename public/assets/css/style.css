@@ -29,7 +29,7 @@ body {
 ========================= */
 
 body {
-  background: linear-gradient(90deg, #0f4c81 0%, #00b09b 100%);
+  background: linear-gradient(90deg, #4080b7 0%, #5ed0c2 100%);
   font-family: 'Roboto', sans-serif;
   color: #ffffff;
   min-height: 100vh;
@@ -59,6 +59,10 @@ h3 {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+}
+
+.card-glass-reviews p {
+  color: #4c4949;
 }
 
 .card-glass {

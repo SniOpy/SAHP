@@ -12,6 +12,7 @@
         <div class="form-row">
           <input type="text" name="nom" placeholder="Nom" required>
           <input type="text" name="prenom" placeholder="Prénom" required>
+          <input type="tel" name="phone" placeholder="Téléphone" required>
         </div>
 
         <input type="text" name="sujet" placeholder="Sujet de votre demande" required>

@@ -7,7 +7,7 @@
       <img src="<?= BASE_URL ?>/assets/img/sahp.png" alt="SAHP Assainissement" class="footer-logo">
       <p>
         Spécialiste de l’assainissement, du curage et des interventions
-        d’urgence 24/7 pour particuliers, syndics et professionnels.
+        d’urgence 24/7 pour particuliers et professionnels.
       </p>
     </div>
 
@@ -39,9 +39,9 @@
     <div class="footer-col footer-contact">
       <h4>Contact</h4>
       <p>📞 <a href="tel:+33176242884">01 76 24 28 84</a></p>
-      <p>✉️ <a href="mailto:contact@sahp-idf.fr">contact@sahp-idf.fr</a></p>
+      <p>✉️ <a href="<?= BASE_URL ?>/contact">contact@sahp-idf.fr</a></p>
 
-      <a href="https://wa.me/336123456789" class="footer-whatsapp">
+      <a href="https://wa.me/33658017102?text=Bonjour,%20nous%20venons%20de%20votre%20site%20internet%20SAHP%20et%20nous%20avons%20une%20urgence%20assainissement.%20Pouvez-vous%20nous%20recontacter%20s'il vous plait%20?" class="footer-whatsapp" target="_blank" >
         <img src="<?= BASE_URL ?>/assets/img/brand/whatsapp.png" alt="WhatsApp">
         Urgence WhatsApp 24/7
       </a>

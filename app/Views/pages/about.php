@@ -21,35 +21,37 @@
   </div>
 
   <!-- TEXTE -->
-  <div class="sahp-text">
-    <p>
-      <strong>La Société d’Assainissement et d’Hygiène Parisienne (SAHP)</strong>
-      est avant tout une aventure familiale, née d’une volonté simple :
-      proposer un service d’assainissement fiable, humain et durable.
-    </p>
+   <div class="about-separator">
+    <div class="sahp-text">
+      <p>
+        <strong>La Société d’Assainissement et d’Hygiène Parisienne (SAHP)</strong>
+        est avant tout une aventure familiale, née d’une volonté simple :
+        proposer un service d’assainissement fiable, humain et durable.
+      </p>
 
-    <p>
-      Spécialistes exclusifs de l’assainissement (eaux usées et eaux pluviales),
-      nous avons fait le choix de concentrer notre expertise sur la santé
-      de vos réseaux. Contrairement aux plateformes impersonnelles,
-      nous connaissons nos clients et nous nous engageons personnellement
-      sur chaque intervention.
-    </p>
+      <p>
+        Spécialistes exclusifs de l’assainissement (eaux usées et eaux pluviales),
+        nous avons fait le choix de concentrer notre expertise sur la santé
+        de vos réseaux. Contrairement aux plateformes impersonnelles,
+        nous connaissons nos clients et nous nous engageons personnellement
+        sur chaque intervention.
+      </p>
 
-    <p>
-      Notre approche repose sur un équilibre essentiel :
-      <strong>la tradition du travail bien fait</strong> et
-      <strong>l’utilisation d’équipements modernes</strong>.
-      Dégorgement d’urgence, curage préventif, pompage ou inspection,
-      chaque mission est menée avec rigueur, respect des lieux
-      et transparence.
-    </p>
+      <p>
+        Notre approche repose sur un équilibre essentiel :
+        <strong>la tradition du travail bien fait</strong> et
+        <strong>l’utilisation d’équipements modernes</strong>.
+        Dégorgement d’urgence, curage préventif, pompage ou inspection,
+        chaque mission est menée avec rigueur, respect des lieux
+        et transparence.
+      </p>
 
-    <p class="sahp-commitment">
-      Faire appel à la SAHP, c’est choisir une équipe locale,
-      honnête et techniquement exigeante.
-    </p>
-  </div>
+      <p class="sahp-commitment">
+        Faire appel à SAHP, c’est choisir une équipe locale,
+        honnête et techniquement exigeante.
+      </p>
+    </div>
+   </div>
 
   <!-- VALEURS -->
   <div class="sahp-features">

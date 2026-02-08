@@ -9,7 +9,8 @@
       <form action="#" method="post">
         <input type="text" name="name" placeholder="Nom" required>
         <input type="email" name="email" placeholder="Email" required>
-        <textarea name="message" rows="4" placeholder="Message"></textarea>
+        <input type="tel" name="phone" placeholder="Téléphone" required>
+        <textarea name="message" rows="4" placeholder="Message" required></textarea>
 
         <button type="submit">Envoyer</button>
       </form>

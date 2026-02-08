@@ -4,7 +4,7 @@
 
 .sahp-presentation {
   padding: 15px 20px 110px;
-  background: linear-gradient(90deg, #0f4c81 0%, #00b09b 100%);
+  background: linear-gradient(90deg, #4080b7 0%, #5ed0c2 100%);
   color: #ffffff;
 }
 
@@ -37,18 +37,17 @@
 ============================ */
 
 .sahp-image-wrapper {
-  max-width: 1000px;
+  width: 1248px;
   margin: 0 auto 70px;
   border-radius: 28px;
   overflow: hidden;
-  box-shadow: 0 22px 45px rgba(0, 0, 0, 0.35);
+  /* box-shadow: 0 22px 45px rgba(0, 0, 0, 0.35); */
   position: relative;
 }
 
 /* ✅ IMPORTANT : on cible seulement l'image équipe */
 .sahp-team-img {
   width: 100%;
-  height: auto;
   display: block;
 }
 
@@ -57,7 +56,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(15, 76, 129, 0.25), rgba(0, 176, 155, 0.25));
+  background: linear-gradient(90deg, rgba(64 128 183, 0.25) 0%, rgba(94 208 194, 0.25) 100%);
   pointer-events: none;
   z-index: 1;
 }
@@ -89,11 +88,23 @@
    TEXTE PRÉSENTATION
 ============================ */
 
+.about-separator {
+  width: 100%;
+  height: 550px;
+  width: 100%;
+  background: #fff;
+  clip-path: polygon(0 0, 100% 18%, 100% 100%, 0 100%);
+  /* position: relative; */
+  margin-bottom: 120px;
+  padding: 110px 20px 0px 20px;
+}
+
 .sahp-text {
   max-width: 900px;
   margin: 0 auto 90px;
   font-size: 1.05rem;
   line-height: 1.8;
+  color: #000;
 }
 
 .sahp-text p {
