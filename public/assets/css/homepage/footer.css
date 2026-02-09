@@ -192,6 +192,34 @@
   text-decoration: underline;
 }
 
+/* =========================
+   GRANDS ÉCRANS (27" et plus)
+========================= */
+html.large-screen .footer-container {
+  max-width: 1700px;
+  padding: 0 40px;
+  gap: 60px;
+}
+
+html.large-screen .footer-section h4 {
+  font-size: 1.3rem;
+  margin-bottom: 25px;
+}
+
+html.large-screen .footer-section p,
+html.large-screen .footer-section a {
+  font-size: 1.05rem;
+  margin-bottom: 12px;
+}
+
+html.large-screen .footer-contact .phone {
+  font-size: 1.4rem;
+}
+
+html.large-screen .footer-legal-inline {
+  font-size: 0.95rem;
+}
+
 /* MOBILE */
 @media (max-width: 900px) {
   .footer-container {

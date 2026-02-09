@@ -145,3 +145,45 @@
     font-size: 26px;
   }
 }
+
+/* =========================
+   GRANDS ÉCRANS (27" et plus)
+========================= */
+html.large-screen .hero {
+  max-width: 1700px;
+  margin: 100px auto;
+  gap: 60px;
+}
+
+html.large-screen .hero-content h1 {
+  font-size: 3.8rem;
+  margin-bottom: 30px;
+}
+
+html.large-screen .subtitle {
+  font-size: 1.25rem;
+  margin-bottom: 30px;
+}
+
+html.large-screen .hero-list {
+  margin-bottom: 40px;
+}
+
+html.large-screen .hero-list li {
+  font-size: 1.15rem;
+  margin-bottom: 14px;
+  padding-left: 28px;
+}
+
+html.large-screen .hero-cta {
+  gap: 20px;
+}
+
+html.large-screen .hero-cta .btn-rounded {
+  padding: 18px 36px;
+  font-size: 1.15rem;
+}
+
+html.large-screen .hero-visual img {
+  width: 420px;
+}

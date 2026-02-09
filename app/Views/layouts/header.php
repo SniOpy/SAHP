@@ -6,6 +6,9 @@
       <img
         src="<?= BASE_URL ?>/assets/img/sahp.png"
         alt="SAHP – Assainissement et Plomberie"
+        width="250"
+        height="auto"
+        fetchpriority="high"
       />
     </a>
   </div>
