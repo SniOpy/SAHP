@@ -160,74 +160,65 @@
 
 
 /* =====================================================
-   LARGE DESKTOP (27"+ / QHD / 4K)
+   GRANDS ÉCRANS (27" et plus)
 ===================================================== */
-@media (min-width: 1920px) {
+html.large-screen #last-articles .container {
+  max-width: 1700px;
+}
 
-  /* ----- CONTENEUR ----- */
-  #last-articles .container {
-    max-width: 1500px;
-  }
+html.large-screen #last-articles {
+  padding: 160px 0;
+}
 
-  /* ----- ESPACEMENT SECTION ----- */
-  #last-articles {
-    padding: 120px 0;
-  }
+html.large-screen #last-articles .section-header h2 {
+  font-size: 2.75rem;
+}
 
-  /* ----- TITRES ----- */
-  #last-articles .section-header h2 {
-    font-size: 2.8rem;
-  }
+html.large-screen #last-articles .section-header p {
+  font-size: 1.2rem;
+  max-width: 950px;
+}
 
-  #last-articles .section-header p {
-    font-size: 1.15rem;
-    max-width: 900px;
-  }
+html.large-screen #last-articles .articles-grid {
+  gap: 50px;
+}
 
-  /* ----- GRID ----- */
-  #last-articles .articles-grid {
-    gap: 50px;
-  }
+html.large-screen #last-articles .article-card {
+  border-radius: 20px;
+}
 
-  /* ----- CARDS ----- */
-  #last-articles .article-card {
-    border-radius: 18px;
-  }
+html.large-screen #last-articles .article-image img {
+  height: 280px;
+}
 
-  /* ----- IMAGES ----- */
-  #last-articles .article-image img {
-    height: 260px;
-  }
+html.large-screen #last-articles .article-content {
+  padding: 36px 34px 40px;
+}
 
-  /* ----- CONTENU ----- */
-  #last-articles .article-content {
-    padding: 32px 30px 36px;
-  }
+html.large-screen #last-articles .article-category {
+  font-size: 0.85rem;
+  padding: 8px 16px;
+}
 
-  #last-articles .article-category {
-    font-size: 0.8rem;
-    padding: 7px 14px;
-  }
+html.large-screen #last-articles .article-content h3 {
+  font-size: 1.5rem;
+  margin-bottom: 14px;
+}
 
-  #last-articles .article-content h3 {
-    font-size: 1.45rem;
-  }
+html.large-screen #last-articles .article-content p {
+  font-size: 1.1rem;
+  margin-bottom: 18px;
+}
 
-  #last-articles .article-content p {
-    font-size: 1.05rem;
-  }
+html.large-screen #last-articles .article-link {
+  font-size: 1.05rem;
+}
 
-  #last-articles .article-link {
-    font-size: 1rem;
-  }
+html.large-screen #last-articles .section-cta {
+  margin-top: 80px;
+}
 
-  /* ----- CTA ----- */
-  #last-articles .section-cta {
-    margin-top: 75px;
-  }
-
-  #last-articles .btn-primary {
-    padding: 16px 42px;
-    font-size: 1.05rem;
-  }
+html.large-screen #last-articles .btn-primary {
+  padding: 18px 42px;
+  font-size: 1.15rem;
 }

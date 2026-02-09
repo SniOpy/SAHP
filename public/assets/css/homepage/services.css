@@ -217,3 +217,60 @@
     display: none; /* propre, évite le bruit visuel */
   }
 }
+
+/* =========================
+   GRANDS ÉCRANS (27" et plus)
+========================= */
+html.large-screen .services-container {
+  max-width: 1700px;
+}
+
+html.large-screen .services-container h2 {
+  font-size: 2.75rem;
+  margin-bottom: 20px;
+}
+
+html.large-screen .services-intro {
+  font-size: 1.2rem;
+  margin-bottom: 80px;
+  max-width: 900px;
+}
+
+html.large-screen .services-grid {
+  gap: 40px;
+}
+
+html.large-screen .service-card {
+  padding: 45px 35px;
+  border-radius: 26px;
+}
+
+html.large-screen .service-icon {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 24px;
+}
+
+html.large-screen .service-icon img {
+  width: 280px;
+}
+
+html.large-screen .service-card h3 {
+  font-size: 1.4rem;
+  margin-top: 70px;
+  margin-bottom: 14px;
+}
+
+html.large-screen .service-card p {
+  font-size: 1.05rem;
+  margin-bottom: 24px;
+}
+
+html.large-screen .service-card a {
+  padding: 14px 38px;
+  font-size: 1.05rem;
+}
+
+html.large-screen .services-mascotte-float img {
+  width: 240px;
+}

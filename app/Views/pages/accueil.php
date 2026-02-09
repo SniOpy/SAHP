@@ -33,7 +33,14 @@ $cards = array_slice($posts, 0, 3);
   </div>
 
   <div class="hero-visual">
-    <img src="<?= BASE_URL ?>/assets/img/intervention.jpg" alt="Mascotte SAHP" />
+    <img 
+      src="<?= BASE_URL ?>/assets/img/intervention.jpg" 
+      alt="Mascotte SAHP"
+      loading="lazy"
+      decoding="async"
+      width="350"
+      height="auto"
+    />
   </div>
 </section>
 
@@ -67,7 +74,14 @@ $cards = array_slice($posts, 0, 3);
 
     <div class="about-visual">
       <div class="about-image-wrapper">
-        <img src="<?= BASE_URL ?>/assets/img/hero.jpg" alt="Intervention assainissement SAHP" />
+        <img 
+          src="<?= BASE_URL ?>/assets/img/hero.jpg" 
+          alt="Intervention assainissement SAHP"
+          loading="lazy"
+          decoding="async"
+          width="600"
+          height="auto"
+        />
       </div>
     </div>
   </div>
@@ -85,7 +99,14 @@ $cards = array_slice($posts, 0, 3);
 
     <article class="service-card">
         <div class="service-icon">
-          <img src="<?= BASE_URL ?>/assets/img/icons/detartrage.jpg" alt="Débouchage canalisations" />
+          <img 
+            src="<?= BASE_URL ?>/assets/img/icons/detartrage.jpg" 
+            alt="Débouchage canalisations"
+            loading="lazy"
+            decoding="async"
+            width="235"
+            height="auto"
+          />
         </div>
         <h3>Débouchage & Détartrage</h3>
         <p>Intervention rapide pour éliminer les bouchons.</p>
@@ -94,7 +115,14 @@ $cards = array_slice($posts, 0, 3);
       
       <article class="service-card">
         <div class="service-icon">
-          <img src="<?= BASE_URL ?>/assets/img/icons/curage.jpg" alt="Curage haute pression" />
+          <img 
+            src="<?= BASE_URL ?>/assets/img/icons/curage.jpg" 
+            alt="Curage haute pression"
+            loading="lazy"
+            decoding="async"
+            width="235"
+            height="auto"
+          />
         </div>
         <h3>Curage haute pression</h3>
         <p>Nettoyage en profondeur des canalisations pour éliminer les dépôts.</p>
@@ -103,7 +131,14 @@ $cards = array_slice($posts, 0, 3);
 
       <article class="service-card">
         <div class="service-icon">
-          <img src="<?= BASE_URL ?>/assets/img/icons/video.jpg" alt="Inspection vidéo" />
+          <img 
+            src="<?= BASE_URL ?>/assets/img/icons/video.jpg" 
+            alt="Inspection vidéo"
+            loading="lazy"
+            decoding="async"
+            width="235"
+            height="auto"
+          />
         </div>
         <h3>Inspection vidéo</h3>
         <p>Diagnostic précis grâce à des caméras professionnelles.</p>
@@ -112,7 +147,15 @@ $cards = array_slice($posts, 0, 3);
 
       <article class="service-card">
         <div class="service-icon">
-          <img src="<?= BASE_URL ?>/assets/img/icons/pompage.jpg" alt="Pompage et vidange" style="width: 197px;" />
+          <img 
+          src="<?= BASE_URL ?>/assets/img/icons/pompage.jpg" 
+          alt="Pompage et vidange" 
+          style="width: 197px;"
+          loading="lazy"
+          decoding="async"
+          width="197"
+          height="auto"
+        />
         </div>
         <h3>Pompage & vidange</h3>
         <p>Vidange de fosses, bacs et réseaux encombrés.</p>
@@ -123,7 +166,14 @@ $cards = array_slice($posts, 0, 3);
 
       <article class="service-card">
         <div class="service-icon">
-          <img src="<?= BASE_URL ?>/assets/img/icons/maintenance.jpg" alt="Maintenance préventive" />
+          <img 
+            src="<?= BASE_URL ?>/assets/img/icons/maintenance.jpg" 
+            alt="Maintenance préventive"
+            loading="lazy"
+            decoding="async"
+            width="235"
+            height="auto"
+          />
         </div>
         <h3>Maintenance & Entretien</h3>
         <p>Entretien préventif pour éviter pannes et sinistres.</p>
@@ -132,7 +182,14 @@ $cards = array_slice($posts, 0, 3);
 
       <article class="service-card">
         <div class="service-icon">
-          <img src="<?= BASE_URL ?>/assets/img/icons/urgence.jpg" alt="Urgence assainissement 24/7" />
+          <img 
+            src="<?= BASE_URL ?>/assets/img/icons/urgence.jpg" 
+            alt="Urgence assainissement 24/7"
+            loading="lazy"
+            decoding="async"
+            width="235"
+            height="auto"
+          />
         </div>
         <h3>Urgence 24/7</h3>
         <p>Service d’intervention immédiate, jour et nuit.</p>
@@ -153,7 +210,15 @@ $cards = array_slice($posts, 0, 3);
 </section>
 
 <div class="reviews-separator">
-  <img src="<?= BASE_URL ?>/assets/img/sahp.png" alt="SAHP" class="separator-logo" />
+  <img 
+    src="<?= BASE_URL ?>/assets/img/sahp.png" 
+    alt="SAHP" 
+    class="separator-logo"
+    loading="lazy"
+    decoding="async"
+    width="250"
+    height="auto"
+  />
 </div>
 
 <section id="last-articles" class="last-articles-section">
@@ -235,7 +300,14 @@ $cards = array_slice($posts, 0, 3);
         <div class="stars-google">★★★★★</div>
       </div>
       <div class="score-right">
-        <img src="<?= BASE_URL ?>/assets/img/brand/google.svg" alt="Google brand" />
+        <img 
+          src="<?= BASE_URL ?>/assets/img/brand/google.svg" 
+          alt="Google brand"
+          loading="lazy"
+          decoding="async"
+          width="80"
+          height="80"
+        />
       </div>
     </div>
 
@@ -246,7 +318,14 @@ $cards = array_slice($posts, 0, 3);
           Un grand merci à l’équipe, du manager au technicien sur place, ils sont intervenus en urgence dans la foulée( la journée) pour déboucher mon assainissement, le technicien connaissait très bien son sujet aucune hésitation, c’est plié en 15 minutes … bravo à vous et merci encore …
         </p>
         <div class="review-author">
-          <img src="<?= BASE_URL ?>/assets/img/icons/avatar-homme.png" alt="Client SAHP" />
+          <img 
+            src="<?= BASE_URL ?>/assets/img/icons/avatar-homme.png" 
+            alt="Client SAHP"
+            loading="lazy"
+            decoding="async"
+            width="50"
+            height="50"
+          />
           <div class="author-info">
             <strong>Mehand Baleh</strong>
             <span>2 mois</span>
@@ -262,7 +341,14 @@ $cards = array_slice($posts, 0, 3);
           Le gérant est disponible et prend son temps pour répondre à vos demandes.
         </p>
         <div class="review-author">
-          <img src="<?= BASE_URL ?>/assets/img/icons/avatar-femme.png" alt="Client SAHP" />
+          <img 
+            src="<?= BASE_URL ?>/assets/img/icons/avatar-femme.png" 
+            alt="Client SAHP"
+            loading="lazy"
+            decoding="async"
+            width="50"
+            height="50"
+          />
           <div>
             <strong>Irène FILIPE</strong>
             <span>1 an</span>
@@ -276,7 +362,14 @@ $cards = array_slice($posts, 0, 3);
           Merci beaucoup à Mourad pour son intervention ! Un grand merci également à l’équipe pour avoir pris en charge une urgence : une canalisation d’évier totalement bouchée. Travail impeccable, soigné et réalisé avec le sourire 👍
         </p>
         <div class="review-author">
-          <img src="<?= BASE_URL ?>/assets/img/icons/avatar-homme.png" alt="Client SAHP" />
+          <img 
+            src="<?= BASE_URL ?>/assets/img/icons/avatar-homme.png" 
+            alt="Client SAHP"
+            loading="lazy"
+            decoding="async"
+            width="50"
+            height="50"
+          />
           <div>
             <strong>Enzo VMB</strong>
             <span>4 mois</span>
@@ -300,30 +393,30 @@ $cards = array_slice($posts, 0, 3);
     <div class="partners-track">
 
       <!-- LISTE 1 -->
-      <img src="<?= BASE_URL ?>/assets/img/brand/BOUYGUES2.png" alt="Bouygues" />
-      <img src="<?= BASE_URL ?>/assets/img/brand/CROUS.png" alt="Crous de Paris" />
-      <img src="<?= BASE_URL ?>/assets/img/brand/ENGIE.png" alt="Engie" />
-      <img src="<?= BASE_URL ?>/assets/img/brand/ISSY.png" alt="Mairie d'Issy-les-Moulineaux" />
-      <img src="<?= BASE_URL ?>/assets/img/brand/YERRES.png" alt="Ville de Yerres" />
-      <img src="<?= BASE_URL ?>/assets/img/brand/MONGERON.png" alt="Ville de Montgeron" />
-      <img src="<?= BASE_URL ?>/assets/img/brand/PANTIN.png" alt="Mairie de Pantin" />
-      <img src="<?= BASE_URL ?>/assets/img/brand/OPH.png" alt="OPH" />
-      <img src="<?= BASE_URL ?>/assets/img/brand/VSG.png" alt="Mairie de Villeneuve-Saint-Georges" />
-      <img src="<?= BASE_URL ?>/assets/img/brand/EMMAUS.png" alt="Emmaüs" />
-      <img src="<?= BASE_URL ?>/assets/img/brand/SPIE.png" alt="SPIE" />
+      <img src="<?= BASE_URL ?>/assets/img/brand/BOUYGUES2.png" alt="Bouygues" loading="lazy" decoding="async" width="180" height="auto" />
+      <img src="<?= BASE_URL ?>/assets/img/brand/CROUS.png" alt="Crous de Paris" loading="lazy" decoding="async" width="180" height="auto" />
+      <img src="<?= BASE_URL ?>/assets/img/brand/ENGIE.png" alt="Engie" loading="lazy" decoding="async" width="180" height="auto" />
+      <img src="<?= BASE_URL ?>/assets/img/brand/ISSY.png" alt="Mairie d'Issy-les-Moulineaux" loading="lazy" decoding="async" width="180" height="auto" />
+      <img src="<?= BASE_URL ?>/assets/img/brand/YERRES.png" alt="Ville de Yerres" loading="lazy" decoding="async" width="180" height="auto" />
+      <img src="<?= BASE_URL ?>/assets/img/brand/MONGERON.png" alt="Ville de Montgeron" loading="lazy" decoding="async" width="180" height="auto" />
+      <img src="<?= BASE_URL ?>/assets/img/brand/PANTIN.png" alt="Mairie de Pantin" loading="lazy" decoding="async" width="180" height="auto" />
+      <img src="<?= BASE_URL ?>/assets/img/brand/OPH.png" alt="OPH" loading="lazy" decoding="async" width="180" height="auto" />
+      <img src="<?= BASE_URL ?>/assets/img/brand/VSG.png" alt="Mairie de Villeneuve-Saint-Georges" loading="lazy" decoding="async" width="180" height="auto" />
+      <img src="<?= BASE_URL ?>/assets/img/brand/EMMAUS.png" alt="Emmaüs" loading="lazy" decoding="async" width="180" height="auto" />
+      <img src="<?= BASE_URL ?>/assets/img/brand/SPIE.png" alt="SPIE" loading="lazy" decoding="async" width="180" height="auto" />
 
       <!-- LISTE 2 (DUPLICATION POUR LOOP) -->
-      <img src="<?= BASE_URL ?>/assets/img/brand/BOUYGUES2.png" alt="Bouygues" />
-      <img src="<?= BASE_URL ?>/assets/img/brand/CROUS.png" alt="Crous de Paris" />
-      <img src="<?= BASE_URL ?>/assets/img/brand/ENGIE.png" alt="Engie" />
-      <img src="<?= BASE_URL ?>/assets/img/brand/ISSY.png" alt="Mairie d'Issy-les-Moulineaux" />
-      <img src="<?= BASE_URL ?>/assets/img/brand/YERRES.png" alt="Ville de Yerres" />
-      <img src="<?= BASE_URL ?>/assets/img/brand/MONGERON.png" alt="Ville de Montgeron" />
-      <img src="<?= BASE_URL ?>/assets/img/brand/PANTIN.png" alt="Mairie de Pantin" />
-      <img src="<?= BASE_URL ?>/assets/img/brand/OPH.png" alt="OPH" />
-      <img src="<?= BASE_URL ?>/assets/img/brand/VSG.png" alt="Mairie de Villeneuve-Saint-Georges" />
-      <img src="<?= BASE_URL ?>/assets/img/brand/EMMAUS.png" alt="Emmaüs" />
-      <img src="<?= BASE_URL ?>/assets/img/brand/SPIE.png" alt="SPIE" />
+      <img src="<?= BASE_URL ?>/assets/img/brand/BOUYGUES2.png" alt="Bouygues" loading="lazy" decoding="async" width="180" height="auto" />
+      <img src="<?= BASE_URL ?>/assets/img/brand/CROUS.png" alt="Crous de Paris" loading="lazy" decoding="async" width="180" height="auto" />
+      <img src="<?= BASE_URL ?>/assets/img/brand/ENGIE.png" alt="Engie" loading="lazy" decoding="async" width="180" height="auto" />
+      <img src="<?= BASE_URL ?>/assets/img/brand/ISSY.png" alt="Mairie d'Issy-les-Moulineaux" loading="lazy" decoding="async" width="180" height="auto" />
+      <img src="<?= BASE_URL ?>/assets/img/brand/YERRES.png" alt="Ville de Yerres" loading="lazy" decoding="async" width="180" height="auto" />
+      <img src="<?= BASE_URL ?>/assets/img/brand/MONGERON.png" alt="Ville de Montgeron" loading="lazy" decoding="async" width="180" height="auto" />
+      <img src="<?= BASE_URL ?>/assets/img/brand/PANTIN.png" alt="Mairie de Pantin" loading="lazy" decoding="async" width="180" height="auto" />
+      <img src="<?= BASE_URL ?>/assets/img/brand/OPH.png" alt="OPH" loading="lazy" decoding="async" width="180" height="auto" />
+      <img src="<?= BASE_URL ?>/assets/img/brand/VSG.png" alt="Mairie de Villeneuve-Saint-Georges" loading="lazy" decoding="async" width="180" height="auto" />
+      <img src="<?= BASE_URL ?>/assets/img/brand/EMMAUS.png" alt="Emmaüs" loading="lazy" decoding="async" width="180" height="auto" />
+      <img src="<?= BASE_URL ?>/assets/img/brand/SPIE.png" alt="SPIE" loading="lazy" decoding="async" width="180" height="auto" />
 
     </div>
   </div>
@@ -332,7 +425,14 @@ $cards = array_slice($posts, 0, 3);
 
 
     <div class="reviews-mascotte">
-      <img src="<?= BASE_URL ?>/assets/img/mascotte.png" alt="Mascotte SAHP" />
+      <img 
+        src="<?= BASE_URL ?>/assets/img/mascotte.png" 
+        alt="Mascotte SAHP"
+        loading="lazy"
+        decoding="async"
+        width="200"
+        height="auto"
+      />
     </div>
 
   </div>
