@@ -27,6 +27,7 @@ function get_css_files_for_page(string $page): array {
                 'homepage/hero.css',
                 'homepage/about.css',
                 'homepage/services.css',
+                'homepage/pricing.css',
                 'homepage/reviews.css',
                 'homepage/last-articles.css',
                 'homepage/blog.css',

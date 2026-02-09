@@ -1,5 +1,3 @@
-<header class="navbar">
-
   <!-- LOGO -->
   <div class="nav-left">
     <a href="<?= BASE_URL ?>/" class="logo">
@@ -78,5 +76,3 @@
       </a>
     </div>
   </div>
-
-</header>

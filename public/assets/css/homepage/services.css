@@ -2,10 +2,18 @@
    SERVICES – SAHP
 ========================= */
 
+/* .services {
+  position: relative;
+  background: linear-gradient(90deg, #4080b7 0%, #5ed0c2 100%);
+  padding: 90px 20px 160px; /* espace volontaire pour le débordement 
+  overflow: visible;
+  z-index: 2;
+} */
+
 .services {
   position: relative;
   background: linear-gradient(90deg, #4080b7 0%, #5ed0c2 100%);
-  padding: 90px 20px 160px; /* espace volontaire pour le débordement */
+  padding-top: 90px;
   overflow: visible;
   z-index: 2;
 }
@@ -138,21 +146,17 @@
 }
 
 /* =========================
-   MASCOTTE FLOTTANTE
+   MASCOTTE
 ========================= */
 
-.services-mascotte-float {
-  position: absolute;
-  bottom: -111px;
-  right: 46%;
-  z-index: 10;
-  pointer-events: none;
+.services-mascotte {
+  text-align: center;
 }
 
-.services-mascotte-float img {
-  width: 200px;
+.services-mascotte img {
+  width: 450px;
   height: auto;
-  display: block;
+  display: inline-block;
 }
 
 /* =========================
@@ -188,13 +192,12 @@
     height: 52px;
   }
 
-  .services-mascotte-float {
-    right: 50%;
-    transform: translateX(50%);
-    bottom: -70px;
+  .services-mascotte {
+    margin-top: 40px;
+    padding-top: 30px;
   }
 
-  .services-mascotte-float img {
+  .services-mascotte img {
     width: 160px;
   }
 }
@@ -213,8 +216,13 @@
     font-size: 13px;
   }
 
-  .services-mascotte-float {
-    display: none; /* propre, évite le bruit visuel */
+  .services-mascotte {
+    margin-top: 30px;
+    padding-top: 20px;
+  }
+
+  .services-mascotte img {
+    width: 140px;
   }
 }
 
@@ -271,6 +279,11 @@ html.large-screen .service-card a {
   font-size: 1.05rem;
 }
 
-html.large-screen .services-mascotte-float img {
+html.large-screen .services-mascotte {
+  margin-top: 80px;
+  padding-top: 50px;
+}
+
+html.large-screen .services-mascotte img {
   width: 240px;
 }
