@@ -1,24 +1,34 @@
 /* =====================================================
-   ABOUT – SAHP | VERSION OPTIMISÉE (FIX MASCOTTE)
+   ABOUT SAHP – VERSION CLEAN & SCALABLE
 ===================================================== */
 
-.sahp-presentation {
-  padding: 15px 20px 110px;
-  background: linear-gradient(90deg, #4080b7 0%, #5ed0c2 100%);
+:root {
+  --about-image-max-width: 700px;
+  --about-radius: 28px;
+  --about-gradient: linear-gradient(90deg, #4080b7 0%, #5ed0c2 100%);
+}
+
+/* =========================
+   CONTAINER
+========================= */
+
+.sahp-about {
+  padding: 15px 20px 120px;
+  background: var(--about-gradient);
   color: #ffffff;
 }
 
-/* ============================
+/* =========================
    HEADER
-============================ */
+========================= */
 
-.sahp-header {
-  text-align: center;
+.sahp-about-header {
   max-width: 900px;
-  margin: 0 auto 60px;
+  margin: 0 auto;
+  text-align: center;
 }
 
-.sahp-title {
+.sahp-about-title {
   font-family: 'Montserrat', sans-serif;
   font-size: 2.5rem;
   font-weight: 700;
@@ -26,123 +36,106 @@
   margin-bottom: 18px;
 }
 
-.sahp-subtitle {
+.sahp-about-subtitle {
   font-size: 1.05rem;
   line-height: 1.6;
   opacity: 0.95;
 }
 
-/* ============================
-   IMAGE ÉQUIPE
-============================ */
+/* =========================
+   IMAGE
+========================= */
 
-.sahp-image-wrapper {
-  width: 1248px;
-  margin: 0 auto 70px;
-  border-radius: 28px;
-  overflow: hidden;
-  /* box-shadow: 0 22px 45px rgba(0, 0, 0, 0.35); */
+.sahp-about-image-wrapper {
+  width: 100%;
+  max-width: var(--about-image-max-width);
+  margin: 0 auto 80px;
+
   position: relative;
+  overflow: hidden;
+  border-radius: var(--about-radius);
 }
 
-/* ✅ IMPORTANT : on cible seulement l'image équipe */
-.sahp-team-img {
+.sahp-about-image {
   width: 100%;
+  height: auto;
   display: block;
 }
 
-/* ✅ OVERLAY : sans mix-blend-mode (trop instable) */
-.sahp-image-wrapper::after {
+/* Overlay léger */
+.sahp-about-image-wrapper::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(64 128 183, 0.25) 0%, rgba(94 208 194, 0.25) 100%);
-  pointer-events: none;
+  background: linear-gradient(90deg, rgba(64, 128, 183, 0.25), rgba(94, 208, 194, 0.25));
   z-index: 1;
 }
 
-/* ============================
-   MASCOTTE : coin bas droite image
-============================ */
+/* =========================
+   MASCOTTE
+========================= */
 
-.mascotte-plombier {
+.sahp-about-mascotte {
   position: absolute;
   right: 0;
   bottom: 0;
   z-index: 2;
-
-  /* option : tu veux qu'elle dépasse légèrement */
-  transform: translate(13%, 8%);
+  transform: translate(12%, 8%);
   pointer-events: none;
 }
 
-/* ✅ on fixe la taille de la mascotte (pas 100%) */
-.mascotte-plombier img {
+.sahp-about-mascotte img {
   width: clamp(140px, 18vw, 260px);
   height: auto;
   display: block;
   filter: drop-shadow(0 16px 28px rgba(0, 0, 0, 0.35));
 }
 
-/* ============================
-   TEXTE PRÉSENTATION
-============================ */
+/* =========================
+   TEXTE
+========================= */
 
-.about-separator {
-  width: 100%;
-  height: 550px;
-  width: 100%;
-  background: #fff;
+.sahp-about-text-wrapper {
+  background: #ffffff;
   clip-path: polygon(0 0, 100% 18%, 100% 100%, 0 100%);
-  /* position: relative; */
+  padding: 120px 20px 90px;
   margin-bottom: 120px;
-  padding: 110px 20px 0px 20px;
 }
 
-.sahp-text {
+.sahp-about-text {
   max-width: 900px;
-  margin: 0 auto 90px;
+  margin: 0 auto;
+  color: #000;
   font-size: 1.05rem;
   line-height: 1.8;
-  color: #000;
 }
 
-.sahp-text p {
+.sahp-about-text p {
   margin-bottom: 26px;
-  opacity: 0.97;
 }
 
-.sahp-text strong {
-  font-weight: 700;
-}
-
-.sahp-commitment {
-  font-size: 1.1rem;
+.sahp-about-highlight {
   font-weight: 600;
-  margin-top: 35px;
+  font-size: 1.1rem;
 }
 
-/* ============================
-   VALEURS / FEATURES
-============================ */
+/* =========================
+   FEATURES
+========================= */
 
-.sahp-features {
+.sahp-about-features {
+  max-width: 1100px;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 50px;
-  max-width: 1100px;
-  margin: 0 auto;
 }
 
-.feature {
+.sahp-feature {
   text-align: center;
 }
 
-/* ============================
-   ICÔNES
-============================ */
-
-.icon-circle {
+.sahp-feature-icon {
   width: 110px;
   height: 110px;
   margin: 0 auto 22px;
@@ -153,47 +146,37 @@
   box-shadow: 0 14px 32px rgba(0, 0, 0, 0.28);
 }
 
-.icon-circle img {
-  width: 370px;
-  margin-bottom: 30px;
+.sahp-feature-icon img {
+  width: 248px;
   object-fit: contain;
 }
 
-/* ============================
-   TITRES & TEXTES
-============================ */
-
-.feature h3 {
+.sahp-feature h3 {
   font-family: 'Montserrat', sans-serif;
   font-size: 1.35rem;
   font-weight: 700;
   margin-bottom: 10px;
 }
 
-.feature p {
+.sahp-feature p {
   font-size: 0.95rem;
   line-height: 1.6;
-  opacity: 0.95;
 }
 
-/* ============================
+/* =========================
    RESPONSIVE
-============================ */
+========================= */
 
 @media (max-width: 900px) {
-  .sahp-features {
-    grid-template-columns: 1fr;
-  }
-
-  .sahp-title {
+  .sahp-about-title {
     font-size: 2rem;
   }
 
-  .sahp-text {
-    text-align: center;
+  .sahp-about-features {
+    grid-template-columns: 1fr;
   }
 
-  .mascotte-plombier img {
-    width: 160px;
+  .sahp-about-text {
+    text-align: center;
   }
 }

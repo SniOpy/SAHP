@@ -3,7 +3,7 @@
    ===================================================== */
 
 #contact-sahp {
-  background: linear-gradient(90deg, #0f4c81 0%, #00b09b 100%);
+  background: linear-gradient(90deg, #4080b7 0%, #5ed0c2 100%);
   padding: 90px 6%;
   color: #ffffff;
 }
@@ -31,7 +31,7 @@
 .contact-form {
   background: rgba(255, 255, 255, 0.15);
   border-radius: 24px;
-  padding: 45px 40px;        /* 🔥 carte plus grande */
+  padding: 45px 40px; /* 🔥 carte plus grande */
   backdrop-filter: blur(6px);
 }
 
@@ -58,7 +58,7 @@
   background: rgba(255, 255, 255, 0.25);
   border: none;
   border-radius: 14px;
-  padding: 16px 18px;        /* 🔥 champs plus confortables */
+  padding: 16px 18px; /* 🔥 champs plus confortables */
   font-size: 15px;
   color: #fff;
   outline: none;
@@ -83,12 +83,53 @@
   font-size: 16px;
   font-weight: 700;
   cursor: pointer;
-  transition: transform 0.2s ease, background 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
 }
 
 .contact-form button:hover {
   transform: translateY(-2px);
   background: #e6f6f3;
+}
+
+/* ============================
+   MESSAGES DE FORMULAIRE
+============================ */
+
+.form-message {
+  padding: 14px 18px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.form-success {
+  background: rgba(76, 175, 80, 0.3);
+  border: 1px solid rgba(76, 175, 80, 0.5);
+  color: #ffffff;
+}
+
+.form-error {
+  background: rgba(244, 67, 54, 0.3);
+  border: 1px solid rgba(244, 67, 54, 0.5);
+  color: #ffffff;
+}
+
+.error-message {
+  display: block;
+  color: #ffcdd2;
+  font-size: 13px;
+  margin-top: 4px;
+  margin-bottom: 8px;
+}
+
+.contact-form input.error,
+.contact-form textarea.error {
+  border: 2px solid rgba(244, 67, 54, 0.6);
+  background: rgba(244, 67, 54, 0.15);
 }
 
 /* ============================
@@ -108,7 +149,7 @@
 ============================ */
 
 .contact-mascotte img {
-  max-width: 240px;          /* 🔥 vrai agrandissement */
+  max-width: 240px; /* 🔥 vrai agrandissement */
   width: 100%;
   height: auto;
 }
@@ -147,7 +188,7 @@
   border-radius: 20px;
   padding: 20px;
   width: 100%;
-  max-width: 380px;          /* 🔥 carte élargie */
+  max-width: 380px; /* 🔥 carte élargie */
 }
 
 .contact-zone h4 {

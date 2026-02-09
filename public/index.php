@@ -10,7 +10,10 @@ $request = trim(
 );
 
 require_once __DIR__ . '/../app/helpers/page_cache.php';
-sahp_try_serve_cache(3600); // 1h
+
+// TTL du cache : 24h en production, 1h en développement
+$cacheTTL = (defined('APP_ENV') && APP_ENV === false) ? 86400 : 3600;
+sahp_try_serve_cache($cacheTTL);
 
 
 // ✅ ROUTES statiques
