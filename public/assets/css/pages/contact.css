@@ -207,16 +207,56 @@
 ============================ */
 
 @media (max-width: 900px) {
+  #contact-sahp {
+    padding: 60px 20px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
   .contact-container {
+    max-width: 100%;
+    width: 100%;
     grid-template-columns: 1fr;
     gap: 40px;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .contact-form {
+    width: 100%;
+    max-width: 100%;
+    padding: 30px 20px;
+    box-sizing: border-box;
   }
 
   .contact-infos {
     order: -1;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .contact-zone {
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .contact-mascotte img {
     max-width: 200px;
+  }
+}
+
+@media (max-width: 600px) {
+  #contact-sahp {
+    padding: 40px 16px;
+  }
+
+  .contact-form {
+    padding: 24px 16px;
+  }
+
+  .contact-form h2 {
+    font-size: 24px;
   }
 }

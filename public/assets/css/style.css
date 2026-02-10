@@ -24,17 +24,32 @@ body {
   overflow-x: hidden;
 }
 
+
 /* =========================
    FOND GÉNÉRAL
 ========================= */
 
 body {
   background: linear-gradient(90deg, #4080b7 0%, #5ed0c2 100%);
+  background-attachment: fixed;
   font-family: 'Roboto', sans-serif;
   color: #ffffff;
   min-height: 100vh;
+  min-height: -webkit-fill-available;
   font-size: 1rem;
   line-height: 1.6;
+}
+
+/* Évite la marge blanche sous le footer sur iPhone / mobile */
+@media (max-width: 900px) {
+  html {
+    height: -webkit-fill-available;
+  }
+
+  body {
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+  }
 }
 
 /* =========================

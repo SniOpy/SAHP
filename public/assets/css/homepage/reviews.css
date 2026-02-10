@@ -353,6 +353,21 @@ html.large-screen .partners-track {
   width: 420px;
 }
 
+/* Réduit l’espace sous la section et la mascotte sur mobile pour éviter la marge blanche sous le footer */
+@media (max-width: 900px) {
+  .reviews {
+    padding-bottom: 50px;
+  }
+
+  .reviews-mascotte {
+    bottom: -80px;
+  }
+
+  .reviews-mascotte img {
+    width: 180px;
+  }
+}
+
 /* =========================
    ANIMATION SLIDER
 ========================= */

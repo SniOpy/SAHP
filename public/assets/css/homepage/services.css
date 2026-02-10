@@ -166,7 +166,7 @@
 /* TABLETTE */
 @media (max-width: 900px) {
   .services {
-    padding: 70px 16px 140px;
+    padding: 70px 16px 0;
   }
 
   .services-container h2 {
@@ -193,12 +193,12 @@
   }
 
   .services-mascotte {
-    margin-top: 40px;
-    padding-top: 30px;
+    margin: 0;
+    padding: 0;
   }
 
   .services-mascotte img {
-    width: 160px;
+    width: 300px;
   }
 }
 
@@ -217,12 +217,12 @@
   }
 
   .services-mascotte {
-    margin-top: 30px;
-    padding-top: 20px;
+    margin: 0;
+    padding: 0;
   }
 
   .services-mascotte img {
-    width: 140px;
+    width: 240px;
   }
 }
 
