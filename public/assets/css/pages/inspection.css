@@ -103,20 +103,6 @@
 
 /* CTA */
 
-.inspection-cta {
-  margin-top: 60px;
-  text-align: center;
-  padding: 40px;
-  background: linear-gradient(135deg, #0f4c81, #2f6fa3);
-  border-radius: 14px;
-}
-
-.inspection-cta p {
-  font-size: 1.15rem;
-  margin-bottom: 20px;
-  color: #ffffff;
-}
-
 .btn-primary {
   background: #ffffff;
   color: #0f4c81;

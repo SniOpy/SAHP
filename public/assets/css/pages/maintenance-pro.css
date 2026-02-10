@@ -80,18 +80,78 @@
 
 /* CTA */
 
-.maintenance-cta {
+/* Card de tarifs avec style similaire à la page tarifs */
+.maintenance-page .pricing-category {
   margin-top: 60px;
-  text-align: center;
-  padding: 45px;
-  background: linear-gradient(135deg, #0f4c81, #2f6fa3);
-  border-radius: 14px;
+  background: #ffffff;
+  border: 1px solid rgba(15, 76, 129, 0.1);
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-.maintenance-cta p {
-  font-size: 1.2rem;
-  margin-bottom: 20px;
+.maintenance-page .pricing-category .category-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #0f4c81;
+  margin-bottom: 25px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.maintenance-page .pricing-category .pricing-list {
+  margin-bottom: 25px;
+}
+
+.maintenance-page .pricing-category .pricing-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px solid rgba(15, 76, 129, 0.1);
+}
+
+.maintenance-page .pricing-category .pricing-item:last-child {
+  border-bottom: none;
+}
+
+.maintenance-page .pricing-category .service-name {
+  flex: 1;
+  color: #333333;
+  font-size: 15px;
+  line-height: 1.5;
+  padding-right: 15px;
+}
+
+.maintenance-page .pricing-category .service-price {
+  font-size: 18px;
+  font-weight: 700;
   color: #ffffff;
+  background: #0f4c81;
+  padding: 8px 16px;
+  border-radius: 6px;
+  white-space: nowrap;
+  min-width: fit-content;
+}
+
+.maintenance-page .pricing-category .pricing-btn {
+  display: block;
+  width: 100%;
+  background: #5ed0c2;
+  color: #ffffff;
+  text-align: center;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background 0.3s ease, transform 0.2s ease;
+  border: 1px solid #5ed0c2;
+}
+
+.maintenance-page .pricing-category .pricing-btn:hover {
+  background: #4ab8a8;
+  transform: translateY(-2px);
 }
 
 .btn-primary {

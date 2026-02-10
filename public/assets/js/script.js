@@ -1,4 +1,11 @@
-document.addEventListener('DOMContentLoaded', () => {
+// Fonction d'initialisation qui fonctionne avec defer
+(function initMenu() {
+  // Si le DOM n'est pas encore prêt, attendre DOMContentLoaded
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMenu);
+    return;
+  }
+
   const burger = document.querySelector('.burger');
   const navMenu = document.querySelector('.nav-menu');
   const overlay = document.querySelector('.menu-overlay');
@@ -129,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('resize', () => {
     if (!isMobile()) closeMenu();
   });
-});
+})();
 
 (function () {
   function setLargeScreenClass() {

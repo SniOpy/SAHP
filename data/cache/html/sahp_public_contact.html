@@ -2,61 +2,69 @@
 <html lang="fr">
   <head> 
     <meta charset="UTF-8" />
-      <title>Contact | SAHP Assainissement</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <meta name="description" content="SAHP, entreprise d’assainissement en Île-de-France : débouchage, curage, vidange, pompage et interventions d’urgence 24h/7j. Devis rapide.">
+    <title>Contact | SAHP Assainissement</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="SAHP, entreprise d'assainissement en Île-de-France : débouchage, curage, vidange, pompage et interventions d'urgence 24h/7j. Devis rapide.">
 
-    <!-- Fonts -->
+    <!-- Preconnect pour améliorer les performances -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/sahp/public/assets/img/favicon.svg">
+    
+    <!-- CSS Critique inline pour le above-the-fold -->
+    
+<style id="critical-css">
+/* Critical CSS - Above the fold */
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{overflow-x:hidden}
+body{background:linear-gradient(90deg,#4080b7 0%,#5ed0c2 100%);font-family:Roboto,sans-serif;color:#fff;min-height:100vh;font-size:1rem;line-height:1.6}
+h1,h2,h3{font-family:Montserrat,sans-serif;font-weight:700}
+.navbar{max-width:1350px;margin:20px auto;padding:0 16px;display:flex;align-items:center;justify-content:space-between;position:relative;background:rgba(255,255,255,.9);border:1px solid rgba(255,255,255,.25);border-radius:20px;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 10px 40px rgba(0,0,0,.15)}
+.logo img{width:250px;display:block}
+.hero{max-width:1200px;margin:80px auto;padding:0 20px;display:grid;grid-template-columns:1.2fr .8fr;align-items:center;gap:40px}
+.hero-content h1{font-size:42px;line-height:1.2;margin-bottom:20px}
+</style>    
+    <!-- Fonts optimisées avec chargement asynchrone -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
+    >
+    <noscript>
       <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Roboto:wght@400;500&display=swap"
         rel="stylesheet"
-      />
-    <!-- Favicon -->
-      <link rel="icon" type="image/x-icon" href="/sahp/public/assets/img/favicon.svg">
+      >
+    </noscript>
     
-    <!-- CSS Global -->
-    <link rel="stylesheet" href="/sahp/public/assets/css/style.css?v=20260122-1">
-    
-    <!-- Homepage CSS -->
-    <link rel="stylesheet" href="/sahp/public/assets/css/homepage/header.css?v=20260122-1">
-    <link rel="stylesheet" href="/sahp/public/assets/css/homepage/hero.css?v=20260122-1">
-    <link rel="stylesheet" href="/sahp/public/assets/css/homepage/about.css?v=20260122-1">
-    <link rel="stylesheet" href="/sahp/public/assets/css/homepage/services.css?v=20260122-1">
-    <link rel="stylesheet" href="/sahp/public/assets/css/homepage/reviews.css?v=20260122-1">
-    <link rel="stylesheet" href="/sahp/public/assets/css/homepage/last-articles.css?v=20260122-1">
-    <link rel="stylesheet" href="/sahp/public/assets/css/homepage/footer.css?v=20260122-1">
-    <link rel="stylesheet" href="/sahp/public/assets/css/homepage/blog.css?v=20260122-1">
-    
-    <!-- Pages CSS -->
-    <link rel="stylesheet" href="/sahp/public/assets/css/pages/about.css?v=20260122-1">
-    <link rel="stylesheet" href="/sahp/public/assets/css/pages/mentions.css?v=20260122-1">
-    <link rel="stylesheet" href="/sahp/public/assets/css/pages/cgps.css?v=20260122-1">
-    <link rel="stylesheet" href="/sahp/public/assets/css/pages/plansite.css?v=20260122-1">
-    <link rel="stylesheet" href="/sahp/public/assets/css/pages/curage.css?v=20260122-1">
-    <link rel="stylesheet" href="/sahp/public/assets/css/pages/pompage.css?v=20260122-1">
-    <link rel="stylesheet" href="/sahp/public/assets/css/pages/inspection.css?v=20260122-1">
-    <link rel="stylesheet" href="/sahp/public/assets/css/pages/debouchage.css?v=20260122-1">
-    <link rel="stylesheet" href="/sahp/public/assets/css/pages/maintenance-pro.css?v=20260122-1">
-    <link rel="stylesheet" href="/sahp/public/assets/css/pages/urgence.css?v=20260122-1">
-    <link rel="stylesheet" href="/sahp/public/assets/css/pages/404.css?v=20260122-1">
-    <link rel="stylesheet" href="/sahp/public/assets/css/pages/paroles-de-pro.css?v=20260122-1">
-    <link rel="stylesheet" href="/sahp/public/assets/css/pages/contact.css?v=20260122-1">
-    <link rel="stylesheet" href="/sahp/public/assets/css/pages/devis.css?v=20260122-1">
-    <link rel="stylesheet" href="/sahp/public/assets/css/pages/blog-articles.css?v=20260122-1">
-
+    <!-- CSS chargés conditionnellement selon la page -->
+          <link rel="stylesheet" href="/sahp/public/assets/css/style.css?v=20260209-1">
+          <link rel="stylesheet" href="/sahp/public/assets/css/homepage/header.css?v=20260209-1">
+          <link rel="stylesheet" href="/sahp/public/assets/css/homepage/footer.css?v=20260209-1">
+          <link rel="stylesheet" href="/sahp/public/assets/css/pages/contact.css?v=20260209-1">
+          <link rel="stylesheet" href="/sahp/public/assets/css/large-screen.css?v=20260209-1">
+        
+    <!-- JavaScript chargé en defer pour ne pas bloquer le rendu -->
+    <script src="/sahp/public/assets/js/script.js?v=20260209-1" defer></script>
   </head>
 
   <body>
 
   <header class="navbar card-glass">
-    <header class="navbar">
-
-  <!-- LOGO -->
+      <!-- LOGO -->
   <div class="nav-left">
     <a href="/sahp/public/" class="logo">
       <img
         src="/sahp/public/assets/img/sahp.png"
         alt="SAHP – Assainissement et Plomberie"
+        width="250"
+        height="auto"
+        fetchpriority="high"
       />
     </a>
   </div>
@@ -126,12 +134,11 @@
       </a>
     </div>
   </div>
-
-</header>
   </header>
 
   <main>
-    <section id="contact-sahp">
+    
+<section id="contact-sahp">
 
   <div class="contact-container">
 
@@ -139,12 +146,41 @@
     <div class="contact-form">
       <h2>Contactez SAHP<br><span>(Urgence 24/7)</span></h2>
 
-      <form action="#" method="post">
-        <input type="text" name="name" placeholder="Nom" required>
-        <input type="email" name="email" placeholder="Email" required>
-        <input type="tel" name="phone" placeholder="Téléphone" required>
-        <textarea name="message" rows="4" placeholder="Message" required></textarea>
-
+      
+      <form action="" method="post">
+        <input type="hidden" name="csrf_token" value="b9403673073959217fcc2986b2099c466bf1d92cdce43db2b91567234e8d8bcb">
+        
+        <input 
+          type="text" 
+          name="name" 
+          placeholder="Nom" 
+          value=""
+          required
+                  >
+                
+        <input 
+          type="email" 
+          name="email" 
+          placeholder="Email" 
+          value=""
+          required
+                  >
+                
+        <input 
+          type="tel" 
+          name="phone" 
+          placeholder="Téléphone" 
+          value=""
+          required
+                  >
+                
+        <textarea 
+          name="message" 
+          rows="4" 
+          placeholder="Message" 
+          required
+                  ></textarea>
+        
         <button type="submit">Envoyer</button>
       </form>
     </div>
@@ -223,40 +259,4 @@
     <div class="footer-col footer-contact">
       <h4>Contact</h4>
       <p>📞 <a href="tel:+33176242884">01 76 24 28 84</a></p>
-      <p>✉️ <a href="/sahp/public/contact">contact@sahp-idf.fr</a></p>
-
-      <a href="https://wa.me/33658017102?text=Bonjour,%20nous%20venons%20de%20votre%20site%20internet%20SAHP%20et%20nous%20avons%20une%20urgence%20assainissement.%20Pouvez-vous%20nous%20recontacter%20s'il vous plait%20?" class="footer-whatsapp" target="_blank" >
-        <img src="/sahp/public/assets/img/brand/whatsapp.png" alt="WhatsApp">
-        Urgence WhatsApp 24/7
-      </a>
-
-      <!-- LIENS LÉGAUX -->
-      <div class="footer-legal-inline">
-        <a href="/sahp/public/plan-site">Plan du site</a>
-        <span>-</span>
-        <a href="/sahp/public/politique-confidentialite">Politique de confidentialité</a>
-        <span>-</span>
-        <a href="/sahp/public/mentions-legales">Mentions légales</a>
-        <span>-</span>
-        <a href="/sahp/public/conditions-generales-prestations-services">CGS</a>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- BARRE BASSE -->
-  <div class="footer-bottom">
-    <span>© 2025 - SAHP Assainissement</span>
-  </div>
-
-</footer>
-
-<!-- ✅ SCRIPT -->
-<script src="/sahp/public/assets/js/script.js?v=20260122-99" defer></script>
-
-</body>
-</html>
-  </footer>
-
-  </body>
-</html>
+      <p>✉️ <a href="

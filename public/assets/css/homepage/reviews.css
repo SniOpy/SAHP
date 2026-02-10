@@ -5,13 +5,7 @@
 .reviews {
   position: relative;
   background: linear-gradient(90deg, #4080b7 0%, #5ed0c2 100%);
-  padding: 100px 20px 180px;
-}
-
-/* ✅ IMPORTANT : stop overscroll global */
-html,
-body {
-  overflow-x: hidden;
+  padding: 40px 20px 180px;
 }
 
 /* =========================

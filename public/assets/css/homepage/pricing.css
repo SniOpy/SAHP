@@ -9,6 +9,18 @@
   margin-top: 0;
 }
 
+/* Page tarifs avec fond dégradé */
+.tarifs-section.pricing-section,
+section.tarifs-section {
+  background: linear-gradient(90deg, #4080b7 0%, #5ed0c2 100%);
+  z-index: -1;
+}
+
+.tarifs-section .pricing-title,
+section.tarifs-section .pricing-title {
+  color: #ffffff !important;
+}
+
 .pricing-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -30,12 +42,23 @@
   gap: 40px;
 }
 
+.pricing-column {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
 .pricing-category {
   background: #ffffff;
   border: 1px solid rgba(15, 76, 129, 0.1);
   border-radius: 12px;
   padding: 30px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  margin-bottom: 30px;
+}
+
+.pricing-category:last-child {
+  margin-bottom: 0;
 }
 
 .category-title {
@@ -111,6 +134,25 @@
   transform: translateY(-2px);
 }
 
+.category-title-price {
+  font-size: 25px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 700;
+  margin-top: 20px;
+  color: #0f4c81;
+}
+
+.category-title-price a {
+  color: #0f4c81;
+  text-decoration: none;
+}
+
+.about-image-wrapper{
+ width:536px;
+ padding:0;
+ border-radius: 10px;
+}
 /* =========================
    RESPONSIVE
 ========================= */
@@ -121,6 +163,10 @@
     gap: 30px;
   }
 
+  .pricing-column {
+    gap: 25px;
+  }
+
   .pricing-title {
     font-size: 34px;
     margin-bottom: 40px;
@@ -128,6 +174,11 @@
 
   .pricing-category {
     padding: 25px 20px;
+    margin-bottom: 25px;
+  }
+  
+  .pricing-category:last-child {
+    margin-bottom: 0;
   }
 
   .category-title {
@@ -161,6 +212,19 @@
   .category-title {
     font-size: 18px;
     margin-bottom: 20px;
+  }
+
+  .category-title-price {
+    font-size: 25px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 700;
+    margin-top: 20px;
+    color: #0f4c81;
+    a{
+      color: #0f4c81;
+      text-decoration: none;
+    }
   }
 
   .pricing-item {
@@ -203,9 +267,18 @@ html.large-screen .pricing-grid {
   gap: 50px;
 }
 
+html.large-screen .pricing-column {
+  gap: 40px;
+}
+
 html.large-screen .pricing-category {
   padding: 40px 35px;
   border-radius: 16px;
+  margin-bottom: 40px;
+}
+
+html.large-screen .pricing-category:last-child {
+  margin-bottom: 0;
 }
 
 html.large-screen .category-title {

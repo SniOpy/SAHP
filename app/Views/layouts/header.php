@@ -6,8 +6,7 @@
         alt="SAHP – Assainissement et Plomberie"
         width="250"
         height="auto"
-        fetchpriority="high"
-      />
+        fetchpriority="high" />
     </a>
   </div>
 
@@ -36,8 +35,7 @@
           type="button"
           class="dropdown-toggle"
           aria-expanded="false"
-          aria-controls="dropdown-interventions"
-        >
+          aria-controls="dropdown-interventions">
           Nos interventions
           <span class="chevron" aria-hidden="true">▾</span>
         </button>
@@ -46,12 +44,12 @@
         <div
           class="dropdown-menu"
           id="dropdown-interventions"
-          role="menu"
-        >
+          role="menu">
           <a href="<?= BASE_URL ?>/debouchage" role="menuitem">Débouchage</a>
           <a href="<?= BASE_URL ?>/curage" role="menuitem">Curage</a>
           <a href="<?= BASE_URL ?>/pompage" role="menuitem">Pompage</a>
           <a href="<?= BASE_URL ?>/inspection" role="menuitem">Inspection vidéo</a>
+          <a href="<?= BASE_URL ?>/tarifs" role="menuitem">Nos Tarifs</a>
         </div>
 
       </div>
@@ -60,19 +58,17 @@
       <a href="<?= BASE_URL ?>/contact">Contact</a>
 
     </nav>
- 
+
     <!-- ACTIONS -->
     <div class="actions">
-      
-        <a href="https://wa.me/33658017102?text=Bonjour,%20nous%20venons%20de%20votre%20site%20internet%20SAHP%20et%20nous%20avons%20une%20urgence%20assainissement.%20Pouvez-vous%20nous%20recontacter%20s'il vous plait%20?" class="footer-whatsapp" target="_blank" 
-        class="btn-rounded btn-urgent"
-      >
+
+      <a style="text-decoration: none;" href="https://wa.me/33658017102?text=Bonjour,%20nous%20venons%20de%20votre%20site%20internet%20SAHP%20et%20nous%20avons%20une%20urgence%20assainissement.%20Pouvez-vous%20nous%20recontacter%20s'il vous plait%20?" class="footer-whatsapp" target="_blank"
+        class="btn-rounded btn-urgent">
         <img
           src="<?= BASE_URL ?>/assets/img/brand/whatsapp.png"
           alt=""
-          aria-hidden="true"
-        />
-        Urgence 24/7
+          aria-hidden="true" />
+        WhatsApp 24/7
       </a>
     </div>
   </div>

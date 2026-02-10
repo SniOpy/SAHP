@@ -5,7 +5,7 @@
     <h1>Inspection vidéo des canalisations et recherche de réseau</h1>
 
     <p class="inspection-intro">
-      L’inspection vidéo permet de voir précisément l’état intérieur de vos
+      L'inspection vidéo permet de voir précisément l'état intérieur de vos
       canalisations et de localiser vos réseaux sans casser.
       Une solution fiable, rapide et non destructive proposée par SAHP.
     </p>
@@ -30,9 +30,9 @@
     </p>
 
     <p>
-      Grâce à nos caméras endoscopiques étanches, nous explorons l’intérieur
-      de vos réseaux d’eaux usées ou pluviales afin d’identifier avec certitude
-      l’origine des dysfonctionnements.
+      Grâce à nos caméras endoscopiques étanches, nous explorons l'intérieur
+      de vos réseaux d'eaux usées ou pluviales afin d'identifier avec certitude
+      l'origine des dysfonctionnements.
     </p>
 
     <h2>Un diagnostic visuel précis et fiable</h2>
@@ -47,7 +47,7 @@
     <h2>Inspection caméra et assurance</h2>
 
     <p>
-      À l’issue de l’intervention, SAHP peut fournir un rapport d’inspection
+      À l'issue de l'intervention, SAHP peut fournir un rapport d'inspection
       vidéo. Ce document constitue une preuve objective souvent exigée par
       les assurances en cas de dégât des eaux ou de litige immobilier.
     </p>
@@ -66,10 +66,10 @@
       <li>Retrouver une fosse septique ou un regard enterré</li>
       <li>Cartographier les réseaux avant des travaux</li>
       <li>Localiser précisément une casse ou une fuite</li>
-      <li>Limiter la casse lors d’une réparation ciblée</li>
+      <li>Limiter la casse lors d'une réparation ciblée</li>
     </ul>
 
-    <h2>Les avantages de l’intervention SAHP</h2>
+    <h2>Les avantages de l'intervention SAHP</h2>
 
     <ul class="inspection-list">
       <li>Diagnostic rapide et précis</li>
@@ -82,23 +82,39 @@
 
     <ul class="inspection-list">
       <li>Bouchons récurrents malgré plusieurs débouchages</li>
-      <li>Avant l’achat d’un bien immobilier</li>
-      <li>Avant des travaux d’extension ou de rénovation</li>
-      <li>Lors de la réception d’un chantier neuf</li>
+      <li>Avant l'achat d'un bien immobilier</li>
+      <li>Avant des travaux d'extension ou de rénovation</li>
+      <li>Lors de la réception d'un chantier neuf</li>
     </ul>
 
     <p class="inspection-note">
       Conseil SAHP : une canalisation contrôlée régulièrement permet
-      d’anticiper les pannes et d’éviter les urgences coûteuses.
+      d'anticiper les pannes et d'éviter les urgences coûteuses.
     </p>
 
-    <div class="inspection-cta">
-      <p>
-        Besoin d’un diagnostic précis ou d’une recherche de réseau ?
-      </p>
-      <a href="<?= BASE_URL ?>/contact" class="btn-primary">
-        Demander un devis gratuit
-      </a>
+    <div class="page-pricing-wrapper">
+      <div class="page-pricing-card pricing-category">
+        <h3 class="category-title">
+          Inspection Vidéo
+        </h3>
+        <div class="pricing-list">
+          <div class="pricing-item">
+            <span class="service-name">Inspection vidéo de contrôle rapide sans rapport</span>
+            <span class="service-price">200.00 €</span>
+          </div>
+          <div class="pricing-item">
+            <span class="service-name">Inspection vidéo de canalisation jusqu'à 20 mètres + fourniture d'un rapport d'inspection</span>
+            <span class="service-price">550.00 €</span>
+          </div>
+          <div class="pricing-item">
+            <span class="service-name">Inspection vidéo d'un réseau de canalisations</span>
+            <span class="service-price">Sur devis</span>
+          </div>
+        </div>
+        <div class="pricing-btn-wrapper">
+          <a href="<?= BASE_URL ?>/devis" class="pricing-btn">Demander un devis gratuit</a>
+        </div>
+      </div>
     </div>
 
   </div>

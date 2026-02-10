@@ -19,20 +19,20 @@
         alt="Canalisation avant et après un curage haute pression">
       <p class="curage-caption">
         Exemple réel de canalisation avant et après un curage haute pression :
-        élimination des dépôts et restitution du diamètre d’origine.
+        élimination des dépôts et restitution du diamètre d'origine.
       </p>
     </div>
 
-    <h2>Qu’est-ce que le curage haute pression ?</h2>
+    <h2>Qu'est-ce que le curage haute pression ?</h2>
 
     <p>
       Contrairement à un simple débouchage, le curage haute pression consiste à
-      nettoyer intégralement l’intérieur des canalisations à l’aide d’un jet
-      d’eau projeté à très haute pression.
+      nettoyer intégralement l'intérieur des canalisations à l'aide d'un jet
+      d'eau projeté à très haute pression.
     </p>
 
     <p>
-      Cette technique permet d’éliminer le tartre, les graisses, les résidus
+      Cette technique permet d'éliminer le tartre, les graisses, les résidus
       organiques et les déchets accumulés sur les parois, afin de restituer le
       diamètre initial des conduits.
     </p>
@@ -68,9 +68,9 @@
 
     <ol class="curage-steps">
       <li>Analyse de la situation et repérage des zones encrassées</li>
-      <li>Introduction d’une buse haute pression adaptée</li>
+      <li>Introduction d'une buse haute pression adaptée</li>
       <li>Nettoyage complet de la canalisation</li>
-      <li>Rinçage et contrôle final de l’écoulement</li>
+      <li>Rinçage et contrôle final de l'écoulement</li>
     </ol>
 
     <h2>Curage préventif ou curatif</h2>
@@ -95,13 +95,33 @@
       <li>Intervention rapide en Île-de-France</li>
     </ul>
 
-    <div class="curage-cta">
-      <p>
-        Besoin d’un curage ou d’un diagnostic ?
-      </p>
-      <a href="<?= BASE_URL ?>/contact" class="btn-primary">
-        Demander un devis gratuit
-      </a>
+    <div class="page-pricing-wrapper">
+      <div class="page-pricing-card pricing-category">
+        <h3 class="category-title">
+          Curage de canalisation
+        </h3>
+        <div class="pricing-list">
+          <div class="pricing-item">
+            <span class="service-name">Curage de canalisation jusqu'à 10 mètres linéaires</span>
+            <span class="service-price">350.00 €</span>
+          </div>
+          <div class="pricing-item">
+            <span class="service-name">Curage de canalisation mètre linéaire supplémentaire</span>
+            <span class="service-price">30.00 €</span>
+          </div>
+          <div class="pricing-item">
+            <span class="service-name">Curage de réseau de canalisations</span>
+            <span class="service-price">Sur devis</span>
+          </div>
+          <div class="pricing-item">
+            <span class="service-name">Curage de colonne d'immeuble</span>
+            <span class="service-price">Sur devis</span>
+          </div>
+        </div>
+        <div class="pricing-btn-wrapper">
+          <a href="<?= BASE_URL ?>/devis" class="pricing-btn">Demander un devis gratuit</a>
+        </div>
+      </div>
     </div>
 
   </div>

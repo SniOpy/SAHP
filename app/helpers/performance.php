@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 /**
@@ -11,14 +12,15 @@ declare(strict_types=1);
  * @param string $page Le nom de la page actuelle
  * @return array Liste des fichiers CSS à charger
  */
-function get_css_files_for_page(string $page): array {
+function get_css_files_for_page(string $page): array
+{
     // CSS toujours nécessaires
     $css = [
         'style.css',
         'homepage/header.css',
         'homepage/footer.css',
     ];
-    
+
     // CSS spécifiques selon la page
     switch ($page) {
         case 'accueil':
@@ -33,68 +35,72 @@ function get_css_files_for_page(string $page): array {
                 'homepage/blog.css',
             ]);
             break;
-            
+
         case 'contact':
             $css[] = 'pages/contact.css';
             break;
-            
+
         case 'devis':
             $css[] = 'pages/devis.css';
             break;
-            
+
         case 'about':
         case 'a-propos':
             $css[] = 'pages/about.css';
             break;
-            
+
         case 'curage':
             $css[] = 'pages/curage.css';
             break;
-            
+
         case 'pompage':
             $css[] = 'pages/pompage.css';
             break;
-            
+
         case 'inspection':
             $css[] = 'pages/inspection.css';
             break;
-            
+
         case 'debouchage':
             $css[] = 'pages/debouchage.css';
             break;
-            
+
         case 'urgence':
             $css[] = 'pages/urgence.css';
             break;
-            
+
         case 'maintenance-pro':
             $css[] = 'pages/maintenance-pro.css';
             break;
-            
+
         case 'paroles-de-pro':
             $css[] = 'pages/paroles-de-pro.css';
             break;
-            
+
+        case 'tarifs':
+            $css[] = 'homepage/pricing.css';
+            break;
+
         case 'blog_show':
         case 'show':
             $css[] = 'pages/blog-articles.css';
             break;
-            
+
         case 'mentions':
         case 'cgps':
         case 'pc':
         case 'plansite':
             $css[] = 'pages/' . $page . '.css';
             break;
-            
+
         case '404':
             $css[] = 'pages/404.css';
             break;
     }
-    
+
     // CSS grands écrans toujours chargé en dernier
     $css[] = 'large-screen.css';
-    
+
     return $css;
 }
 
@@ -103,7 +109,8 @@ function get_css_files_for_page(string $page): array {
  * 
  * @return string CSS critique
  */
-function get_critical_css(): string {
+function get_critical_css(): string
+{
     return '
 <style id="critical-css">
 /* Critical CSS - Above the fold */
@@ -128,12 +135,13 @@ h1,h2,h3{font-family:Montserrat,sans-serif;font-weight:700}
  * @param string|null $height Hauteur
  * @return string Balise img optimisée
  */
-function optimized_img(string $src, string $alt, bool $lazy = true, ?string $width = null, ?string $height = null): string {
+function optimized_img(string $src, string $alt, bool $lazy = true, ?string $width = null, ?string $height = null): string
+{
     $attrs = [
         'src' => htmlspecialchars($src, ENT_QUOTES, 'UTF-8'),
         'alt' => htmlspecialchars($alt, ENT_QUOTES, 'UTF-8'),
     ];
-    
+
     if ($lazy) {
         $attrs['loading'] = 'lazy';
         $attrs['decoding'] = 'async';
@@ -141,15 +149,15 @@ function optimized_img(string $src, string $alt, bool $lazy = true, ?string $wid
         // Image above-the-fold : fetchpriority high
         $attrs['fetchpriority'] = 'high';
     }
-    
+
     if ($width) $attrs['width'] = $width;
     if ($height) $attrs['height'] = $height;
-    
+
     $html = '<img';
     foreach ($attrs as $key => $value) {
         $html .= ' ' . $key . '="' . $value . '"';
     }
     $html .= '>';
-    
+
     return $html;
 }

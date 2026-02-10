@@ -13,22 +13,22 @@
     <div class="urgence-alert">
       <p>
         🚨 Une urgence ne prévient jamais.<br>
-        Plus l’intervention est rapide, plus les dégâts sont limités.
+        Plus l'intervention est rapide, plus les dégâts sont limités.
       </p>
     </div>
 
-    <h2>Quand déclencher une intervention d’urgence ?</h2>
+    <h2>Quand déclencher une intervention d'urgence ?</h2>
 
     <ul class="urgence-list">
       <li>Refoulement des eaux usées par les WC, douches ou éviers</li>
       <li>Canalisation totalement bouchée, sans aucun écoulement</li>
       <li>Débordement de fosse septique ou micro-station</li>
       <li>Rupture ou fuite visible de canalisation</li>
-      <li>Panne de pompe de relevage avec risque d’inondation</li>
+      <li>Panne de pompe de relevage avec risque d'inondation</li>
     </ul>
 
     <p class="urgence-note">
-      Conseil SAHP : en cas de doute, coupez l’arrivée d’eau
+      Conseil SAHP : en cas de doute, coupez l'arrivée d'eau
       et contactez immédiatement un professionnel.
       Les produits chimiques peuvent aggraver la situation.
     </p>
@@ -39,24 +39,24 @@
     <p>
       Nos équipes sont mobilisables 24h/24.
       Nous dépêchons le camion hydrocureur le plus proche
-      afin de réduire au maximum le temps d’attente.
+      afin de réduire au maximum le temps d'attente.
     </p>
 
     <h3>Équipements professionnels</h3>
     <p>
-      Chaque intervention d’urgence est réalisée avec du matériel adapté :
+      Chaque intervention d'urgence est réalisée avec du matériel adapté :
       hydrocurage haute pression, pompage, débouchage mécanique
       et inspection vidéo si nécessaire.
     </p>
 
     <h3>Transparence des prix</h3>
     <p>
-      L’urgence ne doit pas rimer avec mauvaise surprise.
+      L'urgence ne doit pas rimer avec mauvaise surprise.
       Nos techniciens vous expliquent la solution et les coûts
       avant toute intervention lourde.
     </p>
 
-    <h2>Déroulement d’une intervention d’urgence SAHP</h2>
+    <h2>Déroulement d'une intervention d'urgence SAHP</h2>
 
     <ol class="urgence-steps">
       <li>Analyse de la situation par téléphone</li>
@@ -69,16 +69,35 @@
     <h2>Prévenir les urgences futures</h2>
 
     <p>
-      Après une intervention d’urgence, nos équipes peuvent vous proposer
+      Après une intervention d'urgence, nos équipes peuvent vous proposer
       une solution préventive adaptée.
-      Un entretien régulier permet d’éviter jusqu’à 80 % des urgences.
+      Un entretien régulier permet d'éviter jusqu'à 80 % des urgences.
     </p>
 
-    <div class="urgence-cta">
-      <p>
-        Besoin d’un dépannage immédiat ?
-      </p>
-      <a href="tel:0176242884" class="btn-urgence">
+    <div class="pricing-category">
+      <h3 class="category-title">
+        Débouchage de canalisation (Urgence)
+      </h3>
+      <div class="pricing-list">
+        <div class="pricing-item">
+          <span class="service-name">Débouchage / dégorgement de canalisation</span>
+          <span class="service-price">275.00 €</span>
+        </div>
+        <div class="pricing-item">
+          <span class="service-name">Débouchage Vide Ordure</span>
+          <span class="service-price">250.00 €</span>
+        </div>
+        <div class="pricing-item">
+          <span class="service-name">Pose et fourniture d'un tampon hermétique</span>
+          <span class="service-price">52.00 €</span>
+        </div>
+        <div class="pricing-item">
+          <span class="service-name">Nettoyage / pompage par aspirateur à eau</span>
+          <span class="service-price">300.00 €</span>
+        </div>
+      </div>
+      <a href="<?= BASE_URL ?>/devis" class="pricing-btn">Demander un devis gratuit</a>
+      <a href="tel:0176242884" class="pricing-btn" style="background: #c62828; color: #ffffff; border-color: #c62828; margin-top: 15px;">
         📞 01 76 24 28 84 – Urgence 24/7
       </a>
     </div>

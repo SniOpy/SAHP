@@ -24,6 +24,7 @@ if (isset($view)) {
             'urgence' => 'urgence',
             'maintenance-pro' => 'maintenance-pro',
             'paroles-de-pro' => 'paroles-de-pro',
+            'tarifs' => 'tarifs',
             'mentions' => 'mentions',
             'cgps' => 'cgps',
             'pc' => 'pc',
@@ -72,11 +73,11 @@ $cssFiles = get_css_files_for_page($currentPage);
     
     <!-- CSS chargés conditionnellement selon la page -->
     <?php foreach ($cssFiles as $cssFile): ?>
-      <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/<?= $cssFile ?>?v=20260122-1">
+      <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/<?= $cssFile ?>?v=20260209-1">
     <?php endforeach; ?>
     
     <!-- JavaScript chargé en defer pour ne pas bloquer le rendu -->
-    <script src="<?= BASE_URL ?>/assets/js/script.js?v=20260122-1" defer></script>
+    <script src="<?= BASE_URL ?>/assets/js/script.js?v=20260209-1" defer></script>
   </head>
 
   <body>

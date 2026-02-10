@@ -9,13 +9,6 @@ $request = trim(
   '/'
 );
 
-require_once __DIR__ . '/../app/helpers/page_cache.php';
-
-// TTL du cache : 24h en production, 1h en développement
-$cacheTTL = (defined('APP_ENV') && APP_ENV === false) ? 86400 : 3600;
-sahp_try_serve_cache($cacheTTL);
-
-
 // ✅ ROUTES statiques
 $routes = [
   ''          => 'accueil.php',
@@ -33,6 +26,7 @@ $routes = [
   'paroles-de-pro'  => 'paroles-de-pro.php', // ✅ listing
   'contact'  => 'contact.php',
   'devis'  => 'devis.php',
+  'tarifs'  => 'tarifs.php',
 ];
 
 /* =====================================================

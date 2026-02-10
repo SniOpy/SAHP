@@ -49,7 +49,7 @@
 .sahp-about-image-wrapper {
   width: 100%;
   max-width: var(--about-image-max-width);
-  margin: 0 auto 80px;
+  margin: 35px auto 80px;
 
   position: relative;
   overflow: hidden;
@@ -85,7 +85,7 @@
 }
 
 .sahp-about-mascotte img {
-  width: clamp(140px, 18vw, 260px);
+  width: clamp(140px, 18vw, 195px);
   height: auto;
   display: block;
   filter: drop-shadow(0 16px 28px rgba(0, 0, 0, 0.35));

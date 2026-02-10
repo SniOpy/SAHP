@@ -117,22 +117,6 @@
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
 }
 
-/* CTA FINAL (SEUL BLOC FOND BLEU) */
-
-.curage-cta {
-  margin-top: 60px;
-  text-align: center;
-  padding: 40px;
-  background: linear-gradient(135deg, #0f4c81, #2f6fa3);
-  border-radius: 14px;
-}
-
-.curage-cta p {
-  font-size: 1.15rem;
-  margin-bottom: 20px;
-  color: #ffffff; /* LOGIQUE */
-}
-
 /* BOUTON */
 
 .btn-primary {
