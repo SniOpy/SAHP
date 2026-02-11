@@ -37,7 +37,7 @@ $prestations = [
     <!-- FORMULAIRE DE DEVIS -->
     <div class="devis-form">
 
-      <h2>Demande de devis<br><span>Assainissement & interventions</span></h2>
+      <h2>Demande de devis</h2>
 
       <?php if ($formMessage): ?>
         <div class="form-message <?= $formSuccess ? 'form-success' : 'form-error' ?>">
@@ -49,51 +49,61 @@ $prestations = [
         <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($csrfToken, ENT_QUOTES, 'UTF-8') ?>">
 
         <div class="form-row">
-          <input 
-            type="text" 
-            name="nom" 
-            placeholder="Nom" 
+          <input
+            type="text"
+            name="nom"
+            placeholder="Nom"
             value="<?= isset($formData['nom']) ? htmlspecialchars($formData['nom'], ENT_QUOTES, 'UTF-8') : '' ?>"
             required
-            <?= isset($formErrors['nom']) ? 'class="error"' : '' ?>
-          >
+            <?= isset($formErrors['nom']) ? 'class="error"' : '' ?>>
           <?php if (isset($formErrors['nom'])): ?>
             <span class="error-message"><?= htmlspecialchars($formErrors['nom'], ENT_QUOTES, 'UTF-8') ?></span>
           <?php endif; ?>
-          
-          <input 
-            type="text" 
-            name="prenom" 
-            placeholder="Prénom" 
+
+          <input
+            type="text"
+            name="prenom"
+            placeholder="Prénom"
             value="<?= isset($formData['prenom']) ? htmlspecialchars($formData['prenom'], ENT_QUOTES, 'UTF-8') : '' ?>"
             required
-            <?= isset($formErrors['prenom']) ? 'class="error"' : '' ?>
-          >
+            <?= isset($formErrors['prenom']) ? 'class="error"' : '' ?>>
           <?php if (isset($formErrors['prenom'])): ?>
             <span class="error-message"><?= htmlspecialchars($formErrors['prenom'], ENT_QUOTES, 'UTF-8') ?></span>
           <?php endif; ?>
         </div>
-        
-        <input 
-          type="tel" 
-          name="phone" 
-          placeholder="Téléphone" 
-          value="<?= isset($formData['phone']) ? htmlspecialchars($formData['phone'], ENT_QUOTES, 'UTF-8') : '' ?>"
-          required
-          <?= isset($formErrors['phone']) ? 'class="error"' : '' ?>
-        >
-        <?php if (isset($formErrors['phone'])): ?>
-          <span class="error-message"><?= htmlspecialchars($formErrors['phone'], ENT_QUOTES, 'UTF-8') ?></span>
-        <?php endif; ?>
+        <div class="form-row">
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            value="<?= isset($formData['email']) ? htmlspecialchars($formData['email'], ENT_QUOTES, 'UTF-8') : '' ?>"
+            required
+            <?= isset($formErrors['email']) ? 'class="error"' : '' ?>>
+          <?php if (isset($formErrors['email'])): ?>
+            <span class="error-message"><?= htmlspecialchars($formErrors['email'], ENT_QUOTES, 'UTF-8') ?></span>
+          <?php endif; ?>
 
-        
+          <input
+            type="tel"
+            name="phone"
+            placeholder="Téléphone"
+            value="<?= isset($formData['phone']) ? htmlspecialchars($formData['phone'], ENT_QUOTES, 'UTF-8') : '' ?>"
+            required
+            <?= isset($formErrors['phone']) ? 'class="error"' : '' ?>>
+          <?php if (isset($formErrors['phone'])): ?>
+            <span class="error-message"><?= htmlspecialchars($formErrors['phone'], ENT_QUOTES, 'UTF-8') ?></span>
+          <?php endif; ?>
+        </div>
+
+
+
+
         <select name="prestation" required <?= isset($formErrors['prestation']) ? 'class="error"' : '' ?>>
           <option value="">Type de prestation</option>
           <?php foreach ($prestations as $prest): ?>
-            <option 
+            <option
               value="<?= htmlspecialchars($prest, ENT_QUOTES, 'UTF-8') ?>"
-              <?= (isset($formData['prestation']) && $formData['prestation'] === $prest) ? 'selected' : '' ?>
-            >
+              <?= (isset($formData['prestation']) && $formData['prestation'] === $prest) ? 'selected' : '' ?>>
               <?= htmlspecialchars($prest, ENT_QUOTES, 'UTF-8') ?>
             </option>
           <?php endforeach; ?>
@@ -101,26 +111,24 @@ $prestations = [
         <?php if (isset($formErrors['prestation'])): ?>
           <span class="error-message"><?= htmlspecialchars($formErrors['prestation'], ENT_QUOTES, 'UTF-8') ?></span>
         <?php endif; ?>
-        
-        <input 
-          type="text" 
-          name="sujet" 
-          placeholder="Sujet de votre demande" 
+
+        <input
+          type="text"
+          name="sujet"
+          placeholder="Sujet de votre demande"
           value="<?= isset($formData['sujet']) ? htmlspecialchars($formData['sujet'], ENT_QUOTES, 'UTF-8') : '' ?>"
           required
-          <?= isset($formErrors['sujet']) ? 'class="error"' : '' ?>
-        >
+          <?= isset($formErrors['sujet']) ? 'class="error"' : '' ?>>
         <?php if (isset($formErrors['sujet'])): ?>
           <span class="error-message"><?= htmlspecialchars($formErrors['sujet'], ENT_QUOTES, 'UTF-8') ?></span>
         <?php endif; ?>
-        
-        <textarea 
-          name="message" 
+
+        <textarea
+          name="message"
           rows="5"
           placeholder="Décrivez votre besoin (urgence, localisation, problème rencontré…)"
           required
-          <?= isset($formErrors['message']) ? 'class="error"' : '' ?>
-        ><?= isset($formData['message']) ? htmlspecialchars($formData['message'], ENT_QUOTES, 'UTF-8') : '' ?></textarea>
+          <?= isset($formErrors['message']) ? 'class="error"' : '' ?>><?= isset($formData['message']) ? htmlspecialchars($formData['message'], ENT_QUOTES, 'UTF-8') : '' ?></textarea>
         <?php if (isset($formErrors['message'])): ?>
           <span class="error-message"><?= htmlspecialchars($formErrors['message'], ENT_QUOTES, 'UTF-8') ?></span>
         <?php endif; ?>

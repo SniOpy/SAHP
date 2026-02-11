@@ -20,7 +20,7 @@ $csrfToken = generate_csrf_token();
 
     <!-- FORMULAIRE -->
     <div class="contact-form">
-      <h2>Contactez SAHP<br><span>(Urgence 24/7)</span></h2>
+      <h2>Contactez SAHP</h2>
 
       <?php if ($formMessage): ?>
         <div class="form-message <?= $formSuccess ? 'form-success' : 'form-error' ?>">
@@ -89,9 +89,9 @@ $csrfToken = generate_csrf_token();
       <div class="contact-details">
         <a href="tel:0176242884" class="phone">01.76.24.28.84</a>
         <p class="email">
-          <a href="mailto:contact@sahp-idf.fr">
-            contact@sahp-idf.fr
-          </a>
+        <p>
+          contact@sahp-idf.fr
+        </p>
         </p>
         <p class="hotline">📞 Hotlines : 24h/7j</p>
       </div>

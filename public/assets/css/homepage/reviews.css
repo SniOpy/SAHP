@@ -192,7 +192,7 @@
 .partners-track {
   display: flex;
   align-items: center;
-  gap: 48px;
+  gap: 100px;
   width: max-content;
 
   flex-wrap: nowrap;
@@ -270,7 +270,6 @@ html.large-screen .partners-track {
 /* ✅ Logos desktop : */
 .partners-track img {
   height: 180px;
-  width: auto;
   display: inline-block;
   object-fit: contain;
 
@@ -342,7 +341,7 @@ html.large-screen .partners-track {
 
 .reviews-mascotte {
   position: absolute;
-  bottom: -253px;
+  bottom: -300px;
   left: 48%;
   transform: translateX(-50%);
   z-index: 5;

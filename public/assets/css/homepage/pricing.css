@@ -13,7 +13,6 @@
 .tarifs-section.pricing-section,
 section.tarifs-section {
   background: linear-gradient(90deg, #4080b7 0%, #5ed0c2 100%);
-  z-index: -1;
 }
 
 .tarifs-section .pricing-title,

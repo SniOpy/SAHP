@@ -154,7 +154,9 @@
 }
 
 .services-mascotte img {
-  width: 450px;
+  margin-bottom: -170px;
+  margin-top: -140px;
+  width: 660px;
   height: auto;
   display: inline-block;
 }

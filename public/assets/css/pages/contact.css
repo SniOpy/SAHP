@@ -65,7 +65,10 @@
 }
 
 .contact-form textarea {
-  min-height: 120px;
+  min-height: 272px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .contact-form input::placeholder,
@@ -163,6 +166,8 @@
 }
 
 .contact-details .phone {
+  color:#fff;
+  text-decoration: none;
   font-size: 26px;
   font-weight: 800;
   letter-spacing: 1px;
@@ -208,9 +213,10 @@
 
 @media (max-width: 900px) {
   #contact-sahp {
-    padding: 60px 20px;
+    padding: 60px 5%;
     width: 100%;
     box-sizing: border-box;
+    overflow-x: hidden;
   }
 
   .contact-container {
@@ -229,11 +235,43 @@
     box-sizing: border-box;
   }
 
+  .contact-form input,
+  .contact-form textarea {
+    width: 100% !important;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .contact-form textarea {
+    width: 100% !important;
+    min-width: 0;
+  }
+
   .contact-infos {
     order: -1;
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
+  }
+
+  .contact-mascotte {
+    width: 100%;
+  }
+
+  .contact-mascotte img {
+    max-width: 200px;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .contact-details {
+    width: 100%;
+    word-break: break-word;
+  }
+
+  .contact-details .phone {
+    font-size: clamp(20px, 5vw, 26px);
   }
 
   .contact-zone {
@@ -242,14 +280,17 @@
     box-sizing: border-box;
   }
 
-  .contact-mascotte img {
-    max-width: 200px;
+  .contact-zone img {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
   }
 }
 
 @media (max-width: 600px) {
   #contact-sahp {
-    padding: 40px 16px;
+    padding: 40px 4%;
   }
 
   .contact-form {
@@ -257,6 +298,15 @@
   }
 
   .contact-form h2 {
-    font-size: 24px;
+    font-size: clamp(20px, 5vw, 24px);
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 16px; /* évite le zoom sur iOS */
+  }
+
+  .contact-mascotte img {
+    max-width: 160px;
   }
 }

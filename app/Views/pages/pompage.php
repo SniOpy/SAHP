@@ -17,7 +17,6 @@
         alt="Intervention de pompage et vidange par camion hydrocureur SAHP">
       <p class="pompage-caption">
         Intervention de pompage et vidange réalisée par les équipes SAHP
-        avec camion hydrocureur professionnel.
       </p>
     </div>
 
@@ -68,6 +67,16 @@
       des eaux claires ou chargées.
     </p>
 
+    <div class="pompage-intervention">
+      <img
+        src="<?= BASE_URL ?>/assets/img/pompage2.jpg"
+        alt="Intervention de pompage et vidange par camion hydrocureur SAHP">
+      <p class="pompage-caption">
+        Intervention de pompage et vidange réalisée par les équipes SAHP
+        avec camion hydrocureur.
+      </p>
+    </div>
+
     <h2>Pourquoi choisir SAHP pour vos travaux de pompage ?</h2>
 
     <ul class="pompage-list">
@@ -94,29 +103,28 @@
     <div class="page-pricing-wrapper">
       <div class="page-pricing-card pricing-category">
         <h3 class="category-title">
-          Pompage de canalisation
-        </h3>
-        <div class="pricing-list">
-          <div class="pricing-item">
-            <span class="service-name">Fosse septique jusqu'à 1 m3</span>
-            <span class="service-price">300.00 €</span>
+          Pompage
+          <div class="pricing-list">
+            <div class="pricing-item">
+              <span class="service-name">Fosse septique jusqu'à 1 m³</span>
+              <span class="service-price">279.00 € HT</span>
+            </div>
+            <div class="pricing-item">
+              <span class="service-name">Bac à graisse jusqu'à 1 m³</span>
+              <span class="service-price">299.00 € HT</span>
+            </div>
+            <div class="pricing-item">
+              <span class="service-name">Puisard jusqu'à 1 m³</span>
+              <span class="service-price">279.00 € HT</span>
+            </div>
+            <div class="pricing-item">
+              <span class="service-name">Pompage m³ supplémentaire</span>
+              <span class="service-price">50.00 € HT</span>
+            </div>
           </div>
-          <div class="pricing-item">
-            <span class="service-name">Bac à graisse jusqu'à 1 m3</span>
-            <span class="service-price">300.00 €</span>
+          <div class="pricing-btn-wrapper">
+            <a href="<?= BASE_URL ?>/devis" class="pricing-btn">Demander un devis gratuit</a>
           </div>
-          <div class="pricing-item">
-            <span class="service-name">Puisard jusqu'à 1 m3</span>
-            <span class="service-price">300.00 €</span>
-          </div>
-          <div class="pricing-item">
-            <span class="service-name">Pompage m cube supplémentaire</span>
-            <span class="service-price">70.00 €</span>
-          </div>
-        </div>
-        <div class="pricing-btn-wrapper">
-          <a href="<?= BASE_URL ?>/devis" class="pricing-btn">Demander un devis gratuit</a>
-        </div>
       </div>
     </div>
 

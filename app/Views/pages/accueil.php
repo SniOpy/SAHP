@@ -46,10 +46,10 @@ $cards = array_slice($posts, 0, 3);
 <section class="about">
   <div class="about-container">
     <div class="about-content">
-      <h2>À propos de SAHP Assainissement</h2>
+      <h2>À propos de SAHP</h2>
 
       <p class="about-intro">
-        SAHP Assainissement accompagne particuliers et professionnels pour l’entretien,
+        SAHP accompagne particuliers et professionnels pour l’entretien,
         le dépannage et le contrôle de leurs réseaux d’assainissement.
       </p>
 
@@ -201,14 +201,12 @@ $cards = array_slice($posts, 0, 3);
   </div>
 </section>
 
-<section class="pricing-section">
+<!-- <section class="pricing-section">
   <div class="pricing-container">
     <h2 class="pricing-title">NOS TARIFS</h2>
 
     <div class="pricing-grid">
-      <!-- Colonne gauche -->
       <div class="pricing-column">
-        <!-- Débouchage de canalisation -->
         <div class="pricing-category">
           <h3 class="category-title">
             Débouchage de canalisation
@@ -236,7 +234,6 @@ $cards = array_slice($posts, 0, 3);
       </div>
 
 
-      <!-- Colonne droite -->
       <div class="pricing-column">
         <div class="pricing-category">
           <h3 class="category-title">
@@ -265,7 +262,18 @@ $cards = array_slice($posts, 0, 3);
       </div>
     </div>
     <h3 class="category-title-price"> Pour toute autre tarif des prestations, <a href="<?= BASE_URL ?>/tarifs" style="text-decoration: underline;">cliquez ici</a></h3>
-</section>
+</section> -->
+
+<div class="reviews-separator-mascotte">
+  <img
+    src="<?= BASE_URL ?>/assets/img/sahp.png"
+    alt="SAHP"
+    class="separator-logo"
+    loading="lazy"
+    decoding="async"
+    width="250"
+    height="auto" />
+</div>
 
 <section id="last-articles" class="last-articles-section">
   <div class="container">
@@ -422,30 +430,30 @@ $cards = array_slice($posts, 0, 3);
         <div class="partners-track">
 
           <!-- LISTE 1 -->
-          <img src="<?= BASE_URL ?>/assets/img/brand/BOUYGUES2.png" alt="Bouygues" loading="lazy" decoding="async" width="180" height="auto" />
-          <img src="<?= BASE_URL ?>/assets/img/brand/CROUS.png" alt="Crous de Paris" loading="lazy" decoding="async" width="180" height="auto" />
-          <img src="<?= BASE_URL ?>/assets/img/brand/ENGIE.png" alt="Engie" loading="lazy" decoding="async" width="180" height="auto" />
-          <img src="<?= BASE_URL ?>/assets/img/brand/ISSY.png" alt="Mairie d'Issy-les-Moulineaux" loading="lazy" decoding="async" width="180" height="auto" />
-          <img src="<?= BASE_URL ?>/assets/img/brand/YERRES.png" alt="Ville de Yerres" loading="lazy" decoding="async" width="180" height="auto" />
-          <img src="<?= BASE_URL ?>/assets/img/brand/MONGERON.png" alt="Ville de Montgeron" loading="lazy" decoding="async" width="180" height="auto" />
-          <img src="<?= BASE_URL ?>/assets/img/brand/PANTIN.png" alt="Mairie de Pantin" loading="lazy" decoding="async" width="180" height="auto" />
-          <img src="<?= BASE_URL ?>/assets/img/brand/OPH.png" alt="OPH" loading="lazy" decoding="async" width="180" height="auto" />
-          <img src="<?= BASE_URL ?>/assets/img/brand/VSG.png" alt="Mairie de Villeneuve-Saint-Georges" loading="lazy" decoding="async" width="180" height="auto" />
-          <img src="<?= BASE_URL ?>/assets/img/brand/EMMAUS.png" alt="Emmaüs" loading="lazy" decoding="async" width="180" height="auto" />
-          <img src="<?= BASE_URL ?>/assets/img/brand/SPIE.png" alt="SPIE" loading="lazy" decoding="async" width="180" height="auto" />
+          <img src="<?= BASE_URL ?>/assets/img/brand/BOUYGUES3.png" alt="Bouygues" loading="lazy" decoding="async" width="180" height="auto" />
+          <img src="<?= BASE_URL ?>/assets/img/brand/CROUS2.png" alt="Crous de Paris" loading="lazy" decoding="async" width="180" height="auto" />
+          <img src="<?= BASE_URL ?>/assets/img/brand/ENGIE3.png" alt="Engie" loading="lazy" decoding="async" width="180" height="auto" />
+          <img src="<?= BASE_URL ?>/assets/img/brand/ISSY3.png" alt="Mairie d'Issy-les-Moulineaux" loading="lazy" decoding="async" width="180" height="auto" />
+          <img src="<?= BASE_URL ?>/assets/img/brand/YERRES3.png" alt="Ville de Yerres" loading="lazy" decoding="async" width="180" height="auto" />
+          <img src="<?= BASE_URL ?>/assets/img/brand/MONGERON3.png" alt="Ville de Montgeron" loading="lazy" decoding="async" width="180" height="auto" />
+          <img src="<?= BASE_URL ?>/assets/img/brand/PANTIN3.png" alt="Mairie de Pantin" loading="lazy" decoding="async" width="180" height="auto" />
+          <img src="<?= BASE_URL ?>/assets/img/brand/OPH3.png" alt="OPH" loading="lazy" decoding="async" width="180" height="auto" />
+          <img src="<?= BASE_URL ?>/assets/img/brand/VSG3.png" alt="Mairie de Villeneuve-Saint-Georges" loading="lazy" decoding="async" width="180" height="auto" />
+          <img src="<?= BASE_URL ?>/assets/img/brand/SPIE3.png" alt="SPIE" loading="lazy" decoding="async" width="180" height="auto" />
+          <img src="<?= BASE_URL ?>/assets/img/brand/EMMAUS3.png" alt="Emmaüs" loading="lazy" decoding="async" width="180" height="auto" />
 
           <!-- LISTE 2 (DUPLICATION POUR LOOP) -->
-          <img src="<?= BASE_URL ?>/assets/img/brand/BOUYGUES2.png" alt="Bouygues" loading="lazy" decoding="async" width="180" height="auto" />
-          <img src="<?= BASE_URL ?>/assets/img/brand/CROUS.png" alt="Crous de Paris" loading="lazy" decoding="async" width="180" height="auto" />
-          <img src="<?= BASE_URL ?>/assets/img/brand/ENGIE.png" alt="Engie" loading="lazy" decoding="async" width="180" height="auto" />
-          <img src="<?= BASE_URL ?>/assets/img/brand/ISSY.png" alt="Mairie d'Issy-les-Moulineaux" loading="lazy" decoding="async" width="180" height="auto" />
-          <img src="<?= BASE_URL ?>/assets/img/brand/YERRES.png" alt="Ville de Yerres" loading="lazy" decoding="async" width="180" height="auto" />
-          <img src="<?= BASE_URL ?>/assets/img/brand/MONGERON.png" alt="Ville de Montgeron" loading="lazy" decoding="async" width="180" height="auto" />
-          <img src="<?= BASE_URL ?>/assets/img/brand/PANTIN.png" alt="Mairie de Pantin" loading="lazy" decoding="async" width="180" height="auto" />
-          <img src="<?= BASE_URL ?>/assets/img/brand/OPH.png" alt="OPH" loading="lazy" decoding="async" width="180" height="auto" />
-          <img src="<?= BASE_URL ?>/assets/img/brand/VSG.png" alt="Mairie de Villeneuve-Saint-Georges" loading="lazy" decoding="async" width="180" height="auto" />
-          <img src="<?= BASE_URL ?>/assets/img/brand/EMMAUS.png" alt="Emmaüs" loading="lazy" decoding="async" width="180" height="auto" />
-          <img src="<?= BASE_URL ?>/assets/img/brand/SPIE.png" alt="SPIE" loading="lazy" decoding="async" width="180" height="auto" />
+          <img src="<?= BASE_URL ?>/assets/img/brand/BOUYGUES3.png" alt="Bouygues" loading="lazy" decoding="async" width="180" height="auto" />
+          <img src="<?= BASE_URL ?>/assets/img/brand/CROUS2.png" alt="Crous de Paris" loading="lazy" decoding="async" width="180" height="auto" />
+          <img src="<?= BASE_URL ?>/assets/img/brand/ENGIE3.png" alt="Engie" loading="lazy" decoding="async" width="180" height="auto" />
+          <img src="<?= BASE_URL ?>/assets/img/brand/ISSY3.png" alt="Mairie d'Issy-les-Moulineaux" loading="lazy" decoding="async" width="180" height="auto" />
+          <img src="<?= BASE_URL ?>/assets/img/brand/YERRES3.png" alt="Ville de Yerres" loading="lazy" decoding="async" width="180" height="auto" />
+          <img src="<?= BASE_URL ?>/assets/img/brand/MONGERON3.png" alt="Ville de Montgeron" loading="lazy" decoding="async" width="180" height="auto" />
+          <img src="<?= BASE_URL ?>/assets/img/brand/PANTIN3.png" alt="Mairie de Pantin" loading="lazy" decoding="async" width="180" height="auto" />
+          <img src="<?= BASE_URL ?>/assets/img/brand/OPH3.png" alt="OPH" loading="lazy" decoding="async" width="180" height="auto" />
+          <img src="<?= BASE_URL ?>/assets/img/brand/VSG3.png" alt="Mairie de Villeneuve-Saint-Georges" loading="lazy" decoding="async" width="180" height="auto" />
+          <img src="<?= BASE_URL ?>/assets/img/brand/SPIE3.png" alt="SPIE" loading="lazy" decoding="async" width="180" height="auto" />
+          <img src="<?= BASE_URL ?>/assets/img/brand/EMMAUS3.png" alt="Emmaüs" loading="lazy" decoding="async" width="180" height="auto" />
 
         </div>
       </div>
