@@ -63,13 +63,17 @@
   text-align: center;
 }
 
-.inspection-intervention img {
+.camion-intervention img,.inspection-intervention img {
   width: 100%;
   border-radius: 14px;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
 }
 
-.inspection-caption {
+.inspection-intervention img {
+  width:50%;
+}
+
+.inspection-caption, .camion-caption {
   margin-top: 14px;
   font-size: 0.95rem;
   line-height: 1.6;

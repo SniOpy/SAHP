@@ -192,7 +192,7 @@
 .partners-track {
   display: flex;
   align-items: center;
-  gap: 48px;
+  gap: 100px;
   width: max-content;
 
   flex-wrap: nowrap;
@@ -342,7 +342,7 @@ html.large-screen .partners-track {
 
 .reviews-mascotte {
   position: absolute;
-  bottom: -253px;
+  bottom: -300px;
   left: 48%;
   transform: translateX(-50%);
   z-index: 5;

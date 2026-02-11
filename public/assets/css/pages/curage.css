@@ -65,7 +65,7 @@
 }
 
 .curage-image img {
-  width: 100%;
+  width: 75%;
   border-radius: 12px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
 }
@@ -141,7 +141,7 @@
 }
 
 .curage-compare img {
-  width: 100%;
+  width: 75%;
   border-radius: 14px;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
 }

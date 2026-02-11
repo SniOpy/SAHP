@@ -56,7 +56,7 @@
 
     <div class="curage-intervention">
       <img
-        src="<?= BASE_URL ?>/assets/img/intervention-curage.jpg"
+        src="<?= BASE_URL ?>/assets/img/intervention-curage2.jpg"
         alt="Camion hydrocureur SAHP en intervention de curage">
       <p class="curage-caption">
         Intervention réalisée par nos équipes avec camion hydrocureur
@@ -103,11 +103,11 @@
         <div class="pricing-list">
           <div class="pricing-item">
             <span class="service-name">Curage de canalisation jusqu'à 10 mètres linéaires</span>
-            <span class="service-price">350.00 €</span>
+            <span class="service-price">350.00 € HT</span>
           </div>
           <div class="pricing-item">
             <span class="service-name">Curage de canalisation mètre linéaire supplémentaire</span>
-            <span class="service-price">30.00 €</span>
+            <span class="service-price">30.00 € HT</span>
           </div>
           <div class="pricing-item">
             <span class="service-name">Curage de réseau de canalisations</span>

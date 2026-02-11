@@ -11,13 +11,12 @@
     </p>
 
     <!-- IMAGE INTERVENTION -->
-    <div class="inspection-intervention">
+    <div class="camion-intervention">
       <img
         src="<?= BASE_URL ?>/assets/img/inspection-video.jpg"
-        alt="Inspection vidéo de canalisation par caméra SAHP">
-      <p class="inspection-caption">
-        Inspection télévisée des canalisations avec caméra haute définition
-        et localisation précise du réseau.
+        alt="Inspection vidéo de canalisation par caméra SAHP" />
+      <p class="camion-caption">
+        Camion d'inspection vidéo de l'équipe SAHP.
       </p>
     </div>
 
@@ -69,6 +68,16 @@
       <li>Limiter la casse lors d'une réparation ciblée</li>
     </ul>
 
+    <div class="inspection-intervention">
+      <img
+        src="<?= BASE_URL ?>/assets/img/ecran-video.jpg"
+        alt="Inspection vidéo de canalisation par caméra SAHP">
+      <p class="inspection-caption">
+        Inspection vidéo des canalisations avec caméra haute définition
+        et localisation précise du réseau.
+      </p>
+    </div>
+
     <h2>Les avantages de l'intervention SAHP</h2>
 
     <ul class="inspection-list">
@@ -100,11 +109,11 @@
         <div class="pricing-list">
           <div class="pricing-item">
             <span class="service-name">Inspection vidéo de contrôle rapide sans rapport</span>
-            <span class="service-price">200.00 €</span>
+            <span class="service-price">190.00 € HT</span>
           </div>
           <div class="pricing-item">
-            <span class="service-name">Inspection vidéo de canalisation jusqu'à 20 mètres + fourniture d'un rapport d'inspection</span>
-            <span class="service-price">550.00 €</span>
+            <span class="service-name">Inspection vidéo de canalisation + fourniture d'un rapport d'inspection</span>
+            <span class="service-price">590.00 € HT</span>
           </div>
           <div class="pricing-item">
             <span class="service-name">Inspection vidéo d'un réseau de canalisations</span>
