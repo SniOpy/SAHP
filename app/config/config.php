@@ -1,19 +1,20 @@
 <?php
+
 declare(strict_types=1);
 
 // Ne démarrer la session QUE si nécessaire (formulaires, admin, etc.)
-// Les pages statiques en cache n'ont pas besoin de session
-function sahp_needs_session(): bool {
+function sahp_needs_session(): bool
+{
     // Si POST, probablement un formulaire - besoin de session pour CSRF
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         return true;
     }
-    
+
     $uri = parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH) ?? '';
     // Nettoyer l'URI (enlever /sahp/public si présent)
     $uri = str_replace(['/sahp', '/public'], '', $uri);
     $uri = trim($uri, '/');
-    
+
     // Pages qui nécessitent une session
     $needsSession = ['contact', 'devis', 'admin', 'login'];
     foreach ($needsSession as $path) {
@@ -21,7 +22,7 @@ function sahp_needs_session(): bool {
             return true;
         }
     }
-    
+
     return false;
 }
 
@@ -55,17 +56,9 @@ if (sahp_needs_session() && session_status() === PHP_SESSION_NONE) {
 | true  = développement (local)
 | false = production
 */
-// Détection automatique : si localhost ou IP locale = dev, sinon = prod
-$isLocal = (
-    $_SERVER['HTTP_HOST'] === 'localhost' ||
-    $_SERVER['HTTP_HOST'] === '127.0.0.1' ||
-    strpos($_SERVER['HTTP_HOST'], 'localhost') !== false ||
-    strpos($_SERVER['HTTP_HOST'], '.local') !== false ||
-    strpos($_SERVER['HTTP_HOST'], '192.168.') !== false ||
-    strpos($_SERVER['HTTP_HOST'], '10.') !== false
-);
 
-define('APP_ENV', $isLocal); 
+
+define('APP_ENV', true);
 
 /*
 |--------------------------------------------------------------------------

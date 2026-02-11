@@ -5,13 +5,7 @@
 .reviews {
   position: relative;
   background: linear-gradient(90deg, #4080b7 0%, #5ed0c2 100%);
-  padding: 100px 20px 180px;
-}
-
-/* ✅ IMPORTANT : stop overscroll global */
-html,
-body {
-  overflow-x: hidden;
+  padding: 40px 20px 180px;
 }
 
 /* =========================
@@ -198,7 +192,7 @@ body {
 .partners-track {
   display: flex;
   align-items: center;
-  gap: 48px;
+  gap: 100px;
   width: max-content;
 
   flex-wrap: nowrap;
@@ -348,7 +342,7 @@ html.large-screen .partners-track {
 
 .reviews-mascotte {
   position: absolute;
-  bottom: -253px;
+  bottom: -300px;
   left: 48%;
   transform: translateX(-50%);
   z-index: 5;
@@ -357,6 +351,21 @@ html.large-screen .partners-track {
 
 .reviews-mascotte img {
   width: 420px;
+}
+
+/* Réduit l’espace sous la section et la mascotte sur mobile pour éviter la marge blanche sous le footer */
+@media (max-width: 900px) {
+  .reviews {
+    padding-bottom: 50px;
+  }
+
+  .reviews-mascotte {
+    bottom: -80px;
+  }
+
+  .reviews-mascotte img {
+    width: 180px;
+  }
 }
 
 /* =========================

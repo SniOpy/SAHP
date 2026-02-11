@@ -41,13 +41,19 @@
       <p>📞 <a href="tel:+33176242884">01 76 24 28 84</a></p>
       <p>✉️ <a href="<?= BASE_URL ?>/contact">contact@sahp-idf.fr</a></p>
 
-      <a href="https://wa.me/33658017102?text=Bonjour,%20nous%20venons%20de%20votre%20site%20internet%20SAHP%20et%20nous%20avons%20une%20urgence%20assainissement.%20Pouvez-vous%20nous%20recontacter%20s'il vous plait%20?" class="footer-whatsapp" target="_blank" >
+      <a href="https://wa.me/33658017102?text=Bonjour,%20nous%20venons%20de%20votre%20site%20internet%20SAHP%20et%20nous%20avons%20une%20urgence%20assainissement.%20Pouvez-vous%20nous%20recontacter%20s'il vous plait%20?" class="footer-whatsapp" target="_blank">
         <img src="<?= BASE_URL ?>/assets/img/brand/whatsapp.png" alt="WhatsApp">
-        Urgence WhatsApp 24/7
+        WhatsApp 24/7
       </a>
+    </div>
 
-      <!-- LIENS LÉGAUX -->
-      <div class="footer-legal-inline">
+  </div>
+
+  <!-- BARRE BASSE -->
+  <div class="footer-bottom">
+    <div class="footer-bottom-container">
+      <span class="footer-copyright">© 2025 - SAHP Assainissement</span>
+      <div class="footer-legal-links">
         <a href="<?= BASE_URL ?>/plan-site">Plan du site</a>
         <span>-</span>
         <a href="<?= BASE_URL ?>/politique-confidentialite">Politique de confidentialité</a>
@@ -57,18 +63,6 @@
         <a href="<?= BASE_URL ?>/conditions-generales-prestations-services">CGS</a>
       </div>
     </div>
-
-  </div>
-
-  <!-- BARRE BASSE -->
-  <div class="footer-bottom">
-    <span>© 2025 - SAHP Assainissement</span>
   </div>
 
 </footer>
-
-<!-- ✅ SCRIPT -->
-<script src="<?= BASE_URL ?>/assets/js/script.js?v=20260122-99" defer></script>
-
-</body>
-</html>

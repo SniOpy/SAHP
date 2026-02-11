@@ -103,13 +103,30 @@
       <li>Tarifs maîtrisés et transparents</li>
     </ul>
 
-    <div class="maintenance-cta">
-      <p>
-        Sécurisez vos réseaux et votre activité.
-      </p>
-      <a href="/contact" class="btn-primary">
-        Demander un audit gratuit
-      </a>
+    <div class="pricing-category">
+      <h3 class="category-title">
+        Prestations de maintenance professionnelle
+      </h3>
+      <div class="pricing-list">
+        <div class="pricing-item">
+          <span class="service-name">Curage de canalisation jusqu'à 10 mètres linéaires</span>
+          <span class="service-price">350.00 € HT</span>
+        </div>
+        <div class="pricing-item">
+          <span class="service-name">Bac à graisse jusqu'à 1 m³</span>
+          <span class="service-price">300.00 € HT</span>
+        </div>
+        <div class="pricing-item">
+          <span class="service-name">Inspection vidéo d'un réseau de canalisations</span>
+          <span class="service-price">Sur devis</span>
+        </div>
+        <div class="pricing-item">
+          <span class="service-name">Curage de colonne d'immeuble</span>
+          <span class="service-price">Sur devis</span>
+        </div>
+
+      </div>
+      <a href="<?= BASE_URL ?>/devis" class="pricing-btn">Demander un devis gratuit</a>
     </div>
 
   </div>

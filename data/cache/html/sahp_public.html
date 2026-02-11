@@ -2,61 +2,75 @@
 <html lang="fr">
   <head> 
     <meta charset="UTF-8" />
-      <title>Accueil | SAHP Assainissement</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <meta name="description" content="SAHP, entreprise d’assainissement en Île-de-France : débouchage, curage, vidange, pompage et interventions d’urgence 24h/7j. Devis rapide.">
+    <title>Accueil | SAHP Assainissement</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="SAHP, entreprise d'assainissement en Île-de-France : débouchage, curage, vidange, pompage et interventions d'urgence 24h/7j. Devis rapide.">
 
-    <!-- Fonts -->
+    <!-- Preconnect pour améliorer les performances -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/sahp/public/assets/img/favicon.svg">
+    
+    <!-- CSS Critique inline pour le above-the-fold -->
+    
+<style id="critical-css">
+/* Critical CSS - Above the fold */
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{overflow-x:hidden}
+body{background:linear-gradient(90deg,#4080b7 0%,#5ed0c2 100%);font-family:Roboto,sans-serif;color:#fff;min-height:100vh;font-size:1rem;line-height:1.6}
+h1,h2,h3{font-family:Montserrat,sans-serif;font-weight:700}
+.navbar{max-width:1350px;margin:20px auto;padding:0 16px;display:flex;align-items:center;justify-content:space-between;position:relative;background:rgba(255,255,255,.9);border:1px solid rgba(255,255,255,.25);border-radius:20px;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 10px 40px rgba(0,0,0,.15)}
+.logo img{width:250px;display:block}
+.hero{max-width:1200px;margin:80px auto;padding:0 20px;display:grid;grid-template-columns:1.2fr .8fr;align-items:center;gap:40px}
+.hero-content h1{font-size:42px;line-height:1.2;margin-bottom:20px}
+</style>    
+    <!-- Fonts optimisées avec chargement asynchrone -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
+    >
+    <noscript>
       <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Roboto:wght@400;500&display=swap"
         rel="stylesheet"
-      />
-    <!-- Favicon -->
-      <link rel="icon" type="image/x-icon" href="/sahp/public/assets/img/favicon.svg">
+      >
+    </noscript>
     
-    <!-- CSS Global -->
-    <link rel="stylesheet" href="/sahp/public/assets/css/style.css?v=20260122-1">
-    
-    <!-- Homepage CSS -->
-    <link rel="stylesheet" href="/sahp/public/assets/css/homepage/header.css?v=20260122-1">
-    <link rel="stylesheet" href="/sahp/public/assets/css/homepage/hero.css?v=20260122-1">
-    <link rel="stylesheet" href="/sahp/public/assets/css/homepage/about.css?v=20260122-1">
-    <link rel="stylesheet" href="/sahp/public/assets/css/homepage/services.css?v=20260122-1">
-    <link rel="stylesheet" href="/sahp/public/assets/css/homepage/reviews.css?v=20260122-1">
-    <link rel="stylesheet" href="/sahp/public/assets/css/homepage/last-articles.css?v=20260122-1">
-    <link rel="stylesheet" href="/sahp/public/assets/css/homepage/footer.css?v=20260122-1">
-    <link rel="stylesheet" href="/sahp/public/assets/css/homepage/blog.css?v=20260122-1">
-    
-    <!-- Pages CSS -->
-    <link rel="stylesheet" href="/sahp/public/assets/css/pages/about.css?v=20260122-1">
-    <link rel="stylesheet" href="/sahp/public/assets/css/pages/mentions.css?v=20260122-1">
-    <link rel="stylesheet" href="/sahp/public/assets/css/pages/cgps.css?v=20260122-1">
-    <link rel="stylesheet" href="/sahp/public/assets/css/pages/plansite.css?v=20260122-1">
-    <link rel="stylesheet" href="/sahp/public/assets/css/pages/curage.css?v=20260122-1">
-    <link rel="stylesheet" href="/sahp/public/assets/css/pages/pompage.css?v=20260122-1">
-    <link rel="stylesheet" href="/sahp/public/assets/css/pages/inspection.css?v=20260122-1">
-    <link rel="stylesheet" href="/sahp/public/assets/css/pages/debouchage.css?v=20260122-1">
-    <link rel="stylesheet" href="/sahp/public/assets/css/pages/maintenance-pro.css?v=20260122-1">
-    <link rel="stylesheet" href="/sahp/public/assets/css/pages/urgence.css?v=20260122-1">
-    <link rel="stylesheet" href="/sahp/public/assets/css/pages/404.css?v=20260122-1">
-    <link rel="stylesheet" href="/sahp/public/assets/css/pages/paroles-de-pro.css?v=20260122-1">
-    <link rel="stylesheet" href="/sahp/public/assets/css/pages/contact.css?v=20260122-1">
-    <link rel="stylesheet" href="/sahp/public/assets/css/pages/devis.css?v=20260122-1">
-    <link rel="stylesheet" href="/sahp/public/assets/css/pages/blog-articles.css?v=20260122-1">
-
+    <!-- CSS chargés conditionnellement selon la page -->
+          <link rel="stylesheet" href="/sahp/public/assets/css/style.css?v=20260209-1">
+          <link rel="stylesheet" href="/sahp/public/assets/css/homepage/header.css?v=20260209-1">
+          <link rel="stylesheet" href="/sahp/public/assets/css/homepage/footer.css?v=20260209-1">
+          <link rel="stylesheet" href="/sahp/public/assets/css/homepage/hero.css?v=20260209-1">
+          <link rel="stylesheet" href="/sahp/public/assets/css/homepage/about.css?v=20260209-1">
+          <link rel="stylesheet" href="/sahp/public/assets/css/homepage/services.css?v=20260209-1">
+          <link rel="stylesheet" href="/sahp/public/assets/css/homepage/pricing.css?v=20260209-1">
+          <link rel="stylesheet" href="/sahp/public/assets/css/homepage/reviews.css?v=20260209-1">
+          <link rel="stylesheet" href="/sahp/public/assets/css/homepage/last-articles.css?v=20260209-1">
+          <link rel="stylesheet" href="/sahp/public/assets/css/homepage/blog.css?v=20260209-1">
+          <link rel="stylesheet" href="/sahp/public/assets/css/large-screen.css?v=20260209-1">
+        
+    <!-- JavaScript chargé en defer pour ne pas bloquer le rendu -->
+    <script src="/sahp/public/assets/js/script.js?v=20260209-1" defer></script>
   </head>
 
   <body>
 
   <header class="navbar card-glass">
-    <header class="navbar">
-
-  <!-- LOGO -->
+      <!-- LOGO -->
   <div class="nav-left">
     <a href="/sahp/public/" class="logo">
       <img
         src="/sahp/public/assets/img/sahp.png"
         alt="SAHP – Assainissement et Plomberie"
+        width="250"
+        height="auto"
+        fetchpriority="high"
       />
     </a>
   </div>
@@ -126,8 +140,6 @@
       </a>
     </div>
   </div>
-
-</header>
   </header>
 
   <main>
@@ -157,7 +169,14 @@
   </div>
 
   <div class="hero-visual">
-    <img src="/sahp/public/assets/img/intervention.jpg" alt="Mascotte SAHP" />
+    <img 
+      src="/sahp/public/assets/img/intervention.jpg" 
+      alt="Mascotte SAHP"
+      loading="lazy"
+      decoding="async"
+      width="350"
+      height="auto"
+    />
   </div>
 </section>
 
@@ -191,7 +210,14 @@
 
     <div class="about-visual">
       <div class="about-image-wrapper">
-        <img src="/sahp/public/assets/img/hero.jpg" alt="Intervention assainissement SAHP" />
+        <img 
+          src="/sahp/public/assets/img/hero.jpg" 
+          alt="Intervention assainissement SAHP"
+          loading="lazy"
+          decoding="async"
+          width="600"
+          height="auto"
+        />
       </div>
     </div>
   </div>
@@ -209,377 +235,5 @@
 
     <article class="service-card">
         <div class="service-icon">
-          <img src="/sahp/public/assets/img/icons/detartrage.jpg" alt="Débouchage canalisations" />
-        </div>
-        <h3>Débouchage & Détartrage</h3>
-        <p>Intervention rapide pour éliminer les bouchons.</p>
-        <a href="/sahp/public/debouchage">En savoir plus</a>
-      </article>
-      
-      <article class="service-card">
-        <div class="service-icon">
-          <img src="/sahp/public/assets/img/icons/curage.jpg" alt="Curage haute pression" />
-        </div>
-        <h3>Curage haute pression</h3>
-        <p>Nettoyage en profondeur des canalisations pour éliminer les dépôts.</p>
-        <a href="/sahp/public/curage">En savoir plus</a>
-      </article>
-
-      <article class="service-card">
-        <div class="service-icon">
-          <img src="/sahp/public/assets/img/icons/video.jpg" alt="Inspection vidéo" />
-        </div>
-        <h3>Inspection vidéo</h3>
-        <p>Diagnostic précis grâce à des caméras professionnelles.</p>
-        <a href="/sahp/public/inspection">En savoir plus</a>
-      </article>
-
-      <article class="service-card">
-        <div class="service-icon">
-          <img src="/sahp/public/assets/img/icons/pompage.jpg" alt="Pompage et vidange" style="width: 197px;" />
-        </div>
-        <h3>Pompage & vidange</h3>
-        <p>Vidange de fosses, bacs et réseaux encombrés.</p>
-        <a href="/sahp/public/pompage">En savoir plus</a>
-      </article>
-
-      
-
-      <article class="service-card">
-        <div class="service-icon">
-          <img src="/sahp/public/assets/img/icons/maintenance.jpg" alt="Maintenance préventive" />
-        </div>
-        <h3>Maintenance & Entretien</h3>
-        <p>Entretien préventif pour éviter pannes et sinistres.</p>
-        <a href="/sahp/public/maintenance-pro">En savoir plus</a>
-      </article>
-
-      <article class="service-card">
-        <div class="service-icon">
-          <img src="/sahp/public/assets/img/icons/urgence.jpg" alt="Urgence assainissement 24/7" />
-        </div>
-        <h3>Urgence 24/7</h3>
-        <p>Service d’intervention immédiate, jour et nuit.</p>
-        <a href="/sahp/public/urgence">En savoir plus</a>
-      </article>
-    </div>
-  </div>
-
-  <div class="services-mascotte-float">
-    <img
-      src="/sahp/public/assets/img/intervention.jpg"
-      alt="Mascotte intervention assainissement SAHP"
-      loading="lazy"
-      width="420"
-      height="420"
-    />
-  </div>
-</section>
-
-<div class="reviews-separator">
-  <img src="/sahp/public/assets/img/sahp.png" alt="SAHP" class="separator-logo" />
-</div>
-
-<section id="last-articles" class="last-articles-section">
-  <div class="container">
-
-    <header class="section-header">
-      <h2>Derniers articles & conseils d’experts</h2>
-      <p>
-        Astuces, prévention et expertise en assainissement, curage et débouchage
-        pour particuliers et professionnels.
-      </p>
-    </header>
-
-    <div class="articles-grid">
-
-      <!-- <article class="article-card">
-        <div class="article-image">
-          <img src="/sahp/public/assets/img/blog/debouchage-canalisation.png" alt="Débouchage de canalisation">
-        </div>
-        <div class="article-content">
-          <span class="article-category">Débouchage</span>
-          <h3>Canalisation bouchée : causes fréquentes et solutions durables</h3>
-          <p>
-            Découvrez pourquoi vos canalisations se bouchent et comment éviter
-            les interventions d’urgence coûteuses.
-          </p>
-          <a href="/blog/canalisation-bouchee-causes-solutions" class="article-link">
-            Lire l’article →
-          </a>
-        </div>
-      </article> -->
-
-            <article class="article-card">
-        <div class="article-image">
-          <img
-            src="/sahp/public/assets/img/blog/blog-bouchons.jpg"
-            alt="Comment éviter les bouchons dans vos canalisations ?"
-            loading="lazy"
-          >
-        </div>
-
-        <div class="article-content">
-          <span class="article-category">Prévention</span>
-
-          <h3>Comment éviter les bouchons dans vos canalisations ?</h3>
-
-          <p>80% des interventions pourraient être évitées avec quelques gestes simples. Cuisine, salle de bain, WC : voici les conseils d’expert SAHP pour protéger vos canalisations en Île-de-France.</p>
-
-          <a href="/sahp/public/paroles-de-pro/comment-eviter-les-bouchons-canalisations" class="article-link">
-            Lire l’article →
-          </a>
-        </div>
-      </article>
-          <article class="article-card">
-        <div class="article-image">
-          <img
-            src="/sahp/public/assets/img/blog/fosse-pleine.jpg"
-            alt="Signes d’une fosse pleine : Les 5 alertes à ne pas ignorer"
-            loading="lazy"
-          >
-        </div>
-
-        <div class="article-content">
-          <span class="article-category">Assainissement</span>
-
-          <h3>Signes d’une fosse pleine : Les 5 alertes à ne pas ignorer</h3>
-
-          <p>Mauvaises odeurs, écoulements lents, bruits &quot;glouglou&quot;, sol humide… Découvrez les signes qui indiquent qu’une vidange de fosse est urgente. Les conseils de l’expert SAHP en Île-de-France.</p>
-
-          <a href="/sahp/public/paroles-de-pro/signes-fosse-pleine-5-alertes" class="article-link">
-            Lire l’article →
-          </a>
-        </div>
-      </article>
-          <article class="article-card">
-        <div class="article-image">
-          <img
-            src="/sahp/public/assets/img/blog/blog-curage.png"
-            alt="Pourquoi faire un curage ? Plus qu&#039;un débouchage, une remise à neuf de vos canalisations"
-            loading="lazy"
-          >
-        </div>
-
-        <div class="article-content">
-          <span class="article-category">Curage</span>
-
-          <h3>Pourquoi faire un curage ? Plus qu&#039;un débouchage, une remise à neuf de vos canalisations</h3>
-
-          <p>Ne confondez plus débouchage et curage. Découvrez pourquoi le nettoyage haute pression (hydrocurage) est indispensable pour la longévité et la performance de votre réseau d’assainissement. Conseils d’experts SAHP en Île-de-France.</p>
-
-          <a href="/sahp/public/paroles-de-pro/pourquoi-faire-un-curage-remise-a-neuf-canalisations" class="article-link">
-            Lire l’article →
-          </a>
-        </div>
-      </article>
-    
-
-      
-
-    </div>
-
-    <div class="section-cta">
-      <a href="/sahp/public/paroles-de-pro" class="btn-primary">
-        Voir tous les articles
-      </a>
-    </div>
-
-  </div>
-</section>
-
-<section class="reviews">
-  <div class="reviews-container">
-    <span class="reviews-label">Avis clients</span>
-    <h2>La satisfaction client au cœur de notre métier</h2>
-
-    <div class="reviews-score card-glass-reviews">
-      <div class="score-left">
-        <strong>Excellent 4.9/5</strong>
-        <div class="stars-google">★★★★★</div>
-      </div>
-      <div class="score-right">
-        <img src="/sahp/public/assets/img/brand/google.svg" alt="Google brand" />
-      </div>
-    </div>
-
-    <div class="reviews-grid">
-      <article class="review-card card-glass-reviews">
-        <div class="stars">★★★★★</div>
-        <p class="review-text">
-          Un grand merci à l’équipe, du manager au technicien sur place, ils sont intervenus en urgence dans la foulée( la journée) pour déboucher mon assainissement, le technicien connaissait très bien son sujet aucune hésitation, c’est plié en 15 minutes … bravo à vous et merci encore …
-        </p>
-        <div class="review-author">
-          <img src="/sahp/public/assets/img/icons/avatar-homme.png" alt="Client SAHP" />
-          <div class="author-info">
-            <strong>Mehand Baleh</strong>
-            <span>2 mois</span>
-          </div>
-        </div>
-      </article>
-
-      <article class="review-card card-glass-reviews">
-        <div class="stars">★★★★★</div>
-        <p class="review-text">
-          Excellente entreprise sérieuse et CONSCIENCIEUSE a qui j'ai fait appel à 2 reprises ces derniers mois.
-          Intervention rapide et soignée, pas de mauvaise surprise au moment de la facture car le prix vous est communiqué avant intervention.
-          Le gérant est disponible et prend son temps pour répondre à vos demandes.
-        </p>
-        <div class="review-author">
-          <img src="/sahp/public/assets/img/icons/avatar-femme.png" alt="Client SAHP" />
-          <div>
-            <strong>Irène FILIPE</strong>
-            <span>1 an</span>
-          </div>
-        </div>
-      </article>
-
-      <article class="review-card card-glass-reviews">
-        <div class="stars">★★★★★</div>
-        <p class="review-text">
-          Merci beaucoup à Mourad pour son intervention ! Un grand merci également à l’équipe pour avoir pris en charge une urgence : une canalisation d’évier totalement bouchée. Travail impeccable, soigné et réalisé avec le sourire 👍
-        </p>
-        <div class="review-author">
-          <img src="/sahp/public/assets/img/icons/avatar-homme.png" alt="Client SAHP" />
-          <div>
-            <strong>Enzo VMB</strong>
-            <span>4 mois</span>
-          </div>
-        </div>
-      </article>
-    </div>
-
-    <a
-      target="_blank"
-      href="https://www.google.com/search?client=firefox-b-d&sca_esv=6dfd04640b18e1d6&sxsrf=ANbL-n5exdaoJQKhjnhO-qYpfUvVy7eNkw:1769033489011&si=AL3DRZEsmMGCryMMFSHJ3StBhOdZ2-6yYkXd_doETEE1OR-qOQQx6nqeVfb8TxDpasQh8xWjuj-DUdx6LzI_Cfnf1y6AYrwUe9Rv6mMEFLONw4t3brReK6Z4NCNQ_SoE3nCCICgkl80QqpF1HRbMgRC2l55JLqIqCZmHCqWZcHNCZfOt2YqYRmo%3D&q=Débouchage+Canalisation+Paris+IDF+-+SAHP+Avis&sa=X&ved=2ahUKEwimitWl052SAxWvKvsDHUJJKHsQ0bkNegQIThAH&biw=1696&bih=829&dpr=1.1&aic=0"
-      class="reviews-cta"
-    >Lire tous nos avis sur Google</a>
-
-    <h3 class="partners-title">Ils nous confient leurs réseaux</h3>
-    <p class="partners-subtitle">Syndics, agences immobilières et entreprises partenaires</p>
-
-    <div class="partners-wrapper">
-
-  <div class="partners-slider card-glass-reviews-brand desktop-slider">
-    <div class="partners-track">
-
-      <!-- LISTE 1 -->
-      <img src="/sahp/public/assets/img/brand/BOUYGUES2.png" alt="Bouygues" />
-      <img src="/sahp/public/assets/img/brand/CROUS.png" alt="Crous de Paris" />
-      <img src="/sahp/public/assets/img/brand/ENGIE.png" alt="Engie" />
-      <img src="/sahp/public/assets/img/brand/ISSY.png" alt="Mairie d'Issy-les-Moulineaux" />
-      <img src="/sahp/public/assets/img/brand/YERRES.png" alt="Ville de Yerres" />
-      <img src="/sahp/public/assets/img/brand/MONGERON.png" alt="Ville de Montgeron" />
-      <img src="/sahp/public/assets/img/brand/PANTIN.png" alt="Mairie de Pantin" />
-      <img src="/sahp/public/assets/img/brand/OPH.png" alt="OPH" />
-      <img src="/sahp/public/assets/img/brand/VSG.png" alt="Mairie de Villeneuve-Saint-Georges" />
-      <img src="/sahp/public/assets/img/brand/EMMAUS.png" alt="Emmaüs" />
-      <img src="/sahp/public/assets/img/brand/SPIE.png" alt="SPIE" />
-
-      <!-- LISTE 2 (DUPLICATION POUR LOOP) -->
-      <img src="/sahp/public/assets/img/brand/BOUYGUES2.png" alt="Bouygues" />
-      <img src="/sahp/public/assets/img/brand/CROUS.png" alt="Crous de Paris" />
-      <img src="/sahp/public/assets/img/brand/ENGIE.png" alt="Engie" />
-      <img src="/sahp/public/assets/img/brand/ISSY.png" alt="Mairie d'Issy-les-Moulineaux" />
-      <img src="/sahp/public/assets/img/brand/YERRES.png" alt="Ville de Yerres" />
-      <img src="/sahp/public/assets/img/brand/MONGERON.png" alt="Ville de Montgeron" />
-      <img src="/sahp/public/assets/img/brand/PANTIN.png" alt="Mairie de Pantin" />
-      <img src="/sahp/public/assets/img/brand/OPH.png" alt="OPH" />
-      <img src="/sahp/public/assets/img/brand/VSG.png" alt="Mairie de Villeneuve-Saint-Georges" />
-      <img src="/sahp/public/assets/img/brand/EMMAUS.png" alt="Emmaüs" />
-      <img src="/sahp/public/assets/img/brand/SPIE.png" alt="SPIE" />
-
-    </div>
-  </div>
-
-</div>
-
-
-    <div class="reviews-mascotte">
-      <img src="/sahp/public/assets/img/mascotte.png" alt="Mascotte SAHP" />
-    </div>
-
-  </div>
-</section>
-   
-  </main>
-
-  <footer>
-    <footer class="footer">
-
-  <div class="footer-container">
-
-    <!-- COL 1 -->
-    <div class="footer-col footer-brand">
-      <img src="/sahp/public/assets/img/sahp.png" alt="SAHP Assainissement" class="footer-logo">
-      <p>
-        Spécialiste de l’assainissement, du curage et des interventions
-        d’urgence 24/7 pour particuliers et professionnels.
-      </p>
-    </div>
-
-    <!-- COL 2 -->
-    <div class="footer-col">
-      <h4>Nos services</h4>
-      <ul>
-        <li><a href="/sahp/public/debouchage">Débouchage</a></li>
-        <li><a href="/sahp/public/curage">Curage haute pression</a></li>
-        <li><a href="/sahp/public/inspection">Inspection vidéo</a></li>
-        <li><a href="/sahp/public/pompage">Pompage & vidange</a></li>
-        <li><a href="/sahp/public/maintenance-pro">Maintenance pro</a></li>
-        <li><a href="/sahp/public/urgence">Urgence 24/7</a></li>
-      </ul>
-    </div>
-
-    <!-- COL 3 -->
-    <div class="footer-col">
-      <h4>Zones d’intervention</h4>
-      <ul>
-        <li>Paris – Île-de-France</li>
-        <li>Oise (60)</li>
-        <li>Eure (27)</li>
-        <li>Eure-et-Loire (28)</li>
-      </ul>
-    </div>
-
-    <!-- COL 4 : CONTACT + LIENS LÉGAUX -->
-    <div class="footer-col footer-contact">
-      <h4>Contact</h4>
-      <p>📞 <a href="tel:+33176242884">01 76 24 28 84</a></p>
-      <p>✉️ <a href="/sahp/public/contact">contact@sahp-idf.fr</a></p>
-
-      <a href="https://wa.me/33658017102?text=Bonjour,%20nous%20venons%20de%20votre%20site%20internet%20SAHP%20et%20nous%20avons%20une%20urgence%20assainissement.%20Pouvez-vous%20nous%20recontacter%20s'il vous plait%20?" class="footer-whatsapp" target="_blank" >
-        <img src="/sahp/public/assets/img/brand/whatsapp.png" alt="WhatsApp">
-        Urgence WhatsApp 24/7
-      </a>
-
-      <!-- LIENS LÉGAUX -->
-      <div class="footer-legal-inline">
-        <a href="/sahp/public/plan-site">Plan du site</a>
-        <span>-</span>
-        <a href="/sahp/public/politique-confidentialite">Politique de confidentialité</a>
-        <span>-</span>
-        <a href="/sahp/public/mentions-legales">Mentions légales</a>
-        <span>-</span>
-        <a href="/sahp/public/conditions-generales-prestations-services">CGS</a>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- BARRE BASSE -->
-  <div class="footer-bottom">
-    <span>© 2025 - SAHP Assainissement</span>
-  </div>
-
-</footer>
-
-<!-- ✅ SCRIPT -->
-<script src="/sahp/public/assets/js/script.js?v=20260122-99" defer></script>
-
-</body>
-</html>
-  </footer>
-
-  </body>
-</html>
+          <img 
+            src="
