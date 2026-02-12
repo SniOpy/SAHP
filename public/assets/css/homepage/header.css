@@ -344,40 +344,6 @@ nav a:hover,
   }
 }
 
-/* =========================
-   GRANDS ÉCRANS (27" et plus)
-========================= */
-html.large-screen .navbar {
-  max-width: 1700px;
-  margin: 25px auto;
-  padding: 0 40px;
-}
-
-html.large-screen .logo img {
-  width: 300px;
-}
-
-html.large-screen nav a,
-html.large-screen nav .dropdown-toggle {
-  font-size: 17px;
-  margin: 0 18px;
-}
-
-html.large-screen .dropdown-menu {
-  min-width: 260px;
-  padding: 16px 0;
-  border-radius: 16px;
-}
-
-html.large-screen .dropdown-menu a {
-  padding: 14px 26px;
-  font-size: 15px;
-}
-
-html.large-screen .chevron {
-  font-size: 14px;
-}
-
 @media (max-width: 480px) {
   .logo img {
     width: 140px;

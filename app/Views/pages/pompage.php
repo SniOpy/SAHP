@@ -59,13 +59,7 @@
       et les risques de sanctions administratives.
     </p>
 
-    <h3>Pompage de relevage, puisards et inondations</h3>
 
-    <p>
-      En cas de remontée d'eaux, d'inondation de sous-sol ou de saturation
-      des installations, SAHP intervient rapidement pour le pompage
-      des eaux claires ou chargées.
-    </p>
 
     <div class="pompage-intervention">
       <img
@@ -102,29 +96,28 @@
 
     <div class="page-pricing-wrapper">
       <div class="page-pricing-card pricing-category">
-        <h3 class="category-title">
-          Pompage
-          <div class="pricing-list">
-            <div class="pricing-item">
-              <span class="service-name">Fosse septique jusqu'à 1 m³</span>
-              <span class="service-price">279.00 € HT</span>
-            </div>
-            <div class="pricing-item">
-              <span class="service-name">Bac à graisse jusqu'à 1 m³</span>
-              <span class="service-price">299.00 € HT</span>
-            </div>
-            <div class="pricing-item">
-              <span class="service-name">Puisard jusqu'à 1 m³</span>
-              <span class="service-price">279.00 € HT</span>
-            </div>
-            <div class="pricing-item">
-              <span class="service-name">Pompage m³ supplémentaire</span>
-              <span class="service-price">50.00 € HT</span>
-            </div>
+        <h3 class="category-title">Pompage</h3>
+        <div class="pricing-list">
+          <div class="pricing-item">
+            <span class="service-name">Fosse septique jusqu'à 1 m³</span>
+            <span class="service-price">279.00 € HT</span>
           </div>
-          <div class="pricing-btn-wrapper">
-            <a href="<?= BASE_URL ?>/devis" class="pricing-btn">Demander un devis gratuit</a>
+          <div class="pricing-item">
+            <span class="service-name">Bac à graisse jusqu'à 1 m³</span>
+            <span class="service-price">299.00 € HT</span>
           </div>
+          <div class="pricing-item">
+            <span class="service-name">Puisard jusqu'à 1 m³</span>
+            <span class="service-price">279.00 € HT</span>
+          </div>
+          <div class="pricing-item">
+            <span class="service-name">Pompage m³ supplémentaire</span>
+            <span class="service-price">50.00 € HT</span>
+          </div>
+        </div>
+        <div class="pricing-btn-wrapper">
+          <a href="<?= BASE_URL ?>/devis" class="pricing-btn">Demander un devis gratuit</a>
+        </div>
       </div>
     </div>
 

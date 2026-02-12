@@ -137,29 +137,3 @@
     if (!isMobile()) closeMenu();
   });
 })();
-
-(function () {
-  function setLargeScreenClass() {
-    const w = window.innerWidth;
-    const h = window.innerHeight;
-
-    // ✅ Détection grand écran : pour écrans 27" et plus
-    // Stratégie améliorée : détecter les écrans larges même en 2K
-    // - Écran 24" Full HD (1920x1080) : exclu ✅
-    // - Écran 24" 2K (2560x1440) : exclu ✅ (largeur = 2560, mais ratio différent)
-    // - Écran 27" 2K (2560x1440) : inclus ✅ (même résolution mais taille d'écran différente)
-    // - Écran 27" 4K (3840x2160) : inclus ✅
-    // - Écrans ultra-larges (3440x1440, etc.) : inclus ✅
-    // 
-    // Détection basée sur la largeur ET le ratio pour mieux distinguer 24" vs 27"
-    // Un écran 27" aura généralement une largeur >= 2560px avec un ratio d'affichage différent
-    const isLarge = w >= 2560 && (w / h) >= 1.5; // Ratio largeur/hauteur pour distinguer les grands écrans
-
-    document.documentElement.classList.toggle('large-screen', isLarge);
-  }
-
-  setLargeScreenClass();
-  window.addEventListener('resize', setLargeScreenClass);
-  // Re-vérifier après chargement complet pour éviter les faux négatifs
-  window.addEventListener('load', setLargeScreenClass);
-})();
