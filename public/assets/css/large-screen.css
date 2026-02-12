@@ -1,0 +1,900 @@
+/* =====================================================
+   OPTIMISATIONS POUR GRANDS ÉCRANS (>= 1920px)
+   Uniquement media queries – pas de JavaScript
+===================================================== */
+
+@media (min-width: 1920px) {
+  /* -------------------------
+     BASE TYPOGRAPHIQUE
+  ------------------------- */
+  html {
+    font-size: 18px;
+  }
+
+  body {
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+
+  h1 {
+    font-size: 3.75rem;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+
+  h2 {
+    font-size: 2.9rem;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+
+  h3 {
+    font-size: 2.1rem;
+    line-height: 1.25;
+  }
+
+  h4 {
+    font-size: 1.55rem;
+    line-height: 1.3;
+  }
+
+  p,
+  li,
+  span {
+    font-size: 1.12rem;
+    line-height: 1.7;
+  }
+
+  a {
+    font-size: 1.12rem;
+  }
+
+  /* -------------------------
+     CONTAINERS PRINCIPAUX
+  ------------------------- */
+  .container,
+  .reviews-container,
+  .services-container,
+  .about-container,
+  .hero,
+  .last-articles-container,
+  .pricing-container {
+    max-width: 1600px !important;
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+
+  #last-articles .container {
+    max-width: 1600px;
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+
+  /* -------------------------
+     HERO
+  ------------------------- */
+  .hero {
+    margin: 100px auto;
+    gap: 50px;
+  }
+
+  .hero-content h1 {
+    font-size: 3.8rem;
+    margin-bottom: 28px;
+  }
+
+  .subtitle {
+    font-size: 1.25rem;
+    margin-bottom: 28px;
+  }
+
+  .hero-list {
+    margin-bottom: 36px;
+  }
+
+  .hero-list li {
+    font-size: 1.15rem;
+    margin-bottom: 12px;
+    padding-left: 26px;
+  }
+
+  .hero-cta .btn-rounded,
+  .hero-cta .btn-primary {
+    padding: 18px 36px;
+    font-size: 1.15rem;
+  }
+
+  .hero-visual img {
+    width: 440px;
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* -------------------------
+     ABOUT
+  ------------------------- */
+  .about-container {
+    gap: 60px;
+  }
+
+  .about-content h2 {
+    font-size: 2.75rem;
+    margin-bottom: 28px;
+  }
+
+  .about-intro {
+    font-size: 1.2rem;
+    margin-bottom: 18px;
+  }
+
+  .about-content p {
+    font-size: 1.15rem;
+    margin-bottom: 24px;
+  }
+
+  .about-points li {
+    font-size: 1.15rem;
+    padding-left: 28px;
+    margin-bottom: 12px;
+  }
+
+  .about-cta button {
+    padding: 18px 36px;
+    font-size: 1.15rem;
+  }
+
+  .about-image-wrapper {
+    padding: 28px;
+  }
+
+  .about-image-wrapper img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* -------------------------
+     SECTIONS PADDING
+  ------------------------- */
+  .hero,
+  .about,
+  .services,
+  .reviews,
+  .last-articles-section {
+    padding-top: 140px;
+    padding-bottom: 140px;
+  }
+
+  .about {
+    padding-top: 120px;
+    padding-bottom: 120px;
+  }
+
+  /* -------------------------
+     BOUTONS GLOBAUX
+  ------------------------- */
+  .btn-rounded,
+  .btn-primary,
+  button {
+    font-size: 1.15rem;
+    padding: 20px 42px;
+    border-radius: 38px;
+  }
+
+  /* -------------------------
+     NAVBAR / HEADER
+  ------------------------- */
+  .navbar {
+    max-width: 1600px;
+    padding: 0 50px;
+  }
+
+  .logo img {
+    width: 300px;
+  }
+
+  nav a,
+  nav .dropdown-toggle {
+    font-size: 18px;
+    margin: 0 18px;
+  }
+
+  .dropdown-menu {
+    min-width: 260px;
+    padding: 16px 0;
+    border-radius: 16px;
+  }
+
+  .dropdown-menu a {
+    padding: 14px 26px;
+    font-size: 15px;
+  }
+
+  /* -------------------------
+     FOOTER
+  ------------------------- */
+  .footer-container,
+  .footer-bottom-container {
+    max-width: 1600px;
+  }
+
+  .footer {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+
+  .footer-container {
+    padding: 0 50px 24px;
+    gap: 55px;
+  }
+
+  .footer-section h4,
+  .footer-col h4 {
+    font-size: 1.3rem;
+    margin-bottom: 22px;
+  }
+
+  .footer-section p,
+  .footer-section a,
+  .footer-col p,
+  .footer-col a,
+  .footer-col li {
+    font-size: 1.05rem;
+  }
+
+  .footer-contact .phone {
+    font-size: 1.25rem;
+  }
+
+  .footer-logo {
+    width: 260px;
+  }
+
+  .footer-whatsapp img {
+    width: 48px;
+    height: 48px;
+  }
+
+  .footer-legal-inline,
+  .footer-bottom {
+    font-size: 0.95rem;
+  }
+
+  /* -------------------------
+     SEPARATOR REVIEWS
+  ------------------------- */
+  .reviews-separator .separator-logo {
+    width: 300px;
+  }
+
+  .reviews-separator,
+  .reviews-separator-mascotte {
+    height: 180px;
+  }
+
+  /* -------------------------
+     SERVICES
+  ------------------------- */
+  .services-container h2 {
+    font-size: 2.75rem;
+    margin-bottom: 20px;
+  }
+
+  .services-intro {
+    font-size: 1.2rem;
+    margin-bottom: 70px;
+    max-width: 800px;
+  }
+
+  .services-grid {
+    gap: 38px;
+  }
+
+  .service-card {
+    padding: 42px 32px;
+    border-radius: 24px;
+  }
+
+  .service-icon {
+    width: 76px;
+    height: 76px;
+    margin-bottom: 22px;
+  }
+
+  .service-icon img {
+    width: 280px;
+  }
+
+  .service-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 14px;
+  }
+
+  .service-card p {
+    font-size: 1.05rem;
+    margin-bottom: 22px;
+  }
+
+  .service-card a {
+    padding: 14px 38px;
+    font-size: 1.05rem;
+  }
+
+  .services-mascotte img {
+    width: 780px;
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* -------------------------
+     REVIEWS
+  ------------------------- */
+  .reviews-container {
+    max-width: 1600px;
+  }
+
+  .reviews h2 {
+    font-size: 2.75rem;
+    margin: 12px 0 50px;
+  }
+
+  .reviews-score {
+    max-width: 480px;
+    margin-bottom: 60px;
+    padding: 24px 32px;
+  }
+
+  .score-left strong {
+    font-size: 42px;
+  }
+
+  .stars {
+    font-size: 42px;
+  }
+
+  .stars-google {
+    font-size: 65px;
+  }
+
+  .score-right img {
+    width: 100px;
+  }
+
+  .review-card {
+    padding: 38px 34px;
+    border-radius: 22px;
+  }
+
+  .review-card p {
+    font-size: 1.1rem;
+    margin-bottom: 18px;
+  }
+
+  .review-author strong {
+    font-size: 1.05rem;
+  }
+
+  .reviews-mascotte img {
+    width: 520px;
+    max-width: 100%;
+  }
+
+  .partners-track img {
+    height: 200px;
+    object-fit: contain;
+  }
+
+  /* -------------------------
+     LAST ARTICLES
+  ------------------------- */
+  #last-articles {
+    padding: 140px 0 120px;
+  }
+
+  #last-articles .section-header h2 {
+    font-size: 2.75rem;
+  }
+
+  #last-articles .section-header p {
+    font-size: 1.2rem;
+    max-width: 800px;
+  }
+
+  #last-articles .articles-grid {
+    gap: 45px;
+  }
+
+  #last-articles .article-card {
+    border-radius: 18px;
+  }
+
+  #last-articles .article-image img {
+    height: 260px;
+  }
+
+  #last-articles .article-content {
+    padding: 32px 28px 38px;
+  }
+
+  #last-articles .article-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 14px;
+  }
+
+  #last-articles .article-content p {
+    font-size: 1.1rem;
+    margin-bottom: 16px;
+  }
+
+  #last-articles .article-link {
+    font-size: 1.05rem;
+  }
+
+  #last-articles .section-cta {
+    margin-top: 70px;
+  }
+
+  #last-articles .btn-primary {
+    padding: 18px 42px;
+    font-size: 1.15rem;
+  }
+
+  /* -------------------------
+     PRICING (HOMEPAGE / TARIFS)
+  ------------------------- */
+  .pricing-title {
+    font-size: 3rem;
+    margin-bottom: 70px;
+  }
+
+  .pricing-grid {
+    gap: 48px;
+  }
+
+  .pricing-column {
+    gap: 36px;
+  }
+
+  .pricing-category {
+    padding: 36px 34px;
+    border-radius: 14px;
+    margin-bottom: 36px;
+  }
+
+  .category-title {
+    font-size: 1.75rem;
+    margin-bottom: 28px;
+  }
+
+  .checkmark {
+    font-size: 28px;
+  }
+
+  .pricing-item {
+    padding: 18px 0;
+  }
+
+  .service-name {
+    font-size: 1.1rem;
+  }
+
+  .service-price {
+    font-size: 1.2rem;
+    padding: 10px 20px;
+  }
+
+  .pricing-btn {
+    padding: 16px 28px;
+    font-size: 1.1rem;
+  }
+
+  /* -------------------------
+     CARD TARIFS PAGES SERVICE
+  ------------------------- */
+  .page-pricing-card {
+    max-width: 580px;
+    padding: 40px 44px;
+    border-radius: 18px;
+  }
+
+  .page-pricing-card .category-title {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+  }
+
+  .page-pricing-card .pricing-item {
+    padding: 18px 0;
+  }
+
+  .page-pricing-card .service-price {
+    font-size: 17px;
+    padding: 12px 20px;
+  }
+
+  .page-pricing-card .pricing-btn {
+    padding: 16px 40px;
+    font-size: 1.05rem;
+    margin-top: 32px;
+  }
+
+  /* -------------------------
+     CONTACT / DEVIS
+  ------------------------- */
+  .contact-container,
+  .devis-container {
+    max-width: 1500px;
+    gap: 55px;
+  }
+
+  #contact-sahp {
+    padding: 120px 6%;
+  }
+
+  .contact-form,
+  .devis-form {
+    padding: 55px 50px;
+    border-radius: 26px;
+  }
+
+  .contact-form h2,
+  .devis-form h2 {
+    font-size: 2.6rem;
+    margin-bottom: 36px;
+  }
+
+  .contact-form h2 span,
+  .devis-form h2 span {
+    font-size: 1.2rem;
+  }
+
+  .contact-form input,
+  .contact-form textarea,
+  .devis-form input,
+  .devis-form select,
+  .devis-form textarea {
+    font-size: 1.05rem;
+    padding: 20px 22px;
+    border-radius: 16px;
+  }
+
+  .contact-form button,
+  .devis-form button {
+    font-size: 1.15rem;
+    padding: 20px;
+    border-radius: 36px;
+  }
+
+  .devis-call,
+  .contact-infos {
+    padding: 55px 48px;
+    border-radius: 26px;
+  }
+
+  .devis-call h3 {
+    font-size: 1.9rem;
+    margin-bottom: 22px;
+  }
+
+  .devis-call p {
+    font-size: 1.15rem;
+    margin-bottom: 32px;
+  }
+
+  .call-phone,
+  .contact-details .phone {
+    font-size: 1.7rem;
+  }
+
+  .contact-mascotte img {
+    max-width: 300px;
+    width: 100%;
+    height: auto;
+  }
+
+  .form-message {
+    padding: 16px 22px;
+    font-size: 1.05rem;
+    border-radius: 12px;
+  }
+
+  .error-message {
+    font-size: 0.95rem;
+  }
+
+  /* -------------------------
+     PAGES DE CONTENU (curage, pompage, etc.)
+  ------------------------- */
+  .sahp-about,
+  .curage-page,
+  .pompage-page,
+  .inspection-page,
+  .debouchage-page,
+  .urgence-page,
+  .maintenance-page {
+    padding: 130px 50px;
+  }
+
+  .curage-container,
+  .pompage-container,
+  .debouchage-container,
+  .inspection-container,
+  .urgence-container,
+  .maintenance-container {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .sahp-about img,
+  .curage-page img,
+  .pompage-page img,
+  .inspection-page img,
+  .debouchage-page img,
+  .urgence-page img,
+  .maintenance-page img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .sahp-about-title,
+  .curage-container h1,
+  .pompage-container h1,
+  .debouchage-container h1,
+  .inspection-container h1,
+  .urgence-container h1,
+  .maintenance-container h1 {
+    font-size: 3rem;
+    margin-bottom: 32px;
+  }
+
+  .sahp-about h2,
+  .curage-container h2,
+  .pompage-container h2,
+  .debouchage-container h2,
+  .inspection-container h2,
+  .urgence-container h2,
+  .maintenance-container h2 {
+    font-size: 2.1rem;
+    margin-bottom: 24px;
+  }
+
+  .sahp-about p,
+  .curage-container p,
+  .pompage-container p,
+  .debouchage-container p,
+  .inspection-container p,
+  .urgence-container p,
+  .maintenance-container p {
+    font-size: 1.12rem;
+    line-height: 1.75;
+    margin-bottom: 20px;
+  }
+
+  .sahp-about ul,
+  .curage-container ul,
+  .pompage-container ul,
+  .inspection-container ul,
+  .debouchage-container ul,
+  .urgence-container ul,
+  .maintenance-container ul {
+    font-size: 1.12rem;
+    line-height: 1.75;
+  }
+
+  .sahp-about li,
+  .curage-container li,
+  .pompage-container li,
+  .inspection-container li,
+  .debouchage-container li,
+  .urgence-container li,
+  .maintenance-container li {
+    margin-bottom: 12px;
+  }
+
+  /* -------------------------
+     BLOG / PAROLES DE PRO
+  ------------------------- */
+  #parole-de-pro {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 130px 50px;
+  }
+
+  #parole-de-pro .parole-title {
+    font-size: 2.7rem;
+    margin-bottom: 38px;
+  }
+
+  .articles-grid-blog {
+    gap: 48px;
+  }
+
+  .article-card-blog {
+    border-radius: 20px;
+  }
+
+  .article-card-blog h3 {
+    font-size: 1.55rem;
+  }
+
+  .article-card-blog p {
+    font-size: 1.08rem;
+  }
+
+  .blog-article-container {
+    max-width: 1400px;
+    padding: 130px 50px;
+  }
+
+  .blog-article-header h1 {
+    font-size: 3rem;
+    margin-bottom: 24px;
+  }
+
+  .blog-article-meta {
+    font-size: 1.05rem;
+  }
+
+  .blog-article-content {
+    font-size: 1.12rem;
+    line-height: 1.85;
+  }
+
+  .blog-article-content h2 {
+    font-size: 2.3rem;
+    margin-top: 48px;
+    margin-bottom: 24px;
+  }
+
+  .blog-article-content h3 {
+    font-size: 1.85rem;
+    margin-top: 38px;
+    margin-bottom: 18px;
+  }
+
+  .blog-article-content p {
+    margin-bottom: 22px;
+  }
+
+  .blog-article-content img {
+    border-radius: 14px;
+    margin: 38px 0;
+  }
+
+  /* -------------------------
+     PAGE 404
+  ------------------------- */
+  #error-404 {
+    padding: 150px 50px;
+  }
+
+  #error-404 h1 {
+    font-size: 5.2rem;
+  }
+
+  #error-404 p {
+    font-size: 1.2rem;
+  }
+
+  /* -------------------------
+     PAGES LÉGALES
+  ------------------------- */
+  .legal-page {
+    padding: 130px 50px;
+  }
+
+  .legal-container {
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+
+  .legal-page h1 {
+    font-size: 2.7rem;
+    margin-bottom: 32px;
+  }
+
+  .legal-page h2 {
+    font-size: 1.9rem;
+    margin-top: 38px;
+    margin-bottom: 18px;
+  }
+
+  .legal-page p {
+    font-size: 1.08rem;
+    line-height: 1.75;
+    margin-bottom: 16px;
+  }
+
+  .legal-page ul {
+    font-size: 1.08rem;
+    line-height: 1.75;
+  }
+
+  .legal-page li {
+    margin-bottom: 10px;
+  }
+}
+
+/* =====================================================
+   OPTION 4K – Écrans >= 2560px
+===================================================== */
+
+@media (min-width: 2560px) {
+  html {
+    font-size: 20px;
+  }
+
+  .container,
+  .reviews-container,
+  .services-container,
+  .about-container,
+  .hero,
+  .last-articles-container,
+  .pricing-container {
+    max-width: 1800px !important;
+  }
+
+  #last-articles .container {
+    max-width: 1800px;
+  }
+
+  .navbar,
+  .footer-container,
+  .footer-bottom-container {
+    max-width: 1800px;
+  }
+
+  .hero-visual img {
+    width: 500px;
+  }
+
+  .logo img {
+    width: 320px;
+  }
+
+  .reviews-separator .separator-logo {
+    width: 320px;
+  }
+
+  .reviews-separator,
+  .reviews-separator-mascotte {
+    height: 200px;
+  }
+
+  .services-mascotte img {
+    width: 860px;
+  }
+
+  .reviews-mascotte img {
+    width: 560px;
+  }
+
+  .partners-track img {
+    height: 220px;
+  }
+
+  .contact-container,
+  .devis-container {
+    max-width: 1700px;
+  }
+
+  .page-pricing-card {
+    max-width: 620px;
+    padding: 44px 48px;
+  }
+
+  .curage-container,
+  .pompage-container,
+  .debouchage-container,
+  .inspection-container,
+  .urgence-container,
+  .maintenance-container {
+    max-width: 1200px;
+  }
+
+  .blog-article-container {
+    max-width: 1500px;
+  }
+
+  .legal-container {
+    max-width: 1400px;
+  }
+}

@@ -98,6 +98,9 @@ function get_css_files_for_page(string $page): array
             break;
     }
 
+    /* Grands écrans (>= 1920px) – chargé en dernier */
+    $css[] = 'large-screen.css';
+
     return $css;
 }
 

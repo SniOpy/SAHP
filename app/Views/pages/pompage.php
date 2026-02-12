@@ -59,11 +59,17 @@
       et les risques de sanctions administratives.
     </p>
 
+    <h3>Pompage de postes de relevage, de puisards et de sous-sol</h3>
 
+    <p>
+      En cas de remontée d'eaux, d'inondation de sous-sol ou de saturation
+      des installations, SAHP intervient rapidement pour le pompage
+      des eaux claires ou chargées.
+    </p>
 
     <div class="pompage-intervention">
       <img
-        src="<?= BASE_URL ?>/assets/img/pompage2.jpg"
+        src="<?= BASE_URL ?>/assets/img/intervention-curage2.jpg"
         alt="Intervention de pompage et vidange par camion hydrocureur SAHP">
       <p class="pompage-caption">
         Intervention de pompage et vidange réalisée par les équipes SAHP

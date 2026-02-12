@@ -56,7 +56,7 @@
 
     <div class="curage-intervention">
       <img
-        src="<?= BASE_URL ?>/assets/img/intervention-curage2.jpg"
+        src="<?= BASE_URL ?>/assets/img/pompage2.jpg"
         alt="Camion hydrocureur SAHP en intervention de curage">
       <p class="curage-caption">
         Intervention réalisée par nos équipes avec camion hydrocureur

@@ -137,3 +137,36 @@
     if (!isMobile()) closeMenu();
   });
 })();
+
+/* =========================
+   BOUTON RETOUR EN HAUT
+========================= */
+(function backToTop() {
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', backToTop);
+    return;
+  }
+
+  const btn = document.getElementById('back-to-top');
+  if (!btn) return;
+
+  const scrollThreshold = 400;
+
+  function toggleVisibility() {
+    if (window.scrollY > scrollThreshold) {
+      btn.classList.add('visible');
+    } else {
+      btn.classList.remove('visible');
+    }
+  }
+
+  function scrollToTop(e) {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  window.addEventListener('scroll', toggleVisibility, { passive: true });
+  toggleVisibility();
+
+  btn.addEventListener('click', scrollToTop);
+})();
