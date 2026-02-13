@@ -52,7 +52,7 @@
   <!-- BARRE BASSE -->
   <div class="footer-bottom">
     <div class="footer-bottom-container">
-      <span class="footer-copyright">© 2025 - SAHP Assainissement</span>
+      <span class="footer-copyright">© 2015 - 2026 - SAHP Assainissement</span>
       <div class="footer-legal-links">
         <a href="<?= BASE_URL ?>/plan-site">Plan du site</a>
         <span>-</span>

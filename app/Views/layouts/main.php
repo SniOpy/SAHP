@@ -80,7 +80,7 @@ $cssFiles = get_css_files_for_page($currentPage);
     <script src="<?= BASE_URL ?>/assets/js/script.js?v=20260209-1" defer></script>
   </head>
 
-  <body>
+  <body id="top">
 
   <header class="navbar card-glass">
     <?php require VIEWS_PATH . '/layouts/header.php'; ?>
@@ -93,6 +93,13 @@ $cssFiles = get_css_files_for_page($currentPage);
   <footer>
     <?php require VIEWS_PATH . '/layouts/footer.php'; ?>
   </footer>
+
+  <!-- Bouton retour en haut -->
+  <a href="#top" id="back-to-top" class="back-to-top" aria-label="Remonter en haut de la page" title="Remonter en haut">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M12 19V5M5 12l7-7 7 7"/>
+    </svg>
+  </a>
 
   </body>
 </html>

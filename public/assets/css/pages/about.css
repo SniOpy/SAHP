@@ -180,3 +180,10 @@
     text-align: center;
   }
 }
+
+@media (max-width: 480px) {
+
+  .sahp-about-text {
+    margin-top: 90px;
+  }
+}

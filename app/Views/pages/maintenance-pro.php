@@ -125,7 +125,13 @@
           <span class="service-price">Sur devis</span>
         </div>
 
+        <div class="pricing-item">
+          <span class="service-name">Curage de colonne d'immeuble</span>
+          <span class="service-price">Sur devis</span>
+        </div>
+
       </div>
+      <a href="<?= BASE_URL ?>/devis" class="pricing-btn">Demander un devis gratuit</a>
       <a href="<?= BASE_URL ?>/devis" class="pricing-btn">Demander un devis gratuit</a>
     </div>
 
