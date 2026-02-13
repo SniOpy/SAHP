@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 require_once __DIR__ . '/../app/config/config.php';
@@ -49,17 +50,15 @@ if (preg_match('#^paroles-de-pro/([a-z0-9-]+)$#i', $request, $matches)) {
 }
 /* =====================================================
    ROUTES CLASSIQUES
-===================================================== */
-elseif (array_key_exists($request, $routes)) {
+===================================================== */ elseif (array_key_exists($request, $routes)) {
   $view  = VIEWS_PATH . '/pages/' . $routes[$request];
   $title = $request === ""
-    ? "Accueil | SAHP Assainissement"
-    : ucfirst(str_replace('-', ' ', $request)) . ' | SAHP Assainissement';
+    ? "Accueil - SAHP Assainissement"
+    : ucfirst(str_replace('-', ' ', $request)) . ' - SAHP Assainissement';
 }
 /* =====================================================
    404
-===================================================== */
-else {
+===================================================== */ else {
   http_response_code(404);
   $view  = VIEWS_PATH . '/pages/404.php';
   $title = 'Page introuvable | SAHP';

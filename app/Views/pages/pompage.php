@@ -69,7 +69,7 @@
 
     <div class="pompage-intervention">
       <img
-        src="<?= BASE_URL ?>/assets/img/pompage2.jpg"
+        src="<?= BASE_URL ?>/assets/img/intervention-curage2.jpg"
         alt="Intervention de pompage et vidange par camion hydrocureur SAHP">
       <p class="pompage-caption">
         Intervention de pompage et vidange réalisée par les équipes SAHP
@@ -106,19 +106,19 @@
         <div class="pricing-list">
           <div class="pricing-item">
             <span class="service-name">Fosse septique jusqu'à 1 m³</span>
-            <span class="service-price">279.00 € HT</span>
+            <span class="service-price" data-price-ht="279.00">279.00 € HT</span>
           </div>
           <div class="pricing-item">
             <span class="service-name">Bac à graisse jusqu'à 1 m³</span>
-            <span class="service-price">299.00 € HT</span>
+            <span class="service-price" data-price-ht="299.00">299.00 € HT</span>
           </div>
           <div class="pricing-item">
             <span class="service-name">Puisard jusqu'à 1 m³</span>
-            <span class="service-price">279.00 € HT</span>
+            <span class="service-price" data-price-ht="279.00">279.00 € HT</span>
           </div>
           <div class="pricing-item">
             <span class="service-name">Pompage m³ supplémentaire</span>
-            <span class="service-price">50.00 € HT</span>
+            <span class="service-price" data-price-ht="50.00">50.00 € HT</span>
           </div>
         </div>
         <div class="pricing-btn-wrapper">

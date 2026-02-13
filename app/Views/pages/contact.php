@@ -69,9 +69,6 @@ $csrfToken = generate_csrf_token();
           rows="4"
           placeholder="Message"
           required
-          style="
-          height: 272px;
-          width:618px"
           <?= isset($formErrors['message']) ? 'class="error"' : '' ?>><?= isset($formData['message']) ? htmlspecialchars($formData['message'], ENT_QUOTES, 'UTF-8') : '' ?></textarea>
         <?php if (isset($formErrors['message'])): ?>
           <span class="error-message"><?= htmlspecialchars($formErrors['message'], ENT_QUOTES, 'UTF-8') ?></span>
