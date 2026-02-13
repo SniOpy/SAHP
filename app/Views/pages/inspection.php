@@ -12,19 +12,15 @@
 
     <!-- IMAGE INTERVENTION -->
     <div class="camion-intervention">
-      <div class="camion-intervention">
-        <img
-          src="<?= BASE_URL ?>/assets/img/inspection-video.jpg"
-          alt="Inspection vidéo de canalisation par caméra SAHP" />
-        <p class="camion-caption">
-          Camion d'inspection vidéo de l'équipe SAHP.
-          alt="Inspection vidéo de canalisation par caméra SAHP" />
-        <p class="camion-caption">
-          Camion d'inspection vidéo de l'équipe SAHP.
-        </p>
-      </div>
+      <img
+        src="<?= BASE_URL ?>/assets/img/inspection-video.jpg"
+        alt="Inspection vidéo de canalisation par caméra SAHP" />
+      <p class="camion-caption">
+        Camion d'inspection vidéo de l'équipe SAHP.
+      </p>
+    </div>
 
-      <h2>Pourquoi réaliser une inspection vidéo ?</h2>
+    <h2>Pourquoi réaliser une inspection vidéo ?</h2>
 
       <p>
         Les canalisations sont invisibles mais essentielles.
@@ -71,16 +67,6 @@
         <li>Localiser précisément une casse ou une fuite</li>
         <li>Limiter la casse lors d'une réparation ciblée</li>
       </ul>
-
-      <div class="inspection-intervention">
-        <img
-          src="<?= BASE_URL ?>/assets/img/ecran-video.jpg"
-          alt="Inspection vidéo de canalisation par caméra SAHP">
-        <p class="inspection-caption">
-          Inspection vidéo des canalisations avec caméra haute définition
-          et localisation précise du réseau.
-        </p>
-      </div>
 
       <div class="inspection-intervention">
         <img
