@@ -82,33 +82,6 @@
   .hero {
     grid-template-columns: 1fr;
     text-align: center;
-  }
-
-  .hero-cta button {
-    margin-bottom: 10px;
-  }
-}
-
-@media (max-width: 900px) {
-  .hero-visual img {
-    width: 100%;
-    max-width: 260px;
-    margin-top: 20px;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero-visual img {
-    max-width: 220px;
-  }
-
-  .hero-content h1 {
-    font-size: 32px;
-  }
-}
-
-@media (max-width: 900px) {
-  .hero {
     margin: 40px auto;
     padding: 0 16px;
     gap: 24px;
@@ -153,11 +126,21 @@
     width: 100%;
     max-width: 280px;
   }
+
+  .hero-visual img {
+    width: 100%;
+    max-width: 260px;
+    margin-top: 20px;
+  }
 }
 
 @media (max-width: 480px) {
   .hero-content h1 {
     font-size: 26px;
+  }
+
+  .hero-visual img {
+    max-width: 220px;
   }
 }
 

@@ -15,11 +15,11 @@
           <div class="pricing-list">
             <div class="pricing-item">
               <span class="service-name">Débouchage / dégorgement de canalisation</span>
-              <span class="service-price">275.00 € HT</span>
+              <span class="service-price" data-price-ht="275.00">275.00 € HT</span>
             </div>
             <div class="pricing-item">
               <span class="service-name">Débouchage Vide Ordure</span>
-              <span class="service-price">250.00 € HT</span>
+              <span class="service-price" data-price-ht="250.00">250.00 € HT</span>
             </div>
           </div>
           <a href="<?= BASE_URL ?>/devis" class="pricing-btn">DEVIS</a>
@@ -33,19 +33,19 @@
           <div class="pricing-list">
             <div class="pricing-item">
               <span class="service-name">Fosse septique jusqu'à 1 m³</span>
-              <span class="service-price">279.00 € HT</span>
+              <span class="service-price" data-price-ht="279.00">279.00 € HT</span>
             </div>
             <div class="pricing-item">
               <span class="service-name">Bac à graisse jusqu'à 1 m³</span>
-              <span class="service-price">299.00 € HT</span>
+              <span class="service-price" data-price-ht="299.00">299.00 € HT</span>
             </div>
             <div class="pricing-item">
               <span class="service-name">Puisard jusqu'à 1 m³</span>
-              <span class="service-price">279.00 € HT</span>
+              <span class="service-price" data-price-ht="279.00">279.00 € HT</span>
             </div>
             <div class="pricing-item">
               <span class="service-name">Pompage m³ supplémentaire</span>
-              <span class="service-price">50.00 € HT</span>
+              <span class="service-price" data-price-ht="50.00">50.00 € HT</span>
             </div>
           </div>
           <a href="<?= BASE_URL ?>/devis" class="pricing-btn">DEVIS</a>
@@ -59,11 +59,11 @@
           <div class="pricing-list">
             <div class="pricing-item">
               <span class="service-name">Inspection vidéo de contrôle rapide sans rapport</span>
-              <span class="service-price">190.00 € HT</span>
+              <span class="service-price" data-price-ht="190.00">190.00 € HT</span>
             </div>
             <div class="pricing-item">
               <span class="service-name">Inspection vidéo de canalisation + fourniture d'un rapport d'inspection</span>
-              <span class="service-price">590.00 € HT</span>
+              <span class="service-price" data-price-ht="590.00">590.00 € HT</span>
             </div>
             <div class="pricing-item">
               <span class="service-name">Inspection vidéo d'un réseau de canalisations</span>
@@ -84,11 +84,11 @@
           <div class="pricing-list">
             <div class="pricing-item">
               <span class="service-name">Curage de canalisation jusqu'à 10 mètres linéaires</span>
-              <span class="service-price">350.00 € HT</span>
+              <span class="service-price" data-price-ht="350.00">350.00 € HT</span>
             </div>
             <div class="pricing-item">
               <span class="service-name">Curage de canalisation mètre linéaire supplémentaire</span>
-              <span class="service-price">30.00 € HT</span>
+              <span class="service-price" data-price-ht="30.00">30.00 € HT</span>
             </div>
             <div class="pricing-item">
               <span class="service-name">Curage de réseau de canalisations</span>
@@ -110,7 +110,7 @@
           <div class="pricing-list">
             <div class="pricing-item">
               <span class="service-name">Recherche de fuite par mise en surpression</span>
-              <span class="service-price">650.00 € HT</span>
+              <span class="service-price" data-price-ht="650.00">650.00 € HT</span>
             </div>
             <div class="pricing-item">
               <span class="service-name">Nettoyage haute pression</span>

@@ -110,11 +110,11 @@
       <div class="pricing-list">
         <div class="pricing-item">
           <span class="service-name">Curage de canalisation jusqu'à 10 mètres linéaires</span>
-          <span class="service-price">350.00 € HT</span>
+          <span class="service-price" data-price-ht="350.00">350.00 € HT</span>
         </div>
         <div class="pricing-item">
           <span class="service-name">Bac à graisse jusqu'à 1 m³</span>
-          <span class="service-price">300.00 € HT</span>
+          <span class="service-price" data-price-ht="300.00">300.00 € HT</span>
         </div>
         <div class="pricing-item">
           <span class="service-name">Inspection vidéo d'un réseau de canalisations</span>

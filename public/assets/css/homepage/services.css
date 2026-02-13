@@ -18,6 +18,18 @@
   z-index: 2;
 }
 
+/* Au-dessus de 1024px : évite tout overflow de la mascotte */
+@media (min-width: 1025px) {
+  .services {
+    overflow: hidden;
+  }
+
+  .services-mascotte img {
+    max-width: 100%;
+    object-fit: contain;
+  }
+}
+
 /* =========================
    CONTAINER
 ========================= */
@@ -135,8 +147,7 @@
   font-weight: 600;
   color: #ffffff;
   text-decoration: none;
-  transition:
-    background 0.3s ease,
+  transition:background 0.3s ease,
     color 0.3s ease;
 }
 
@@ -154,9 +165,9 @@
 }
 
 .services-mascotte img {
-  margin-bottom: -170px;
-  margin-top: -140px;
-  width: 660px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  width: 271px;
   height: auto;
   display: inline-block;
 }
@@ -168,7 +179,7 @@
 /* TABLETTE */
 @media (max-width: 900px) {
   .services {
-    padding: 70px 16px 0;
+    padding: 70px 16px 40px;
   }
 
   .services-container h2 {
@@ -194,18 +205,23 @@
     height: 52px;
   }
 
-  .services-mascotte {
-    margin: 0;
+  .services-mascotte {    
     padding: 0;
   }
 
   .services-mascotte img {
-    width: 300px;
+    width: 220px;
+    margin-top: 20px;
+    margin-bottom: 0;
   }
 }
 
 /* MOBILE */
 @media (max-width: 480px) {
+  .services {
+    padding-bottom: 30px;
+  }
+
   .services-container h2 {
     font-size: 24px;
   }
@@ -225,6 +241,8 @@
 
   .services-mascotte img {
     width: 240px;
+    margin-top: 0;
+    margin-bottom: 0;
   }
 }
 

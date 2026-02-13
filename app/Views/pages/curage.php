@@ -103,11 +103,11 @@
         <div class="pricing-list">
           <div class="pricing-item">
             <span class="service-name">Curage de canalisation jusqu'à 10 mètres linéaires</span>
-            <span class="service-price">350.00 € HT</span>
+            <span class="service-price" data-price-ht="350.00">350.00 € HT</span>
           </div>
           <div class="pricing-item">
             <span class="service-name">Curage de canalisation mètre linéaire supplémentaire</span>
-            <span class="service-price">30.00 € HT</span>
+            <span class="service-price" data-price-ht="30.00">30.00 € HT</span>
           </div>
           <div class="pricing-item">
             <span class="service-name">Curage de réseau de canalisations</span>

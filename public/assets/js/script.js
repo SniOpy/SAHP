@@ -170,3 +170,59 @@
 
   btn.addEventListener('click', scrollToTop);
 })();
+
+/* =========================
+   BOUTON HT / TTC SUR CARTES TARIFAIRES
+========================= */
+(function pricingHtTtc() {
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', pricingHtTtc);
+    return;
+  }
+
+  const TVA_RATE = 1.20;
+
+  function formatPrice(value) {
+    return Number(value).toFixed(2);
+  }
+
+  function updateCardPrices(card, showTtc) {
+    const prices = card.querySelectorAll('.service-price[data-price-ht]');
+    prices.forEach((el) => {
+      const ht = parseFloat(el.getAttribute('data-price-ht'), 10);
+      if (Number.isNaN(ht)) return;
+      const ttc = ht * TVA_RATE;
+      const value = showTtc ? formatPrice(ttc) : formatPrice(ht);
+      const suffix = showTtc ? ' € TTC' : ' € HT';
+      el.textContent = value + suffix;
+    });
+  }
+
+  function setButtonState(btn, showTtc) {
+    btn.classList.toggle('active', showTtc);
+    btn.setAttribute('aria-pressed', showTtc ? 'true' : 'false');
+    btn.textContent = showTtc ? 'Afficher en HT' : 'Afficher en TTC';
+  }
+
+  const cards = document.querySelectorAll('.pricing-category');
+  cards.forEach((card) => {
+    const hasPrices = card.querySelector('.service-price[data-price-ht]');
+    if (!hasPrices) return;
+
+    const bar = document.createElement('div');
+    bar.className = 'pricing-ttc-bar';
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'pricing-ttc-btn';
+    btn.setAttribute('aria-pressed', 'false');
+    btn.textContent = 'Afficher en TTC';
+    bar.appendChild(btn);
+    card.insertBefore(bar, card.firstChild);
+
+    btn.addEventListener('click', () => {
+      const showTtc = btn.getAttribute('aria-pressed') !== 'true';
+      updateCardPrices(card, showTtc);
+      setButtonState(btn, showTtc);
+    });
+  });
+})();

@@ -5,7 +5,9 @@
 .reviews {
   position: relative;
   background: linear-gradient(90deg, #4080b7 0%, #5ed0c2 100%);
-  padding: 40px 20px 180px;
+  padding-top: 40px;
+  padding-right: 20px ;
+  padding-bottom: 0;
 }
 
 /* =========================
@@ -138,8 +140,7 @@
   color: #ffffff;
   text-decoration: none;
   font-weight: 600;
-  transition:
-    background 0.3s ease,
+  transition:0.3s ease,
     color 0.3s ease;
 }
 
@@ -162,6 +163,19 @@
   font-size: 22px;
   color: rgba(255, 255, 255, 0.85);
   margin-bottom: 25px;
+}
+
+
+/* =========================
+   REVIEWS MASCOTTE
+========================= */
+
+.reviews-mascotte {
+  margin: 40px;
+}
+
+.reviews-mascotte img {
+  width: 220px;
 }
 
 /* =====================================================
@@ -192,6 +206,8 @@
 .reviews {
   overflow-x: hidden;
 }
+
+
 
 /* ✅ Track animé (infinite loop) */
 .partners-track {
@@ -259,7 +275,7 @@
 @media (max-width: 768px) {
   .partners-track {
     gap: 28px;
-    animation-duration: 20s;
+    animation-duration: 30s;
   }
 
   .partners-track img {
@@ -279,31 +295,12 @@
    MASCOTTE
 ========================= */
 
-.reviews-mascotte {
-  position: absolute;
-  bottom: -300px;
-  left: 48%;
-  transform: translateX(-50%);
-  z-index: 5;
-  pointer-events: none;
-}
 
-.reviews-mascotte img {
-  width: 420px;
-}
 
 /* Réduit l’espace sous la section et la mascotte sur mobile pour éviter la marge blanche sous le footer */
 @media (max-width: 900px) {
   .reviews {
     padding-bottom: 50px;
-  }
-
-  .reviews-mascotte {
-    bottom: -80px;
-  }
-
-  .reviews-mascotte img {
-    width: 180px;
   }
 }
 

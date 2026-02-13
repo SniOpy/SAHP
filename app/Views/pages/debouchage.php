@@ -84,11 +84,11 @@
         <div class="pricing-list">
           <div class="pricing-item">
             <span class="service-name">Débouchage / dégorgement de canalisation</span>
-            <span class="service-price">275.00 € HT</span>
+            <span class="service-price" data-price-ht="275.00">275.00 € HT</span>
           </div>
           <div class="pricing-item">
             <span class="service-name">Débouchage Vide Ordure</span>
-            <span class="service-price">250.00 € HT</span>
+            <span class="service-price" data-price-ht="250.00">250.00 € HT</span>
           </div>
         </div>
         <div class="pricing-btn-wrapper">

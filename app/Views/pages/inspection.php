@@ -109,11 +109,11 @@
         <div class="pricing-list">
           <div class="pricing-item">
             <span class="service-name">Inspection vidéo de contrôle rapide sans rapport</span>
-            <span class="service-price">190.00 € HT</span>
+            <span class="service-price" data-price-ht="190.00">190.00 € HT</span>
           </div>
           <div class="pricing-item">
             <span class="service-name">Inspection vidéo de canalisation + fourniture d'un rapport d'inspection</span>
-            <span class="service-price">590.00 € HT</span>
+            <span class="service-price" data-price-ht="590.00">590.00 € HT</span>
           </div>
           <div class="pricing-item">
             <span class="service-name">Inspection vidéo d'un réseau de canalisations</span>
