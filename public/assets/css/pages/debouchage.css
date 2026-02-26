@@ -8,13 +8,15 @@
 }
 
 .debouchage-container {
-  max-width: 900px;
-  margin: 0 auto;
+  max-width: 1270px;
+  margin: auto;
   background: #ffffff;
-  padding: 60px;
   border-radius: 14px;
+  box-sizing: border-box;
+  padding: 40px;
   box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
   color: #1f1f1f;
+  margin-top: -40px;
 }
 
 /* TITRES */
@@ -64,9 +66,9 @@
 }
 
 .debouchage-intervention img {
-  width: 100%;
+  width: 75%;
   border-radius: 14px;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
 
 .debouchage-caption {

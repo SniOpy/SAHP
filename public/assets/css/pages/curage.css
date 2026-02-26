@@ -10,13 +10,15 @@
 /* CONTAINER PRINCIPAL */
 
 .curage-container {
-  max-width: 900px;
-  margin: 0 auto;
+  max-width: 1270px;
+  margin: auto;
   background: #ffffff;
-  padding: 60px;
   border-radius: 14px;
+  box-sizing: border-box;
+  padding: 40px;
   box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
-  color: #1f1f1f; /* TEXTE FONCÉ PAR DÉFAUT */
+  color: #1f1f1f;
+  margin-top: -40px;
 }
 
 /* TITRES */
@@ -65,9 +67,9 @@
 }
 
 .curage-image img {
-  width: 100%;
+  width: 50%;
   border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
 
 /* LABEL IMAGE */
@@ -112,9 +114,9 @@
 }
 
 .curage-intervention img {
-  width: 100%;
+  width: 75%;
   border-radius: 14px;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
 
 /* BOUTON */
@@ -141,9 +143,9 @@
 }
 
 .curage-compare img {
-  width: 100%;
+  width: 40%;
   border-radius: 14px;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
 
 /* IMAGE INTERVENTION SAHP */
@@ -154,9 +156,9 @@
 }
 
 .curage-intervention img {
-  width: 100%;
+  width: 75%;
   border-radius: 14px;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);  
 }
 
 /* LÉGENDE COMMUNE AUX IMAGES */

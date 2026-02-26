@@ -67,7 +67,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(64, 128, 183, 0.25), rgba(94, 208, 194, 0.25));
+  background: linear-gradient(90deg, rgba(64, 128, 183, 0.1), rgba(94, 208, 194, 0.1));
   z-index: 1;
 }
 
@@ -178,5 +178,12 @@
 
   .sahp-about-text {
     text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .sahp-about-text {
+    margin-top: 90px;
   }
 }

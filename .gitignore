@@ -15,6 +15,7 @@
 # CACHE / TEMP
 ############################
 /cache/
+/data/cache/
 /tmp/
 /logs/
 *.log

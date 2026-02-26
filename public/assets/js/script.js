@@ -13,7 +13,7 @@
 
   if (!burger || !navMenu) return;
 
-  const isMobile = () => window.innerWidth <= 900;
+  const isMobile = () => window.innerWidth <= 1293;
 
   /* =========================
      HELPERS DROPDOWNS
@@ -138,28 +138,91 @@
   });
 })();
 
-(function () {
-  function setLargeScreenClass() {
-    const w = window.innerWidth;
-    const h = window.innerHeight;
-
-    // ✅ Détection grand écran : pour écrans 27" et plus
-    // Stratégie améliorée : détecter les écrans larges même en 2K
-    // - Écran 24" Full HD (1920x1080) : exclu ✅
-    // - Écran 24" 2K (2560x1440) : exclu ✅ (largeur = 2560, mais ratio différent)
-    // - Écran 27" 2K (2560x1440) : inclus ✅ (même résolution mais taille d'écran différente)
-    // - Écran 27" 4K (3840x2160) : inclus ✅
-    // - Écrans ultra-larges (3440x1440, etc.) : inclus ✅
-    // 
-    // Détection basée sur la largeur ET le ratio pour mieux distinguer 24" vs 27"
-    // Un écran 27" aura généralement une largeur >= 2560px avec un ratio d'affichage différent
-    const isLarge = w >= 2560 && (w / h) >= 1.5; // Ratio largeur/hauteur pour distinguer les grands écrans
-
-    document.documentElement.classList.toggle('large-screen', isLarge);
+/* =========================
+   BOUTON RETOUR EN HAUT
+========================= */
+(function backToTop() {
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', backToTop);
+    return;
   }
 
-  setLargeScreenClass();
-  window.addEventListener('resize', setLargeScreenClass);
-  // Re-vérifier après chargement complet pour éviter les faux négatifs
-  window.addEventListener('load', setLargeScreenClass);
+  const btn = document.getElementById('back-to-top');
+  if (!btn) return;
+
+  const scrollThreshold = 400;
+
+  function toggleVisibility() {
+    if (window.scrollY > scrollThreshold) {
+      btn.classList.add('visible');
+    } else {
+      btn.classList.remove('visible');
+    }
+  }
+
+  function scrollToTop(e) {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  window.addEventListener('scroll', toggleVisibility, { passive: true });
+  toggleVisibility();
+
+  btn.addEventListener('click', scrollToTop);
+})();
+
+/* =========================
+   BOUTON HT / TTC SUR CARTES TARIFAIRES
+========================= */
+(function pricingHtTtc() {
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', pricingHtTtc);
+    return;
+  }
+
+  const TVA_RATE = 1.20;
+
+  function formatPrice(value) {
+    return Number(value).toFixed(2);
+  }
+
+  function updateCardPrices(card, showTtc) {
+    const prices = card.querySelectorAll('.service-price[data-price-ht]');
+    prices.forEach((el) => {
+      const ht = parseFloat(el.getAttribute('data-price-ht'), 10);
+      if (Number.isNaN(ht)) return;
+      const ttc = ht * TVA_RATE;
+      const value = showTtc ? formatPrice(ttc) : formatPrice(ht);
+      const suffix = showTtc ? ' € TTC' : ' € HT';
+      el.textContent = value + suffix;
+    });
+  }
+
+  function setButtonState(btn, showTtc) {
+    btn.classList.toggle('active', showTtc);
+    btn.setAttribute('aria-pressed', showTtc ? 'true' : 'false');
+    btn.textContent = showTtc ? 'Afficher en HT' : 'Afficher en TTC';
+  }
+
+  const cards = document.querySelectorAll('.pricing-category');
+  cards.forEach((card) => {
+    const hasPrices = card.querySelector('.service-price[data-price-ht]');
+    if (!hasPrices) return;
+
+    const bar = document.createElement('div');
+    bar.className = 'pricing-ttc-bar';
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'pricing-ttc-btn';
+    btn.setAttribute('aria-pressed', 'false');
+    btn.textContent = 'Afficher en TTC';
+    bar.appendChild(btn);
+    card.insertBefore(bar, card.firstChild);
+
+    btn.addEventListener('click', () => {
+      const showTtc = btn.getAttribute('aria-pressed') !== 'true';
+      updateCardPrices(card, showTtc);
+      setButtonState(btn, showTtc);
+    });
+  });
 })();

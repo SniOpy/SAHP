@@ -1,6 +1,7 @@
 <section class="maintenance-page">
 
   <div class="maintenance-container">
+    <div class="container-inner">
 
     <h1>Maintenance assainissement professionnel</h1>
 
@@ -110,24 +111,26 @@
       <div class="pricing-list">
         <div class="pricing-item">
           <span class="service-name">Curage de canalisation jusqu'à 10 mètres linéaires</span>
-          <span class="service-price">350.00 €</span>
+          <span class="service-price" data-price-ht="350.00">350.00 € HT</span>
         </div>
         <div class="pricing-item">
-          <span class="service-name">Curage de colonne d'immeuble</span>
-          <span class="service-price">Sur devis</span>
-        </div>
-        <div class="pricing-item">
-          <span class="service-name">Bac à graisse jusqu'à 1 m3</span>
-          <span class="service-price">300.00 €</span>
+          <span class="service-name">Bac à graisse jusqu'à 1 m³</span>
+          <span class="service-price" data-price-ht="300.00">300.00 € HT</span>
         </div>
         <div class="pricing-item">
           <span class="service-name">Inspection vidéo d'un réseau de canalisations</span>
           <span class="service-price">Sur devis</span>
         </div>
+        <div class="pricing-item">
+          <span class="service-name">Curage de colonne d'immeuble</span>
+          <span class="service-price">Sur devis</span>
+        </div>
+
       </div>
-      <a href="<?= BASE_URL ?>/devis" class="pricing-btn">Demander un audit gratuit</a>
+      <a href="<?= BASE_URL ?>/devis" class="pricing-btn">Demander un devis gratuit</a>
     </div>
 
+    </div>
   </div>
 
 </section>

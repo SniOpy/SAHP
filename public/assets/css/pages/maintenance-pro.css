@@ -8,13 +8,15 @@
 }
 
 .maintenance-container {
-  max-width: 950px;
-  margin: 0 auto;
+  max-width: 1270px;
+  margin: auto;
   background: #ffffff;
-  padding: 70px;
   border-radius: 14px;
-  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.08);
+  box-sizing: border-box;
+  padding: 40px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
   color: #1f1f1f;
+  margin-top: -40px;
 }
 
 /* TITRES */
@@ -82,12 +84,14 @@
 
 /* Card de tarifs avec style similaire à la page tarifs */
 .maintenance-page .pricing-category {
+  margin:auto;
   margin-top: 60px;
   background: #ffffff;
   border: 1px solid rgba(15, 76, 129, 0.1);
   border-radius: 12px;
   padding: 30px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  width:50%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
 
 .maintenance-page .pricing-category .category-title {
@@ -165,6 +169,12 @@
 }
 
 /* RESPONSIVE */
+
+@media (max-width: 900px) {
+  .maintenance-page .pricing-category {
+    width: 100%;
+  }
+}
 
 @media (max-width: 768px) {
   .maintenance-container {

@@ -43,20 +43,11 @@ if (!isset($_ENV['SMTP_HOST'])) {
     }
 }
 
-// Démarrer la session seulement si nécessaire
-if (sahp_needs_session() && session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-
 /*
 |--------------------------------------------------------------------------
-| ENVIRONNEMENT
+| ENVIRONNEMENT (défini avant session pour cookies sécurisés)
 |--------------------------------------------------------------------------
-| Détection automatique de l'environnement
-| true  = développement (local)
-| false = production
 */
-
 
 define('APP_ENV', true);
 
@@ -66,11 +57,24 @@ define('APP_ENV', true);
 |--------------------------------------------------------------------------
 */
 if (APP_ENV === true) {
-    // WAMP / localhost
     define('BASE_URL', '/sahp/public');
 } else {
-    // PROD (racine du domaine)
     define('BASE_URL', '');
+}
+
+// Démarrer la session seulement si nécessaire (cookies sécurisés en HTTPS)
+if (sahp_needs_session() && session_status() === PHP_SESSION_NONE) {
+    if (!APP_ENV && !empty($_SERVER['HTTPS'])) {
+        session_set_cookie_params([
+            'lifetime' => 0,
+            'path' => '/',
+            'domain' => '',
+            'secure' => true,
+            'httponly' => true,
+            'samesite' => 'Lax',
+        ]);
+    }
+    session_start();
 }
 
 /*

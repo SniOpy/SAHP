@@ -16,11 +16,15 @@
 
 /* TITRE PRINCIPAL */
 .parole-title {
-  text-align: center;
-  color: #ffffff;
-  font-size: 65px;
-  font-weight: 700;
+  border-radius: 10px;
+  max-width: 1270px;
+  margin: auto;
+  margin-top:-35px;
   margin-bottom: 40px;
+  color: #fff;
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
 }
 
 /* ============================
@@ -28,20 +32,27 @@
 ============================ */
 
 .parole-featured {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  align-items: center;
+  max-width: 1270px;
+  margin: auto;
+  background: #ffffff;
+  border-radius: 14px;
+  box-sizing: border-box;
   gap: 20px;
-  background: rgba(255, 255, 255, 0.18);
-  border-radius: 26px;
-  padding: 35px 40px;
-  margin-bottom: 65px;
+  margin-bottom:50px;
+}
+
+.container-inner-blog {
+  display: flex;
+  flex-direction: row;
+  padding: 35px 30px;
+  gap:45px
 }
 
 /* TEXTE */
 .featured-text {
   grid-column: 1 / span 5;
-  color: #ffffff;
+  color: #000;
+  width: 60%;
 }
 
 .featured-label {
@@ -77,6 +88,7 @@
 .featured-visual {
   grid-column: 6 / span 6;
   text-align: right;
+  width: auto;
 }
 
 .featured-visual img {
@@ -94,6 +106,8 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 35px;
+  max-width: 1270px;
+  margin:auto;
 }
 
 /* CARD */

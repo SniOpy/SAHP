@@ -1,6 +1,7 @@
 <section class="debouchage-page">
 
   <div class="debouchage-container">
+    <div class="container-inner">
 
     <h1>Débouchage de canalisation : intervention rapide et durable</h1>
 
@@ -84,23 +85,16 @@
         <div class="pricing-list">
           <div class="pricing-item">
             <span class="service-name">Débouchage / dégorgement de canalisation</span>
-            <span class="service-price">275.00 €</span>
+            <span class="service-price" data-price-ht="275.00">275.00 € HT</span>
           </div>
           <div class="pricing-item">
             <span class="service-name">Débouchage Vide Ordure</span>
-            <span class="service-price">250.00 €</span>
-          </div>
-          <div class="pricing-item">
-            <span class="service-name">Pose et fourniture d'un tampon hermétique</span>
-            <span class="service-price">52.00 €</span>
-          </div>
-          <div class="pricing-item">
-            <span class="service-name">Nettoyage / pompage par aspirateur à eau</span>
-            <span class="service-price">300.00 €</span>
+            <span class="service-price" data-price-ht="250.00">250.00 € HT</span>
           </div>
         </div>
         <div class="pricing-btn-wrapper">
           <a href="<?= BASE_URL ?>/devis" class="pricing-btn">Demander un devis gratuit</a>
+
         </div>
       </div>
     </div>
@@ -114,6 +108,7 @@
       </a>
     </div> -->
 
+    </div>
   </div>
 
 </section>

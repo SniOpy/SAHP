@@ -18,6 +18,18 @@
   z-index: 2;
 }
 
+/* Au-dessus de 1024px : évite tout overflow de la mascotte */
+@media (min-width: 1025px) {
+  .services {
+    overflow: hidden;
+  }
+
+  .services-mascotte img {
+    max-width: 100%;
+    object-fit: contain;
+  }
+}
+
 /* =========================
    CONTAINER
 ========================= */
@@ -62,8 +74,9 @@
 ========================= */
 
 .service-card {
-  background: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.9);
   border: 1px solid rgba(255, 255, 255, 0.25);
+  color:red;
   border-radius: 22px;
   padding: 36px 26px;
   text-align: center;
@@ -95,7 +108,7 @@
 
 .service-icon img {
   margin-top: 34px;
-  width: 235px;
+  width: 100px;
   object-fit: contain;
   transition: transform 0.3s ease;
 }
@@ -110,14 +123,14 @@
 
 .service-card h3 {
   font-size: 18px;
-  color: #ffffff;
+  color: #4080b7;
   margin-top: 62px;
   margin-bottom: 10px;
 }
 
 .service-card p {
   font-size: 14px;
-  color: rgba(255, 255, 255, 0.9);
+  color: #4080b7;
   line-height: 1.5;
   margin-bottom: 18px;
 }
@@ -133,16 +146,17 @@
   padding: 10px 30px;
   font-size: 14px;
   font-weight: 600;
-  color: #ffffff;
+  color: #4080b7;
   text-decoration: none;
-  transition:
-    background 0.3s ease,
+  transition:background 0.3s ease,
     color 0.3s ease;
+    border:1px solid #0f4c81;
 }
 
 .service-card a:hover {
   background: #ffffff;
   color: #0f4c81;
+  border:1px solid #0f4c81;
 }
 
 /* =========================
@@ -154,7 +168,9 @@
 }
 
 .services-mascotte img {
-  width: 450px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  width: 250px;
   height: auto;
   display: inline-block;
 }
@@ -166,7 +182,7 @@
 /* TABLETTE */
 @media (max-width: 900px) {
   .services {
-    padding: 70px 16px 140px;
+    padding: 70px 16px 40px;
   }
 
   .services-container h2 {
@@ -192,18 +208,23 @@
     height: 52px;
   }
 
-  .services-mascotte {
-    margin-top: 40px;
-    padding-top: 30px;
+  .services-mascotte {    
+    padding: 0;
   }
 
   .services-mascotte img {
-    width: 160px;
+    width: 220px;
+    margin-top: 20px;
+    margin-bottom: 0;
   }
 }
 
 /* MOBILE */
 @media (max-width: 480px) {
+  .services {
+    padding-bottom: 30px;
+  }
+
   .services-container h2 {
     font-size: 24px;
   }
@@ -217,73 +238,14 @@
   }
 
   .services-mascotte {
-    margin-top: 30px;
-    padding-top: 20px;
+    margin: 0;
+    padding: 0;
   }
 
   .services-mascotte img {
-    width: 140px;
+    width: 240px;
+    margin-top: 0;
+    margin-bottom: 0;
   }
 }
 
-/* =========================
-   GRANDS ÉCRANS (27" et plus)
-========================= */
-html.large-screen .services-container {
-  max-width: 1700px;
-}
-
-html.large-screen .services-container h2 {
-  font-size: 2.75rem;
-  margin-bottom: 20px;
-}
-
-html.large-screen .services-intro {
-  font-size: 1.2rem;
-  margin-bottom: 80px;
-  max-width: 900px;
-}
-
-html.large-screen .services-grid {
-  gap: 40px;
-}
-
-html.large-screen .service-card {
-  padding: 45px 35px;
-  border-radius: 26px;
-}
-
-html.large-screen .service-icon {
-  width: 80px;
-  height: 80px;
-  margin-bottom: 24px;
-}
-
-html.large-screen .service-icon img {
-  width: 280px;
-}
-
-html.large-screen .service-card h3 {
-  font-size: 1.4rem;
-  margin-top: 70px;
-  margin-bottom: 14px;
-}
-
-html.large-screen .service-card p {
-  font-size: 1.05rem;
-  margin-bottom: 24px;
-}
-
-html.large-screen .service-card a {
-  padding: 14px 38px;
-  font-size: 1.05rem;
-}
-
-html.large-screen .services-mascotte {
-  margin-top: 80px;
-  padding-top: 50px;
-}
-
-html.large-screen .services-mascotte img {
-  width: 240px;
-}
