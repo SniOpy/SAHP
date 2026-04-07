@@ -4,7 +4,7 @@
 
 .legal-page {
   padding: 80px 20px;
-  background: #f5f7f9;
+  background: linear-gradient(90deg, #4080b7 0%, #5ed0c2 100%);
 }
 
 .legal-container {
@@ -40,6 +40,14 @@
   line-height: 1.7;
   color: #333333;
   margin-bottom: 30px;
+}
+
+.sitemap p {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #333333;
+  margin-bottom: 14px;
 }
 
 /* LISTES */

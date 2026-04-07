@@ -3,8 +3,8 @@
     <h1>Gestion des cookies</h1>
 
     <p class="legal-intro">
-      Cette page vous permet de gerer vos préferences de consentement à tout moment.
-      Les cookies necessaires restent actifs pour garantir le bon fonctionnement du site.
+      Cette page vous permet de gérer vos préférences de consentement à tout moment.
+      Les cookies nécessaires restent actifs pour garantir le bon fonctionnement du site.
     </p>
 
     <h2>Categories de cookies</h2>
