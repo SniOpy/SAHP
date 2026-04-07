@@ -28,6 +28,7 @@ if (isset($view)) {
             'mentions' => 'mentions',
             'cgps' => 'cgps',
             'pc' => 'pc',
+            'gestion-cookies' => 'gestion-cookies',
             'plansite' => 'plansite',
             '404' => '404',
         ];
@@ -44,6 +45,7 @@ $cssFiles = get_css_files_for_page($currentPage);
     <title><?= $title ?? 'SAHP Assainissement' ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="SAHP, entreprise d'assainissement en Île-de-France : débouchage, curage, vidange, pompage et interventions d'urgence 24h/7j. Devis rapide.">
+    <meta name="cookie-consent-version" content="1">
 
     <!-- Preconnect pour améliorer les performances -->
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
@@ -76,8 +78,24 @@ $cssFiles = get_css_files_for_page($currentPage);
       <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/<?= $cssFile ?>?v=20260209-1">
     <?php endforeach; ?>
 
+    <!-- Consent Mode (Google compatible) : blocage par défaut avant tout script non essentiel -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('consent', 'default', {
+        ad_storage: 'denied',
+        analytics_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+        functionality_storage: 'granted',
+        security_storage: 'granted'
+      });
+      gtag('set', 'ads_data_redaction', true);
+    </script>
+
     <!-- JavaScript chargé en defer pour ne pas bloquer le rendu -->
     <script src="<?= BASE_URL ?>/assets/js/script.js?v=20260209-1" defer></script>
+    <script src="<?= BASE_URL ?>/assets/js/cookies.js?v=20260407-1" defer></script>
   </head>
 
   <body id="top">
@@ -93,6 +111,8 @@ $cssFiles = get_css_files_for_page($currentPage);
   <footer>
     <?php require VIEWS_PATH . '/layouts/footer.php'; ?>
   </footer>
+
+  <?php require VIEWS_PATH . '/components/cookie-banner.php'; ?>
 
   <!-- Bouton retour en haut -->
   <a href="#top" id="back-to-top" class="back-to-top" aria-label="Remonter en haut de la page" title="Remonter en haut">
