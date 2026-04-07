@@ -56,6 +56,8 @@
       <div class="footer-legal-links">
         <a href="<?= BASE_URL ?>/plan-site">Plan du site</a>
         <span>-</span>
+        <a href="<?= BASE_URL ?>/gestion-cookies">Gestion des cookies</a>
+        <span>-</span>
         <a href="<?= BASE_URL ?>/politique-confidentialite">Politique de confidentialité</a>
         <span>-</span>
         <a href="<?= BASE_URL ?>/mentions-legales">Mentions légales</a>

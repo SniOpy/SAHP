@@ -38,9 +38,14 @@
     <h2>4. Cookies</h2>
     <ul>
       <li>Cookies techniques nécessaires au bon fonctionnement du site</li>
-      <li>Cookies de mesure d’audience via Google Analytics</li>
-      <li>Aucun cookie publicitaire ou de profilage n’est utilisé</li>
+      <li>Cookies analytiques (mesure d’audience), uniquement avec consentement</li>
+      <li>Cookies marketing/publicitaires, uniquement avec consentement</li>
+      <li>Sans choix explicite, seuls les cookies nécessaires sont conservés</li>
     </ul>
+    <p>
+      Vous pouvez modifier votre choix à tout moment depuis la page
+      <a href="<?= BASE_URL ?>/gestion-cookies">Gestion des cookies</a>.
+    </p>
 
     <h2>5. Durée de conservation des données</h2>
     <ul>

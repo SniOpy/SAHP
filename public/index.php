@@ -16,6 +16,7 @@ $routes = [
   'mentions-legales'  => 'mentions.php',
   'conditions-generales-prestations-services'  => 'cgps.php',
   'politique-confidentialite'  => 'pc.php',
+  'gestion-cookies'  => 'gestion-cookies.php',
   'plan-site'  => 'plansite.php',
   'curage'  => 'curage.php',
   'pompage'  => 'pompage.php',

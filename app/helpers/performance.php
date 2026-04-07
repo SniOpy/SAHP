@@ -17,6 +17,7 @@ function get_css_files_for_page(string $page): array
     // CSS toujours nécessaires
     $css = [
         'style.css',
+        'cookies.css',
         'homepage/header.css',
         'homepage/footer.css',
     ];
@@ -89,6 +90,7 @@ function get_css_files_for_page(string $page): array
         case 'mentions':
         case 'cgps':
         case 'pc':
+        case 'gestion-cookies':
         case 'plansite':
             $css[] = 'pages/' . $page . '.css';
             break;
