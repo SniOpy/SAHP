@@ -16,6 +16,10 @@ $cards = array_slice($posts, 0, 6);
         Les conseils de l’expert
     </h2>
 
+    <?php if (empty($posts)): ?>
+        <p class="featured-intro" style="text-align:center;">Aucun article pour le moment.</p>
+    <?php endif; ?>
+
     <!-- FEATURED (DYNAMIQUE) -->
     <?php if ($featured): ?>
         <div class="parole-featured">
@@ -54,10 +58,11 @@ $cards = array_slice($posts, 0, 6);
     <div class="parole-articles">
 
         <?php foreach ($cards as $post): ?>
+            <?php $coverImageUrl = blog_resolve_cover_image_url_for_card($post['cover_image'] ?? ''); ?>
             <article class="article-card">
                 <div class="article-image">
                     <img
-                        src="<?= BASE_URL ?>/assets/img/blog/<?= blog_escape($post['cover_image'] ?? '') ?>"
+                        src="<?= blog_escape($coverImageUrl) ?>"
                         alt="<?= blog_escape($post['title']) ?>"
                         loading="lazy">
                 </div>

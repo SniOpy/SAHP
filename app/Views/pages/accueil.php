@@ -286,12 +286,17 @@ $cards = array_slice($posts, 0, 3);
       </p>
     </header>
 
+    <?php if (empty($cards)): ?>
+      <p class="section-header" style="text-align:center;">Aucun article pour le moment.</p>
+    <?php endif; ?>
+
     <div class="articles-grid">
       <?php foreach ($cards as $post): ?>
+        <?php $coverImageUrl = blog_resolve_cover_image_url_for_card($post['cover_image'] ?? ''); ?>
         <article class="article-card">
           <div class="article-image">
             <img
-              src="<?= BASE_URL ?>/assets/img/blog/<?= blog_escape($post['cover_image'] ?? '') ?>"
+              src="<?= blog_escape($coverImageUrl) ?>"
               alt="<?= blog_escape($post['title']) ?>"
               loading="lazy">
           </div>

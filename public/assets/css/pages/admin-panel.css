@@ -285,6 +285,91 @@
   text-align: center;
 }
 
+/* Tableau liste articles */
+.admin-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 12px;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.admin-table th,
+.admin-table td {
+  padding: 12px 10px;
+  text-align: left;
+  border-bottom: 1px solid rgba(15, 76, 129, 0.12);
+  vertical-align: top;
+}
+
+.admin-table th {
+  font-family: 'Montserrat', sans-serif;
+  color: #0f4c81;
+}
+
+.admin-table tbody tr:hover {
+  background: rgba(15, 76, 129, 0.04);
+}
+
+.admin-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.admin-badge-published {
+  background: rgba(76, 175, 80, 0.2);
+  color: #1b5e20;
+}
+
+.admin-badge-draft {
+  background: rgba(117, 117, 117, 0.15);
+  color: #4c4949;
+}
+
+.admin-table-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.admin-table-actions a {
+  font-weight: 600;
+  color: #0f4c81;
+  text-decoration: none;
+}
+
+.admin-table-actions a:hover {
+  text-decoration: underline;
+}
+
+.admin-inline-form {
+  display: inline;
+  margin: 0;
+}
+
+.admin-inline-form button {
+  font: inherit;
+  font-weight: 600;
+  color: #c62828;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.admin-inline-form button:hover {
+  color: #8e0000;
+}
+
 @media (max-width: 768px) {
   .admin-panel-header-inner {
     flex-direction: column;

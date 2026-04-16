@@ -21,6 +21,7 @@ $adminHeaderDisplayName = htmlspecialchars(
 
         <nav class="admin-panel-nav" aria-label="Navigation administration">
             <a href="<?= BASE_URL ?>/admin/index.php">Tableau de bord</a>
+            <a href="<?= BASE_URL ?>/admin/articles/index.php">Articles</a>
             <a href="<?= BASE_URL ?>/admin/articles/create.php">Ajouter un article</a>
         </nav>
 

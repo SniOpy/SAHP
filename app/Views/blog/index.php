@@ -16,17 +16,20 @@ $canonical = BASE_URL . "/paroles-de-pro";
       Conseils pro, prévention, dépannage : tout ce qu’il faut savoir sur l’assainissement.
     </p>
 
+    <?php if (empty($posts)): ?>
+      <p class="blog-intro" style="text-align:center;">Aucun article pour le moment.</p>
+    <?php endif; ?>
+
     <div class="blog-grid">
       <?php foreach ($posts as $post): ?>
+        <?php $coverImageUrl = blog_resolve_cover_image_url_for_card($post['cover_image'] ?? ''); ?>
         <article class="blog-card">
           <a href="<?= BASE_URL ?>/paroles-de-pro/<?= blog_escape($post['slug']) ?>">
-            <?php if (!empty($post['cover_image'])): ?>
-              <img
-                src="<?= BASE_URL ?>/assets/img/blog/<?= blog_escape($post['cover_image']) ?>"
+            <img
+                src="<?= blog_escape($coverImageUrl) ?>"
                 alt="<?= blog_escape($post['title']) ?>"
                 loading="lazy"
               />
-            <?php endif; ?>
 
             <div class="blog-card-content">
               <span class="blog-meta">

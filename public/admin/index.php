@@ -35,6 +35,7 @@ $adminUsername = (string) ($_SESSION[ADMIN_SESSION_USERNAME_KEY] ?? 'admin');
         <p class="admin-dashboard-text">Tableau de bord admin. Vous pouvez créer des articles de blog en base de données.</p>
 
         <div class="admin-dashboard-actions">
+            <a class="admin-auth-submit" href="<?= BASE_URL ?>/admin/articles/index.php">Liste des articles</a>
             <a class="admin-auth-submit" href="<?= BASE_URL ?>/admin/articles/create.php">Ajouter un article</a>
         </div>
     </div>
