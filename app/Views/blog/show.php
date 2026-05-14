@@ -65,8 +65,8 @@ if ($coverRaw !== '') {
 
     </main>
 
-    <!-- SIDEBAR -->
-    <aside class="pp-sidebar">
+    <!-- SIDEBAR (vide tant que les cartes latérales sont commentées) -->
+    <aside class="pp-sidebar" aria-label="Colonnes annexes">
 
       <!-- <div class="pp-card">
         <h3>Contactez SAHP<br><span>(Urgence 24/7)</span></h3>
@@ -89,9 +89,7 @@ if ($coverRaw !== '') {
         <a class="pp-link" href="<?= BASE_URL ?>/curage">Découvrir le curage →</a>
       </div> -->
 
-      
-
-    <!-- </aside> -->
+    </aside>
 
   </div>
 

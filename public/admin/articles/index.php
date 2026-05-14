@@ -46,12 +46,12 @@ $csrfToken = ensureAdminCsrfToken();
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Roboto:wght@400;500&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Roboto:wght@400;500&display=swap"
         rel="stylesheet"
     >
-    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/style.css?v=20260209-1">
-    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/pages/admin-auth.css?v=20260413-1">
-    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/pages/admin-panel.css?v=20260416-2">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/style.css?v=<?= SAHP_ASSET_VERSION ?>">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/pages/admin-auth.css?v=<?= SAHP_ASSET_VERSION ?>">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/pages/admin-panel.css?v=<?= SAHP_ASSET_VERSION ?>">
 </head>
 <body class="admin-panel-body">
 <?php require __DIR__ . '/../includes/header.php'; ?>

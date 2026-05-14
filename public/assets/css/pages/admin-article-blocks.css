@@ -1,0 +1,316 @@
+/* Éditeur blocs articles — aligné sur admin-panel */
+
+.article-editor-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.article-editor-tab {
+  border: 1px solid rgba(15, 76, 129, 0.35);
+  background: rgba(255, 255, 255, 0.55);
+  color: #0f4c81;
+  border-radius: 10px;
+  padding: 8px 14px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 14px;
+  font-family: Montserrat, Roboto, Arial, sans-serif;
+}
+
+.article-editor-tab:hover {
+  background: rgba(15, 76, 129, 0.08);
+}
+
+.article-editor-tab-active {
+  background: linear-gradient(135deg, rgba(15, 76, 129, 0.18), rgba(0, 176, 155, 0.14));
+  border-color: rgba(15, 76, 129, 0.45);
+}
+
+.article-editor-panel-hidden,
+.article-editor-panel[hidden] {
+  display: none !important;
+}
+
+.article-editor-panel-active {
+  display: block;
+}
+
+/* Grille : la colonne palette s’étire sur TOUTE la hauteur de la zone de construction (même hauteur que la liste des blocs). */
+.article-editor-split-root {
+  display: grid;
+  grid-template-columns: minmax(208px, 284px) 1fr;
+  gap: 16px;
+  align-items: stretch;
+  isolation: isolate;
+}
+
+/*
+ * Colonne gauche = hauteur de la rangée (celle imposée par la construction à droite).
+ * La palette à l’intérieur est sticky + scroll interne : elle ne « sort » plus quand on dépasse la div de construction.
+ */
+.article-editor-composer-wrap {
+  min-width: 0;
+}
+
+.article-editor-composer {
+  position: sticky;
+  top: max(80px, env(safe-area-inset-top, 0px));
+  max-height: calc(100vh - max(92px, env(safe-area-inset-top, 0px)) - env(safe-area-inset-bottom, 0px) - 20px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 12px;
+  margin: 0;
+  border-radius: 14px;
+  z-index: 35;
+  background: rgba(255, 255, 255, 0.97);
+  border: 1px solid rgba(15, 76, 129, 0.16);
+  box-shadow:
+    0 6px 22px rgba(15, 76, 129, 0.1),
+    0 1px 0 rgba(255, 255, 255, 0.85) inset;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
+
+@media (max-width: 900px) {
+  .article-editor-split-root {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  /*
+   * En une colonne, la ligne « palette » n’a pas la hauteur de l’article (comportement normal).
+   * La palette garde tout de même son scroll interne et un sticky réduit tant qu’elle est visible.
+   */
+  .article-editor-composer {
+    top: max(12px, env(safe-area-inset-top));
+    max-height: min(268px, 40vh);
+  }
+}
+
+.article-block-toolbar-note {
+  margin: 0 0 10px;
+  font-size: 12px;
+  line-height: 1.45;
+  color: rgba(15, 76, 129, 0.78);
+}
+
+.article-block-item--cta-pinned {
+  border-left: 3px solid rgba(0, 176, 155, 0.45);
+}
+
+.article-block-drag-handle--pinned {
+  cursor: default;
+  color: rgba(0, 176, 155, 0.75);
+  font-size: 14px;
+  letter-spacing: 0;
+}
+
+.article-editor-article-body {
+  min-width: 0;
+  /* Même grille typographique que l’article public (.pp-body) */
+  font-family: 'Roboto', sans-serif;
+}
+
+.article-editor-article-body .article-block-textarea {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  line-height: 1.85;
+}
+
+.article-editor-article-body .article-block-input {
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+}
+
+.article-editor-article-body .article-block-type-label {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.article-block-toolbar {
+  margin-bottom: 0;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: rgba(15, 76, 129, 0.06);
+  border: 1px solid rgba(15, 76, 129, 0.12);
+}
+
+.article-block-toolbar-label {
+  display: block;
+  margin: 0 0 10px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #0b3b63;
+}
+
+.article-block-toolbar .admin-panel-secondary-btn {
+  margin: 0 6px 6px 0;
+  font-size: 13px;
+  padding: 6px 10px;
+  display: inline-block;
+}
+
+.article-block-field-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.article-block-checkbox-label {
+  font-size: 14px;
+  color: #1f1f1f;
+  cursor: pointer;
+  user-select: none;
+}
+
+.article-block-field-row select.admin-text-input-like {
+  max-width: 100%;
+}
+
+.article-block-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.article-block-item {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 12px 12px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(15, 76, 129, 0.14);
+}
+
+.article-block-item-dragging {
+  opacity: 0.55;
+}
+
+.article-block-drag-handle {
+  flex: 0 0 auto;
+  cursor: grab;
+  user-select: none;
+  color: rgba(15, 76, 129, 0.55);
+  padding-top: 4px;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.article-block-item-body {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.article-block-item-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.article-block-type-label {
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #0f4c81;
+}
+
+.article-block-remove {
+  font-size: 12px;
+  padding: 4px 10px;
+}
+
+.article-block-textarea,
+.article-block-input {
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 8px;
+}
+
+.article-block-image-preview {
+  margin-bottom: 10px;
+}
+
+.article-block-image-preview img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 10px;
+  border: 1px solid rgba(15, 76, 129, 0.15);
+}
+
+.article-block-dropzone {
+  border: 1px dashed rgba(15, 76, 129, 0.35);
+  border-radius: 10px;
+  padding: 12px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  background: rgba(255, 255, 255, 0.6);
+  color: #1f1f1f;
+}
+
+.article-block-dropzone-active {
+  border-color: #00b09b;
+  background: rgba(0, 176, 155, 0.08);
+}
+
+.article-block-list-items {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.article-block-list-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.article-block-list-row .article-block-input {
+  margin-bottom: 0;
+}
+
+.article-block-remove-line {
+  flex: 0 0 auto;
+  min-width: 36px;
+  font-size: 16px;
+  line-height: 1;
+  padding: 4px 8px;
+}
+
+@media (max-width: 768px) {
+  .article-block-toolbar .admin-panel-secondary-btn {
+    width: 100%;
+    margin-right: 0;
+  }
+}
+
+
+
+@media print {
+  .article-editor-composer-wrap {
+    display: contents;
+  }
+
+  .article-editor-composer {
+    position: static !important;
+    transform: none !important;
+    box-shadow: none !important;
+    max-height: none !important;
+    width: auto !important;
+  }
+
+  #panel-visual.article-editor-panel-active {
+    padding-bottom: 0 !important;
+  }
+
+  .article-editor-article-body {
+    padding-bottom: 0 !important;
+  }
+}

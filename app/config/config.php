@@ -45,6 +45,32 @@ if (!isset($_ENV['SMTP_HOST'])) {
 
 /*
 |--------------------------------------------------------------------------
+| Cache navigateur des CSS/JS (?v=)
+|--------------------------------------------------------------------------
+|
+| Sur localhost / 127.0.0.1 / [::1], ou SAHP_DISABLE_ASSET_CACHE=1 dans .env : la version dans
+| l’URL est recalée à chaque requête (plus de fichier « périmé » en local).
+| À la place d’un faux host distant : ajoutez SAHP_DISABLE_ASSET_CACHE=1 dans .env.
+| Pour retrouver un cache dur sur localhost : SAHP_FORCE_PRODUCTION_ASSET_CACHE=1
+|
+*/
+
+$sahpHost = $_SERVER['HTTP_HOST'] ?? '';
+$sahpLocalHost = $sahpHost !== ''
+    && preg_match('#^(localhost|\\[::1\\]|127\\.0\\.0\\.1)(:\\d+)?$#i', $sahpHost) === 1;
+$sahpEnvAssetNoCache = ($_ENV['SAHP_DISABLE_ASSET_CACHE'] ?? '') === '1';
+$sahpForceProdAssetCache = ($_ENV['SAHP_FORCE_PRODUCTION_ASSET_CACHE'] ?? '') === '1';
+define(
+    'SAHP_DISABLE_ASSET_CACHE',
+    ! $sahpForceProdAssetCache && ($sahpEnvAssetNoCache || $sahpLocalHost)
+);
+define(
+    'SAHP_ASSET_VERSION',
+    SAHP_DISABLE_ASSET_CACHE ? (string) ($_SERVER['REQUEST_TIME'] ?? time()) : '20260517-1'
+);
+
+/*
+|--------------------------------------------------------------------------
 | ENVIRONNEMENT (défini avant session pour cookies sécurisés)
 |--------------------------------------------------------------------------
 */
@@ -85,3 +111,8 @@ if (sahp_needs_session() && session_status() === PHP_SESSION_NONE) {
 define('ROOT_PATH', dirname(__DIR__, 2));
 define('APP_PATH', ROOT_PATH . '/app');
 define('VIEWS_PATH', APP_PATH . '/Views');
+
+/*
+| .env optionnel : ADMIN_ARTICLE_HTML_USERNAMES
+| Pseudos autorisés pour l’onglet « Avancé (HTML) » dans l’édition d’articles admin (séparés par virgules).
+*/

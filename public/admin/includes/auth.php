@@ -75,3 +75,49 @@ function logoutAdminUser(): void
 
     session_destroy();
 }
+
+/**
+ * Liste des pseudos (minuscules) autorisés à l’onglet HTML brut (.env ADMIN_ARTICLE_HTML_USERNAMES, séparés par virgules).
+ *
+ * @return list<string>
+ */
+function get_admin_article_html_editor_usernames(): array
+{
+    static $cache = null;
+    if (is_array($cache)) {
+        return $cache;
+    }
+
+    $rawFromEnv = $_ENV['ADMIN_ARTICLE_HTML_USERNAMES'] ?? getenv('ADMIN_ARTICLE_HTML_USERNAMES');
+    $raw = is_string($rawFromEnv) ? $rawFromEnv : '';
+    $parts = preg_split('/\s*,\s*/', trim($raw), -1, PREG_SPLIT_NO_EMPTY) ?: [];
+    $resolved = [];
+    foreach ($parts as $part) {
+        $n = strtolower(trim($part));
+        if ($n !== '') {
+            $resolved[] = $n;
+        }
+    }
+    $cache = array_values(array_unique($resolved));
+
+    return $cache;
+}
+
+/**
+ * Onglet « Avancé » (édition HTML directe) réservé aux comptes listés dans ADMIN_ARTICLE_HTML_USERNAMES.
+ */
+function adminUserCanEditRawArticleHtml(): bool
+{
+    if (! isAdminAuthenticated()) {
+        return false;
+    }
+
+    $current = strtolower(trim((string) ($_SESSION[ADMIN_SESSION_USERNAME_KEY] ?? '')));
+    if ($current === '') {
+        return false;
+    }
+
+    $allowed = get_admin_article_html_editor_usernames();
+
+    return in_array($current, $allowed, true);
+}

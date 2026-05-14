@@ -197,6 +197,34 @@
   color: #c62828;
 }
 
+/* Champs avec erreurs de formulaire */
+.admin-field-group--error > label:first-of-type {
+  color: #b71c1c;
+}
+
+.admin-field-group--error .admin-textarea,
+.admin-field-group--error input[type='text'],
+.admin-field-group--error input[type='url'],
+.admin-field-group--error input[type='datetime-local'],
+.admin-field-group--error input[type='file'] {
+  border-color: #c62828;
+  box-shadow: 0 0 0 1px rgba(198, 40, 40, 0.2);
+}
+
+.admin-field-invalid-msg {
+  margin: 6px 0 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #c62828;
+}
+
+.admin-field-group--error.article-editor-visual-error #article-block-editor-root,
+.admin-field-group--error.article-editor-visual-error #panel-visual .article-editor-split-root {
+  outline: 2px solid rgba(198, 40, 40, 0.45);
+  border-radius: 12px;
+  padding: 6px;
+}
+
 .admin-panel-secondary-btn {
   display: inline-flex;
   align-items: center;

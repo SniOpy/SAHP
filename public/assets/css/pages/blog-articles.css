@@ -83,8 +83,9 @@
   display: block;
 }
 
-/* BODY TYPO */
+/* BODY TYPO — même couple de polices que le site SAHP */
 .pp-body {
+  font-family: 'Roboto', sans-serif;
   color: #1f1f1f;
   line-height: 1.85;
   font-size: 16px;
@@ -92,6 +93,7 @@
 
 .pp-body h2 {
   margin: 22px 0 10px;
+  font-family: 'Montserrat', sans-serif;
   font-size: 22px;
   color: #0f4c81;
   font-weight: 800;
@@ -99,6 +101,7 @@
 
 .pp-body h3 {
   margin: 14px 0 10px;
+  font-family: 'Montserrat', sans-serif;
   font-size: 17px;
   font-weight: 800;
   color: #0b3b63;
@@ -106,15 +109,130 @@
 
 .pp-body p {
   margin: 0 0 14px;
+  font-family: inherit;
 }
 
 .pp-body ul,
 .pp-body ol {
   margin: 0 0 16px 20px;
+  font-family: inherit;
 }
 
 .pp-body li {
   margin: 8px 0;
+  font-family: inherit;
+}
+
+.pp-body .blog-block-media {
+  margin: 16px 0;
+  text-align: center;
+}
+
+.pp-body .blog-block-media img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  display: inline-block;
+}
+
+.pp-body .blog-block-media.blog-block-media--w100 img {
+  width: 100%;
+  max-width: 100%;
+}
+
+.pp-body .blog-block-media.blog-block-media--w75 img {
+  width: 75%;
+  max-width: 75%;
+}
+
+.pp-body .blog-block-media.blog-block-media--w50 img {
+  width: 50%;
+  max-width: 50%;
+}
+
+.pp-body .blog-block-media.blog-block-media--w40 img {
+  width: 40%;
+  max-width: 40%;
+}
+
+.pp-body .blog-block-link {
+  margin: 10px 0 16px;
+}
+
+.pp-body .blog-block-link a.pp-inline-link,
+.pp-body .blog-block-link a {
+  color: #0f4c81;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.2s ease;
+}
+
+.pp-body .blog-block-link a.pp-inline-link:hover,
+.pp-body .blog-block-link a:hover {
+  color: #00b09b;
+}
+
+.pp-body .blog-block-link strong {
+  font-weight: 800;
+}
+
+.pp-body .blog-block-button {
+  margin: 16px 0;
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.pp-body .blog-block-button p {
+  margin: 0;
+}
+
+.pp-body .blog-block-button--align-left {
+  justify-content: flex-start;
+}
+
+.pp-body .blog-block-button--align-center {
+  justify-content: center;
+}
+
+.pp-body .blog-block-button--align-right {
+  justify-content: flex-end;
+}
+
+.pp-body .blog-block-button .pp-btn {
+  margin-top: 0;
+}
+
+.pp-body blockquote.blog-block-quote {
+  margin: 18px 0;
+  padding: 14px 18px;
+  border-left: 4px solid #00b09b;
+  border-radius: 0 14px 14px 0;
+  background: rgba(15, 76, 129, 0.06);
+  color: #1f1f1f;
+  font-family: inherit;
+}
+
+.pp-body blockquote.blog-block-quote p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.85;
+}
+
+.pp-body blockquote.blog-block-quote p:last-child {
+  margin-bottom: 0;
+}
+
+.pp-body blockquote.blog-block-quote strong {
+  font-weight: 800;
+}
+
+/* Bloc encadré (CTA fin d’article) : doit rester visible sur fond carte blanche */
+.pp-body .blog-block-cta {
+  margin: 24px 0;
+  padding: 0;
+  overflow: visible;
 }
 
 /* TIP BOX (L'ASTUCE DU TECHNICIEN) */
@@ -139,34 +257,101 @@
   border-radius: 999px;
 }
 
-/* CTA BOX */
+/* CTA BOX (fin d'article — titre + texte d'accroche + bouton) */
 .pp-cta {
   margin-top: 22px;
-  padding: 18px 18px;
+  padding: 22px 20px;
   border-radius: 18px;
-  background: linear-gradient(135deg, rgba(15, 76, 129, 0.1), rgba(0, 176, 155, 0.14));
-  border: 1px solid rgba(15, 76, 129, 0.12);
+  background: #e8faf7;
+  border: 1px solid rgba(0, 176, 155, 0.42);
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+.pp-body .blog-block-cta .pp-cta {
+  box-shadow: 0 12px 32px rgba(15, 76, 129, 0.08);
 }
 
 .pp-cta h3 {
   margin: 0 0 6px;
+  font-family: 'Montserrat', sans-serif;
   font-size: 18px;
   color: #0f4c81;
+  font-weight: 800;
+  text-align: center;
+  align-self: center;
+  max-width: 42rem;
 }
 
-.pp-cta p {
-  margin: 0 0 12px;
+.pp-cta .pp-cta-subtitle {
+  margin: 0 0 14px;
+  max-width: 42rem;
   color: #1f1f1f;
+  font-size: 15px;
+  line-height: 1.55;
+  text-align: center;
+  font-weight: 500;
+  align-self: center;
+  font-family: inherit;
 }
 
 .pp-cta-buttons {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
+  width: 100%;
+  margin-top: 2px;
+  justify-content: center;
+}
+
+.pp-cta-buttons.pp-cta-buttons--align-left {
+  justify-content: flex-start;
+}
+
+.pp-cta-buttons.pp-cta-buttons--align-center {
+  justify-content: center;
+}
+
+.pp-cta-buttons.pp-cta-buttons--align-right {
+  justify-content: flex-end;
+}
+
+/* Encadré (bloc article) : titre + paragraphe centrés sur toute la largeur du cadre ; bouton étiré pleine largeur */
+.pp-body .blog-block-cta .pp-cta {
+  text-align: center;
+}
+
+.pp-body .blog-block-cta .pp-cta h3 {
+  width: 100%;
+  max-width: none;
+  align-self: stretch;
+}
+
+.pp-body .blog-block-cta .pp-cta .pp-cta-subtitle {
+  width: 100%;
+  max-width: none;
+  align-self: stretch;
+}
+
+.pp-body .blog-block-cta .pp-cta-buttons {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.pp-body .blog-block-cta .pp-cta-buttons.pp-cta-buttons--align-left,
+.pp-body .blog-block-cta .pp-cta-buttons.pp-cta-buttons--align-center,
+.pp-body .blog-block-cta .pp-cta-buttons.pp-cta-buttons--align-right {
+  justify-content: stretch;
+}
+
+.pp-body .blog-block-cta .pp-cta-buttons .pp-btn {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .pp-btn {

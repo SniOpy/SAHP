@@ -38,36 +38,38 @@ RewriteRule ^paroles-de-pro/([a-zA-Z0-9-]+)/?$ index.php?page=blog_show&slug=$1 
   AddOutputFilterByType BROTLI_COMPRESS application/x-font-ttf application/x-font-opentype application/font-woff application/font-woff2
 </IfModule>
 
-# ✅ Cache assets optimisé
+# ✅ Cache assets optimisé (désactivé sur localhost pour le dev sans vider le cache navigateur)
 <IfModule mod_expires.c>
-  ExpiresActive On
-  
-  # HTML - cache navigateur court mais serveur long
-  ExpiresByType text/html "access plus 1 hour"
-  
-  # CSS et JS - cache long avec versioning
-  ExpiresByType text/css "access plus 1 year"
-  ExpiresByType application/javascript "access plus 1 year"
-  ExpiresByType application/x-javascript "access plus 1 year"
-  
-  # Images - cache très long
-  ExpiresByType image/png "access plus 1 year"
-  ExpiresByType image/jpeg "access plus 1 year"
-  ExpiresByType image/jpg "access plus 1 year"
-  ExpiresByType image/gif "access plus 1 year"
-  ExpiresByType image/webp "access plus 1 year"
-  ExpiresByType image/svg+xml "access plus 1 year"
-  ExpiresByType image/x-icon "access plus 1 year"
-  
-  # Polices
-  ExpiresByType font/ttf "access plus 1 year"
-  ExpiresByType font/woff "access plus 1 year"
-  ExpiresByType font/woff2 "access plus 1 year"
-  ExpiresByType application/font-woff "access plus 1 year"
-  
-  # Autres
-  ExpiresByType application/pdf "access plus 1 month"
-  ExpiresByType application/json "access plus 0 seconds"
+  <If "%{HTTP_HOST} !~ /(?i)localhost|127\\.0\\.0\\.1|\\[::1\\]/">
+    ExpiresActive On
+
+    # HTML - cache navigateur court mais serveur long
+    ExpiresByType text/html "access plus 1 hour"
+
+    # CSS et JS - cache long avec versioning
+    ExpiresByType text/css "access plus 1 year"
+    ExpiresByType application/javascript "access plus 1 year"
+    ExpiresByType application/x-javascript "access plus 1 year"
+
+    # Images - cache très long
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/jpg "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType image/x-icon "access plus 1 year"
+
+    # Polices
+    ExpiresByType font/ttf "access plus 1 year"
+    ExpiresByType font/woff "access plus 1 year"
+    ExpiresByType font/woff2 "access plus 1 year"
+    ExpiresByType application/font-woff "access plus 1 year"
+
+    # Autres
+    ExpiresByType application/pdf "access plus 1 month"
+    ExpiresByType application/json "access plus 0 seconds"
+  </If>
 </IfModule>
 
 # ✅ Headers de cache et performance
@@ -84,6 +86,16 @@ RewriteRule ^paroles-de-pro/([a-zA-Z0-9-]+)/?$ index.php?page=blog_show&slug=$1 
     Header set Pragma "no-cache"
     Header set Expires "0"
   </FilesMatch>
+
+  <If "%{HTTP_HOST} =~ /(?i)localhost|127\\.0\\.0\\.1|\\[::1\\]/">
+    <FilesMatch "\.(css|js|png|jpg|jpeg|gif|webp|svg|ico|woff|woff2|ttf|eot)$">
+      Header unset Cache-Control
+      Header unset Expires
+      Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+      Header set Pragma "no-cache"
+      Header append Vary Accept-Encoding
+    </FilesMatch>
+  </If>
   
   # Headers de sécurité et performance
   Header always set X-Content-Type-Options "nosniff"

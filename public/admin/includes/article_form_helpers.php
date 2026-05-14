@@ -92,3 +92,23 @@ function encodeArticleTagsAsJson(array $tagsList): ?string
 
     return json_encode(array_values($tagsList), JSON_THROW_ON_ERROR | JSON_UNESCAPED_UNICODE);
 }
+
+/** @param array<string, string> $formFieldErrors */
+function admin_article_field_group_class(?array $formFieldErrors, string $fieldKey, string $baseClass = 'admin-field-group'): string
+{
+    if (! empty($formFieldErrors[$fieldKey])) {
+        return $baseClass . ' admin-field-group--error';
+    }
+
+    return $baseClass;
+}
+
+/** @param array<string, string> $formFieldErrors */
+function admin_article_field_error_notice(?array $formFieldErrors, string $fieldKey): string
+{
+    if (empty($formFieldErrors[$fieldKey])) {
+        return '';
+    }
+
+    return '<p class="admin-field-invalid-msg" role="alert">' . htmlspecialchars($formFieldErrors[$fieldKey], ENT_QUOTES, 'UTF-8') . '</p>';
+}

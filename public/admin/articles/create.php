@@ -7,6 +7,7 @@ require_once __DIR__ . '/../includes/auth.php';
 require_once __DIR__ . '/../includes/admin_csrf.php';
 require_once __DIR__ . '/../includes/article_form_helpers.php';
 require_once __DIR__ . '/../includes/blog_file_upload.php';
+require_once APP_PATH . '/helpers/article_blocks.php';
 
 requireAdminLogin();
 
@@ -15,11 +16,12 @@ $adminPageTitle = 'Ajouter un article | SAHP Admin';
 $formSuccessMessage = '';
 $formErrorMessage = '';
 
+$formFieldErrors = [];
+
 $fieldTitle = '';
 $fieldSlug = '';
 $fieldExcerpt = '';
 $fieldContent = '';
-$fieldCoverImageUrl = '';
 $fieldCategory = '';
 $fieldTags = '';
 $fieldIsPublished = false;
@@ -34,17 +36,6 @@ if (!empty($_SESSION['admin_upload_flash_error'])) {
     unset($_SESSION['admin_upload_flash_error']);
 }
 
-$lastUploadedImageUrl = '';
-$lastUploadedHtmlExample = '';
-if (!empty($_SESSION['admin_upload_flash_image_url'])) {
-    $lastUploadedImageUrl = (string) $_SESSION['admin_upload_flash_image_url'];
-    unset($_SESSION['admin_upload_flash_image_url']);
-}
-if (!empty($_SESSION['admin_upload_flash_html_example'])) {
-    $lastUploadedHtmlExample = (string) $_SESSION['admin_upload_flash_html_example'];
-    unset($_SESSION['admin_upload_flash_html_example']);
-}
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!verifyAdminCsrfTokenFromPost()) {
         $formErrorMessage = 'Session expirée ou formulaire invalide. Rechargez la page.';
@@ -52,43 +43,54 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $fieldTitle = trim((string) ($_POST['title'] ?? ''));
         $fieldSlug = trim((string) ($_POST['slug'] ?? ''));
         $fieldExcerpt = (string) ($_POST['excerpt'] ?? '');
-        $fieldContent = (string) ($_POST['content'] ?? '');
-        $fieldCoverImageUrl = trim((string) ($_POST['cover_image_url'] ?? ''));
         $fieldCategory = trim((string) ($_POST['category'] ?? ''));
         $fieldTags = trim((string) ($_POST['tags'] ?? ''));
         $fieldIsPublished = isset($_POST['is_published']);
         $fieldPublishedAt = trim((string) ($_POST['published_at'] ?? ''));
 
         $validationErrors = [];
+        $formFieldErrors = [];
 
         if ($fieldTitle === '' || strlen($fieldTitle) > 255) {
             $validationErrors[] = 'Le titre est obligatoire (255 caractères maximum).';
+            $formFieldErrors['title'] = 'Indiquez un titre.';
         }
 
-        if (trim($fieldContent) === '') {
-            $validationErrors[] = 'Le contenu est obligatoire.';
+        $canEditAdvancedHtml = adminUserCanEditRawArticleHtml();
+        $contentResolution = resolve_raw_article_html_from_editor_submission($_POST, $canEditAdvancedHtml);
+        $fieldContent = $contentResolution['html'];
+        if ($contentResolution['error'] !== null) {
+            $validationErrors[] = $contentResolution['error'];
+            $formFieldErrors['content'] = $contentResolution['error'];
         }
 
         $articleSlug = $fieldSlug !== '' ? normalizeArticleSlug($fieldSlug) : generateArticleSlugFromTitle($fieldTitle);
         if (!isArticleSlugValid($articleSlug)) {
             $validationErrors[] = 'Le slug est invalide (lettres minuscules, chiffres et tirets uniquement).';
+            $formFieldErrors['slug'] = 'Slug invalide (ex. mon-article-2025).';
         }
 
         $sanitizedExcerpt = sanitizeArticleExcerpt($fieldExcerpt);
         if (strlen($sanitizedExcerpt) > 65535) {
             $validationErrors[] = 'L\'extrait est trop long.';
+            $formFieldErrors['excerpt'] = 'Raccourcissez l’extrait (limite technique).';
         }
 
         $sanitizedContent = sanitizeArticleContentHtml($fieldContent);
         if (trim($sanitizedContent) === '') {
             $validationErrors[] = 'Le contenu est obligatoire après nettoyage HTML.';
+            $formFieldErrors['content'] = 'Ajoutez du contenu (blocs ou HTML valide selon votre mode).';
         }
         if (strlen($sanitizedContent) > 16777215) {
             $validationErrors[] = 'Le contenu est trop long.';
+            $formFieldErrors['content'] = ($formFieldErrors['content'] ?? '') !== ''
+                ? $formFieldErrors['content']
+                : 'Le contenu dépasse la taille maximale acceptée.';
         }
 
         if ($fieldCategory !== '' && strlen($fieldCategory) > 120) {
             $validationErrors[] = 'La catégorie est trop longue (120 caractères maximum).';
+            $formFieldErrors['category'] = 'Raccourcissez la catégorie.';
         }
 
         $tagsList = parseArticleTagsFromCommaString($fieldTags);
@@ -97,6 +99,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $tagsJson = encodeArticleTagsAsJson($tagsList);
         } catch (Throwable $exception) {
             $validationErrors[] = 'Les tags sont invalides.';
+            $formFieldErrors['tags'] = 'Vérifiez le format des tags.';
         }
 
         $isPublishedValue = $fieldIsPublished ? 1 : 0;
@@ -109,6 +112,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $publishedAtDateTime = DateTime::createFromFormat('Y-m-d\TH:i', $fieldPublishedAt);
                 if ($publishedAtDateTime === false) {
                     $validationErrors[] = 'La date de publication est invalide.';
+                    $formFieldErrors['published_at'] = 'Choisissez une date et une heure valides.';
                 } else {
                     $publishedAtValue = $publishedAtDateTime->format('Y-m-d H:i:s');
                 }
@@ -116,14 +120,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         $coverImageStoredValue = null;
-        if ($fieldCoverImageUrl !== '') {
-            if (strlen($fieldCoverImageUrl) > 255) {
-                $validationErrors[] = 'L\'URL de l\'image de couverture est trop longue.';
-            } else {
-                $coverImageStoredValue = $fieldCoverImageUrl;
-            }
-        }
-
         $coverFile = $_FILES['cover_image_file'] ?? null;
         if (is_array($coverFile) && ($coverFile['error'] ?? UPLOAD_ERR_NO_FILE) !== UPLOAD_ERR_NO_FILE) {
             try {
@@ -131,6 +127,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $coverImageStoredValue = buildBlogImagePublicUrl($coverFileName);
             } catch (Throwable $exception) {
                 $validationErrors[] = 'Image de couverture : ' . $exception->getMessage();
+                $formFieldErrors['cover_image_file'] = 'Image : ' . $exception->getMessage();
             }
         }
 
@@ -180,6 +177,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             } catch (PDOException $pdoException) {
                 $sqlErrorCode = (int) ($pdoException->errorInfo[1] ?? 0);
                 if ($sqlErrorCode === 1062 || str_contains($pdoException->getMessage(), 'Duplicate')) {
+                    $formFieldErrors['slug'] = 'Ce slug est déjà utilisé. Choisissez-en un autre.';
                     $formErrorMessage = 'Ce slug existe déjà. Modifiez le slug ou le titre.';
                 } else {
                     $formErrorMessage = 'Erreur base de données lors de l\'enregistrement.';
@@ -189,6 +187,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         }
     }
+}
+
+$canEditAdvancedHtml = adminUserCanEditRawArticleHtml();
+$initialEditorPayload = build_article_editor_initial_payload_from_html($fieldContent)['payload'];
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['blocks_json'])) {
+    $rawJson = trim((string) $_POST['blocks_json']);
+    if ($rawJson !== '') {
+        $rep = json_decode($rawJson, true);
+        if (is_array($rep) && isset($rep['blocks']) && is_array($rep['blocks'])) {
+            $initialEditorPayload = $rep;
+            if (! isset($initialEditorPayload['version'])) {
+                $initialEditorPayload['version'] = ARTICLE_BLOCKS_JSON_VERSION;
+            }
+        }
+    }
+}
+$fieldContentRaw = $fieldContent;
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && array_key_exists('content', $_POST)) {
+    $fieldContentRaw = (string) $_POST['content'];
 }
 
 $csrfToken = ensureAdminCsrfToken();
@@ -203,11 +220,12 @@ $csrfToken = ensureAdminCsrfToken();
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Roboto:wght@400;500&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Roboto:wght@400;500&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/style.css?v=20260209-1">
-    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/pages/admin-auth.css?v=20260413-1">
-    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/pages/admin-panel.css?v=20260416-1">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/style.css?v=<?= SAHP_ASSET_VERSION ?>">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/pages/admin-auth.css?v=<?= SAHP_ASSET_VERSION ?>">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/pages/admin-panel.css?v=<?= SAHP_ASSET_VERSION ?>">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/pages/admin-article-blocks.css?v=<?= SAHP_ASSET_VERSION ?>">
 </head>
 
 <body class="admin-panel-body">
@@ -225,133 +243,75 @@ $csrfToken = ensureAdminCsrfToken();
                 <p class="admin-panel-alert admin-panel-alert-error" role="alert"><?= htmlspecialchars($formErrorMessage, ENT_QUOTES, 'UTF-8') ?></p>
             <?php endif; ?>
 
-            <?php if ($lastUploadedImageUrl !== ''): ?>
-                <section class="admin-panel-upload-result" aria-labelledby="upload-result-title">
-                    <h2 id="upload-result-title" class="admin-panel-subtitle">Image insérée (copiez dans le contenu)</h2>
-                    <p class="admin-panel-help">URL générée :</p>
-                    <p class="admin-panel-code" id="last-uploaded-image-url"><?= htmlspecialchars($lastUploadedImageUrl, ENT_QUOTES, 'UTF-8') ?></p>
-                    <?php if ($lastUploadedHtmlExample !== ''): ?>
-                        <p class="admin-panel-help">Exemple HTML :</p>
-                        <pre class="admin-panel-pre" id="last-uploaded-html-example"><?= htmlspecialchars($lastUploadedHtmlExample, ENT_QUOTES, 'UTF-8') ?></pre>
-                    <?php endif; ?>
-                    <button type="button" class="admin-panel-secondary-btn" id="copy-image-url-btn">Copier l'URL</button>
-                    <?php if ($lastUploadedHtmlExample !== ''): ?>
-                        <button type="button" class="admin-panel-secondary-btn" id="copy-html-snippet-btn">Copier l'exemple HTML</button>
-                    <?php endif; ?>
-                </section>
-            <?php endif; ?>
-
-            <section class="admin-panel-section" aria-labelledby="content-image-upload-title">
-                <h2 id="content-image-upload-title" class="admin-panel-subtitle">Insérer une image dans le contenu</h2>
-                <p class="admin-panel-help">Téléversez une image (jpg, png, webp, max 2 Mo), puis copiez l'URL ou le fragment HTML dans le champ contenu.</p>
-                <form
-                    class="admin-panel-inline-form"
-                    method="post"
-                    action="<?= BASE_URL ?>/admin/articles/upload-content-image.php"
-                    enctype="multipart/form-data">
-                    <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($csrfToken, ENT_QUOTES, 'UTF-8') ?>">
-                    <div class="admin-field-group admin-field-group-inline">
-                        <label for="content_image_file">Fichier image</label>
-                        <input id="content_image_file" name="content_image_file" type="file" accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp" required>
-                    </div>
-                    <button type="submit" class="admin-panel-secondary-btn">Insérer image</button>
-                </form>
-            </section>
-
-            <form class="admin-panel-form" method="post" action="<?= BASE_URL ?>/admin/articles/create.php" enctype="multipart/form-data" novalidate>
+            <form class="admin-panel-form admin-article-blocks-form" method="post" action="<?= BASE_URL ?>/admin/articles/create.php" enctype="multipart/form-data" novalidate>
                 <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($csrfToken, ENT_QUOTES, 'UTF-8') ?>">
 
-                <div class="admin-field-group">
+                <div id="field-title" class="<?= htmlspecialchars(admin_article_field_group_class($formFieldErrors, 'title'), ENT_QUOTES, 'UTF-8') ?>">
                     <label for="title">Titre <span class="admin-required">*</span></label>
-                    <input id="title" name="title" type="text" maxlength="255" required value="<?= htmlspecialchars($fieldTitle, ENT_QUOTES, 'UTF-8') ?>">
+                    <input id="title" name="title" type="text" maxlength="255" required value="<?= htmlspecialchars($fieldTitle, ENT_QUOTES, 'UTF-8') ?>" <?= isset($formFieldErrors['title']) ? ' aria-invalid="true"' : '' ?>>
+                    <?= admin_article_field_error_notice($formFieldErrors, 'title') ?>
                 </div>
 
-                <div class="admin-field-group">
+                <div id="field-slug" class="<?= htmlspecialchars(admin_article_field_group_class($formFieldErrors, 'slug'), ENT_QUOTES, 'UTF-8') ?>">
                     <label for="slug">Slug (optionnel, généré depuis le titre si vide)</label>
-                    <input id="slug" name="slug" type="text" maxlength="255" placeholder="exemple-mon-article" value="<?= htmlspecialchars($fieldSlug, ENT_QUOTES, 'UTF-8') ?>">
+                    <input id="slug" name="slug" type="text" maxlength="255" placeholder="exemple-mon-article" value="<?= htmlspecialchars($fieldSlug, ENT_QUOTES, 'UTF-8') ?>" <?= isset($formFieldErrors['slug']) ? ' aria-invalid="true"' : '' ?>>
+                    <?= admin_article_field_error_notice($formFieldErrors, 'slug') ?>
                 </div>
 
-                <div class="admin-field-group">
+                <div id="field-excerpt" class="<?= htmlspecialchars(admin_article_field_group_class($formFieldErrors, 'excerpt'), ENT_QUOTES, 'UTF-8') ?>">
                     <label for="excerpt">Extrait</label>
-                    <textarea id="excerpt" name="excerpt" rows="4" class="admin-textarea"><?= htmlspecialchars($fieldExcerpt, ENT_QUOTES, 'UTF-8') ?></textarea>
+                    <textarea id="excerpt" name="excerpt" rows="4" class="admin-textarea" <?= isset($formFieldErrors['excerpt']) ? ' aria-invalid="true"' : '' ?>><?= htmlspecialchars($fieldExcerpt, ENT_QUOTES, 'UTF-8') ?></textarea>
+                    <?= admin_article_field_error_notice($formFieldErrors, 'excerpt') ?>
                 </div>
 
-                <div class="admin-field-group">
-                    <label for="content">Contenu (HTML autorise) <span class="admin-required">*</span></label>
-                    <textarea id="content" name="content" rows="16" class="admin-textarea admin-textarea-code" required><?= htmlspecialchars($fieldContent, ENT_QUOTES, 'UTF-8') ?></textarea>
+                <div
+                    id="field-content"
+                    class="<?= htmlspecialchars(trim(admin_article_field_group_class($formFieldErrors, 'content') . (!empty($formFieldErrors['content']) ? ' article-editor-visual-error' : '')), ENT_QUOTES, 'UTF-8') ?>"
+                >
+                    <p><strong>Contenu de l’article <span class="admin-required">*</span></strong></p>
+                    <p class="admin-field-hint">Composez avec des blocs (texte, titres, images, listes, encadré). Aucun code HTML n’est nécessaire.</p>
+                    <?= admin_article_field_error_notice($formFieldErrors, 'content') ?>
+                    <?php
+                    require __DIR__ . '/../includes/article_block_editor_section.php';
+                    ?>
                 </div>
 
-                <div class="admin-field-group">
-                    <label for="cover_image_url">Image de couverture (URL)</label>
-                    <input id="cover_image_url" name="cover_image_url" type="url" maxlength="255" placeholder="https://..." value="<?= htmlspecialchars($fieldCoverImageUrl, ENT_QUOTES, 'UTF-8') ?>">
+                <div id="field-cover-image" class="<?= htmlspecialchars(admin_article_field_group_class($formFieldErrors, 'cover_image_file'), ENT_QUOTES, 'UTF-8') ?>">
+                    <label for="cover_image_file">Image de couverture</label>
+                    <input id="cover_image_file" name="cover_image_file" type="file" accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp" <?= isset($formFieldErrors['cover_image_file']) ? ' aria-invalid="true"' : '' ?>>
+                    <p class="admin-field-hint">JPEG, PNG ou WebP depuis votre ordinateur (optionnel).</p>
+                    <?= admin_article_field_error_notice($formFieldErrors, 'cover_image_file') ?>
                 </div>
 
-                <div class="admin-field-group">
-                    <label for="cover_image_file">Image de couverture (fichier, prioritaire sur l'URL)</label>
-                    <input id="cover_image_file" name="cover_image_file" type="file" accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp">
-                </div>
-
-                <div class="admin-field-group">
+                <div id="field-category" class="<?= htmlspecialchars(admin_article_field_group_class($formFieldErrors, 'category'), ENT_QUOTES, 'UTF-8') ?>">
                     <label for="category">Catégorie</label>
-                    <input id="category" name="category" type="text" maxlength="120" value="<?= htmlspecialchars($fieldCategory, ENT_QUOTES, 'UTF-8') ?>">
+                    <input id="category" name="category" type="text" maxlength="120" value="<?= htmlspecialchars($fieldCategory, ENT_QUOTES, 'UTF-8') ?>" <?= isset($formFieldErrors['category']) ? ' aria-invalid="true"' : '' ?>>
+                    <?= admin_article_field_error_notice($formFieldErrors, 'category') ?>
                 </div>
 
-                <div class="admin-field-group">
+                <div id="field-tags" class="<?= htmlspecialchars(admin_article_field_group_class($formFieldErrors, 'tags'), ENT_QUOTES, 'UTF-8') ?>">
                     <label for="tags">Tags (séparés par des virgules)</label>
-                    <input id="tags" name="tags" type="text" placeholder="curage, urgence, debouchage" value="<?= htmlspecialchars($fieldTags, ENT_QUOTES, 'UTF-8') ?>">
+                    <input id="tags" name="tags" type="text" placeholder="curage, urgence, debouchage" value="<?= htmlspecialchars($fieldTags, ENT_QUOTES, 'UTF-8') ?>" <?= isset($formFieldErrors['tags']) ? ' aria-invalid="true"' : '' ?>>
+                    <?= admin_article_field_error_notice($formFieldErrors, 'tags') ?>
                 </div>
 
                 <div class="admin-field-group admin-field-checkbox">
                     <input id="is_published" name="is_published" type="checkbox" value="1" <?= $fieldIsPublished ? 'checked' : '' ?>>
-                    <label for="is_published">Publier l'article</label>
+                    <label for="is_published">Publier l’article</label>
+                    <p class="admin-field-hint">Sans publication, l’article reste en brouillon : visible ici dans l’admin, mais pas sur « Paroles de pro », pas sur les cartes du site ni sur la page individuelle publique.</p>
                 </div>
 
-                <div class="admin-field-group">
+                <div id="field-published-at" class="<?= htmlspecialchars(admin_article_field_group_class($formFieldErrors, 'published_at'), ENT_QUOTES, 'UTF-8') ?>">
                     <label for="published_at">Date de publication</label>
-                    <input id="published_at" name="published_at" type="datetime-local" value="<?= htmlspecialchars($fieldPublishedAt, ENT_QUOTES, 'UTF-8') ?>">
+                    <input id="published_at" name="published_at" type="datetime-local" value="<?= htmlspecialchars($fieldPublishedAt, ENT_QUOTES, 'UTF-8') ?>" <?= isset($formFieldErrors['published_at']) ? ' aria-invalid="true"' : '' ?>>
                     <p class="admin-field-hint">Si publié sans date, la date du jour est utilisée. Si non publié, la date est ignorée.</p>
+                    <?= admin_article_field_error_notice($formFieldErrors, 'published_at') ?>
                 </div>
 
-                <button type="submit" class="admin-auth-submit">Enregistrer l'article</button>
+                <button type="submit" class="admin-auth-submit" id="article-form-submit">Enregistrer l'article</button>
             </form>
         </div>
     </main>
-
-    <?php if ($lastUploadedImageUrl !== ''): ?>
-        <script>
-            (function() {
-                var urlEl = document.getElementById('last-uploaded-image-url');
-                var htmlEl = document.getElementById('last-uploaded-html-example');
-                var copyUrlBtn = document.getElementById('copy-image-url-btn');
-                var copyHtmlBtn = document.getElementById('copy-html-snippet-btn');
-
-                function copyText(text) {
-                    if (!text) return;
-                    if (navigator.clipboard && navigator.clipboard.writeText) {
-                        navigator.clipboard.writeText(text);
-                    } else {
-                        var ta = document.createElement('textarea');
-                        ta.value = text;
-                        document.body.appendChild(ta);
-                        ta.select();
-                        document.execCommand('copy');
-                        document.body.removeChild(ta);
-                    }
-                }
-
-                if (copyUrlBtn && urlEl) {
-                    copyUrlBtn.addEventListener('click', function() {
-                        copyText(urlEl.textContent || '');
-                    });
-                }
-                if (copyHtmlBtn && htmlEl) {
-                    copyHtmlBtn.addEventListener('click', function() {
-                        copyText(htmlEl.textContent || '');
-                    });
-                }
-            })();
-        </script>
-    <?php endif; ?>
 </body>
 
 </html>
