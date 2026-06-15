@@ -26,22 +26,81 @@ function sahp_needs_session(): bool
     return false;
 }
 
-// Charger les variables d'environnement depuis .env (une seule fois)
-if (!isset($_ENV['SMTP_HOST'])) {
-    $envPath = dirname(__DIR__, 2) . '/.env';
-    if (file_exists($envPath)) {
+/**
+ * Charge le fichier .env (plusieurs emplacements selon déploiement OVH / WAMP).
+ */
+function sahp_load_dotenv(): void
+{
+    static $loaded = false;
+    if ($loaded) {
+        return;
+    }
+    $loaded = true;
+
+    $projectRoot = dirname(__DIR__, 2);
+    $candidates = [
+        $projectRoot . DIRECTORY_SEPARATOR . '.env',
+        dirname($projectRoot) . DIRECTORY_SEPARATOR . '.env',
+        dirname(__DIR__) . DIRECTORY_SEPARATOR . 'env.local.php',
+    ];
+
+    $documentRoot = (string) ($_SERVER['DOCUMENT_ROOT'] ?? '');
+    if ($documentRoot !== '') {
+        $documentRoot = rtrim(str_replace(['/', '\\'], DIRECTORY_SEPARATOR, $documentRoot), DIRECTORY_SEPARATOR);
+        $candidates[] = $documentRoot . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '.env';
+        $candidates[] = $documentRoot . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '.env';
+    }
+
+    foreach ($candidates as $envPath) {
+        if (! is_readable($envPath)) {
+            continue;
+        }
+
+        if (str_ends_with(strtolower($envPath), '.php')) {
+            /** @noinspection PhpIncludeInspection */
+            require $envPath;
+
+            if (! defined('SAHP_DOTENV_LOADED_PATH')) {
+                define('SAHP_DOTENV_LOADED_PATH', $envPath);
+            }
+
+            return;
+        }
+
         $lines = file($envPath, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+        if ($lines === false) {
+            continue;
+        }
+
         foreach ($lines as $line) {
-            if (str_starts_with(trim($line), '#')) {
+            $line = trim($line);
+            if ($line === '' || str_starts_with($line, '#')) {
                 continue;
             }
-            if (strpos($line, '=') !== false) {
-                [$key, $value] = explode('=', $line, 2);
-                $_ENV[trim($key)] = trim($value);
+            if (strpos($line, '=') === false) {
+                continue;
             }
+            [$key, $value] = explode('=', $line, 2);
+            $key = trim($key);
+            $value = trim($value);
+            if ($value !== '' && (
+                (str_starts_with($value, '"') && str_ends_with($value, '"'))
+                || (str_starts_with($value, "'") && str_ends_with($value, "'"))
+            )) {
+                $value = substr($value, 1, -1);
+            }
+            $_ENV[$key] = $value;
         }
+
+        if (! defined('SAHP_DOTENV_LOADED_PATH')) {
+            define('SAHP_DOTENV_LOADED_PATH', $envPath);
+        }
+
+        return;
     }
 }
+
+sahp_load_dotenv();
 
 /*
 |--------------------------------------------------------------------------
@@ -73,19 +132,42 @@ define(
 |--------------------------------------------------------------------------
 | ENVIRONNEMENT (défini avant session pour cookies sécurisés)
 |--------------------------------------------------------------------------
+|
+| APP_ENV = true  → développement local (BASE_URL /sahp/public)
+| APP_ENV = false → production (BASE_URL vide, assets à la racine du site)
+|
+| Production si :
+|   - APP_ENV=production dans .env, ou
+|   - nom de domaine sahp-idf.fr (hébergement OVH)
+| Développement si :
+|   - APP_ENV=development dans .env, ou
+|   - localhost / 127.0.0.1
+|
 */
 
-define('APP_ENV', true);
+$sahpHttpHost = preg_replace('/:\d+$/', '', (string) ($_SERVER['HTTP_HOST'] ?? ''));
+$sahpEnvMode = strtolower(trim((string) ($_ENV['APP_ENV'] ?? '')));
+$sahpIsLocalHost = $sahpHttpHost === ''
+    || preg_match('#^(localhost|127\.0\.0\.1|\[::1\])$#i', $sahpHttpHost) === 1;
 
-/*
-|--------------------------------------------------------------------------
-| BASE URL
-|--------------------------------------------------------------------------
-*/
-if (APP_ENV === true) {
-    define('BASE_URL', '/sahp/public');
+// Forcer les chemins publics depuis .env (ex. SAHP_BASE_URL= vide en production)
+if (array_key_exists('SAHP_BASE_URL', $_ENV)) {
+    $sahpBaseUrl = rtrim(trim((string) $_ENV['SAHP_BASE_URL']), '/');
+    define('APP_ENV', $sahpBaseUrl !== '');
+    define('BASE_URL', $sahpBaseUrl);
 } else {
-    define('BASE_URL', '');
+    if ($sahpEnvMode === 'production') {
+        $sahpIsProduction = true;
+    } elseif ($sahpEnvMode === 'development' || $sahpEnvMode === 'local') {
+        $sahpIsProduction = false;
+    } elseif (preg_match('#(^|\.)sahp-idf\.fr$#i', $sahpHttpHost) === 1) {
+        $sahpIsProduction = true;
+    } else {
+        $sahpIsProduction = ! $sahpIsLocalHost;
+    }
+
+    define('APP_ENV', ! $sahpIsProduction);
+    define('BASE_URL', $sahpIsProduction ? '' : '/sahp/public');
 }
 
 // Démarrer la session seulement si nécessaire (cookies sécurisés en HTTPS)

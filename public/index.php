@@ -3,12 +3,18 @@
 declare(strict_types=1);
 
 require_once __DIR__ . '/../app/config/config.php';
+require_once APP_PATH . '/helpers/seo.php';
 
 // URL demandée (on nettoie /sahp et /public)
 $request = trim(
     str_replace(['/sahp', '/public'], '', parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)),
     '/'
 );
+
+// Contexte SEO partagé avec le layout (canonical, Open Graph, Twitter)
+$canonicalPath = null;
+$ogImage = sahp_seo_default_image();
+$ogType = 'website';
 
 // ✅ ROUTES statiques
 $routes = [
@@ -50,25 +56,36 @@ if (preg_match('#^paroles-de-pro/([a-z0-9-]+)$#i', $request, $matches)) {
     if ($blogArticlePost === null) {
         http_response_code(404);
         $view  = VIEWS_PATH . '/pages/404.php';
-        $title = 'Page introuvable | SAHP';
+        $title = 'Page introuvable (404) | SAHP Assainissement IDF';
     } else {
         $view  = VIEWS_PATH . '/blog/show.php';
-        $title = ($blogArticlePost['title'] ?? 'Paroles de Pros') . ' | SAHP Assainissement';
+        $title = blog_resolve_page_title($blogArticlePost);
+        $meta_description = blog_resolve_meta_description($blogArticlePost);
+        $canonicalPath = 'paroles-de-pro/' . $slug;
+        $ogType = 'article';
     }
 }
 /* =====================================================
    ROUTES CLASSIQUES
-===================================================== */
-elseif (array_key_exists($request, $routes)) {
+===================================================== */ elseif (array_key_exists($request, $routes)) {
     $view  = VIEWS_PATH . '/pages/' . $routes[$request];
-    $title = $request === ''
-    ? "Accueil | SAHP Assainissement"
-    : ucfirst(str_replace('-', ' ', $request)) . ' | SAHP Assainissement';
+    $canonicalPath = $request;
+
+    $seo = sahp_seo_for_path($request);
+    if ($seo !== null) {
+        $title = $seo['title'];
+        $meta_description = $seo['description'];
+        $ogImage = $seo['image'] ?? sahp_seo_default_image();
+    } else {
+        // Repli si une route n'a pas (encore) d'entrée SEO dédiée
+        $title = $request === ''
+            ? 'Accueil | SAHP Assainissement'
+            : ucfirst(str_replace('-', ' ', $request)) . ' | SAHP Assainissement';
+    }
 }
 /* =====================================================
    404
-===================================================== */
-else {
+===================================================== */ else {
     http_response_code(404);
     $view  = VIEWS_PATH . '/pages/404.php';
     $title = 'Page introuvable | SAHP';

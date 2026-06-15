@@ -228,6 +228,57 @@
   font-weight: 800;
 }
 
+/* Tableau article */
+.pp-body .blog-block-table-wrap {
+  margin: 20px 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.pp-body .blog-block-table {
+  width: 100%;
+  min-width: 280px;
+  border-collapse: collapse;
+  font-size: 15px;
+  line-height: 1.5;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(15, 76, 129, 0.08);
+}
+
+.pp-body .blog-block-table caption {
+  caption-side: top;
+  text-align: left;
+  font-weight: 800;
+  color: #0f4c81;
+  padding: 0 0 10px;
+  font-size: 16px;
+}
+
+.pp-body .blog-block-table thead th {
+  background: rgba(15, 76, 129, 0.1);
+  color: #0f4c81;
+  font-weight: 700;
+  text-align: left;
+  padding: 12px 14px;
+  border-bottom: 2px solid rgba(15, 76, 129, 0.18);
+}
+
+.pp-body .blog-block-table tbody td {
+  padding: 11px 14px;
+  border-bottom: 1px solid rgba(15, 76, 129, 0.1);
+  vertical-align: top;
+}
+
+.pp-body .blog-block-table tbody tr:nth-child(even) td {
+  background: rgba(15, 76, 129, 0.03);
+}
+
+.pp-body .blog-block-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
 /* Bloc encadré (CTA fin d’article) : doit rester visible sur fond carte blanche */
 .pp-body .blog-block-cta {
   margin: 24px 0;

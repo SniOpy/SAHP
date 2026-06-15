@@ -95,6 +95,32 @@
       </a>
     </div>
 
+    <?php
+    require_once APP_PATH . '/helpers/faq.php';
+    sahp_render_faq([
+      [
+        'q' => 'En combien de temps arrivez-vous en cas d’urgence ?',
+        'a' => '<p>Nous dépêchons l’équipe et le camion hydrocureur les plus proches pour réduire le délai au maximum. Le temps d’arrivée dépend de votre commune en Île-de-France et du trafic, mais l’urgence est traitée en priorité, de jour comme de nuit. Un premier diagnostic se fait souvent dès l’appel.</p>',
+      ],
+      [
+        'q' => 'Que faire en attendant l’intervention ?',
+        'a' => '<p>Coupez l’arrivée d’eau si vous le pouvez, n’utilisez plus les sanitaires concernés et mettez à l’abri ce qui pourrait être touché par un débordement. Surtout, évitez les produits chimiques : ils aggravent souvent la situation et rendent l’intervention plus délicate.</p>',
+      ],
+      [
+        'q' => 'Intervenez-vous la nuit, le week-end et les jours fériés ?',
+        'a' => '<p>Oui, notre service d’urgence fonctionne 24h/24 et 7j/7, week-ends et jours fériés compris. Une urgence ne prévient jamais : plus l’intervention est rapide, plus les dégâts (et la facture de remise en état) sont limités.</p>',
+      ],
+      [
+        'q' => 'Les tarifs d’urgence sont-ils annoncés à l’avance ?',
+        'a' => '<p>Oui. Nos techniciens vous expliquent la solution et le coût avant toute intervention lourde. L’urgence ne doit pas rimer avec mauvaise surprise. Pour les besoins non urgents, vous pouvez aussi <a href="' . BASE_URL . '/devis">demander un devis</a> tranquillement en ligne.</p>',
+      ],
+      [
+        'q' => 'Comment éviter que l’urgence se reproduise ?',
+        'a' => '<p>Après l’intervention, on vous propose si besoin une solution préventive : un <a href="' . BASE_URL . '/curage">curage</a> ou un contrôle par <a href="' . BASE_URL . '/inspection">inspection vidéo</a>. Un entretien régulier évite jusqu’à 80 % des urgences.</p>',
+      ],
+    ]);
+    ?>
+
     </div>
   </div>
 

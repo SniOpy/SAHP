@@ -29,11 +29,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 header('Location: ' . BASE_URL . '/admin/index.php');
                 exit;
             }
-        } catch (Throwable $exception) {
-            // Message volontairement generique pour ne pas exposer la configuration.
-        }
 
-        $errorMessage = 'Identifiants invalides.';
+            $errorMessage = 'Identifiant ou mot de passe incorrect.';
+        } catch (Throwable $exception) {
+            error_log('[SAHP admin login] ' . $exception->getMessage());
+            $detail = $exception->getMessage();
+            $errorMessage = 'Connexion à la base impossible. '
+                . 'Vérifiez .env (racine du projet, même niveau que app/) '
+                . 'ou créez app/config/env.local.php (voir env.local.php.example).';
+            if (APP_ENV) {
+                $errorMessage .= ' Détail : ' . $detail;
+            }
+        }
     }
 }
 ?>

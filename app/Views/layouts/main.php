@@ -2,38 +2,40 @@
 // Déterminer la page actuelle pour charger seulement les CSS nécessaires
 require_once __DIR__ . '/../../helpers/performance.php';
 
-$currentPage = '';
-if (isset($view)) {
-  $viewPath = str_replace(VIEWS_PATH . '/', '', $view);
-  $viewBasename = basename($viewPath, '.php');
-  $viewDir = dirname($viewPath);
+if (!isset($view)) {
+  $view = VIEWS_PATH . '/pages/404.php';
+}
 
-  // Mapper les vues aux noms de pages
-  if ($viewDir === 'blog' && $viewBasename === 'show') {
-    $currentPage = 'blog_show';
-  } elseif ($viewDir === 'pages') {
-    $pageMap = [
-      'accueil' => 'accueil',
-      'contact' => 'contact',
-      'devis' => 'devis',
-      'about' => 'about',
-      'curage' => 'curage',
-      'pompage' => 'pompage',
-      'inspection' => 'inspection',
-      'debouchage' => 'debouchage',
-      'urgence' => 'urgence',
-      'maintenance-pro' => 'maintenance-pro',
-      'paroles-de-pro' => 'paroles-de-pro',
-      'tarifs' => 'tarifs',
-      'mentions' => 'mentions',
-      'cgps' => 'cgps',
-      'pc' => 'pc',
-      'gestion-cookies' => 'gestion-cookies',
-      'plansite' => 'plansite',
-      '404' => '404',
-    ];
-    $currentPage = $pageMap[$viewBasename] ?? '';
-  }
+$currentPage = '';
+$viewPath = str_replace(VIEWS_PATH . '/', '', $view);
+$viewBasename = basename($viewPath, '.php');
+$viewDir = dirname($viewPath);
+
+// Mapper les vues aux noms de pages
+if ($viewDir === 'blog' && $viewBasename === 'show') {
+  $currentPage = 'blog_show';
+} elseif ($viewDir === 'pages') {
+  $pageMap = [
+    'accueil' => 'accueil',
+    'contact' => 'contact',
+    'devis' => 'devis',
+    'about' => 'about',
+    'curage' => 'curage',
+    'pompage' => 'pompage',
+    'inspection' => 'inspection',
+    'debouchage' => 'debouchage',
+    'urgence' => 'urgence',
+    'maintenance-pro' => 'maintenance-pro',
+    'paroles-de-pro' => 'paroles-de-pro',
+    'tarifs' => 'tarifs',
+    'mentions' => 'mentions',
+    'cgps' => 'cgps',
+    'pc' => 'pc',
+    'gestion-cookies' => 'gestion-cookies',
+    'plansite' => 'plansite',
+    '404' => '404',
+  ];
+  $currentPage = $pageMap[$viewBasename] ?? '';
 }
 
 $cssFiles = get_css_files_for_page($currentPage);
@@ -42,11 +44,51 @@ $cssFiles = get_css_files_for_page($currentPage);
 <html lang="fr">
 
 <head>
+  <!-- Google Tag Manager -->
+  <script>
+    (function(w, d, s, l, i) {
+      w[l] = w[l] || [];
+      w[l].push({
+        'gtm.start': new Date().getTime(),
+        event: 'gtm.js'
+      });
+      var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = l != 'dataLayer' ? '&l=' + l : '';
+      j.async = true;
+      j.src =
+        'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+      f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-MGXQL5DS');
+  </script>
+  <!-- End Google Tag Manager -->
   <meta charset="UTF-8" />
-  <title><?= $title ?? 'SAHP Assainissement' ?></title>
+  <title><?= htmlspecialchars((string) ($title ?? 'SAHP Assainissement'), ENT_QUOTES, 'UTF-8') ?></title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="SAHP, entreprise d'assainissement en Île-de-France : débouchage, curage, vidange, pompage et interventions d'urgence 24h/7j. Devis rapide.">
+  <?php
+  require_once APP_PATH . '/helpers/seo.php';
+  $layoutMetaDescription = sahp_truncate_meta_description(
+    $meta_description
+      ?? "SAHP, entreprise d'assainissement en Île-de-France : débouchage, curage, vidange, pompage et interventions d'urgence 24h/7j. Devis rapide."
+  );
+  ?>
+  <meta name="description" content="<?= htmlspecialchars($layoutMetaDescription, ENT_QUOTES, 'UTF-8') ?>">
   <meta name="cookie-consent-version" content="1">
+
+  <?php
+  // SEO : canonical + Open Graph + Twitter Card
+  $seoCanonicalPath = $canonicalPath ?? (($viewBasename === '404') ? null : ($request ?? null));
+  sahp_render_seo_tags([
+    'title' => (string) ($title ?? 'SAHP Assainissement'),
+    'description' => $layoutMetaDescription,
+    'canonical' => sahp_seo_canonical_url($seoCanonicalPath),
+    'image' => $ogImage ?? sahp_seo_default_image(),
+    'type' => $ogType ?? 'website',
+  ]);
+  if ($currentPage === 'accueil') {
+    sahp_render_local_business_schema();
+  }
+  ?>
 
 
 
@@ -97,6 +139,19 @@ $cssFiles = get_css_files_for_page($currentPage);
     });
     gtag('set', 'ads_data_redaction', true);
   </script>
+  <!-- Clarity Analytics -->
+  <script type="text/javascript">
+    (function(c, l, a, r, i, t, y) {
+      c[a] = c[a] || function() {
+        (c[a].q = c[a].q || []).push(arguments)
+      };
+      t = l.createElement(r);
+      t.async = 1;
+      t.src = "https://www.clarity.ms/tag/" + i;
+      y = l.getElementsByTagName(r)[0];
+      y.parentNode.insertBefore(t, y);
+    })(window, document, "clarity", "script", "wrlma1ea2i");
+  </script>
 
   <!-- JavaScript chargé en defer pour ne pas bloquer le rendu -->
   <script src="<?= BASE_URL ?>/assets/js/script.js?v=<?= SAHP_ASSET_VERSION ?>" defer></script>
@@ -104,6 +159,10 @@ $cssFiles = get_css_files_for_page($currentPage);
 </head>
 
 <body id="top">
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MGXQL5DS"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
 
   <header class="navbar card-glass">
     <?php require VIEWS_PATH . '/layouts/header.php'; ?>

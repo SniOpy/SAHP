@@ -72,7 +72,7 @@
 
     <article class="sahp-feature">
       <div class="sahp-feature-icon">
-        <img src="<?= BASE_URL ?>/assets/img/about/VALIDE.png" alt="">
+        <img src="<?= BASE_URL ?>/assets/img/about/VALIDE.png" alt="Icône sécurité et conformité des interventions SAHP">
       </div>
       <h3>Sécurité & conformité</h3>
       <p>Interventions conformes aux normes et règles de sécurité.</p>
@@ -80,7 +80,7 @@
 
     <article class="sahp-feature">
       <div class="sahp-feature-icon">
-        <img src="<?= BASE_URL ?>/assets/img/about/HORLOGE.png" alt="">
+        <img src="<?= BASE_URL ?>/assets/img/about/HORLOGE.png" alt="Icône réactivité et intervention rapide SAHP">
       </div>
       <h3>Réactivité</h3>
       <p>Une équipe locale capable d’intervenir rapidement.</p>
@@ -88,7 +88,7 @@
 
     <article class="sahp-feature">
       <div class="sahp-feature-icon">
-        <img src="<?= BASE_URL ?>/assets/img/about/light.png" alt="">
+        <img src="<?= BASE_URL ?>/assets/img/about/light.png" alt="Icône expertise terrain des techniciens SAHP">
       </div>
       <h3>Expertise terrain</h3>
       <p>Techniciens qualifiés, formés et expérimentés.</p>

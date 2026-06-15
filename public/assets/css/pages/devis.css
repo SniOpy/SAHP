@@ -1,10 +1,10 @@
 /* =====================================================
-   DEVIS – SAHP
+   DEVIS – SAHP (Landing Page orientée conversion)
    ===================================================== */
 
 #devis-sahp {
   background: linear-gradient(90deg, #4080b7 0%, #5ed0c2 100%);
-  padding: 90px 6%;
+  padding: 32px 6% 70px;
   color: #ffffff;
 }
 
@@ -13,12 +13,88 @@
 ============================ */
 
 .devis-container {
-  max-width: 1350px;
+  max-width: 1200px;
   margin: 0 auto;
+}
+
+/* ============================
+   EN-TÊTE LANDING PAGE
+============================ */
+
+.devis-header {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 26px;
+}
+
+.devis-badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 999px;
+  padding: 7px 16px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.devis-header h1 {
+  font-size: 32px;
+  line-height: 1.18;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.devis-subtitle {
+  font-size: 16px;
+  line-height: 1.55;
+  opacity: 0.95;
+  margin-bottom: 18px;
+}
+
+.devis-trust {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px 26px;
+  padding: 0;
+  margin: 34px auto 0;
+}
+
+.devis-trust li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.devis-trust-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #0f4c81;
+  font-size: 13px;
+  font-weight: 900;
+  flex-shrink: 0;
+}
+
+/* ============================
+   GRILLE FORM + APPEL
+============================ */
+
+.devis-grid {
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
-  gap: 40px;
-  align-items: center;
+  gap: 32px;
+  align-items: start;
 }
 
 /* ============================
@@ -27,21 +103,25 @@
 
 .devis-form {
   background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.22);
   border-radius: 26px;
-  padding: 45px 40px;
+  padding: 40px 38px;
   backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
 }
 
 .devis-form h2 {
-  font-size: 30px;
-  margin-bottom: 30px;
-  font-weight: 700;
+  font-size: 27px;
+  margin-bottom: 24px;
+  font-weight: 800;
 }
 
 .devis-form h2 span {
-  font-size: 16px;
-  font-weight: 400;
-  opacity: 0.9;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 600;
+  opacity: 0.85;
+  margin-left: 4px;
 }
 
 /* FORM */
@@ -51,57 +131,79 @@
   gap: 16px;
 }
 
-.form-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 15px;
+.devis-field {
+  display: flex;
+  flex-direction: column;
 }
 
 .devis-form input,
 .devis-form select,
 .devis-form textarea {
-  background: rgba(255, 255, 255, 0.25);
-  border: none;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.92);
+  border: 2px solid transparent;
   border-radius: 14px;
   padding: 16px 18px;
   font-size: 15px;
-  color: #ffffff;
+  font-family: 'Roboto', sans-serif;
+  color: #1f2d3d;
   outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .devis-form select {
   appearance: none;
   cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%230f4c81' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 18px center;
+  padding-right: 44px;
 }
 
 .devis-form input::placeholder,
 .devis-form textarea::placeholder {
-  color: rgba(255, 255, 255, 0.75);
+  color: #6b7884;
+}
+
+.devis-form input:focus,
+.devis-form select:focus,
+.devis-form textarea:focus {
+  border-color: #0f4c81;
+  box-shadow: 0 0 0 3px rgba(15, 76, 129, 0.18);
 }
 
 .devis-form textarea {
   resize: vertical;
-  min-height: 130px;
+  min-height: 90px;
 }
 
 .devis-form button {
-  margin-top: 10px;
-  padding: 16px;
+  margin-top: 6px;
+  padding: 17px;
   border-radius: 34px;
   border: none;
-  background: #ffffff;
-  color: #0f4c81;
+  background: #0f4c81;
+  color: #ffffff;
+  font-family: 'Montserrat', sans-serif;
   font-size: 16px;
   font-weight: 800;
+  letter-spacing: 0.3px;
   cursor: pointer;
-  transition:
-    transform 0.2s ease,
-    background 0.2s ease;
+  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 10px 24px rgba(15, 76, 129, 0.35);
 }
 
 .devis-form button:hover {
   transform: translateY(-2px);
-  background: #e6f6f3;
+  background: #0d3d6b;
+  box-shadow: 0 12px 28px rgba(15, 76, 129, 0.45);
+}
+
+.devis-form-reassure {
+  margin-top: 4px;
+  text-align: center;
+  font-size: 13px;
+  opacity: 0.9;
 }
 
 /* ============================
@@ -131,17 +233,16 @@
 
 .error-message {
   display: block;
-  color: #ffcdd2;
+  color: #ffe1e1;
   font-size: 13px;
-  margin-top: 4px;
-  margin-bottom: 8px;
+  margin-top: 6px;
 }
 
 .devis-form input.error,
 .devis-form select.error,
 .devis-form textarea.error {
-  border: 2px solid rgba(244, 67, 54, 0.6);
-  background: rgba(244, 67, 54, 0.15);
+  border-color: rgba(244, 67, 54, 0.85);
+  background: #fff2f2;
 }
 
 /* ============================
@@ -150,37 +251,96 @@
 
 .devis-call {
   background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: 26px;
-  padding: 45px 35px;
+  padding: 40px 34px;
   text-align: center;
+  position: sticky;
+  top: 24px;
+}
+
+.devis-call-badge {
+  display: inline-block;
+  background: #ffffff;
+  color: #0f4c81;
+  border-radius: 999px;
+  padding: 6px 16px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
 }
 
 .devis-call h3 {
-  font-size: 24px;
+  font-size: 23px;
   font-weight: 800;
-  margin-bottom: 15px;
+  margin-bottom: 14px;
+  line-height: 1.25;
 }
 
 .devis-call p {
-  font-size: 16px;
+  font-size: 15.5px;
   line-height: 1.6;
   opacity: 0.95;
-  margin-bottom: 25px;
+  margin-bottom: 22px;
 }
 
 .call-phone {
   display: inline-block;
-  font-size: 26px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 27px;
   font-weight: 900;
   color: #ffffff;
   text-decoration: none;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
+  transition: transform 0.2s ease;
+}
+
+.call-phone:hover {
+  transform: scale(1.03);
 }
 
 .call-note {
   display: block;
   font-size: 14px;
   opacity: 0.9;
+  margin-bottom: 26px;
+}
+
+.devis-call-points {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+  padding-top: 24px;
+}
+
+.devis-call-points li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14.5px;
+  line-height: 1.45;
+}
+
+.devis-call-check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #0f4c81;
+  font-size: 12px;
+  font-weight: 900;
+  flex-shrink: 0;
+  margin-top: 1px;
 }
 
 /* ============================
@@ -188,16 +348,44 @@
 ============================ */
 
 @media (max-width: 900px) {
-  .devis-container {
+  #devis-sahp {
+    padding: 24px 5% 60px;
+  }
+
+  .devis-header {
+    margin-bottom: 22px;
+  }
+
+  .devis-header h1 {
+    font-size: 27px;
+  }
+
+  .devis-grid {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 26px;
   }
 
   .devis-call {
+    position: static;
     order: -1;
   }
+}
 
-  .form-row {
-    grid-template-columns: 1fr;
+@media (max-width: 540px) {
+  .devis-form,
+  .devis-call {
+    padding: 30px 22px;
+  }
+
+  .devis-header h1 {
+    font-size: 26px;
+  }
+
+  .devis-trust {
+    gap: 10px 18px;
+  }
+
+  .call-phone {
+    font-size: 24px;
   }
 }

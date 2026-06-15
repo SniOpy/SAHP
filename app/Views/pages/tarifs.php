@@ -1,4 +1,3 @@
-<?php $title = "Tarifs"; ?>
 
 <section class="pricing-section tarifs-section">
   <div class="pricing-container">

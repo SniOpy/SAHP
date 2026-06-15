@@ -48,6 +48,8 @@ if (!empty($_GET['updated'])) {
 $fieldTitle = (string) ($loadedArticle['title'] ?? '');
 $fieldSlug = (string) ($loadedArticle['slug'] ?? '');
 $fieldExcerpt = (string) ($loadedArticle['excerpt'] ?? '');
+$fieldMetaTitle = (string) ($loadedArticle['meta_title'] ?? '');
+$fieldMetaDescription = (string) ($loadedArticle['meta_description'] ?? '');
 $fieldContent = (string) ($loadedArticle['content'] ?? '');
 /** Valeur persistée en base (aperçu + conservation si aucun nouveau fichier à l'enregistrement). */
 $currentCoverImageStored = trim((string) ($loadedArticle['cover_image'] ?? ''));
@@ -89,6 +91,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $fieldTitle = trim((string) ($_POST['title'] ?? ''));
             $fieldSlug = trim((string) ($_POST['slug'] ?? ''));
             $fieldExcerpt = (string) ($_POST['excerpt'] ?? '');
+            $fieldMetaTitle = trim((string) ($_POST['meta_title'] ?? ''));
+            $fieldMetaDescription = trim((string) ($_POST['meta_description'] ?? ''));
             $fieldCategory = trim((string) ($_POST['category'] ?? ''));
             $fieldTags = trim((string) ($_POST['tags'] ?? ''));
             $fieldIsPublished = isset($_POST['is_published']);
@@ -102,8 +106,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $formFieldErrors['title'] = 'Indiquez un titre.';
             }
 
-            $canEditAdvancedHtml = adminUserCanEditRawArticleHtml();
-            $contentResolution = resolve_raw_article_html_from_editor_submission($_POST, $canEditAdvancedHtml);
+            $contentResolution = resolve_raw_article_html_from_editor_submission($_POST, true);
             $fieldContent = $contentResolution['html'];
             if ($contentResolution['error'] !== null) {
                 $validationErrors[] = $contentResolution['error'];
@@ -121,6 +124,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $validationErrors[] = 'L\'extrait est trop long.';
                 $formFieldErrors['excerpt'] = 'Raccourcissez l’extrait (limite technique).';
             }
+
+            validateArticleSeoFields($fieldMetaTitle, $fieldMetaDescription, $validationErrors, $formFieldErrors);
+            $sanitizedMetaTitle = sanitizeArticleMetaTitle($fieldMetaTitle);
+            $sanitizedMetaDescription = sanitizeArticleMetaDescription($fieldMetaDescription);
 
             $sanitizedContent = sanitizeArticleContentHtml($fieldContent);
             if (trim($sanitizedContent) === '') {
@@ -166,6 +173,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
 
             $coverImageStoredValue = $currentCoverImageStored !== '' ? $currentCoverImageStored : null;
+            if (! empty($_POST['remove_cover_image'])) {
+                $coverImageStoredValue = null;
+            }
 
             $coverFile = $_FILES['cover_image_file'] ?? null;
             if (is_array($coverFile) && ($coverFile['error'] ?? UPLOAD_ERR_NO_FILE) !== UPLOAD_ERR_NO_FILE) {
@@ -202,6 +212,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             title = :title,
                             slug = :slug,
                             excerpt = :excerpt,
+                            meta_title = :meta_title,
+                            meta_description = :meta_description,
                             content = :content,
                             cover_image = :cover_image,
                             category = :category,
@@ -216,6 +228,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         'title' => $fieldTitle,
                         'slug' => $articleSlug,
                         'excerpt' => $sanitizedExcerpt !== '' ? $sanitizedExcerpt : null,
+                        'meta_title' => $sanitizedMetaTitle !== '' ? $sanitizedMetaTitle : null,
+                        'meta_description' => $sanitizedMetaDescription !== '' ? $sanitizedMetaDescription : null,
                         'content' => $sanitizedContent,
                         'cover_image' => $coverImageStoredValue,
                         'category' => $fieldCategory !== '' ? $fieldCategory : null,
@@ -228,12 +242,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     header('Location: ' . BASE_URL . '/admin/articles/edit.php?id=' . $articleId . '&updated=1');
                     exit;
                 } catch (PDOException $pdoException) {
-                    $sqlErrorCode = (int) ($pdoException->errorInfo[1] ?? 0);
-                    if ($sqlErrorCode === 1062 || str_contains($pdoException->getMessage(), 'Duplicate')) {
+                    $dbError = admin_article_format_save_database_error($pdoException);
+                    if ($dbError === 'duplicate_slug') {
                         $formFieldErrors['slug'] = 'Ce slug est déjà utilisé. Choisissez-en un autre.';
                         $formErrorMessage = 'Ce slug existe déjà. Modifiez le slug.';
                     } else {
-                        $formErrorMessage = 'Erreur base de données lors de l\'enregistrement.';
+                        $formErrorMessage = $dbError;
                     }
                 } catch (Throwable $exception) {
                     $formErrorMessage = 'Erreur technique lors de l\'enregistrement.';
@@ -243,7 +257,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-$canEditAdvancedHtml = adminUserCanEditRawArticleHtml();
 $initialEditorPayload = build_article_editor_initial_payload_from_html($fieldContent)['payload'];
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['blocks_json'])) {
     $rawJson = trim((string) $_POST['blocks_json']);
@@ -318,6 +331,8 @@ $csrfToken = ensureAdminCsrfToken();
                 <?= admin_article_field_error_notice($formFieldErrors, 'excerpt') ?>
             </div>
 
+            <?php require __DIR__ . '/../includes/article_seo_fields.php'; ?>
+
             <div
                 id="field-content"
                 class="<?= htmlspecialchars(trim(admin_article_field_group_class($formFieldErrors, 'content') . (!empty($formFieldErrors['content']) ? ' article-editor-visual-error' : '')), ENT_QUOTES, 'UTF-8') ?>"
@@ -334,12 +349,18 @@ $csrfToken = ensureAdminCsrfToken();
                 <label for="cover_image_file">Image de couverture</label>
                 <?php if ($currentCoverImageStored !== ''): ?>
                     <p class="admin-field-hint" style="margin-bottom:10px;">
-                        <img src="<?= htmlspecialchars(blog_resolve_cover_image_url($currentCoverImageStored), ENT_QUOTES, 'UTF-8') ?>" alt="" width="240" loading="lazy" style="display:block;border-radius:6px;border:1px solid rgba(0,0,0,.1);max-width:100%;height:auto;">
+                        <img src="<?= htmlspecialchars(blog_resolve_cover_image_url($currentCoverImageStored), ENT_QUOTES, 'UTF-8') ?>" alt="Aperçu image de couverture de l'article" width="240" loading="lazy" style="display:block;border-radius:6px;border:1px solid rgba(0,0,0,.1);max-width:100%;height:auto;">
                         <span>Couverture actuelle · choisissez un fichier ci-dessous pour la remplacer.</span>
                     </p>
                 <?php endif; ?>
                 <input id="cover_image_file" name="cover_image_file" type="file" accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp" <?= isset($formFieldErrors['cover_image_file']) ? ' aria-invalid="true"' : '' ?>>
                 <p class="admin-field-hint">JPEG, PNG ou WebP depuis votre ordinateur (laisser vide pour conserver l’image actuelle).</p>
+                <?php if ($currentCoverImageStored !== ''): ?>
+                    <label class="article-block-checkbox-label admin-field-checkbox" style="margin-top:10px;">
+                        <input type="checkbox" name="remove_cover_image" value="1">
+                        Supprimer l’image de couverture actuelle
+                    </label>
+                <?php endif; ?>
                 <?= admin_article_field_error_notice($formFieldErrors, 'cover_image_file') ?>
             </div>
 

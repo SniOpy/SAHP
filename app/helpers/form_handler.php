@@ -164,12 +164,10 @@ function handle_devis_form(): array {
         'Autre'
     ];
     
-    // Récupérer et valider les données
+    // Récupérer et valider les données (formulaire minimal orienté conversion)
     $nom = $_POST['nom'] ?? '';
-    $prenom = $_POST['prenom'] ?? '';
     $phone = $_POST['phone'] ?? '';
     $prestation = $_POST['prestation'] ?? '';
-    $sujet = $_POST['sujet'] ?? '';
     $message = $_POST['message'] ?? '';
     
     // Validation du nom
@@ -179,15 +177,6 @@ function handle_devis_form(): array {
     } else {
         $data['nom'] = sanitize_input($nom);
         $data['nom_email'] = sanitize_for_email($nom);
-    }
-    
-    // Validation du prénom
-    $prenomValidation = validate_text($prenom, 2, 100);
-    if (!$prenomValidation['valid']) {
-        $errors['prenom'] = $prenomValidation['error'];
-    } else {
-        $data['prenom'] = sanitize_input($prenom);
-        $data['prenom_email'] = sanitize_for_email($prenom);
     }
     
     // Validation du téléphone
@@ -209,22 +198,18 @@ function handle_devis_form(): array {
         $data['prestation_email'] = sanitize_for_email($prestation);
     }
     
-    // Validation du sujet
-    $sujetValidation = validate_text($sujet, 5, 200);
-    if (!$sujetValidation['valid']) {
-        $errors['sujet'] = $sujetValidation['error'];
+    // Validation du message (optionnel : validé seulement s'il est renseigné)
+    if (trim($message) === '') {
+        $data['message'] = '';
+        $data['message_email'] = 'Aucune précision communiquée.';
     } else {
-        $data['sujet'] = sanitize_input($sujet);
-        $data['sujet_email'] = sanitize_for_email($sujet);
-    }
-    
-    // Validation du message
-    $messageValidation = validate_message($message, 10, 2000);
-    if (!$messageValidation['valid']) {
-        $errors['message'] = $messageValidation['error'];
-    } else {
-        $data['message'] = sanitize_input($message);
-        $data['message_email'] = sanitize_for_email($message);
+        $messageValidation = validate_message($message, 5, 2000);
+        if (!$messageValidation['valid']) {
+            $errors['message'] = $messageValidation['error'];
+        } else {
+            $data['message'] = sanitize_input($message);
+            $data['message_email'] = sanitize_for_email($message);
+        }
     }
     
     // Si erreurs, retourner les erreurs
@@ -240,11 +225,9 @@ function handle_devis_form(): array {
     // Préparer l'email HTML (utiliser les versions non-encodées pour l'email)
     $emailData = [
         'nom' => $data['nom_email'] ?? $data['nom'],
-        'prenom' => $data['prenom_email'] ?? $data['prenom'],
         'phone' => $data['phone_email'] ?? $data['phone'],
         'prestation' => $data['prestation_email'] ?? $data['prestation'],
-        'sujet' => $data['sujet_email'] ?? $data['sujet'],
-        'message' => $data['message_email'] ?? $data['message']
+        'message' => $data['message_email'] ?? ($data['message'] ?: 'Aucune précision communiquée.')
     ];
     $subject = "Demande de devis - " . $emailData['prestation'] . " - SAHP";
     $htmlBody = get_devis_email_html($emailData);
@@ -254,7 +237,7 @@ function handle_devis_form(): array {
         $subject,
         $htmlBody,
         null, // Pas d'email de réponse pour le devis
-        $emailData['nom'] . ' ' . $emailData['prenom']
+        $emailData['nom']
     );
     
     if (!$emailSent) {

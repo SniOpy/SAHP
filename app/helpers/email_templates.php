@@ -165,11 +165,6 @@ function get_devis_email_html(array $data): string {
         </div>
         
         <div class="info-row">
-            <div class="info-label">Prénom :</div>
-            <div class="info-value">' . htmlspecialchars($data['prenom'], ENT_QUOTES, 'UTF-8') . '</div>
-        </div>
-        
-        <div class="info-row">
             <div class="info-label">Téléphone :</div>
             <div class="info-value">
                 <a href="tel:' . htmlspecialchars($data['phone'], ENT_QUOTES, 'UTF-8') . '" style="color: #4080b7;">
@@ -184,11 +179,6 @@ function get_devis_email_html(array $data): string {
                 ' . htmlspecialchars($data['prestation'], ENT_QUOTES, 'UTF-8') . '
                 <span class="badge">DEVIS</span>
             </div>
-        </div>
-        
-        <div class="info-row">
-            <div class="info-label">Sujet :</div>
-            <div class="info-value">' . htmlspecialchars($data['sujet'], ENT_QUOTES, 'UTF-8') . '</div>
         </div>
         
         <div class="info-row">

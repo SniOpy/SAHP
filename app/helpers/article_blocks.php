@@ -15,6 +15,9 @@ const ARTICLE_BLOCKS_JSON_VERSION = 1;
 const ARTICLE_BLOCKS_MAX_BLOCKS = 200;
 const ARTICLE_BLOCKS_MAX_ITEMS_PER_LIST = 80;
 const ARTICLE_BLOCKS_MAX_TEXT_FIELD_LEN = 100000;
+const ARTICLE_BLOCKS_MAX_TABLE_COLUMNS = 8;
+const ARTICLE_BLOCKS_MAX_TABLE_ROWS = 20;
+const ARTICLE_BLOCKS_MAX_TABLE_CELL_LEN = 500;
 
 function is_article_block_image_src_allowed(string $url): bool
 {
@@ -233,6 +236,9 @@ function normalize_one_article_block_from_client(array $block): array
     }
     if ($type === 'image') {
         $url = trim((string) ($block['url'] ?? ''));
+        if ($url === '') {
+            throw new InvalidArgumentException('Bloc image vide : supprimez-le ou téléversez une image.');
+        }
         $alt = trim((string) ($block['alt'] ?? ''));
         if (! is_article_block_image_src_allowed($url)) {
             throw new InvalidArgumentException('URL image non autorisée (uploads blog uniquement).');
@@ -351,8 +357,70 @@ function normalize_one_article_block_from_client(array $block): array
             'bold' => article_block_normalize_bool_emphasis($block['bold'] ?? false),
         ];
     }
+    if ($type === 'table') {
+        return article_block_normalize_table_block_from_client($block);
+    }
 
     throw new InvalidArgumentException('Type de bloc inconnu.');
+}
+
+/**
+ * @param array<string, mixed> $block
+ * @return array{type: string, title: string, columns: int, rows: int, headers: list<string>, rows_data: list<list<string>>}
+ */
+function article_block_normalize_table_block_from_client(array $block): array
+{
+    $title = trim((string) ($block['title'] ?? ''));
+    if (strlen($title) > 300) {
+        throw new InvalidArgumentException('Titre du tableau trop long (300 caractères max).');
+    }
+
+    $columns = max(1, min(ARTICLE_BLOCKS_MAX_TABLE_COLUMNS, (int) ($block['columns'] ?? 3)));
+    $rows = max(1, min(ARTICLE_BLOCKS_MAX_TABLE_ROWS, (int) ($block['rows'] ?? 3)));
+
+    $headersRaw = $block['headers'] ?? [];
+    $headers = [];
+    if (is_array($headersRaw)) {
+        for ($columnIndex = 0; $columnIndex < $columns; $columnIndex++) {
+            $cell = trim((string) ($headersRaw[$columnIndex] ?? ''));
+            if (strlen($cell) > ARTICLE_BLOCKS_MAX_TABLE_CELL_LEN) {
+                throw new InvalidArgumentException('En-tête de tableau trop long.');
+            }
+            $headers[] = $cell;
+        }
+    } else {
+        $headers = array_fill(0, $columns, '');
+    }
+
+    $rowsDataRaw = $block['rows_data'] ?? [];
+    $rowsData = [];
+    if (! is_array($rowsDataRaw)) {
+        $rowsDataRaw = [];
+    }
+    for ($rowIndex = 0; $rowIndex < $rows; $rowIndex++) {
+        $rowRaw = $rowsDataRaw[$rowIndex] ?? [];
+        $rowClean = [];
+        if (! is_array($rowRaw)) {
+            $rowRaw = [];
+        }
+        for ($columnIndex = 0; $columnIndex < $columns; $columnIndex++) {
+            $cell = trim((string) ($rowRaw[$columnIndex] ?? ''));
+            if (strlen($cell) > ARTICLE_BLOCKS_MAX_TABLE_CELL_LEN) {
+                throw new InvalidArgumentException('Cellule de tableau trop longue.');
+            }
+            $rowClean[] = $cell;
+        }
+        $rowsData[] = $rowClean;
+    }
+
+    return [
+        'type' => 'table',
+        'title' => $title,
+        'columns' => $columns,
+        'rows' => $rows,
+        'headers' => $headers,
+        'rows_data' => $rowsData,
+    ];
 }
 
 /**
@@ -388,7 +456,15 @@ function parse_article_blocks_from_json_string(string $json): array
             throw new InvalidArgumentException('Bloc invalide.');
         }
         /** @var array<string, mixed> $block */
+        $blockType = (string) ($block['type'] ?? '');
+        if ($blockType === 'image' && trim((string) ($block['url'] ?? '')) === '') {
+            continue;
+        }
         $normalized[] = normalize_one_article_block_from_client($block);
+    }
+
+    if ($normalized === []) {
+        throw new InvalidArgumentException('Ajoutez au moins un bloc de contenu.');
     }
 
     return $normalized;
@@ -434,7 +510,11 @@ function encode_article_blocks_as_html(array $blocks): string
         }
 
         if ($type === 'image') {
-            $url = htmlspecialchars((string) ($block['url'] ?? ''), ENT_QUOTES, 'UTF-8');
+            $urlRaw = trim((string) ($block['url'] ?? ''));
+            if ($urlRaw === '') {
+                continue;
+            }
+            $url = htmlspecialchars($urlRaw, ENT_QUOTES, 'UTF-8');
             $alt = htmlspecialchars((string) ($block['alt'] ?? ''), ENT_QUOTES, 'UTF-8');
             $wSlug = article_block_media_width_modifier_class((string) ($block['width'] ?? '75'));
             $chunks[] = '<div class="blog-block-media ' . $wSlug . '"><img src="' . $url . '" alt="' . $alt . '" loading="lazy" decoding="async"></div>';
@@ -520,9 +600,57 @@ function encode_article_blocks_as_html(array $blocks): string
 
             continue;
         }
+
+        if ($type === 'table') {
+            $tableHtml = article_block_encode_table_block_as_html($block);
+            if ($tableHtml !== '') {
+                $chunks[] = $tableHtml;
+            }
+
+            continue;
+        }
     }
 
     return trim(implode("\n", $chunks));
+}
+
+/**
+ * @param array<string, mixed> $block
+ */
+function article_block_encode_table_block_as_html(array $block): string
+{
+    $title = trim((string) ($block['title'] ?? ''));
+    $headers = $block['headers'] ?? [];
+    $rowsData = $block['rows_data'] ?? [];
+    if (! is_array($headers)) {
+        $headers = [];
+    }
+    if (! is_array($rowsData)) {
+        $rowsData = [];
+    }
+
+    $parts = ['<div class="blog-block-table-wrap">', '<table class="blog-block-table">'];
+    if ($title !== '') {
+        $parts[] = '<caption>' . htmlspecialchars($title, ENT_QUOTES, 'UTF-8') . '</caption>';
+    }
+    $parts[] = '<thead><tr>';
+    foreach ($headers as $headerCell) {
+        $parts[] = '<th>' . htmlspecialchars((string) $headerCell, ENT_QUOTES, 'UTF-8') . '</th>';
+    }
+    $parts[] = '</tr></thead><tbody>';
+    foreach ($rowsData as $row) {
+        if (! is_array($row)) {
+            continue;
+        }
+        $parts[] = '<tr>';
+        foreach ($row as $cell) {
+            $parts[] = '<td>' . htmlspecialchars((string) $cell, ENT_QUOTES, 'UTF-8') . '</td>';
+        }
+        $parts[] = '</tr>';
+    }
+    $parts[] = '</tbody></table></div>';
+
+    return implode('', $parts);
 }
 
 /**
@@ -807,9 +935,131 @@ function decode_one_article_dom_block(DOMElement $el): ?array
                 return $decodedCta;
             }
         }
+
+        if (str_contains($classes, 'blog-block-table-wrap')) {
+            $decodedTable = decode_article_dom_table_block($el);
+            if ($decodedTable !== null) {
+                return $decodedTable;
+            }
+        }
+    }
+
+    if ($tag === 'table' && str_contains(strtolower($el->getAttribute('class')), 'blog-block-table')) {
+        $decodedTable = decode_article_dom_table_block($el);
+        if ($decodedTable !== null) {
+            return $decodedTable;
+        }
     }
 
     return ['type' => 'text', 'body' => article_block_fallback_plain_from_element($el)];
+}
+
+/**
+ * @return array<string, mixed>|null
+ */
+function decode_article_dom_table_block(DOMElement $root): ?array
+{
+    $table = null;
+    if (strtolower($root->tagName) === 'table') {
+        $table = $root;
+    } else {
+        $tables = $root->getElementsByTagName('table');
+        if ($tables->length > 0) {
+            $candidate = $tables->item(0);
+            if ($candidate instanceof DOMElement) {
+                $table = $candidate;
+            }
+        }
+    }
+
+    if ($table === null) {
+        return null;
+    }
+
+    $title = '';
+    foreach ($table->childNodes as $child) {
+        if ($child instanceof DOMElement && strtolower($child->tagName) === 'caption') {
+            $title = article_block_dom_text_content($child);
+            break;
+        }
+    }
+
+    $headers = [];
+    $theadList = $table->getElementsByTagName('thead');
+    if ($theadList->length > 0) {
+        $thead = $theadList->item(0);
+        if ($thead instanceof DOMElement) {
+            $headerRows = $thead->getElementsByTagName('tr');
+            if ($headerRows->length > 0) {
+                $headerRow = $headerRows->item(0);
+                if ($headerRow instanceof DOMElement) {
+                    foreach ($headerRow->childNodes as $thNode) {
+                        if ($thNode instanceof DOMElement && strtolower($thNode->tagName) === 'th') {
+                            $headers[] = article_block_dom_text_content($thNode);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    $rowsData = [];
+    $tbodyList = $table->getElementsByTagName('tbody');
+    $bodyElement = $tbodyList->length > 0 ? $tbodyList->item(0) : $table;
+    if ($bodyElement instanceof DOMElement) {
+        foreach ($bodyElement->childNodes as $rowNode) {
+            if (! $rowNode instanceof DOMElement || strtolower($rowNode->tagName) !== 'tr') {
+                continue;
+            }
+            if ($rowNode->parentNode instanceof DOMElement && strtolower($rowNode->parentNode->tagName) === 'thead') {
+                continue;
+            }
+            $rowCells = [];
+            foreach ($rowNode->childNodes as $cellNode) {
+                if ($cellNode instanceof DOMElement && in_array(strtolower($cellNode->tagName), ['td', 'th'], true)) {
+                    if (strtolower($cellNode->tagName) === 'th' && $headers === []) {
+                        $headers[] = article_block_dom_text_content($cellNode);
+                    } else {
+                        $rowCells[] = article_block_dom_text_content($cellNode);
+                    }
+                }
+            }
+            if ($rowCells !== []) {
+                $rowsData[] = $rowCells;
+            }
+        }
+    }
+
+    $columns = max(count($headers), 1);
+    foreach ($rowsData as $row) {
+        $columns = max($columns, count($row));
+    }
+    $columns = min(ARTICLE_BLOCKS_MAX_TABLE_COLUMNS, $columns);
+    $rows = min(ARTICLE_BLOCKS_MAX_TABLE_ROWS, max(count($rowsData), 1));
+
+    while (count($headers) < $columns) {
+        $headers[] = '';
+    }
+    $headers = array_slice($headers, 0, $columns);
+
+    $normalizedRows = [];
+    for ($rowIndex = 0; $rowIndex < $rows; $rowIndex++) {
+        $sourceRow = $rowsData[$rowIndex] ?? [];
+        $rowClean = [];
+        for ($columnIndex = 0; $columnIndex < $columns; $columnIndex++) {
+            $rowClean[] = trim((string) ($sourceRow[$columnIndex] ?? ''));
+        }
+        $normalizedRows[] = $rowClean;
+    }
+
+    return [
+        'type' => 'table',
+        'title' => $title,
+        'columns' => $columns,
+        'rows' => $rows,
+        'headers' => $headers,
+        'rows_data' => $normalizedRows,
+    ];
 }
 
 function decode_article_dom_list_block(DOMElement $list): array

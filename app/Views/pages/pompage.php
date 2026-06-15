@@ -130,6 +130,32 @@
         </div>
       </div>
 
+      <?php
+      require_once APP_PATH . '/helpers/faq.php';
+      sahp_render_faq([
+        [
+          'q' => 'Tous les combien faut-il vidanger une fosse septique ?',
+          'a' => '<p>En moyenne tous les 3 à 4 ans, mais le vrai critère est le niveau de boues : on vidange quand elles atteignent environ la moitié de la cuve. Le nombre d’occupants et le volume de la fosse font varier ce rythme. Lors de l’intervention, on en profite pour contrôler le préfiltre et le bon écoulement.</p>',
+        ],
+        [
+          'q' => 'Que faites-vous des déchets pompés ?',
+          'a' => '<p>Les matières sont évacuées et traitées dans un centre agréé. Vous recevez un bordereau de suivi des déchets (BSD), qui prouve la conformité de la filière d’élimination. C’est un point important, en particulier pour les professionnels soumis à des contrôles.</p>',
+        ],
+        [
+          'q' => 'Le pompage de bac à graisse est-il obligatoire ?',
+          'a' => '<p>Pour les restaurants et les métiers de bouche, oui : un bac à graisse mal entretenu finit par boucher le réseau et peut entraîner des sanctions. Nous assurons le pompage, le nettoyage et la remise en eau, avec traçabilité. Pour un suivi régulier, un contrat de <a href="' . BASE_URL . '/maintenance-pro">maintenance professionnelle</a> est la solution la plus simple.</p>',
+        ],
+        [
+          'q' => 'Pouvez-vous intervenir en urgence pour un sous-sol inondé ?',
+          'a' => '<p>Oui. En cas de remontée d’eaux ou de saturation, on dépêche un camion pour le pompage des eaux claires ou chargées. Si c’est critique (inondation, débordement), passez par notre service <a href="' . BASE_URL . '/urgence">urgence 24h/7j</a> pour une prise en charge immédiate.</p>',
+        ],
+        [
+          'q' => 'Comment savoir si ma fosse a besoin d’être pompée ?',
+          'a' => '<p>Les signaux classiques : écoulements lents, gargouillis dans les canalisations et odeurs autour de la fosse ou dans le bâtiment. Au moindre doute, un diagnostic évite la mauvaise surprise du débordement. Vous pouvez nous <a href="' . BASE_URL . '/devis">demander un devis</a> ou nous appeler pour en parler.</p>',
+        ],
+      ]);
+      ?>
+
     </div>
   </div>
 

@@ -15,7 +15,7 @@ $adminHeaderDisplayName = htmlspecialchars(
 <header class="admin-panel-header card-glass" role="banner">
     <div class="admin-panel-header-inner">
         <a class="admin-panel-brand" href="<?= BASE_URL ?>/admin/index.php">
-            <img src="<?= BASE_URL ?>/assets/img/sahp.png" alt="" width="120" height="auto" class="admin-panel-brand-logo">
+            <img src="<?= BASE_URL ?>/assets/img/sahp.png" alt="Logo SAHP Assainissement" width="120" height="auto" class="admin-panel-brand-logo">
             <span class="admin-panel-brand-text">SAHP Admin</span>
         </a>
 

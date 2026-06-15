@@ -82,19 +82,34 @@
 }
 
 /* =========================
-   WHATSAPP
+   RÉSEAUX SOCIAUX
 ========================= */
 
-.footer-whatsapp {
+.footer-social {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.footer-whatsapp,
+.footer-linkedin {
   display: inline-flex;
   align-items: center;
   gap: 10px;
   padding: 10px 18px;
   border-radius: 50px;
-  background: #00b09b;
   color: #ffffff;
   font-weight: 600;
   width: fit-content;
+}
+
+.footer-whatsapp {
+  background: #00b09b;
+}
+
+.footer-linkedin {
+  background: #0a66c2;
 }
 
 .footer-whatsapp img {
@@ -102,9 +117,24 @@
   height: 40px;
 }
 
+.footer-linkedin img {
+  width: 28px;
+  height: 28px;
+  filter: brightness(0) invert(1);
+}
+
 .footer-whatsapp:hover {
   background: #ffffff;
   color: #0f4c81;
+}
+
+.footer-linkedin:hover {
+  background: #ffffff;
+  color: #0a66c2;
+}
+
+.footer-linkedin:hover img {
+  filter: none;
 }
 
 /* =========================
@@ -197,7 +227,12 @@
     align-items: center;
   }
 
-  .footer-whatsapp {
+  .footer-social {
+    align-items: center;
+  }
+
+  .footer-whatsapp,
+  .footer-linkedin {
     justify-content: center;
   }
 

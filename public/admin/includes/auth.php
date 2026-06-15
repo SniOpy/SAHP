@@ -12,6 +12,11 @@ const ADMIN_SESSION_USERNAME_KEY = 'admin_username';
  */
 function findAdminUserByUsername(string $username): ?array
 {
+    $username = strtolower(trim($username));
+    if ($username === '') {
+        return null;
+    }
+
     $databaseConnection = getDatabaseConnection();
     $query = $databaseConnection->prepare(
         'SELECT id, username, password_hash FROM admin_users WHERE username = :username LIMIT 1'
@@ -27,7 +32,9 @@ function findAdminUserByUsername(string $username): ?array
  */
 function verifyAdminPassword(string $password, string $passwordHash): bool
 {
-    return password_verify($password, $passwordHash);
+    $passwordHash = trim($passwordHash);
+
+    return $passwordHash !== '' && password_verify($password, $passwordHash);
 }
 
 /**

@@ -9,6 +9,8 @@
       Un évier qui ne se vide plus, des odeurs désagréables ou des WC qui débordent
       sont les signes d’une canalisation obstruée.
       SAHP intervient rapidement pour un débouchage efficace, sans produits chimiques.
+      Retrouvez l'ensemble de nos prestations sur notre page
+      <a href="<?= BASE_URL ?>/">assainissement en Île-de-France</a>.
     </p>
 
     <!-- IMAGE INTERVENTION -->
@@ -99,14 +101,31 @@
       </div>
     </div>
 
-    <!-- <div class="debouchage-cta">
-      <p>
-        Une canalisation bouchée ? Une urgence ?
-      </p>
-      <a href="<?= BASE_URL ?>/contact" class="btn-primary">
-        Demander une intervention
-      </a>
-    </div> -->
+    <?php
+    require_once APP_PATH . '/helpers/faq.php';
+    sahp_render_faq([
+      [
+        'q' => 'Combien de temps faut-il pour déboucher une canalisation ?',
+        'a' => '<p>Dans la grande majorité des cas, un bouchon domestique (évier, lavabo, douche, WC) est réglé en 30 minutes à 1 heure. Tout dépend de l’endroit où se trouve l’obstruction et de sa nature. Quand le bouchon est plus profond, sur une colonne d’immeuble par exemple, on passe à l’hydrocurage haute pression, qui reste rapide une fois le camion sur place.</p>',
+      ],
+      [
+        'q' => 'Le débouchage haute pression abîme-t-il les tuyaux ?',
+        'a' => '<p>Non. Nos techniciens règlent la pression et la buse selon le matériau et le diamètre du conduit. C’est justement plus sûr que les déboucheurs chimiques du commerce, qui attaquent les joints et le PVC. Si on a un doute sur l’état du réseau, on commence par une <a href="' . BASE_URL . '/inspection">inspection vidéo</a> avant d’intervener.</p>',
+      ],
+      [
+        'q' => 'Que puis-je faire en attendant votre arrivée ?',
+        'a' => '<p>Le réflexe le plus utile : arrêter d’utiliser le point d’eau concerné pour ne pas aggraver le débordement, et éviter de verser des produits chimiques (ils compliquent l’intervention et sont dangereux). Si l’eau remonte dans plusieurs pièces, coupez l’arrivée d’eau et appelez-nous : c’est typiquement une <a href="' . BASE_URL . '/urgence">urgence assainissement</a>.</p>',
+      ],
+      [
+        'q' => 'Intervenez-vous le soir et le week-end ?',
+        'a' => '<p>Oui, nos équipes sont mobilisables 24h/24 et 7j/7 en Île-de-France, y compris les jours fériés. Pour une intervention immédiate, le plus simple reste de nous appeler directement ; sinon vous pouvez aussi <a href="' . BASE_URL . '/devis">demander un devis</a> en ligne.</p>',
+      ],
+      [
+        'q' => 'Comment éviter que le bouchon revienne ?',
+        'a' => '<p>Quand les bouchons reviennent malgré les débouchages, c’est souvent que les parois sont encrassées en profondeur. Un <a href="' . BASE_URL . '/curage">curage haute pression</a> régulier remet la canalisation à son diamètre d’origine. Pour les réseaux sensibles ou les copropriétés, on conseille un entretien planifié plutôt que d’attendre la prochaine panne.</p>',
+      ],
+    ]);
+    ?>
 
     </div>
   </div>

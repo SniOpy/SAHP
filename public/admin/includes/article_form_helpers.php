@@ -48,7 +48,7 @@ function isArticleSlugValid(string $slug): bool
  */
 function sanitizeArticleContentHtml(string $html): string
 {
-    $allowedTags = '<p><br><strong><em><b><i><u><h2><h3><h4><ul><ol><li><a><img><blockquote><div><span><hr>';
+    $allowedTags = '<p><br><strong><em><b><i><u><h2><h3><h4><ul><ol><li><a><img><blockquote><div><span><hr><table><thead><tbody><tr><th><td><caption>';
 
     return strip_tags($html, $allowedTags);
 }
@@ -59,6 +59,50 @@ function sanitizeArticleContentHtml(string $html): string
 function sanitizeArticleExcerpt(string $excerpt): string
 {
     return trim(strip_tags($excerpt));
+}
+
+/**
+ * Meta title SEO (texte brut, max 255).
+ */
+function sanitizeArticleMetaTitle(string $metaTitle): string
+{
+    $metaTitle = trim(strip_tags($metaTitle));
+
+    return mb_strlen($metaTitle) > 255 ? mb_substr($metaTitle, 0, 255) : $metaTitle;
+}
+
+/**
+ * Meta description SEO (texte brut, max 320).
+ */
+function sanitizeArticleMetaDescription(string $metaDescription): string
+{
+    $metaDescription = trim(strip_tags($metaDescription));
+    $metaDescription = preg_replace('/\s+/u', ' ', $metaDescription) ?? $metaDescription;
+
+    return mb_strlen($metaDescription) > 320 ? mb_substr($metaDescription, 0, 320) : $metaDescription;
+}
+
+/**
+ * Valide les champs SEO optionnels.
+ *
+ * @param array<int, string> $validationErrors
+ * @param array<string, string> $formFieldErrors
+ */
+function validateArticleSeoFields(
+    string $fieldMetaTitle,
+    string $fieldMetaDescription,
+    array &$validationErrors,
+    array &$formFieldErrors
+): void {
+    if (strlen($fieldMetaTitle) > 255) {
+        $validationErrors[] = 'Le meta title est trop long (255 caractères maximum).';
+        $formFieldErrors['meta_title'] = 'Raccourcissez le meta title.';
+    }
+
+    if (strlen($fieldMetaDescription) > 320) {
+        $validationErrors[] = 'La meta description est trop longue (320 caractères maximum).';
+        $formFieldErrors['meta_description'] = 'Raccourcissez la meta description (idéal : 150–160 caractères).';
+    }
 }
 
 /**
@@ -111,4 +155,25 @@ function admin_article_field_error_notice(?array $formFieldErrors, string $field
     }
 
     return '<p class="admin-field-invalid-msg" role="alert">' . htmlspecialchars($formFieldErrors[$fieldKey], ENT_QUOTES, 'UTF-8') . '</p>';
+}
+
+/**
+ * Message utilisateur pour une erreur PDO à l'enregistrement d'un article.
+ */
+function admin_article_format_save_database_error(PDOException $pdoException): string
+{
+    $sqlErrorCode = (int) ($pdoException->errorInfo[1] ?? 0);
+    $message = $pdoException->getMessage();
+
+    if ($sqlErrorCode === 1062 || str_contains($message, 'Duplicate')) {
+        return 'duplicate_slug';
+    }
+
+    if ($sqlErrorCode === 1054 && str_contains($message, 'meta_')) {
+        return 'Colonnes SEO manquantes en base (meta_title, meta_description). Exécutez le fichier data/sql/migration_articles_meta.sql dans phpMyAdmin.';
+    }
+
+    error_log('[SAHP article save] ' . $message);
+
+    return 'Erreur base de données lors de l\'enregistrement.';
 }

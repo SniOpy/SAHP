@@ -58,6 +58,7 @@ if ($coverRaw !== '') {
       <?php
         $content = $post['content'] ?? '';
         echo blog_prepare_content_html_for_output($content);
+        blog_render_faq_schema_from_content($content);
         ?>
 
 

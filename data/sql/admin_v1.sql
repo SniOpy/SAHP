@@ -14,6 +14,8 @@ CREATE TABLE IF NOT EXISTS articles (
     title VARCHAR(255) NOT NULL,
     slug VARCHAR(255) NOT NULL UNIQUE,
     excerpt TEXT NULL,
+    meta_title VARCHAR(255) NULL COMMENT 'Balise title SEO (optionnel)',
+    meta_description VARCHAR(320) NULL COMMENT 'Meta description SEO (optionnel)',
     content LONGTEXT NOT NULL COMMENT 'Contenu HTML pour futur editeur riche',
     cover_image VARCHAR(255) NULL COMMENT 'Image de couverture (URL ou chemin)',
     category VARCHAR(120) NULL,

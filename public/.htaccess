@@ -1,5 +1,8 @@
  RewriteEngine On
 
+# Sitemap (généré par sitemap.php)
+RewriteRule ^sitemap\.xml$ sitemap.php [L]
+
 # # Si le fichier existe (css, js, img), on le sert directement
  RewriteCond %{REQUEST_FILENAME} -f
  RewriteRule ^ - [L]

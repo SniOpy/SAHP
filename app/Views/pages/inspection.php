@@ -129,6 +129,32 @@
         </div>
       </div>
 
+      <?php
+      require_once APP_PATH . '/helpers/faq.php';
+      sahp_render_faq([
+        [
+          'q' => 'À quoi sert concrètement une inspection vidéo ?',
+          'a' => '<p>Elle permet de voir l’intérieur de la canalisation sans rien casser. On identifie la cause exacte d’un problème (bouchon, fissure, contre-pente, racines) et on agit ensuite au bon endroit, au lieu de creuser au hasard. C’est souvent ce qui évite des travaux inutiles et coûteux.</p>',
+        ],
+        [
+          'q' => 'Le rapport d’inspection est-il accepté par les assurances ?',
+          'a' => '<p>Oui. À l’issue de l’intervention, nous pouvons fournir un rapport vidéo avec images et commentaires. C’est une preuve objective souvent demandée en cas de dégât des eaux, de litige immobilier ou avant la réception d’un chantier.</p>',
+        ],
+        [
+          'q' => 'Pouvez-vous localiser une canalisation enterrée ?',
+          'a' => '<p>Nos caméras embarquent une sonde émettrice : on repère le tracé et la profondeur depuis la surface, même sous le béton ou la terre. Très utile pour retrouver une fosse, cartographier un réseau avant travaux ou cibler précisément une réparation.</p>',
+        ],
+        [
+          'q' => 'Quand est-ce le bon moment pour faire contrôler ses canalisations ?',
+          'a' => '<p>Idéalement avant l’achat d’un bien, avant des travaux, ou dès que les bouchons reviennent malgré plusieurs <a href="' . BASE_URL . '/debouchage">débouchages</a>. Un contrôle régulier permet d’anticiper les pannes plutôt que de subir une <a href="' . BASE_URL . '/urgence">urgence</a>.</p>',
+        ],
+        [
+          'q' => 'Combien coûte une inspection caméra ?',
+          'a' => '<p>Cela dépend du type d’intervention : simple contrôle visuel ou inspection complète avec rapport détaillé. Le mieux est de nous indiquer votre besoin via une <a href="' . BASE_URL . '/devis">demande de devis</a> ; on vous oriente vers la formule la plus adaptée.</p>',
+        ],
+      ]);
+      ?>
+
     </div>
   </div>
 

@@ -23,7 +23,13 @@ function getAppDatabaseConnection(): PDO
     $databasePassword = $_ENV['DB_PASS'] ?? '';
 
     if ($databaseName === '' || $databaseUser === '') {
-        throw new RuntimeException('Configuration base de données manquante (DB_NAME, DB_USER).');
+        $envHint = defined('SAHP_DOTENV_LOADED_PATH')
+            ? 'Fichier charge : ' . SAHP_DOTENV_LOADED_PATH
+            : 'Aucun .env trouve. Placez .env a la racine du projet (meme niveau que app/) ou copiez app/config/env.local.php.example vers app/config/env.local.php';
+
+        throw new RuntimeException(
+            'Configuration base de données manquante (DB_NAME, DB_USER). ' . $envHint
+        );
     }
 
     if ($databasePort === '') {

@@ -43,6 +43,20 @@
         return { id: makeId(), type: 'standalone_button', label: '', url: '', bold: false, button_align: 'left' };
       case 'quote':
         return { id: makeId(), type: 'quote', body: '', bold: false };
+      case 'table':
+        return {
+          id: makeId(),
+          type: 'table',
+          title: '',
+          columns: 3,
+          rows: 3,
+          headers: ['Colonne 1', 'Colonne 2', 'Colonne 3'],
+          rows_data: [
+            ['', '', ''],
+            ['', '', ''],
+            ['', '', '']
+          ]
+        };
       default:
         return { id: makeId(), type: 'text', body: '' };
     }
@@ -59,6 +73,9 @@
     if (b.type === 'standalone_button') {
       var sbAlign = String(b.button_align || '').toLowerCase();
       b.button_align = sbAlign === 'center' || sbAlign === 'right' ? sbAlign : 'left';
+    }
+    if (b.type === 'table') {
+      normalizeTableBlock(b);
     }
   }
 
@@ -120,9 +137,49 @@
           body: typeof b.body === 'string' ? b.body : '',
           bold: !!b.bold
         };
+      case 'table':
+        return {
+          type: 'table',
+          title: typeof b.title === 'string' ? b.title : '',
+          columns: parseInt(b.columns, 10) || 3,
+          rows: parseInt(b.rows, 10) || 3,
+          headers: Array.isArray(b.headers) ? b.headers.map(String) : [],
+          rows_data: Array.isArray(b.rows_data)
+            ? b.rows_data.map(function (row) {
+                return Array.isArray(row) ? row.map(String) : [];
+              })
+            : []
+        };
       default:
         return { type: 'text', body: '' };
     }
+  }
+
+  function normalizeTableBlock(block) {
+    if (!block || block.type !== 'table') return block;
+    block.columns = Math.max(1, Math.min(8, parseInt(block.columns, 10) || 3));
+    block.rows = Math.max(1, Math.min(20, parseInt(block.rows, 10) || 3));
+    if (!Array.isArray(block.headers)) block.headers = [];
+    if (!Array.isArray(block.rows_data)) block.rows_data = [];
+    while (block.headers.length < block.columns) {
+      block.headers.push('');
+    }
+    block.headers = block.headers.slice(0, block.columns);
+    while (block.rows_data.length < block.rows) {
+      block.rows_data.push([]);
+    }
+    block.rows_data = block.rows_data.slice(0, block.rows);
+    block.rows_data.forEach(function (row, rowIndex) {
+      if (!Array.isArray(row)) {
+        block.rows_data[rowIndex] = [];
+        row = block.rows_data[rowIndex];
+      }
+      while (row.length < block.columns) {
+        row.push('');
+      }
+      block.rows_data[rowIndex] = row.slice(0, block.columns);
+    });
+    return block;
   }
 
   function syncBlocksJsonField() {
@@ -130,20 +187,6 @@
     if (!field) return;
     var payload = { version: 1, blocks: state.blocks.map(toWireBlock) };
     field.value = JSON.stringify(payload);
-  }
-
-  /** Tous les blocs « encadré » (cta) sont regroupés en fin d’article, dans leur ordre relatif initial. */
-  function normalizeCtasToEnd() {
-    var ctas = [];
-    var others = [];
-    state.blocks.forEach(function (b) {
-      if (b.type === 'cta') {
-        ctas.push(b);
-      } else {
-        others.push(b);
-      }
-    });
-    state.blocks = others.concat(ctas);
   }
 
   function readInitialPayload() {
@@ -160,10 +203,12 @@
         if (block.type === 'bullet_list' && !Array.isArray(block.items)) {
           block.items = [''];
         }
+        if (block.type === 'table') {
+          normalizeTableBlock(block);
+        }
         coerceBlockFromServer(block);
         return block;
       });
-      normalizeCtasToEnd();
       if (state.blocks.length === 0) {
         state.blocks.push(newEmptyBlock('text'));
       }
@@ -184,7 +229,6 @@
     if (fromIndex >= state.blocks.length || toIndex >= state.blocks.length) return;
     var moved = state.blocks.splice(fromIndex, 1)[0];
     state.blocks.splice(toIndex, 0, moved);
-    normalizeCtasToEnd();
     render();
   }
 
@@ -267,7 +311,7 @@
     wrap.className = 'article-block-toolbar';
     wrap.innerHTML =
       '<span class="article-block-toolbar-label">Éléments d’article</span>' +
-      '<p class="article-block-toolbar-note">Ajoutez au-dessus de l’encadré&nbsp;: il reste toujours en <strong>dernier</strong> dans l’article.</p>' +
+      '<p class="article-block-toolbar-note">Glissez les blocs pour les réordonner. Les encadrés peuvent être placés où vous voulez dans l’article.</p>' +
       '<button type="button" class="admin-panel-secondary-btn article-block-add" data-add="text">Texte</button>' +
       '<button type="button" class="admin-panel-secondary-btn article-block-add" data-add="heading">Titre H2</button>' +
       '<button type="button" class="admin-panel-secondary-btn article-block-add" data-add="heading3">Titre H3</button>' +
@@ -276,14 +320,14 @@
       '<button type="button" class="admin-panel-secondary-btn article-block-add" data-add="link">Lien</button>' +
       '<button type="button" class="admin-panel-secondary-btn article-block-add" data-add="standalone_button">Bouton</button>' +
       '<button type="button" class="admin-panel-secondary-btn article-block-add" data-add="cta">Encadré d’action (titre · texte · bouton)</button>' +
-      '<button type="button" class="admin-panel-secondary-btn article-block-add" data-add="quote">Citation</button>';
+      '<button type="button" class="admin-panel-secondary-btn article-block-add" data-add="quote">Citation</button>' +
+      '<button type="button" class="admin-panel-secondary-btn article-block-add" data-add="table">Tableau</button>';
 
     wrap.addEventListener('click', function (e) {
       var btn = e.target.closest('.article-block-add');
       if (!btn) return;
       var t = btn.getAttribute('data-add');
       state.blocks.push(newEmptyBlock(toolbarTypeArg(t)));
-      normalizeCtasToEnd();
       render();
     });
 
@@ -295,26 +339,13 @@
     row.className = 'article-block-item';
     row.setAttribute('data-block-index', String(index));
 
-    var isCtaPinned = block.type === 'cta';
-    if (isCtaPinned) {
-      row.classList.add('article-block-item--cta-pinned');
-      row.setAttribute('draggable', 'false');
-    } else {
-      row.setAttribute('draggable', 'true');
-    }
+    row.setAttribute('draggable', 'true');
 
     var handle = document.createElement('span');
     handle.className = 'article-block-drag-handle';
-    if (isCtaPinned) {
-      handle.setAttribute('aria-hidden', 'true');
-      handle.title = '';
-      handle.textContent = '◆';
-      handle.classList.add('article-block-drag-handle--pinned');
-    } else {
-      handle.setAttribute('aria-hidden', 'true');
-      handle.title = 'Glisser pour réordonner';
-      handle.textContent = '⋮⋮';
-    }
+    handle.setAttribute('aria-hidden', 'true');
+    handle.title = 'Glisser pour réordonner';
+    handle.textContent = '⋮⋮';
 
     var body = document.createElement('div');
     body.className = 'article-block-item-body';
@@ -495,7 +526,7 @@
       body.appendChild(listWrap);
       body.appendChild(addLineBtn);
     } else if (block.type === 'cta') {
-      title.textContent = 'Encadré d’action (dernier bloc publié)';
+      title.textContent = 'Encadré d’action';
       var c1 = document.createElement('input');
       c1.type = 'text';
       c1.className = 'article-block-input';
@@ -621,6 +652,76 @@
       qta.placeholder = 'Citation (texte seul)';
       body.appendChild(qta);
       appendBoldCheckbox(body, block, index);
+    } else if (block.type === 'table') {
+      normalizeTableBlock(block);
+      title.textContent = 'Tableau';
+      var tableTitle = document.createElement('input');
+      tableTitle.type = 'text';
+      tableTitle.className = 'article-block-input';
+      tableTitle.placeholder = 'Titre du tableau (caption)';
+      tableTitle.value = block.title || '';
+      tableTitle.setAttribute('data-bind', 'title');
+      tableTitle.setAttribute('data-index', String(index));
+      var dimRow = document.createElement('div');
+      dimRow.className = 'article-block-field-row';
+      dimRow.appendChild(document.createTextNode('Colonnes : '));
+      var colInput = document.createElement('input');
+      colInput.type = 'number';
+      colInput.min = '1';
+      colInput.max = '8';
+      colInput.className = 'article-block-input';
+      colInput.style.maxWidth = '80px';
+      colInput.value = String(block.columns);
+      colInput.setAttribute('data-bind', 'table_columns');
+      colInput.setAttribute('data-index', String(index));
+      dimRow.appendChild(colInput);
+      dimRow.appendChild(document.createTextNode(' Lignes : '));
+      var rowInput = document.createElement('input');
+      rowInput.type = 'number';
+      rowInput.min = '1';
+      rowInput.max = '20';
+      rowInput.className = 'article-block-input';
+      rowInput.style.maxWidth = '80px';
+      rowInput.value = String(block.rows);
+      rowInput.setAttribute('data-bind', 'table_rows');
+      rowInput.setAttribute('data-index', String(index));
+      dimRow.appendChild(rowInput);
+      var grid = document.createElement('div');
+      grid.className = 'article-block-table-grid';
+      var headerRow = document.createElement('div');
+      headerRow.className = 'article-block-table-grid-row article-block-table-grid-row--header';
+      block.headers.forEach(function (headerCell, colIndex) {
+        var headerInput = document.createElement('input');
+        headerInput.type = 'text';
+        headerInput.className = 'article-block-input';
+        headerInput.placeholder = 'En-tête ' + (colIndex + 1);
+        headerInput.value = headerCell || '';
+        headerInput.setAttribute('data-bind', 'table_header');
+        headerInput.setAttribute('data-index', String(index));
+        headerInput.setAttribute('data-col', String(colIndex));
+        headerRow.appendChild(headerInput);
+      });
+      grid.appendChild(headerRow);
+      block.rows_data.forEach(function (dataRow, rowIndex) {
+        var dataRowEl = document.createElement('div');
+        dataRowEl.className = 'article-block-table-grid-row';
+        dataRow.forEach(function (cellValue, colIndex) {
+          var cellInput = document.createElement('input');
+          cellInput.type = 'text';
+          cellInput.className = 'article-block-input';
+          cellInput.placeholder = 'Ligne ' + (rowIndex + 1);
+          cellInput.value = cellValue || '';
+          cellInput.setAttribute('data-bind', 'table_cell');
+          cellInput.setAttribute('data-index', String(index));
+          cellInput.setAttribute('data-row', String(rowIndex));
+          cellInput.setAttribute('data-col', String(colIndex));
+          dataRowEl.appendChild(cellInput);
+        });
+        grid.appendChild(dataRowEl);
+      });
+      body.appendChild(tableTitle);
+      body.appendChild(dimRow);
+      body.appendChild(grid);
     }
 
     header.appendChild(title);
@@ -674,6 +775,38 @@
       } else {
         balign.button_align = bv === 'left' || bv === 'right' ? bv : 'center';
       }
+    } else if (bind === 'table_columns' || bind === 'table_rows') {
+      var tableBlock = state.blocks[idx];
+      if (tableBlock.type !== 'table') return;
+      normalizeTableBlock(tableBlock);
+      if (bind === 'table_columns') {
+        tableBlock.columns = Math.max(1, Math.min(8, parseInt(el.value, 10) || 1));
+      } else {
+        tableBlock.rows = Math.max(1, Math.min(20, parseInt(el.value, 10) || 1));
+      }
+      normalizeTableBlock(tableBlock);
+      render();
+      return;
+    } else if (bind === 'table_header') {
+      var colIndex = parseInt(el.getAttribute('data-col') || '', 10);
+      if (!Number.isNaN(colIndex) && state.blocks[idx].type === 'table') {
+        normalizeTableBlock(state.blocks[idx]);
+        state.blocks[idx].headers[colIndex] = el.value;
+      }
+    } else if (bind === 'table_cell') {
+      var cellRow = parseInt(el.getAttribute('data-row') || '', 10);
+      var cellCol = parseInt(el.getAttribute('data-col') || '', 10);
+      if (
+        !Number.isNaN(cellRow) &&
+        !Number.isNaN(cellCol) &&
+        state.blocks[idx].type === 'table'
+      ) {
+        normalizeTableBlock(state.blocks[idx]);
+        if (!state.blocks[idx].rows_data[cellRow]) {
+          state.blocks[idx].rows_data[cellRow] = [];
+        }
+        state.blocks[idx].rows_data[cellRow][cellCol] = el.value;
+      }
     } else {
       state.blocks[idx][bind] = el.value;
     }
@@ -684,6 +817,8 @@
     container.addEventListener('input', function (e) {
       var el = e.target;
       if (!el.getAttribute || !el.getAttribute('data-bind')) return;
+      var bindName = el.getAttribute('data-bind');
+      if (bindName === 'table_columns' || bindName === 'table_rows') return;
       if (el.tagName === 'TEXTAREA' || el.tagName === 'INPUT') {
         if (el.type === 'checkbox') return;
         applyDataBindField(el);
@@ -696,7 +831,7 @@
       if (el.tagName === 'SELECT') {
         applyDataBindField(el);
       }
-      if (el.tagName === 'INPUT' && el.type === 'checkbox') {
+      if (el.tagName === 'INPUT' && (el.type === 'checkbox' || el.type === 'number')) {
         applyDataBindField(el);
       }
     });
@@ -755,15 +890,103 @@
     syncBlocksJsonField();
   }
 
+  function getAdvancedTextarea() {
+    return document.getElementById('content_advanced_html');
+  }
+
+  function showSyncMessage(text, isError) {
+    var msg = document.getElementById('article-editor-sync-message');
+    if (!msg) return;
+    msg.textContent = text || '';
+    msg.hidden = text === '';
+    msg.classList.toggle('article-editor-sync-message--error', !!isError);
+  }
+
+  function postConvert(url, formData) {
+    return fetch(url, {
+      method: 'POST',
+      body: formData,
+      credentials: 'same-origin',
+      headers: {
+        Accept: 'application/json',
+        'X-Requested-With': 'XMLHttpRequest'
+      }
+    }).then(function (response) {
+      return response.json().then(function (data) {
+        return { ok: response.ok, data: data };
+      });
+    });
+  }
+
+  function setupSnippetsAccordion() {
+    var wrapper = document.getElementById('article-advanced-snippets');
+    var toggleBtn = document.getElementById('article-advanced-snippets-toggle');
+    var panel = document.getElementById('article-advanced-snippets-panel');
+    if (!wrapper || !toggleBtn || !panel) return;
+
+    function setExpanded(expanded) {
+      wrapper.classList.toggle('is-collapsed', !expanded);
+      panel.hidden = !expanded;
+      toggleBtn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+      toggleBtn.textContent = expanded ? 'Masquer les modèles' : 'Afficher les modèles';
+    }
+
+    toggleBtn.addEventListener('click', function () {
+      setExpanded(wrapper.classList.contains('is-collapsed'));
+    });
+
+    setExpanded(false);
+  }
+
+  function setupSnippetInserts() {
+    var snippetsScript = document.getElementById('article-advanced-snippets-data');
+    var snippets = [];
+    if (snippetsScript && snippetsScript.textContent) {
+      try {
+        snippets = JSON.parse(snippetsScript.textContent);
+      } catch (e) {
+        snippets = [];
+      }
+    }
+    document.querySelectorAll('.article-advanced-snippet-insert').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var ta = getAdvancedTextarea();
+        if (!ta) return;
+        var snippetIndex = parseInt(btn.getAttribute('data-snippet-index') || '', 10);
+        if (Number.isNaN(snippetIndex) || !snippets[snippetIndex]) return;
+        var code = snippets[snippetIndex].code || '';
+        var start = ta.selectionStart || 0;
+        var end = ta.selectionEnd || 0;
+        var before = ta.value.substring(0, start);
+        var after = ta.value.substring(end);
+        ta.value = before + code + after;
+        ta.focus();
+        ta.selectionStart = ta.selectionEnd = start + code.length;
+        ta.dispatchEvent(new Event('input', { bubbles: true }));
+      });
+    });
+  }
+
   function setupTabs() {
     var modes = document.getElementById('content_editor_mode');
     var tabVisual = document.getElementById('tab-visual');
     var tabAdvanced = document.getElementById('tab-advanced');
     var panelVisual = document.getElementById('panel-visual');
     var panelAdvanced = document.getElementById('panel-advanced');
-    var ta = document.getElementById('content_advanced_html');
+    var ta = getAdvancedTextarea();
+    var advancedHtmlDirty = false;
 
-    function setVisual() {
+    function markAdvancedHtmlDirty() {
+      if (modes && modes.value === 'advanced') {
+        advancedHtmlDirty = true;
+      }
+    }
+
+    if (ta) {
+      ta.addEventListener('input', markAdvancedHtmlDirty);
+    }
+
+    function applyVisualPanelState() {
       if (modes) modes.value = 'visual';
       if (tabVisual) {
         tabVisual.classList.add('article-editor-tab-active');
@@ -776,17 +999,19 @@
       if (panelVisual) {
         panelVisual.hidden = false;
         panelVisual.classList.add('article-editor-panel-active');
+        panelVisual.classList.remove('article-editor-panel-hidden');
       }
       if (panelAdvanced) {
         panelAdvanced.hidden = true;
         panelAdvanced.classList.remove('article-editor-panel-active');
+        panelAdvanced.classList.add('article-editor-panel-hidden');
       }
       if (ta) ta.disabled = true;
       var bf = document.getElementById('blocks_json_field');
       if (bf) bf.disabled = false;
     }
 
-    function setAdvanced() {
+    function applyAdvancedPanelState() {
       if (modes) modes.value = 'advanced';
       if (tabVisual) {
         tabVisual.classList.remove('article-editor-tab-active');
@@ -799,28 +1024,118 @@
       if (panelVisual) {
         panelVisual.hidden = true;
         panelVisual.classList.remove('article-editor-panel-active');
+        panelVisual.classList.add('article-editor-panel-hidden');
       }
       if (panelAdvanced) {
         panelAdvanced.hidden = false;
         panelAdvanced.classList.add('article-editor-panel-active');
+        panelAdvanced.classList.remove('article-editor-panel-hidden');
       }
-      if (ta) ta.disabled = false;
+      if (ta) {
+        ta.disabled = false;
+        ta.focus();
+      }
       var bfAdv = document.getElementById('blocks_json_field');
       if (bfAdv) bfAdv.disabled = true;
     }
 
-    if (tabVisual) {
-      tabVisual.addEventListener('click', function () {
-        setVisual();
-      });
-    }
-    if (tabAdvanced) {
-      tabAdvanced.addEventListener('click', function () {
-        setAdvanced();
-      });
+    function switchToVisual() {
+      var convertUrl = root.dataset.convertHtmlUrl;
+      if (!advancedHtmlDirty || !convertUrl || !ta) {
+        applyVisualPanelState();
+        showSyncMessage('');
+        return;
+      }
+      if (
+        !window.confirm(
+          'Convertir le HTML vers le mode CMS ? Le HTML doit utiliser les classes SAHP (modèles fournis).'
+        )
+      ) {
+        return;
+      }
+      var fd = new FormData();
+      fd.append('csrf_token', root.dataset.csrfToken);
+      fd.append('content', ta.value);
+      showSyncMessage('Conversion HTML → CMS…');
+      postConvert(convertUrl, fd)
+        .then(function (result) {
+          if (!result.ok || !result.data || !result.data.ok) {
+            throw new Error(
+              (result.data && result.data.message) || 'Conversion impossible.'
+            );
+          }
+          var payload = result.data.payload;
+          var rawBlocks = payload && Array.isArray(payload.blocks) ? payload.blocks : [];
+          state.blocks = rawBlocks.map(function (b) {
+            var block = Object.assign({ id: makeId() }, b);
+            if (!block.type) block.type = 'text';
+            if (block.type === 'bullet_list' && !Array.isArray(block.items)) {
+              block.items = [''];
+            }
+            if (block.type === 'table') {
+              normalizeTableBlock(block);
+            }
+            coerceBlockFromServer(block);
+            return block;
+          });
+          if (state.blocks.length === 0) {
+            state.blocks.push(newEmptyBlock('text'));
+          }
+          render();
+          advancedHtmlDirty = false;
+          applyVisualPanelState();
+          showSyncMessage('Contenu synchronisé depuis le HTML.');
+        })
+        .catch(function (err) {
+          showSyncMessage(err.message || 'Conversion impossible.', true);
+        });
     }
 
-    setVisual();
+    function switchToAdvanced() {
+      applyAdvancedPanelState();
+
+      var convertUrl = root.dataset.convertBlocksUrl;
+      if (!convertUrl) {
+        return;
+      }
+
+      syncBlocksJsonField();
+      var fd = new FormData();
+      fd.append('csrf_token', root.dataset.csrfToken);
+      fd.append('blocks_json', document.getElementById('blocks_json_field').value);
+      showSyncMessage('Conversion CMS → HTML…');
+      postConvert(convertUrl, fd)
+        .then(function (result) {
+          if (!result.ok || !result.data || !result.data.ok) {
+            throw new Error(
+              (result.data && result.data.message) || 'Conversion impossible.'
+            );
+          }
+          if (ta) {
+            ta.value = result.data.html || '';
+            advancedHtmlDirty = false;
+            ta.focus();
+          }
+          showSyncMessage('Contenu synchronisé depuis le CMS.');
+        })
+        .catch(function (err) {
+          showSyncMessage(
+            (err.message || 'Conversion impossible.') +
+              ' Vous pouvez éditer le HTML ci-dessous.',
+            true
+          );
+          if (ta) ta.focus();
+        });
+    }
+
+    if (tabVisual) {
+      tabVisual.addEventListener('click', switchToVisual);
+    }
+    if (tabAdvanced) {
+      tabAdvanced.addEventListener('click', switchToAdvanced);
+    }
+
+    applyVisualPanelState();
   }
 
   function setupFormSubmit() {
@@ -844,5 +1159,7 @@
   bindDelegationOnce(root);
   render();
   setupTabs();
+  setupSnippetsAccordion();
+  setupSnippetInserts();
   setupFormSubmit();
 })();
