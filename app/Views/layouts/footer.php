@@ -41,10 +41,17 @@
       <p>📞 <a href="tel:+33176242884">01 76 24 28 84</a></p>
       <p>✉️ <a href="<?= BASE_URL ?>/contact">contact@sahp-idf.fr</a></p>
 
-      <a href="https://wa.me/33658017102?text=Bonjour,%20nous%20venons%20de%20votre%20site%20internet%20SAHP%20et%20nous%20avons%20une%20urgence%20assainissement.%20Pouvez-vous%20nous%20recontacter%20s'il vous plait%20?" class="footer-whatsapp" target="_blank">
-        <img src="<?= BASE_URL ?>/assets/img/brand/whatsapp.png" alt="WhatsApp">
-        WhatsApp 24/7
-      </a>
+      <div class="footer-social">
+        <a href="https://wa.me/33658017102?text=Bonjour,%20nous%20venons%20de%20votre%20site%20internet%20SAHP%20et%20nous%20avons%20une%20urgence%20assainissement.%20Pouvez-vous%20nous%20recontacter%20s'il vous plait%20?" class="footer-whatsapp" target="_blank" rel="noopener noreferrer">
+          <img src="<?= BASE_URL ?>/assets/img/brand/whatsapp.png" alt="WhatsApp SAHP urgence assainissement 24h/7">
+          WhatsApp 24/7
+        </a>
+
+        <a href="https://www.linkedin.com/company/sahp-assainissement/?viewAsMember=true" class="footer-linkedin" target="_blank" rel="noopener noreferrer">
+          <img src="<?= BASE_URL ?>/assets/img/brand/linkedin.svg" alt="LinkedIn SAHP Assainissement">
+          LinkedIn
+        </a>
+      </div>
     </div>
 
   </div>

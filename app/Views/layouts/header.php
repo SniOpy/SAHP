@@ -66,8 +66,7 @@
         class="btn-rounded btn-urgent">
         <img
           src="<?= BASE_URL ?>/assets/img/brand/whatsapp.png"
-          alt=""
-          aria-hidden="true" />
+          alt="Icône WhatsApp SAHP urgence 24h/7" />
         WhatsApp 24/7
       </a>
     </div>

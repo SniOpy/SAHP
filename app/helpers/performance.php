@@ -28,6 +28,7 @@ function get_css_files_for_page(string $page): array
         case '':
             $css = array_merge($css, [
                 'homepage/hero.css',
+                'homepage/toc.css',
                 'homepage/about.css',
                 'homepage/services.css',
                 'homepage/pricing.css',

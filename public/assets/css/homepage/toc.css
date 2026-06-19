@@ -1,0 +1,17 @@
+/* FAQ accueil — bande blanche avant la mascotte avis */
+.home-faq-wrap {
+  background: #ffffff;
+  padding-top: 80px;
+  padding-bottom: 80px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.home-faq-wrap .faq-block {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.home-faq-wrap .faq-title {
+  color: #0f4c81;
+}

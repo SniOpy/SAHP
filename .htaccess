@@ -7,24 +7,34 @@ RewriteEngine On
   Require all denied
 </FilesMatch>
 
-# =====================================================
-# EMPÊCHER LE LISTING DE DOSSIERS
-# =====================================================
 Options -Indexes
 
 # =====================================================
-# REDIRECTION VERS /sahp/public
+# PRODUCTION sahp-idf.fr : URLs propres (sans /sahp/public visible)
 # =====================================================
+RewriteCond %{HTTP_HOST} ^(www\.)?sahp-idf\.fr$ [NC]
 
-# 1) Rediriger la racine vers /sahp/public/
-RewriteRule ^$ sahp/public/ [L,R=301]
+# Anciennes URLs /sahp/public/... → redirection 301 vers la racine du site
+RewriteRule ^sahp/public/?(.*)$ /$1 [R=301,L]
 
-# 2) Si la requête vise déjà /sahp/public/ => ne touche pas
+# Accueil : servir public/ sans afficher /sahp/public dans la barre d'adresse
+RewriteRule ^$ sahp/public/ [L]
+
+# Fichiers et pages : réécriture interne vers sahp/public/
 RewriteCond %{REQUEST_URI} !^/sahp/public/ [NC]
-
-# 3) Si le fichier/dossier existe à la racine => ne pas réécrire (évite bugs)
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ sahp/public/$1 [L]
 
-# 4) Tout le reste vers /sahp/public/
+# =====================================================
+# DÉVELOPPEMENT LOCAL (WAMP) : comportement historique
+# =====================================================
+RewriteCond %{HTTP_HOST} !^(www\.)?sahp-idf\.fr$ [NC]
+
+RewriteRule ^$ sahp/public/ [L,R=301]
+
+RewriteCond %{HTTP_HOST} !^(www\.)?sahp-idf\.fr$ [NC]
+RewriteCond %{REQUEST_URI} !^/sahp/public/ [NC]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ sahp/public/$1 [L]

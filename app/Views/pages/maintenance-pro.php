@@ -130,6 +130,32 @@
       <a href="<?= BASE_URL ?>/devis" class="pricing-btn">Demander un devis gratuit</a>
     </div>
 
+    <?php
+    require_once APP_PATH . '/helpers/faq.php';
+    sahp_render_faq([
+      [
+        'q' => 'Qu’est-ce qu’un contrat de maintenance assainissement ?',
+        'a' => '<p>C’est un accord d’entretien planifié, conçu sur mesure selon votre activité, vos volumes et vos contraintes. Concrètement : des interventions programmées à l’avance (curage, pompage, contrôle), une priorité en cas d’incident et des tarifs maîtrisés sur l’année. Vous ne gérez plus les pannes au coup par coup.</p>',
+      ],
+      [
+        'q' => 'Pourquoi la maintenance préventive est-elle plus rentable ?',
+        'a' => '<p>Parce qu’une intervention d’urgence (nuit, week-end, jour férié) coûte toujours plus cher qu’un entretien programmé, sans compter l’arrêt d’activité quand un restaurant ou un site doit fermer. Un suivi régulier lisse le budget et prolonge la durée de vie des installations de 30 à 50 %.</p>',
+      ],
+      [
+        'q' => 'Quels professionnels sont concernés ?',
+        'a' => '<p>Principalement les restaurants et métiers de bouche, les copropriétés et syndics, les industries, les sites logistiques et les parkings. Dès qu’un réseau est très sollicité ou soumis à des obligations (bac à graisse, séparateur), la maintenance devient un vrai filet de sécurité.</p>',
+      ],
+      [
+        'q' => 'M’aidez-vous à rester conforme à la réglementation ?',
+        'a' => '<p>Oui. Nous fournissons les bordereaux de suivi des déchets (BSD), respectons les normes d’hygiène (HACCP) et tenons compte des arrêtés communaux et du SPANC. Vous gardez une traçabilité complète, utile en cas de contrôle.</p>',
+      ],
+      [
+        'q' => 'Comment mettre en place un contrat avec SAHP ?',
+        'a' => '<p>On commence par un état des lieux de vos installations, puis on vous propose un plan d’entretien adapté. Le plus simple est de nous <a href="' . BASE_URL . '/contact">contacter</a> ou de faire une <a href="' . BASE_URL . '/devis">demande de devis</a> en décrivant votre activité et vos équipements.</p>',
+      ],
+    ]);
+    ?>
+
     </div>
   </div>
 

@@ -9,6 +9,8 @@
       Le curage haute pression est la solution la plus efficace pour nettoyer
       durablement vos canalisations, éliminer les dépôts et prévenir les
       bouchons récurrents.
+      SAHP, <a href="<?= BASE_URL ?>/">entreprise d'assainissement basée à Valenton</a>,
+      intervient en Île-de-France avec du matériel professionnel adapté à chaque réseau.
     </p>
 
     <!-- AVANT / APRÈS (UNE SEULE IMAGE COMPARATIVE) -->
@@ -124,6 +126,32 @@
         </div>
       </div>
     </div>
+
+    <?php
+    require_once APP_PATH . '/helpers/faq.php';
+    sahp_render_faq([
+      [
+        'q' => 'À quelle fréquence faut-il curer ses canalisations ?',
+        'a' => '<p>Pour une maison individuelle, un curage tous les 3 à 5 ans suffit généralement. Dès qu’il y a une forte sollicitation (immeuble, restaurant, site industriel), on passe à un rythme annuel. Le bon repère reste l’usage : si l’eau commence à s’écouler lentement ou que les odeurs reviennent, il est temps d’y penser.</p>',
+      ],
+      [
+        'q' => 'Quelle différence entre un débouchage et un curage ?',
+        'a' => '<p>Le <a href="' . BASE_URL . '/debouchage">débouchage</a> règle un bouchon ponctuel, à un endroit précis. Le curage, lui, nettoie toute la longueur de la canalisation et décolle les dépôts sur les parois (graisses, tartre, boues). En clair : le débouchage soulage, le curage prévient les récidives.</p>',
+      ],
+      [
+        'q' => 'Le curage haute pression est-il sans risque pour mes installations ?',
+        'a' => '<p>Oui. La pression et le type de buse sont adaptés au diamètre et au matériau du conduit. C’est une méthode mécanique, à l’eau, sans produit chimique. Si le réseau est ancien, on peut le contrôler au préalable par <a href="' . BASE_URL . '/inspection">inspection vidéo</a> pour intervenir en toute sécurité.</p>',
+      ],
+      [
+        'q' => 'Intervenez-vous pour les copropriétés et les professionnels ?',
+        'a' => '<p>Oui, c’est même une grande partie de notre activité : colonnes d’immeuble, bacs à graisse, réseaux de restaurants ou de sites logistiques. Pour ces besoins récurrents, un contrat de <a href="' . BASE_URL . '/maintenance-pro">maintenance</a> revient moins cher que des interventions d’urgence répétées.</p>',
+      ],
+      [
+        'q' => 'Comment obtenir un prix pour un curage ?',
+        'a' => '<p>Le tarif dépend de la longueur à traiter et de l’accès au réseau. Le plus simple est de nous décrire la situation via une <a href="' . BASE_URL . '/devis">demande de devis</a> gratuite : on vous répond rapidement avec une estimation claire, sans engagement.</p>',
+      ],
+    ]);
+    ?>
 
     </div>
   </div>

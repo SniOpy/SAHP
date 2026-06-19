@@ -1,69 +1,94 @@
 <?php
+
 declare(strict_types=1);
 
 require_once __DIR__ . '/../app/config/config.php';
+require_once APP_PATH . '/helpers/seo.php';
 
 // URL demandée (on nettoie /sahp et /public)
 $request = trim(
-  str_replace(['/sahp', '/public'], '', parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)),
-  '/'
+    str_replace(['/sahp', '/public'], '', parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)),
+    '/'
 );
+
+// Contexte SEO partagé avec le layout (canonical, Open Graph, Twitter)
+$canonicalPath = null;
+$ogImage = sahp_seo_default_image();
+$ogType = 'website';
 
 // ✅ ROUTES statiques
 $routes = [
-  ''          => 'accueil.php',
-  'a-propos'  => 'about.php',
-  'mentions-legales'  => 'mentions.php',
-  'conditions-generales-prestations-services'  => 'cgps.php',
-  'politique-confidentialite'  => 'pc.php',
-  'gestion-cookies'  => 'gestion-cookies.php',
-  'plan-site'  => 'plansite.php',
-  'curage'  => 'curage.php',
-  'pompage'  => 'pompage.php',
-  'inspection'  => 'inspection.php',
-  'debouchage'  => 'debouchage.php',
-  'maintenance-pro'  => 'maintenance-pro.php',
-  'urgence'  => 'urgence.php',
-  'paroles-de-pro'  => 'paroles-de-pro.php', // ✅ listing
-  'contact'  => 'contact.php',
-  'devis'  => 'devis.php',
-  'tarifs'  => 'tarifs.php',
+    ''          => 'accueil.php',
+    'a-propos'  => 'about.php',
+    'mentions-legales'  => 'mentions.php',
+    'conditions-generales-prestations-services'  => 'cgps.php',
+    'politique-confidentialite'  => 'pc.php',
+    'gestion-cookies'  => 'gestion-cookies.php',
+    'plan-site'  => 'plansite.php',
+    'curage'  => 'curage.php',
+    'pompage'  => 'pompage.php',
+    'inspection'  => 'inspection.php',
+    'debouchage'  => 'debouchage.php',
+    'maintenance-pro'  => 'maintenance-pro.php',
+    'urgence'  => 'urgence.php',
+    'paroles-de-pro'  => 'paroles-de-pro.php', // ✅ listing
+    'contact'  => 'contact.php',
+    'devis'  => 'devis.php',
+    'tarifs'  => 'tarifs.php',
 ];
 
 /* =====================================================
    ✅ ROUTING DYNAMIQUE : /paroles-de-pro/slug
 ===================================================== */
+$blogArticlePost = null;
 $slug = null;
 
 // Exemple : "paroles-de-pro/curage-canalisation-quand-le-faire"
 if (preg_match('#^paroles-de-pro/([a-z0-9-]+)$#i', $request, $matches)) {
-  $slug = $matches[1];
+    $slug = $matches[1];
 
-  // On injecte le slug dans $_GET pour le récupérer facilement dans show.php
-  $_GET['slug'] = $slug;
+    // On injecte le slug dans $_GET pour les vues
+    $_GET['slug'] = $slug;
 
-  // ✅ vue article dynamique
-  $view  = VIEWS_PATH . '/blog/show.php';
+    require_once APP_PATH . '/helpers/blog.php';
+    $blogArticlePost = blog_find_post_by_slug($slug);
 
-  // Le title SEO sera généré dans show.php (avec le JSON)
-  $title = "Paroles de Pros | SAHP Assainissement";
+    if ($blogArticlePost === null) {
+        http_response_code(404);
+        $view  = VIEWS_PATH . '/pages/404.php';
+        $title = 'Page introuvable (404) | SAHP Assainissement IDF';
+    } else {
+        $view  = VIEWS_PATH . '/blog/show.php';
+        $title = blog_resolve_page_title($blogArticlePost);
+        $meta_description = blog_resolve_meta_description($blogArticlePost);
+        $canonicalPath = 'paroles-de-pro/' . $slug;
+        $ogType = 'article';
+    }
 }
 /* =====================================================
    ROUTES CLASSIQUES
-===================================================== */
-elseif (array_key_exists($request, $routes)) {
-  $view  = VIEWS_PATH . '/pages/' . $routes[$request];
-  $title = $request === ""
-    ? "Accueil | SAHP Assainissement"
-    : ucfirst(str_replace('-', ' ', $request)) . ' | SAHP Assainissement';
+===================================================== */ elseif (array_key_exists($request, $routes)) {
+    $view  = VIEWS_PATH . '/pages/' . $routes[$request];
+    $canonicalPath = $request;
+
+    $seo = sahp_seo_for_path($request);
+    if ($seo !== null) {
+        $title = $seo['title'];
+        $meta_description = $seo['description'];
+        $ogImage = $seo['image'] ?? sahp_seo_default_image();
+    } else {
+        // Repli si une route n'a pas (encore) d'entrée SEO dédiée
+        $title = $request === ''
+            ? 'Accueil | SAHP Assainissement'
+            : ucfirst(str_replace('-', ' ', $request)) . ' | SAHP Assainissement';
+    }
 }
 /* =====================================================
    404
-===================================================== */
-else {
-  http_response_code(404);
-  $view  = VIEWS_PATH . '/pages/404.php';
-  $title = 'Page introuvable | SAHP';
+===================================================== */ else {
+    http_response_code(404);
+    $view  = VIEWS_PATH . '/pages/404.php';
+    $title = 'Page introuvable | SAHP';
 }
 
 // ✅ LAYOUT UNIQUE

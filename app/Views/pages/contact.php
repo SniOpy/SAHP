@@ -21,6 +21,11 @@ $csrfToken = generate_csrf_token();
       <!-- FORMULAIRE -->
       <div class="contact-form">
         <h2>Contactez SAHP</h2>
+        <p class="contact-intro">
+          Une question, un devis ou une urgence ? Écrivez-nous ou appelez directement.
+          Vous pouvez aussi <a href="<?= BASE_URL ?>/">découvrir tous nos services d'assainissement</a>
+          sur la page d'accueil.
+        </p>
 
         <?php if ($formMessage): ?>
           <div class="form-message <?= $formSuccess ? 'form-success' : 'form-error' ?>">

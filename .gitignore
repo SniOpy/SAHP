@@ -4,6 +4,7 @@
 .env
 .env.*
 *.env
+app/config/env.local.php
 
 ############################
 # DEPENDANCES

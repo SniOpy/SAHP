@@ -1,22 +1,22 @@
 <?php
+
+declare(strict_types=1);
+
 require_once __DIR__ . '/../../helpers/blog.php';
 
-$slug = $_GET['slug'] ?? '';
-$post = blog_find_post_by_slug($slug);
+$post = $blogArticlePost ?? blog_find_post_by_slug($_GET['slug'] ?? '');
 
 if (!$post) {
-  http_response_code(404);
-  require __DIR__ . '/../pages/404.php';
-  exit;
+    http_response_code(404);
+    require __DIR__ . '/../pages/404.php';
+    exit;
 }
 
-$title = ($post['title'] ?? "Paroles de Pros") . " | SAHP Assainissement";
-$meta_description = substr(strip_tags($post['excerpt'] ?? ""), 0, 155);
-$canonical = BASE_URL . "/paroles-de-pro/" . ($post['slug'] ?? "");
-
-$cover = !empty($post['cover_image'])
-  ? BASE_URL . "/assets/img/blog/" . blog_escape($post['cover_image'])
-  : "";
+$cover = '';
+$coverRaw = $post['cover_image'] ?? '';
+if ($coverRaw !== '') {
+    $cover = blog_resolve_cover_image_url($coverRaw);
+}
 ?>
 
 <section class="pp-article">
@@ -26,14 +26,14 @@ $cover = !empty($post['cover_image'])
     <div class="pp-hero-inner">
 
       <div class="pp-hero-title">
-        <h1><?= blog_escape($post['title'] ?? "") ?></h1>
+        <h1><?= blog_escape($post['title'] ?? '') ?></h1>
         <p class="pp-hero-subtitle">
           Les conseils de l’expert SAHP • Prévention • Île-de-France
         </p>
       </div>
 
       <div class="pp-hero-bubble">
-        <p><?= blog_escape($post['excerpt'] ?? "") ?></p>
+        <p><?= blog_escape($post['excerpt'] ?? '') ?></p>
       </div>
 
     </div>
@@ -48,18 +48,17 @@ $cover = !empty($post['cover_image'])
         <a href="<?= BASE_URL ?>/paroles-de-pro">← Retour à tous les articles</a>
       </div>
 
-      <?php if (!empty($cover)): ?>
+      <?php if ($cover !== ''): ?>
         <div class="pp-cover">
-          <img src="<?= $cover ?>" alt="<?= blog_escape($post['title'] ?? "") ?>">
+          <img src="<?= blog_escape($cover) ?>" alt="<?= blog_escape($post['title'] ?? '') ?>">
         </div>
       <?php endif; ?>
 
       <div class="pp-body">
       <?php
         $content = $post['content'] ?? '';
-        $content = str_replace('src="/assets/', 'src="' . BASE_URL . '/assets/', $content);
-        $content = str_replace('href="/', 'href="' . BASE_URL . '/', $content);
-        echo $content;
+        echo blog_prepare_content_html_for_output($content);
+        blog_render_faq_schema_from_content($content);
         ?>
 
 
@@ -67,8 +66,8 @@ $cover = !empty($post['cover_image'])
 
     </main>
 
-    <!-- SIDEBAR -->
-    <aside class="pp-sidebar">
+    <!-- SIDEBAR (vide tant que les cartes latérales sont commentées) -->
+    <aside class="pp-sidebar" aria-label="Colonnes annexes">
 
       <!-- <div class="pp-card">
         <h3>Contactez SAHP<br><span>(Urgence 24/7)</span></h3>
@@ -91,9 +90,7 @@ $cover = !empty($post['cover_image'])
         <a class="pp-link" href="<?= BASE_URL ?>/curage">Découvrir le curage →</a>
       </div> -->
 
-      
-
-    <!-- </aside> -->
+    </aside>
 
   </div>
 
