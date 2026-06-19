@@ -23,11 +23,6 @@ $cards = array_slice($posts, 0, 3);
       <li>Urgence débouchage 24/7</li>
       <li>Contrôle caméra & diagnostic</li>
     </ul>
-
-    <div class="hero-cta">
-      <a class="btn-rounded btn-primary" href="<?= BASE_URL ?>/devis">Obtenir un devis rapide</a>
-      <a class="btn-rounded" href="tel:+33176242884">Contacter un agent</a>
-    </div>
   </div>
 
   <div class="hero-visual">
@@ -40,20 +35,6 @@ $cards = array_slice($posts, 0, 3);
       height="auto" />
   </div>
 </section>
-
-<nav class="home-toc" aria-label="Sommaire de la page">
-  <div class="home-toc-inner">
-    <h2>Sur cette page</h2>
-    <ul>
-      <li><a href="#about">Qui est SAHP</a></li>
-      <li><a href="#auteur">Derrière SAHP</a></li>
-      <li><a href="#expert">Notre expertise</a></li>
-      <li><a href="#services">Nos interventions</a></li>
-      <li><a href="#faq">Questions fréquentes</a></li>
-      <li><a href="#avis">Avis clients</a></li>
-    </ul>
-  </div>
-</nav>
 
 <section class="about" id="about">
   <div class="about-container">
@@ -94,83 +75,14 @@ $cards = array_slice($posts, 0, 3);
     <div class="about-visual">
       <div class="about-image-wrapper">
         <img
-          src="<?= BASE_URL ?>/assets/img/hero.jpg"
-          alt="Camion hydrocureur SAHP en intervention de curage en Île-de-France"
+          src="<?= BASE_URL ?>/assets/img/team.jpg"
+          alt="équipe SAHP en intervention de curage en Île-de-France"
           loading="lazy"
           decoding="async"
           width="600"
           height="auto" />
       </div>
     </div>
-  </div>
-</section>
-
-<section class="home-author" id="auteur">
-  <div class="home-author-container">
-    <img
-      src="<?= BASE_URL ?>/assets/img/equipe.jpg"
-      alt="Équipe SAHP Assainissement à Valenton"
-      class="home-author-photo"
-      loading="lazy"
-      decoding="async"
-      width="200"
-      height="auto" />
-    <div>
-      <h2>Derrière SAHP</h2>
-      <p class="home-author-role">Nabyl Mekaouche — Directeur de publication</p>
-      <p>
-        Les conseils publiés sur ce site et dans nos articles « Paroles de Pro »
-        sont rédigés ou validés par notre équipe terrain, pas par une rédaction extérieure.
-        On partage ce qu'on voit chaque jour sur les chantiers : refoulements, graisses
-        accumulées, colonnes vieillissantes, fosses sous-dimensionnées.
-      </p>
-      <p>
-        <a href="<?= BASE_URL ?>/a-propos">En savoir plus sur SAHP</a> —
-        entreprise fondée en 2015, siège à Valenton (94), interventions en Île-de-France
-        et départements limitrophes.
-      </p>
-      <p class="home-author-sources">
-        Sources utiles :
-        <a href="https://www.service-public.fr/particuliers/vosdroits/F33627" target="_blank" rel="noopener noreferrer">Service-Public — Assainissement non collectif</a>
-        ·
-        <a href="https://www.ademe.fr/" target="_blank" rel="noopener noreferrer">ADEME — Eaux usées et assainissement</a>
-      </p>
-    </div>
-  </div>
-</section>
-
-<section class="home-expert" id="expert">
-  <div class="home-expert-container">
-    <h2>Pourquoi confier votre assainissement à SAHP ?</h2>
-
-    <p>
-      Un réseau d'assainissement, ce n'est pas visible au quotidien — jusqu'au jour
-      où l'eau remonte, où l'odeur devient insupportable ou où la fosse déborde.
-      Notre métier consiste à intervenir avant la catastrophe quand c'est possible,
-      et à limiter les dégâts quand l'urgence est déjà là.
-    </p>
-
-    <p>
-      Concrètement, on intervient sur les <a href="<?= BASE_URL ?>/debouchage">débouchages de canalisation</a>
-      (WC, évier, colonne), le <a href="<?= BASE_URL ?>/curage">curage haute pression</a> préventif ou curatif,
-      le <a href="<?= BASE_URL ?>/pompage">pompage et la vidange</a> de fosses et bacs à graisse,
-      l'<a href="<?= BASE_URL ?>/inspection">inspection vidéo</a> pour localiser un défaut sans casser le sol,
-      et les <a href="<?= BASE_URL ?>/urgence">urgences 24h/7j</a> quand chaque minute compte.
-    </p>
-
-    <p>
-      Côté professionnels, on accompagne des syndics, des restaurateurs, des sites industriels
-      et des collectivités qui ont besoin d'un partenaire réactif et documenté.
-      Curage d'aire de lavage, entretien de réseau graisseux, contrat de maintenance :
-      on adapte le planning à la charge réelle de vos installations.
-    </p>
-
-    <ul class="home-expert-list">
-      <li>Devis gratuit et réponse rapide via notre <a href="<?= BASE_URL ?>/devis">formulaire en ligne</a></li>
-      <li>Tarifs affichés pour les prestations courantes — voir nos <a href="<?= BASE_URL ?>/tarifs">grilles tarifaires</a></li>
-      <li>Zone d'intervention : Paris, petite couronne, grande couronne, Oise (60), Eure (27), Eure-et-Loir (28)</li>
-      <li>Matériel professionnel : hydrocureur, caméra endoscopique, pompe de relevage</li>
-    </ul>
   </div>
 </section>
 
@@ -305,34 +217,6 @@ $cards = array_slice($posts, 0, 3);
       height="auto" />
   </div>
 </section>
-
-<div class="home-faq-wrap">
-  <?php
-  require_once APP_PATH . '/helpers/faq.php';
-  sahp_render_faq([
-    [
-      'q' => 'Quels types d\'interventions d\'assainissement proposez-vous en Île-de-France ?',
-      'a' => '<p>On couvre l\'ensemble de la chaîne : <a href="' . BASE_URL . '/debouchage">débouchage</a> de WC, éviers et colonnes, <a href="' . BASE_URL . '/curage">curage haute pression</a>, <a href="' . BASE_URL . '/pompage">pompage et vidange</a> de fosses, <a href="' . BASE_URL . '/inspection">inspection caméra</a> et contrats de <a href="' . BASE_URL . '/maintenance-pro">maintenance</a> pour les professionnels. Chaque intervention commence par un diagnostic : on ne facture pas une prestation lourde si un débouchage ciblé suffit.</p>',
-    ],
-    [
-      'q' => 'Intervenez-vous en urgence le soir et le week-end ?',
-      'a' => '<p>Oui, nos équipes sont mobilisables 24h/24 et 7j/7, y compris les jours fériés. Pour un <a href="' . BASE_URL . '/urgence">débordement actif</a>, le plus rapide reste l\'appel téléphonique au 01.76.24.28.84. On vous indique un délai d\'arrivée réaliste et ce que vous pouvez faire en attendant (couper l\'eau, ne plus utiliser les sanitaires concernés).</p>',
-    ],
-    [
-      'q' => 'Comment obtenir un devis gratuit pour un débouchage ou un curage ?',
-      'a' => '<p>Remplissez notre <a href="' . BASE_URL . '/devis">formulaire de devis</a> en trois champs — nom, téléphone, type de prestation — ou appelez-nous directement. On vous rappelle généralement dans la journée pour préciser le contexte (type de bâtiment, symptômes, urgence ou non) et vous donner une fourchette tarifaire avant déplacement.</p>',
-    ],
-    [
-      'q' => 'Travaillez-vous avec les particuliers, les syndics et les entreprises ?',
-      'a' => '<p>Les trois. En maison individuelle, on intervient pour des bouchons ponctuels ou un entretien préventif. Pour les syndics et gestionnaires, on gère les colonnes d\'immeuble, les réseaux graisseux de restauration et les plannings d\'entretien annuel. Nos références incluent des collectivités et des grands comptes en Île-de-France.</p>',
-    ],
-    [
-      'q' => 'Dans quelles zones géographiques intervenez-vous autour de Paris ?',
-      'a' => '<p>Notre base est à Valenton (94). On intervient sur Paris et toute l\'Île-de-France, ainsi que dans l\'Oise (60), l\'Eure (27) et l\'Eure-et-Loir (28). Pour une adresse en limite de zone, contactez-nous : on confirme la faisabilité et le délai avant de planifier le camion.</p>',
-    ],
-  ], 'Questions fréquentes');
-  ?>
-</div>
 
 <div class="reviews-separator-mascotte">
   <img
@@ -494,7 +378,7 @@ $cards = array_slice($posts, 0, 3);
     <a
       target="_blank"
       rel="noopener noreferrer"
-      href="https://www.google.com/search?client=firefox-b-d&sca_esv=6dfd04640b18e1d6&sxsrf=ANbL-n5exdaoJQKhjnhO-qYpfUvVy7eNkw:1769033489011&si=AL3DRZEsmMGCryMMFSHJ3StBhOdZ2-6yYkXd_doETEE1OR-qOQQx6nqeVfb8TxDpasQh8xWjuj-DUdx6LzI_Cfnf1y6AYrwUe9Rv6mMEFLONw4t3brReK6Z4NCNQ_SoE3nCCICgkl80QqpF1HRbMgRC2l55JLqIqCZmHCqWZcHNCZfOt2YqYRmo%3D&q=Débouchage+Canalisation+Paris+IDF+-+SAHP+Avis&sa=X&ved=2ahUKEwimitWl052SAxWvKvsDHUJJKHsQ0bkNegQIThAH&biw=1696&bih=829&dpr=1.1&aic=0"
+      href="https://www.google.com/search?client=opera&hs=SIX&sca_esv=ec2bff8bd1e2ef21&sxsrf=ANbL-n4Ru34tT3sCM6AG1XawDpEPMcb27A:1781610364127&q=sahp+debouchage&si=AL3DRZEsmMGCryMMFSHJ3StBhOdZ2-6yYkXd_doETEE1OR-qOQQx6nqeVfb8TxDpasQh8xUkdSi6YmHdBJnQqQ1Aaqq3C8ef3AWSPK2SiAD2ExsOXTZ2ftM%3D&uds=ALYpb_n_EM_B_ErB9c5NX69H4GoWDFQEchDJ5N2H9pMMR0rMUrmHeJYEwz2hFhkiLuUT1yEhUkQpyjmZtkavCPTZRSNXos066TupDA5ao_vZMJhQmPiXS6g&sa=X&ved=2ahUKEwjk4Ybn14uVAxXLU6QEHfmaEz4Q3PALegQINBAF&biw=1676&bih=823&dpr=1.1"
       class="reviews-cta">Lire tous nos avis sur Google</a>
 
     <h3 class="partners-title">Ils nous confient leurs réseaux</h3>
@@ -534,6 +418,37 @@ $cards = array_slice($posts, 0, 3);
 
     </div>
 
+  </div>
+
+  <div class="home-faq-wrap">
+    <?php
+    require_once APP_PATH . '/helpers/faq.php';
+    sahp_render_faq([
+      [
+        'q' => 'Quels types d\'interventions d\'assainissement proposez-vous en Île-de-France ?',
+        'a' => '<p>On couvre l\'ensemble de la chaîne : <a href="' . BASE_URL . '/debouchage">débouchage</a> de WC, éviers et colonnes, <a href="' . BASE_URL . '/curage">curage haute pression</a>, <a href="' . BASE_URL . '/pompage">pompage et vidange</a> de fosses, <a href="' . BASE_URL . '/inspection">inspection caméra</a> et contrats de <a href="' . BASE_URL . '/maintenance-pro">maintenance</a> pour les professionnels. Chaque intervention commence par un diagnostic : on ne facture pas une prestation lourde si un débouchage ciblé suffit.</p>',
+      ],
+      [
+        'q' => 'Intervenez-vous en urgence le soir et le week-end ?',
+        'a' => '<p>Oui, nos équipes sont mobilisables 24h/24 et 7j/7, y compris les jours fériés. Pour un <a href="' . BASE_URL . '/urgence">débordement actif</a>, le plus rapide reste l\'appel téléphonique au 01.76.24.28.84. On vous indique un délai d\'arrivée réaliste et ce que vous pouvez faire en attendant (couper l\'eau, ne plus utiliser les sanitaires concernés).</p>',
+      ],
+      [
+        'q' => 'Comment obtenir un devis gratuit pour un débouchage ou un curage ?',
+        'a' => '<p>Remplissez notre <a href="' . BASE_URL . '/devis">formulaire de devis</a> en trois champs — nom, téléphone, type de prestation — ou appelez-nous directement. On vous rappelle généralement dans la journée pour préciser le contexte (type de bâtiment, symptômes, urgence ou non) et vous donner une fourchette tarifaire avant déplacement.</p>',
+      ],
+      [
+        'q' => 'Travaillez-vous avec les particuliers, les syndics et les entreprises ?',
+        'a' => '<p>Les trois. En maison individuelle, on intervient pour des bouchons ponctuels ou un entretien préventif. Pour les syndics et gestionnaires, on gère les colonnes d\'immeuble, les réseaux graisseux de restauration et les plannings d\'entretien annuel. Nos références incluent des collectivités et des grands comptes en Île-de-France.</p>',
+      ],
+      [
+        'q' => 'Dans quelles zones géographiques intervenez-vous autour de Paris ?',
+        'a' => '<p>Notre base est à Valenton (94). On intervient sur Paris et toute l\'Île-de-France, ainsi que dans l\'Oise (60), l\'Eure (27) et l\'Eure-et-Loir (28). Pour une adresse en limite de zone, contactez-nous : on confirme la faisabilité et le délai avant de planifier le camion.</p>',
+      ],
+    ], 'Questions fréquentes');
+    ?>
+  </div>
+
+  <div class="reviews-container">
     <div class="reviews-mascotte">
       <img
         src="<?= BASE_URL ?>/assets/img/mascotte1.png"

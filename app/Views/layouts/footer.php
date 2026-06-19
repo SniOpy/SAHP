@@ -47,7 +47,7 @@
           WhatsApp 24/7
         </a>
 
-        <a href="https://www.linkedin.com/in/sahp-assainissement-a952a82aa" class="footer-linkedin" target="_blank" rel="noopener noreferrer">
+        <a href="https://www.linkedin.com/company/sahp-assainissement/?viewAsMember=true" class="footer-linkedin" target="_blank" rel="noopener noreferrer">
           <img src="<?= BASE_URL ?>/assets/img/brand/linkedin.svg" alt="LinkedIn SAHP Assainissement">
           LinkedIn
         </a>
