@@ -24,6 +24,7 @@ if ($viewDir === 'blog' && $viewBasename === 'show') {
     'pompage' => 'pompage',
     'inspection' => 'inspection',
     'debouchage' => 'debouchage',
+    'debouchage-val-de-marne' => 'debouchage-val-de-marne',
     'urgence' => 'urgence',
     'maintenance-pro' => 'maintenance-pro',
     'paroles-de-pro' => 'paroles-de-pro',

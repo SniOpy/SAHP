@@ -29,6 +29,7 @@ $routes = [
     'pompage'  => 'pompage.php',
     'inspection'  => 'inspection.php',
     'debouchage'  => 'debouchage.php',
+    'debouchage-canalisation-val-de-marne-94'  => 'debouchage-val-de-marne.php',
     'maintenance-pro'  => 'maintenance-pro.php',
     'urgence'  => 'urgence.php',
     'paroles-de-pro'  => 'paroles-de-pro.php', // ✅ listing

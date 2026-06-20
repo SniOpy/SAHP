@@ -67,6 +67,10 @@ function get_css_files_for_page(string $page): array
             $css[] = 'pages/debouchage.css';
             break;
 
+        case 'debouchage-val-de-marne':
+            $css[] = 'pages/debouchage-val-de-marne.css';
+            break;
+
         case 'urgence':
             $css[] = 'pages/urgence.css';
             break;

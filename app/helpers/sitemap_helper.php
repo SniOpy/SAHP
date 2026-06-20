@@ -48,6 +48,7 @@ function sitemap_static_pages(): array
         'pompage',
         'inspection',
         'debouchage',
+        'debouchage-canalisation-val-de-marne-94',
         'maintenance-pro',
         'urgence',
         'paroles-de-pro',
@@ -64,7 +65,7 @@ function sitemap_static_pages(): array
             $out[] = ['/', $today, 'weekly', '1.0'];
         } elseif (in_array($path, ['contact', 'devis', 'paroles-de-pro', 'urgence'], true)) {
             $out[] = ['/' . $path, $today, 'weekly', '0.9'];
-        } elseif (in_array($path, ['debouchage', 'curage', 'inspection', 'pompage', 'maintenance-pro'], true)) {
+        } elseif (in_array($path, ['debouchage', 'curage', 'inspection', 'pompage', 'maintenance-pro', 'debouchage-canalisation-val-de-marne-94'], true)) {
             $out[] = ['/' . $path, $today, 'monthly', '0.85'];
         } else {
             $out[] = ['/' . $path, $today, 'monthly', '0.6'];

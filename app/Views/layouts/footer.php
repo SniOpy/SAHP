@@ -28,7 +28,7 @@
     <div class="footer-col">
       <h4>Zones d’intervention</h4>
       <ul>
-        <li>Paris – Île-de-France</li>
+        <li><a href="<?= BASE_URL ?>/debouchage-canalisation-val-de-marne-94">Val-de-Marne 94</a></li>
         <li>Oise (60)</li>
         <li>Eure (27)</li>
         <li>Eure-et-Loire (28)</li>

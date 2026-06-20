@@ -82,6 +82,11 @@ function sahp_seo_map(): array
             'description' => "Débouchage de canalisation en urgence par SAHP en Île-de-France : WC, évier, douche, colonne d'immeuble. Intervention rapide 24h/7j, particuliers et pros.",
             'image' => 'assets/img/debouchage.jpg',
         ],
+        'debouchage-canalisation-val-de-marne-94' => [
+            'title' => 'Débouchage canalisation Val-de-Marne 94 | Intervention SAHP',
+            'description' => "Canalisation bouchée dans le Val-de-Marne ? SAHP intervient pour le débouchage canalisation, WC, évier, égout, curage et inspection vidéo dans le 94.",
+            'image' => 'assets/img/debouchage.jpg',
+        ],
         'maintenance-pro' => [
             'title' => 'Maintenance assainissement pour pros | SAHP Île-de-France',
             'description' => "Contrats de maintenance assainissement pour professionnels et copropriétés en Île-de-France : entretien préventif, curage planifié et suivi des réseaux.",
