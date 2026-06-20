@@ -20,39 +20,40 @@ $cards = array_slice($posts, 0, 6);
         <p class="featured-intro" style="text-align:center;">Aucun article pour le moment.</p>
     <?php endif; ?>
 
-    <!-- FEATURED (DYNAMIQUE) -->
-    <?php if ($featured): ?>
-        <div class="parole-featured">
-            <div class="container-inner-blog">
+    <!-- INTRODUCTION RUBRIQUE -->
+    <div class="parole-featured">
+        <div class="container-inner-blog">
 
-                <div class="featured-text">
-                    <span class="featured-label" style="color:#0f4c81;">PAROLES DE PRO</span>
+            <div class="featured-text">
+                <span class="featured-label" style="color:#0f4c81;">PAROLES DE PRO</span>
 
-                    <h3><?= blog_escape($featured['title']) ?></h3>
+                <p class="featured-intro">
+                    Retrouvez dans notre rubrique Paroles de pro des articles, conseils pratiques
+                    et astuces d’experts autour de l’assainissement, du débouchage, du curage et
+                    de l’entretien des canalisations.
+                </p>
 
-                    <p class="featured-intro">
-                        <?= blog_escape($featured['excerpt'] ?? '') ?>
-                    </p>
+                <p class="seo-text">
+                    Notre objectif : vous aider à mieux comprendre les signes d’alerte, adopter les
+                    bons réflexes et éviter les mauvaises surprises comme les canalisations bouchées,
+                    les remontées d’eaux usées, les mauvaises odeurs ou les interventions d’urgence coûteuses.
+                </p>
 
-                    <p class="seo-text">
-                        Conseils professionnels SAHP pour prévenir les bouchons, éviter les refoulements
-                        et optimiser l’entretien de vos canalisations en Île-de-France.
-                    </p>
-
-                    <a href="<?= BASE_URL ?>/paroles-de-pro/<?= blog_escape($featured['slug']) ?>" class="article-link" style="display:inline-block;margin-top:14px;color:#0f4c81;font-weight:700;">
-                        Lire l’article →
-                    </a>
-                </div>
-
-                <div class="featured-visual">
-                    <img
-                        src="<?= BASE_URL ?>/assets/img/mascotte-blog.png"
-                        alt="<?= blog_escape($featured['title']) ?>">
-                </div>
-
+                <p class="seo-text">
+                    À travers nos contenus, nous partageons notre expérience terrain pour vous
+                    accompagner au quotidien, que vous soyez particulier, professionnel ou syndic
+                    de copropriété.
+                </p>
             </div>
+
+            <div class="featured-visual">
+                <img
+                    src="<?= BASE_URL ?>/assets/img/mascotte-blog.png"
+                    alt="Mascotte SAHP - Paroles de Pro assainissement">
+            </div>
+
         </div>
-    <?php endif; ?>
+    </div>
 
     <!-- ARTICLES BLOG (DYNAMIQUE) -->
     <div class="parole-articles">
