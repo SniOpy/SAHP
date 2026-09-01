@@ -25,36 +25,58 @@
     <nav>
 
       <a href="<?= BASE_URL ?>/">Accueil</a>
-      <a href="<?= BASE_URL ?>/a-propos">Qui sommes-nous</a>
+      <a href="<?= BASE_URL ?>/a-propos">qui sommes-nous</a>
+      <!-- DROPDOWN SERVICES -->
+      <div class="nav-dropdown">
 
-      <!-- DROPDOWN -->
-      <div class="nav-dropdown" style="margin-bottom : 1px;">
-
-        <!-- TOGGLE-->
         <button
           type="button"
           class="dropdown-toggle"
           aria-expanded="false"
-          aria-controls="dropdown-interventions">
+          aria-controls="dropdown-services">
           Nos interventions
           <span class="chevron" aria-hidden="true">▾</span>
         </button>
 
-        <!-- MENU DROPDOWN -->
         <div
           class="dropdown-menu"
-          id="dropdown-interventions"
+          id="dropdown-services"
           role="menu">
-          <a href="<?= BASE_URL ?>/debouchage" role="menuitem">Débouchage</a>
-          <a href="<?= BASE_URL ?>/curage" role="menuitem">Curage</a>
-          <a href="<?= BASE_URL ?>/pompage" role="menuitem">Pompage</a>
-          <a href="<?= BASE_URL ?>/inspection" role="menuitem">Inspection vidéo</a>
-          <a href="<?= BASE_URL ?>/tarifs" role="menuitem">Nos Tarifs</a>
+          <a href="<?= BASE_URL ?>/debouchage" role="menuitem">Débouchage canalisation</a>
+          <a href="<?= BASE_URL ?>/curage" role="menuitem">Curage canalisation</a>
+          <a href="<?= BASE_URL ?>/curage" role="menuitem">Hydrocurage</a>
+          <a href="<?= BASE_URL ?>/inspection" role="menuitem">Inspection vidéo canalisation</a>
+          <a href="<?= BASE_URL ?>/pompage" role="menuitem">Pompage / Vidange</a>
+          <a href="<?= BASE_URL ?>/urgence" role="menuitem">Urgence assainissement</a>
         </div>
 
       </div>
 
-      <a href="<?= BASE_URL ?>/paroles-de-pro">Parole de Pros</a>
+      <!-- DROPDOWN ZONES D'INTERVENTION -->
+      <!-- <div class="nav-dropdown">
+
+        <button
+          type="button"
+          class="dropdown-toggle"
+          aria-expanded="false"
+          aria-controls="dropdown-zones">
+          Zones d'intervention
+          <span class="chevron" aria-hidden="true">▾</span>
+        </button>
+
+        <div
+          class="dropdown-menu"
+          id="dropdown-zones"
+          role="menu">
+          <a href="<?= BASE_URL ?>/debouchage-canalisation-val-de-marne-94" role="menuitem">Val-de-Marne 94</a>
+          <?php /* Pages zone à activer : assainissement-paris, assainissement-ile-de-france */ ?>
+          <a href="<?= BASE_URL ?>/contact" role="menuitem">Paris</a>
+          <a href="<?= BASE_URL ?>/contact" role="menuitem">Île-de-France</a>
+        </div>
+
+      </div> -->
+
+      <a href="<?= BASE_URL ?>/paroles-de-pro">Paroles de pro</a>
       <a href="<?= BASE_URL ?>/contact">Contact</a>
 
     </nav>

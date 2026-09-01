@@ -87,6 +87,16 @@ function sahp_seo_map(): array
             'description' => "Canalisation bouchée dans le Val-de-Marne ? SAHP intervient pour le débouchage canalisation, WC, évier, égout, curage et inspection vidéo dans le 94.",
             'image' => 'assets/img/debouchage.jpg',
         ],
+        'inspection-video-canalisation-creteil' => [
+            'title' => 'Inspection vidéo canalisation Créteil | Diagnostic SAHP',
+            'description' => "Besoin d'une inspection vidéo canalisation à Créteil ? SAHP contrôle vos canalisations par caméra pour identifier bouchon, casse, racines ou défaut de réseau.",
+            'image' => 'assets/img/inspection-video.jpg',
+        ],
+        'pompage-assainissement-choisy-le-roi' => [
+            'title' => 'Pompage assainissement Choisy-le-Roi | SAHP',
+            'description' => "Besoin d'un pompage assainissement à Choisy-le-Roi ? SAHP intervient pour eaux usées, fosse, bac à graisse, regard saturé, vidange et urgence assainissement.",
+            'image' => 'assets/img/pompage.jpg',
+        ],
         'maintenance-pro' => [
             'title' => 'Maintenance assainissement pour pros | SAHP Île-de-France',
             'description' => "Contrats de maintenance assainissement pour professionnels et copropriétés en Île-de-France : entretien préventif, curage planifié et suivi des réseaux.",

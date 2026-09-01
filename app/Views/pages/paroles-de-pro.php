@@ -3,11 +3,21 @@ require_once __DIR__ . '/../../helpers/blog.php';
 
 $posts = blog_load_posts();
 
-// Featured = dernier article publié (top SEO + logique)
-$featured = $posts[0] ?? null;
+// Pagination : 9 articles par page, via ?page=N
+$perPage = 9;
+$totalPosts = count($posts);
+$totalPages = max(1, (int) ceil($totalPosts / $perPage));
 
-// On affiche ensuite 3 cards (ou plus si tu veux)
-$cards = array_slice($posts, 0, 6);
+$currentPageNum = (int) ($_GET['page'] ?? 1);
+if ($currentPageNum < 1) {
+    $currentPageNum = 1;
+}
+if ($currentPageNum > $totalPages) {
+    $currentPageNum = $totalPages;
+}
+
+$offset = ($currentPageNum - 1) * $perPage;
+$cards = array_slice($posts, $offset, $perPage);
 ?>
 
 <section id="parole-de-pro">
@@ -83,5 +93,26 @@ $cards = array_slice($posts, 0, 6);
         <?php endforeach; ?>
 
     </div>
+
+    <!-- PAGINATION -->
+    <?php if ($totalPages > 1): ?>
+        <nav class="parole-pagination" aria-label="Pagination des articles">
+            <?php if ($currentPageNum > 1): ?>
+                <a class="pagination-link pagination-prev" href="<?= BASE_URL ?>/paroles-de-pro?page=<?= $currentPageNum - 1 ?>">← Précédent</a>
+            <?php endif; ?>
+
+            <?php for ($pageNumber = 1; $pageNumber <= $totalPages; $pageNumber++): ?>
+                <?php if ($pageNumber === $currentPageNum): ?>
+                    <span class="pagination-link is-active" aria-current="page"><?= $pageNumber ?></span>
+                <?php else: ?>
+                    <a class="pagination-link" href="<?= BASE_URL ?>/paroles-de-pro?page=<?= $pageNumber ?>"><?= $pageNumber ?></a>
+                <?php endif; ?>
+            <?php endfor; ?>
+
+            <?php if ($currentPageNum < $totalPages): ?>
+                <a class="pagination-link pagination-next" href="<?= BASE_URL ?>/paroles-de-pro?page=<?= $currentPageNum + 1 ?>">Suivant →</a>
+            <?php endif; ?>
+        </nav>
+    <?php endif; ?>
 
 </section>

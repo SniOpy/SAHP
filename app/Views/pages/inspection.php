@@ -104,6 +104,15 @@
         d'anticiper les pannes et d'éviter les urgences coûteuses.
       </p>
 
+      <?php
+      require_once APP_PATH . '/helpers/local_pages.php';
+      sahp_render_service_local_links(
+          'inspection',
+          'Inspection vidéo canalisation dans le Val-de-Marne',
+          'Diagnostic caméra de vos canalisations dans le Val-de-Marne :'
+      );
+      ?>
+
       <div class="page-pricing-wrapper">
         <div class="page-pricing-card pricing-category">
           <h3 class="category-title">

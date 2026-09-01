@@ -73,6 +73,9 @@ if ($coverRaw !== '') {
         $content = $post['content'] ?? '';
         echo blog_prepare_content_html_for_output($content);
         blog_render_faq_schema_from_content($content);
+
+        require_once APP_PATH . '/helpers/local_pages.php';
+        sahp_render_blog_local_page_cta((string) ($post['slug'] ?? ''));
         ?>
 
 

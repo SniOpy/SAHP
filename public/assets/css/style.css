@@ -1,3 +1,4 @@
+
 /* 
    NOTE: Les fichiers CSS sont maintenant chargés via des balises <link> dans main.php
    pour éviter les problèmes de chemins relatifs avec @import et améliorer les performances.
@@ -33,6 +34,11 @@ body {
 main {
   overflow-x: hidden;
   max-width: 100%;
+}
+
+.home-faq-wrap {margin-bottom: 100px;
+  max-width: 1200px;
+  border-radius: 10px;
 }
 
 /* Conteneur intérieur pour centrer le contenu (max 900px) à l'intérieur des containers de page */

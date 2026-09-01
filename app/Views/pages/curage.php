@@ -128,6 +128,20 @@
     </div>
 
     <?php
+    require_once APP_PATH . '/helpers/local_pages.php';
+    sahp_render_service_local_links(
+        'curage',
+        'Curage canalisation dans le Val-de-Marne',
+        'Entretien et curage haute pression de vos canalisations dans le 94 :'
+    );
+    sahp_render_service_local_links(
+        'hydrocurage',
+        'Hydrocurage canalisation dans le Val-de-Marne',
+        'Nettoyage des réseaux encrassés par jet haute pression dans le Val-de-Marne :'
+    );
+    ?>
+
+    <?php
     require_once APP_PATH . '/helpers/faq.php';
     sahp_render_faq([
       [

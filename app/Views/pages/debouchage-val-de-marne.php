@@ -179,7 +179,8 @@ $vdmVilles = [
         soumis à forte charge. Pour localiser précisément un défaut (canalisation cassée,
         contre-pente, racine, objet coincé) sans casser le sol, nous réalisons une
         <a href="<?= BASE_URL ?>/inspection">inspection vidéo de canalisation</a> par caméra,
-        avec un diagnostic clair avant tout travaux.
+        avec un diagnostic clair avant tout travaux. À Créteil, consultez notre page
+        dédiée à l'<a href="<?= BASE_URL ?>/inspection-video-canalisation-creteil">inspection vidéo canalisation à Créteil</a>.
       </p>
 
       <p>
@@ -233,6 +234,16 @@ $vdmVilles = [
           </div>
         </div>
       </div>
+
+      <!-- ===================== H2 : INTERVENTIONS LOCALES 94 ===================== -->
+      <?php
+      require_once APP_PATH . '/helpers/local_pages.php';
+      sahp_render_zone_local_links(
+          'val-de-marne',
+          'Nos interventions dans le Val-de-Marne',
+          'SAHP intervient dans le Val-de-Marne pour le débouchage, le curage, l\'hydrocurage, l\'inspection vidéo, le pompage et les urgences d\'assainissement. Retrouvez nos pages dédiées par commune :'
+      );
+      ?>
 
       <!-- ===================== H2 : VILLES ===================== -->
       <h2>Villes desservies dans le Val-de-Marne</h2>

@@ -35,7 +35,9 @@ function sitemap_xml_escape(string $value): string
  */
 function sitemap_static_pages(): array
 {
-    // Doit rester aligné sur $routes de public/index.php (clé = segment d’URL, sans slash).
+    require_once __DIR__ . '/local_pages.php';
+
+    // Doit rester aligné sur $routes de public/index.php (clé = segment d'URL, sans slash).
     $paths = [
         '',
         'a-propos',
@@ -57,6 +59,13 @@ function sitemap_static_pages(): array
         'tarifs',
     ];
 
+    // Pages locales service + ville (registre central, routes live uniquement)
+    $paths = array_merge($paths, sahp_local_pages_live_routes());
+    $paths = array_values(array_unique($paths));
+
+    $localSeoSlugs = array_flip(sahp_local_pages_live_routes());
+    $serviceSlugs = ['debouchage', 'curage', 'inspection', 'pompage', 'maintenance-pro', 'debouchage-canalisation-val-de-marne-94'];
+
     $today = gmdate('Y-m-d');
     $out = [];
 
@@ -65,7 +74,7 @@ function sitemap_static_pages(): array
             $out[] = ['/', $today, 'weekly', '1.0'];
         } elseif (in_array($path, ['contact', 'devis', 'paroles-de-pro', 'urgence'], true)) {
             $out[] = ['/' . $path, $today, 'weekly', '0.9'];
-        } elseif (in_array($path, ['debouchage', 'curage', 'inspection', 'pompage', 'maintenance-pro', 'debouchage-canalisation-val-de-marne-94'], true)) {
+        } elseif (in_array($path, $serviceSlugs, true) || isset($localSeoSlugs[$path])) {
             $out[] = ['/' . $path, $today, 'monthly', '0.85'];
         } else {
             $out[] = ['/' . $path, $today, 'monthly', '0.6'];

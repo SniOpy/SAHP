@@ -33,7 +33,7 @@ $csrfToken = generate_csrf_token();
           </div>
         <?php endif; ?>
 
-        <form action="" method="post">
+        <form action="" method="post" class="contact-form-input">
           <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($csrfToken, ENT_QUOTES, 'UTF-8') ?>">
 
           <input

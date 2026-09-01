@@ -132,24 +132,26 @@
 ========================= */
 
 .reviews-cta {
-  display: inline-block;
-  margin: 20px auto 60px;
-  padding: 10px 26px;
-  border-radius: 50px;
-  border: 1px solid #ffffff;
-  color: #ffffff;
-  text-decoration: none;
-  font-weight: 600;
-  transition:0.3s ease,
-    color 0.3s ease;
-}
 
-.reviews-cta:hover {
+
+  display: inline-block;
   background: #ffffff;
   color: #0f4c81;
+  padding: 14px 32px;
+  border-radius: 30px;
+  font-weight: 700;
+  text-decoration: none;
+  border: 1px solid #ffffff;
+  transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
 }
 
-/* =========================
+.reviews-cta:hover{
+  background: #0f4c81;
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* ===========rgb(37, 43, 48)=======
    TITRES PARTENAIRES
 ========================= */
 

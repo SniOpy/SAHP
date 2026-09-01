@@ -25,6 +25,8 @@ if ($viewDir === 'blog' && $viewBasename === 'show') {
     'inspection' => 'inspection',
     'debouchage' => 'debouchage',
     'debouchage-val-de-marne' => 'debouchage-val-de-marne',
+    'inspection-video-canalisation-creteil' => 'inspection-video-canalisation-creteil',
+    'pompage-assainissement-choisy-le-roi' => 'pompage-assainissement-choisy-le-roi',
     'urgence' => 'urgence',
     'maintenance-pro' => 'maintenance-pro',
     'paroles-de-pro' => 'paroles-de-pro',

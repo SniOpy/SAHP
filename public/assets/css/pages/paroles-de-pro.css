@@ -180,6 +180,47 @@
 }
 
 /* ============================
+   PAGINATION
+============================ */
+
+.parole-pagination {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  max-width: 1270px;
+  margin: 50px auto 0;
+}
+
+.parole-pagination .pagination-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  height: 44px;
+  padding: 0 16px;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #0f4c81;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.parole-pagination a.pagination-link:hover {
+  background: #0f4c81;
+  color: #ffffff;
+}
+
+.parole-pagination .is-active {
+  background: #0f4c81;
+  color: #ffffff;
+  cursor: default;
+}
+
+/* ============================
    RESPONSIVE
 ============================ */
 

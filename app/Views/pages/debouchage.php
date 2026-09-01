@@ -102,6 +102,15 @@
     </div>
 
     <?php
+    require_once APP_PATH . '/helpers/local_pages.php';
+    sahp_render_service_local_links(
+        'debouchage',
+        'Débouchage canalisation dans le Val-de-Marne',
+        'SAHP débouche vos canalisations dans le Val-de-Marne. Pages locales par commune :'
+    );
+    ?>
+
+    <?php
     require_once APP_PATH . '/helpers/faq.php';
     sahp_render_faq([
       [

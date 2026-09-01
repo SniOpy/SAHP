@@ -53,22 +53,41 @@ function get_css_files_for_page(string $page): array
 
         case 'curage':
             $css[] = 'pages/curage.css';
+            $css[] = 'components/local-links.css';
             break;
 
         case 'pompage':
             $css[] = 'pages/pompage.css';
+            $css[] = 'components/local-links.css';
             break;
 
         case 'inspection':
             $css[] = 'pages/inspection.css';
+            $css[] = 'components/local-links.css';
             break;
 
         case 'debouchage':
             $css[] = 'pages/debouchage.css';
+            $css[] = 'components/local-links.css';
             break;
 
         case 'debouchage-val-de-marne':
             $css[] = 'pages/debouchage-val-de-marne.css';
+            $css[] = 'components/local-links.css';
+            break;
+
+        case 'inspection-video-canalisation-creteil':
+            // Réutilise le design des pages SEO locales (classes .vdm-*)
+            // + complément spécifique (tableau comparatif)
+            $css[] = 'pages/debouchage-val-de-marne.css';
+            $css[] = 'pages/inspection-video-canalisation-creteil.css';
+            $css[] = 'components/local-links.css';
+            break;
+
+        case 'pompage-assainissement-choisy-le-roi':
+            $css[] = 'pages/debouchage-val-de-marne.css';
+            $css[] = 'pages/pompage-assainissement-choisy-le-roi.css';
+            $css[] = 'components/local-links.css';
             break;
 
         case 'urgence':
@@ -90,6 +109,7 @@ function get_css_files_for_page(string $page): array
         case 'blog_show':
         case 'show':
             $css[] = 'pages/blog-articles.css';
+            $css[] = 'components/local-links.css';
             break;
 
         case 'mentions':

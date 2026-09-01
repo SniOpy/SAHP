@@ -26,12 +26,12 @@
 
     <!-- COL 3 -->
     <div class="footer-col">
-      <h4>Zones d’intervention</h4>
+      <h4>Zones d'intervention</h4>
       <ul>
         <li><a href="<?= BASE_URL ?>/debouchage-canalisation-val-de-marne-94">Val-de-Marne 94</a></li>
-        <li>Oise (60)</li>
-        <li>Eure (27)</li>
-        <li>Eure-et-Loire (28)</li>
+        <?php /* Pages zone à activer : assainissement-paris, assainissement-ile-de-france */ ?>
+        <li><a href="<?= BASE_URL ?>/contact">Paris</a></li>
+        <li><a href="<?= BASE_URL ?>/contact">Île-de-France</a></li>
       </ul>
     </div>
 

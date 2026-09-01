@@ -90,15 +90,20 @@ text-align: center;
   gap: 16px;
 }
 
+.contact-for-input input {
+  color:red;
+}
+
 .contact-form input,
 .contact-form textarea {
-  background: rgba(64,128,183,0.7);
-  border: none;
+  background: rgba(241, 243, 245, 0.7);
+  border: 1px solid #b1b1b1;
   border-radius: 14px;
   padding: 16px 18px; 
   font-size: 15px;
-  color: #fff;
+  color: #352e2e;
   outline: none;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .contact-form textarea {
@@ -110,7 +115,7 @@ text-align: center;
 
 .contact-form input::placeholder,
 .contact-form textarea::placeholder {
-  color: rgba(255, 255, 255, 0.75);
+  color: rgb(61, 59, 59)e2e;
 }
 
 .contact-form button {
