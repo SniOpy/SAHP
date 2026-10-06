@@ -1,4 +1,3 @@
-
 /* 
    NOTE: Les fichiers CSS sont maintenant chargés via des balises <link> dans main.php
    pour éviter les problèmes de chemins relatifs avec @import et améliorer les performances.
@@ -36,7 +35,8 @@ main {
   max-width: 100%;
 }
 
-.home-faq-wrap {margin-bottom: 100px;
+.home-faq-wrap {
+  margin-bottom: 100px;
   max-width: 1200px;
   border-radius: 10px;
 }
@@ -86,7 +86,11 @@ body {
   opacity: 0;
   visibility: hidden;
   transform: translateY(12px);
-  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease, background 0.3s ease;
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease,
+    transform 0.3s ease,
+    background 0.3s ease;
 }
 
 .back-to-top.visible {
@@ -164,7 +168,8 @@ h3 {
    SEPARATOR FIN REVIEWS
 ========================= */
 
-.reviews-separator, .reviews-separator-mascotte {
+.reviews-separator,
+.reviews-separator-mascotte {
   height: 150px;
   width: 100%;
   background: #fff;
@@ -297,7 +302,9 @@ h3 {
   text-align: center;
   text-decoration: none;
   color: #ffffff;
-  transition: background 0.3s ease, transform 0.2s ease;
+  transition:
+    background 0.3s ease,
+    transform 0.2s ease;
 }
 
 .page-pricing-card .pricing-btn:hover {
@@ -459,7 +466,10 @@ h3 {
   border: 1px solid rgba(15, 76, 129, 0.35);
   border-radius: 24px;
   cursor: pointer;
-  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease;
 }
 
 .pricing-ttc-btn:hover {
@@ -640,7 +650,10 @@ h3 {
   border-radius: 50%;
   cursor: pointer;
   text-decoration: none;
-  transition: transform 0.2s ease, opacity 0.2s ease, background 0.3s ease;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease,
+    background 0.3s ease;
 }
 
 .brochure-tool:hover:not(:disabled) {
@@ -702,4 +715,35 @@ h3 {
     min-width: 60px;
     font-size: 0.9rem;
   }
+}
+
+/* =========================
+   CARTE DE VISITE
+========================= */
+
+.visit-card-section {
+  display: flex;
+  justify-content: center;
+  padding: 30px clamp(12px, 4vw, 40px) 80px;
+}
+
+.visit-card-wrapper {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.visit-card-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  margin-bottom: 24px;
+}
+
+.visit-card-wrapper img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  border-radius: 12px;
 }
