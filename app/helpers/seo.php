@@ -130,15 +130,15 @@ function sahp_seo_map(): array
             'title' => 'Plaquette | SAHP Assainissement',
             'description' => "Plaquette de présentation de SAHP, entreprise d'assainissement en Île-de-France.",
         ],
-        'equipes/sm' => [
+        'equipes/SM' => [
             'title' => 'SM | SAHP Assainissement',
             'description' => "Carte de visite SM, équipe SAHP Assainissement en Île-de-France.",
         ],
-        'equipes/fm' => [
+        'equipes/FM' => [
             'title' => 'FM | SAHP Assainissement',
             'description' => "Carte de visite FM, équipe SAHP Assainissement en Île-de-France.",
         ],
-        'equipes/sahp' => [
+        'equipes/SAHP' => [
             'title' => 'SAHP | Équipe SAHP Assainissement',
             'description' => "Carte de visite SAHP Assainissement, entreprise d'assainissement en Île-de-France.",
         ],
