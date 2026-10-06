@@ -13,7 +13,7 @@
       intervient en Île-de-France avec du matériel professionnel adapté à chaque réseau.
     </p>
 
-    <!-- AVANT / APRÈS (UNE SEULE IMAGE COMPARATIVE) -->
+   
     <h2>Curage haute pression : avant / après intervention</h2>
 
     <div class="curage-compare">

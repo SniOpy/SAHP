@@ -122,6 +122,26 @@ function sahp_seo_map(): array
             'title' => 'Tarifs assainissement : curage, débouchage & pompage SAHP',
             'description' => "Découvrez les tarifs SAHP pour le débouchage, le curage, le pompage et l'inspection de canalisation en Île-de-France. Prix clairs et devis gratuit sur demande.",
         ],
+        'documents/brochure' => [
+            'title' => 'Brochure | SAHP Assainissement',
+            'description' => "Brochure de SAHP, entreprise d'assainissement en Île-de-France : débouchage, curage, pompage et inspection vidéo.",
+        ],
+        'documents/plaquette' => [
+            'title' => 'Plaquette | SAHP Assainissement',
+            'description' => "Plaquette de présentation de SAHP, entreprise d'assainissement en Île-de-France.",
+        ],
+        'equipes/sm' => [
+            'title' => 'SM | SAHP Assainissement',
+            'description' => "Carte de visite SM, équipe SAHP Assainissement en Île-de-France.",
+        ],
+        'equipes/fm' => [
+            'title' => 'FM | SAHP Assainissement',
+            'description' => "Carte de visite FM, équipe SAHP Assainissement en Île-de-France.",
+        ],
+        'equipes/sahp' => [
+            'title' => 'SAHP | Équipe SAHP Assainissement',
+            'description' => "Carte de visite SAHP Assainissement, entreprise d'assainissement en Île-de-France.",
+        ],
     ];
 }
 

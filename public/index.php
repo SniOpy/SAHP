@@ -5,9 +5,9 @@ declare(strict_types=1);
 require_once __DIR__ . '/../app/config/config.php';
 require_once APP_PATH . '/helpers/seo.php';
 
-// URL demandée (on nettoie /sahp et /public)
+// URL demandée (on retire uniquement le préfixe /sahp/public, pas les segments qui contiennent « sahp »)
 $request = trim(
-    str_replace(['/sahp', '/public'], '', parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)),
+    (string) preg_replace('#^(?:/sahp)?(?:/public)?(?=/|$)#i', '', (string) parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)),
     '/'
 );
 
@@ -38,6 +38,11 @@ $routes = [
     'contact'  => 'contact.php',
     'devis'  => 'devis.php',
     'tarifs'  => 'tarifs.php',
+    'documents/brochure'  => 'documents/brochure.php',
+    'documents/plaquette' => 'documents/plaquette.php',
+    'equipes/sm'          => 'equipes/sm.php',
+    'equipes/fm'          => 'equipes/fm.php',
+    'equipes/sahp'        => 'equipes/sahp.php',
 ];
 
 /* =====================================================
