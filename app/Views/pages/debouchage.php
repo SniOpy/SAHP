@@ -81,9 +81,9 @@
 
     <div class="page-pricing-wrapper">
       <div class="page-pricing-card pricing-category">
-        <h3 class="category-title">
-          Débouchage de canalisation
-        </h3>
+        <div class="pricing-ttc-bar">
+          <h3 class="pricing-ttc-title">Tarifs</h3>
+        </div>
         <div class="pricing-list">
           <div class="pricing-item">
             <span class="service-name">Débouchage / dégorgement de canalisation</span>
@@ -100,6 +100,15 @@
         </div>
       </div>
     </div>
+
+    <?php
+    require_once APP_PATH . '/helpers/local_pages.php';
+    sahp_render_service_local_links(
+        'debouchage',
+        'Débouchage canalisation dans le Val-de-Marne',
+        'SAHP débouche vos canalisations dans le Val-de-Marne. Pages locales par commune :'
+    );
+    ?>
 
     <?php
     require_once APP_PATH . '/helpers/faq.php';

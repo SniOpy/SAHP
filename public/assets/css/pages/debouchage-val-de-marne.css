@@ -1,0 +1,342 @@
+/* =========================================================
+   PAGE SEO LOCALE — DÉBOUCHAGE CANALISATION VAL-DE-MARNE 94
+   Réutilise les tokens du site (gradient, carte blanche, #0f4c81)
+========================================================= */
+
+.vdm-page {
+  padding: 80px 20px;
+  background: linear-gradient(90deg, #4080b7 0%, #5ed0c2 100%);
+}
+
+.vdm-container {
+  max-width: 1100px;
+  margin: -40px auto 0;
+  background: #ffffff;
+  border-radius: 14px;
+  box-sizing: border-box;
+  padding: 48px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+  color: #1f1f1f;
+}
+
+/* TITRES */
+
+.vdm-container h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.3rem;
+  line-height: 1.2;
+  margin-bottom: 18px;
+  color: #0f4c81;
+}
+
+.vdm-container h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.5rem;
+  margin: 48px 0 18px;
+  color: #0f4c81;
+}
+
+.vdm-container h3 {
+  font-family: 'Montserrat', sans-serif;
+  color: #0f4c81;
+}
+
+/* TEXTE */
+
+.vdm-container p {
+  font-size: 1rem;
+  line-height: 1.75;
+  margin-bottom: 16px;
+  color: #333333;
+}
+
+.vdm-subtitle {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #2a2a2a;
+  margin-bottom: 28px;
+}
+
+.vdm-container a {
+  color: #0f4c81;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.vdm-container a:hover {
+  color: #5ed0c2;
+}
+
+/* LISTES */
+
+.vdm-list {
+  margin: 0 0 20px 22px;
+}
+
+.vdm-list li {
+  margin-bottom: 10px;
+  line-height: 1.65;
+  color: #333333;
+}
+
+/* NOTE INFO */
+
+.vdm-note {
+  font-style: italic;
+  background: #eef3f7;
+  padding: 16px 20px;
+  border-left: 4px solid #0f4c81;
+  border-radius: 0 8px 8px 0;
+  margin: 20px 0;
+}
+
+/* HERO */
+
+.vdm-hero {
+  margin-bottom: 10px;
+}
+
+.vdm-hero-visual {
+  margin-top: 32px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #eef3f7;
+}
+
+.vdm-hero-visual img {
+  display: block;
+  width: 100%;
+  height: clamp(220px, 32vw, 380px);
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: none;
+}
+
+/* ===================== BOUTONS / CTA ===================== */
+/* Hiérarchie : appel (principal) > intervention (secondaire) > devis (tertiaire) */
+
+.vdm-cta-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.vdm-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 13px 24px;
+  border-radius: 8px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  text-decoration: none !important;
+  text-align: center;
+  line-height: 1.2;
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
+}
+
+.vdm-btn:hover {
+  transform: translateY(-1px);
+}
+
+/* Bouton principal : Appeler SAHP (le plus visible — activité d'urgence) */
+.vdm-btn-call {
+  background: #0f4c81;
+  color: #ffffff !important;
+  border-color: #0f4c81;
+  box-shadow: 0 8px 18px rgba(15, 76, 129, 0.22);
+}
+
+.vdm-btn-call:hover {
+  background: #0b3a63;
+  border-color: #0b3a63;
+  color: #ffffff !important;
+}
+
+/* Bouton secondaire : Demander une intervention */
+.vdm-btn-primary {
+  background: #ffffff;
+  color: #0f4c81 !important;
+  border-color: #0f4c81;
+}
+
+.vdm-btn-primary:hover {
+  background: #eef6fb;
+  color: #0f4c81 !important;
+}
+
+/* Bouton tertiaire : Obtenir un devis */
+.vdm-btn-ghost {
+  background: transparent;
+  color: #0f4c81 !important;
+  border-color: #d6e3ee;
+}
+
+.vdm-btn-ghost:hover {
+  background: #f5f8fb;
+  border-color: #0f4c81;
+  color: #0f4c81 !important;
+}
+
+/* Bannière CTA milieu de page */
+
+.vdm-cta-banner {
+  margin: 40px 0;
+  padding: 26px 28px;
+  background: #eef3f7;
+  border: 1px solid #d6e3ee;
+  border-radius: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.vdm-cta-banner p {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: #0f4c81;
+}
+
+/* CTA final */
+
+.vdm-cta-final {
+  margin-top: 50px;
+  padding: 36px 30px;
+  text-align: center;
+  background: linear-gradient(90deg, #4080b7 0%, #5ed0c2 100%);
+  border-radius: 16px;
+}
+
+.vdm-cta-final h2 {
+  color: #ffffff;
+  margin: 0 0 12px;
+}
+
+.vdm-cta-final p {
+  color: rgba(255, 255, 255, 0.95);
+  max-width: 640px;
+  margin: 0 auto 22px;
+}
+
+.vdm-cta-final .vdm-cta-group {
+  justify-content: center;
+}
+
+.vdm-cta-final .vdm-btn-call {
+  background: #ffffff;
+  color: #0f4c81 !important;
+  border-color: #ffffff;
+}
+
+.vdm-cta-final .vdm-btn-call:hover {
+  background: #eef6fb;
+  color: #0f4c81 !important;
+}
+
+.vdm-cta-final .vdm-btn-primary {
+  background: #0f4c81;
+  color: #ffffff !important;
+  border-color: #0f4c81;
+}
+
+.vdm-cta-final .vdm-btn-primary:hover {
+  background: #0b3a63;
+  color: #ffffff !important;
+}
+
+.vdm-cta-final .vdm-btn-ghost {
+  background: transparent;
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.75);
+}
+
+.vdm-cta-final .vdm-btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff !important;
+}
+
+/* ===================== VILLES DESSERVIES ===================== */
+
+.vdm-cities {
+  list-style: none;
+  margin: 0 0 20px;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.vdm-cities li {
+  background: #f5f8fb;
+  border: 1px solid #e1ebf3;
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-weight: 600;
+  color: #0f4c81;
+}
+
+.vdm-cities li a {
+  color: #0f4c81;
+  text-decoration: none;
+}
+
+.vdm-cities li a:hover {
+  text-decoration: underline;
+}
+
+/* ===================== RESPONSIVE / MOBILE ===================== */
+
+@media (max-width: 768px) {
+  .vdm-page {
+    padding: 60px 14px;
+  }
+
+  .vdm-container {
+    padding: 32px 22px;
+  }
+
+  .vdm-container h1 {
+    font-size: 1.8rem;
+  }
+
+  .vdm-container h2 {
+    font-size: 1.35rem;
+    margin-top: 40px;
+  }
+
+  .vdm-subtitle {
+    font-size: 1rem;
+  }
+
+  .vdm-cta-group {
+    flex-direction: column;
+  }
+
+  .vdm-btn {
+    width: 100%;
+  }
+
+  .vdm-cta-banner {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+
+  .vdm-cities {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 420px) {
+  .vdm-cities {
+    grid-template-columns: 1fr;
+  }
+}

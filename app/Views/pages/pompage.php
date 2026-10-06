@@ -105,7 +105,9 @@
 
       <div class="page-pricing-wrapper">
         <div class="page-pricing-card pricing-category">
-          <h3 class="category-title">Pompage</h3>
+          <div class="pricing-ttc-bar">
+            <h3 class="pricing-ttc-title">Tarifs</h3>
+          </div>
           <div class="pricing-list">
             <div class="pricing-item">
               <span class="service-name">Fosse septique jusqu'à 1 m³</span>
@@ -129,6 +131,15 @@
           </div>
         </div>
       </div>
+
+      <?php
+      require_once APP_PATH . '/helpers/local_pages.php';
+      sahp_render_service_local_links(
+          'pompage',
+          'Pompage et vidange dans le Val-de-Marne',
+          'Pompage de fosse septique, bac à graisse et assainissement dans le 94 :'
+      );
+      ?>
 
       <?php
       require_once APP_PATH . '/helpers/faq.php';

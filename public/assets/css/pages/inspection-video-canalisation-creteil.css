@@ -1,0 +1,71 @@
+/* =========================================================
+   PAGE SEO LOCALE — INSPECTION VIDÉO CANALISATION CRÉTEIL
+   Complément à pages/debouchage-val-de-marne.css (classes .vdm-*).
+   Ne contient que le tableau comparatif spécifique à cette page.
+========================================================= */
+
+.creteil-table-wrapper {
+  margin: 24px 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 12px;
+  border: 1px solid #e1ebf3;
+}
+
+.creteil-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 560px;
+  background: #ffffff;
+  font-size: 0.98rem;
+}
+
+.creteil-table thead th {
+  background: #0f4c81;
+  color: #ffffff;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-align: left;
+  padding: 14px 18px;
+}
+
+.creteil-table tbody td {
+  padding: 14px 18px;
+  border-top: 1px solid #e1ebf3;
+  color: #333333;
+  line-height: 1.55;
+  vertical-align: top;
+}
+
+.creteil-table tbody tr:nth-child(even) {
+  background: #f5f8fb;
+}
+
+.creteil-table tbody td:first-child {
+  font-weight: 600;
+  color: #0f4c81;
+}
+
+.creteil-table a {
+  color: #0f4c81;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.creteil-table a:hover {
+  color: #5ed0c2;
+}
+
+/* ===================== RESPONSIVE / MOBILE ===================== */
+
+@media (max-width: 768px) {
+  .creteil-table {
+    font-size: 0.92rem;
+  }
+
+  .creteil-table thead th,
+  .creteil-table tbody td {
+    padding: 12px 14px;
+  }
+}

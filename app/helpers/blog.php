@@ -103,12 +103,44 @@ function blog_map_article_row_for_views(array $row): array
         'cover_image' => $row['cover_image'] !== null ? (string) $row['cover_image'] : '',
         'category' => $row['category'] !== null ? (string) $row['category'] : '',
         'tags' => $tagsList,
+        'is_published' => (int) ($row['is_published'] ?? 0),
         'published_at' => blog_format_published_date_for_display(
             is_string($publishedAt) ? $publishedAt : null,
             is_string($createdAt) ? $createdAt : null
         ),
         'published_at_raw' => is_string($publishedAt) ? $publishedAt : null,
     ];
+}
+
+/**
+ * Charge un article par son identifiant, SANS filtre de publication.
+ * Réservé à un usage admin protégé (prévisualisation des brouillons).
+ */
+function blog_find_post_by_id(int $id): ?array
+{
+    if ($id < 1) {
+        return null;
+    }
+
+    try {
+        $pdo = getAppDatabaseConnection();
+        $statement = $pdo->prepare(
+            'SELECT id, title, slug, excerpt, meta_title, meta_description, content, cover_image, category, tags, is_published, published_at, created_at, updated_at
+             FROM articles
+             WHERE id = :id
+             LIMIT 1'
+        );
+        $statement->execute(['id' => $id]);
+        $row = $statement->fetch();
+    } catch (Throwable $exception) {
+        return null;
+    }
+
+    if ($row === false) {
+        return null;
+    }
+
+    return blog_map_article_row_for_views($row);
 }
 
 function blog_find_post_by_slug(string $slug): ?array

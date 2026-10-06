@@ -1,0 +1,69 @@
+/* =========================================================
+   PAGE SEO LOCALE — POMPAGE ASSAINISSEMENT CHOISY-LE-ROI
+   Complément à pages/debouchage-val-de-marne.css (classes .vdm-*).
+   Ne contient que le tableau comparatif spécifique à cette page.
+========================================================= */
+
+.choisy-table-wrapper {
+  margin: 24px 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 12px;
+  border: 1px solid #e1ebf3;
+}
+
+.choisy-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 560px;
+  background: #ffffff;
+  font-size: 0.98rem;
+}
+
+.choisy-table thead th {
+  background: #0f4c81;
+  color: #ffffff;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-align: left;
+  padding: 14px 18px;
+}
+
+.choisy-table tbody td {
+  padding: 14px 18px;
+  border-top: 1px solid #e1ebf3;
+  color: #333333;
+  line-height: 1.55;
+  vertical-align: top;
+}
+
+.choisy-table tbody tr:nth-child(even) {
+  background: #f5f8fb;
+}
+
+.choisy-table tbody td:first-child {
+  font-weight: 600;
+  color: #0f4c81;
+}
+
+.choisy-table a {
+  color: #0f4c81;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.choisy-table a:hover {
+  color: #5ed0c2;
+}
+
+@media (max-width: 768px) {
+  .choisy-table {
+    font-size: 0.92rem;
+  }
+
+  .choisy-table thead th,
+  .choisy-table tbody td {
+    padding: 12px 14px;
+  }
+}

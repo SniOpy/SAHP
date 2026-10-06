@@ -112,6 +112,21 @@ $csrfToken = ensureAdminCsrfToken();
                             <td>
                                 <div class="admin-table-actions">
                                     <a href="<?= BASE_URL ?>/admin/articles/edit.php?id=<?= $articleId ?>">Modifier</a>
+                                    <?php if ($isPublished): ?>
+                                        <a
+                                            href="<?= BASE_URL ?>/paroles-de-pro/<?= htmlspecialchars((string) ($articleRow['slug'] ?? ''), ENT_QUOTES, 'UTF-8') ?>"
+                                            title="Voir l'article en ligne"
+                                            target="_blank"
+                                            rel="noopener"
+                                        >Voir en ligne</a>
+                                    <?php else: ?>
+                                        <a
+                                            href="<?= BASE_URL ?>/admin/articles/preview.php?id=<?= $articleId ?>"
+                                            title="Prévisualiser le brouillon"
+                                            target="_blank"
+                                            rel="noopener"
+                                        >Prévisualiser</a>
+                                    <?php endif; ?>
                                     <form
                                         class="admin-inline-form"
                                         method="post"

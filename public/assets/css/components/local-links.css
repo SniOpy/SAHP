@@ -1,0 +1,94 @@
+/* =========================================================
+   COMPOSANT — LIENS INTERNES PAGES LOCALES
+   Réutilisable sur pages zone, services et hub Val-de-Marne
+========================================================= */
+
+.local-links-section {
+  margin: 48px 0 24px;
+}
+
+.local-links-section h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.5rem;
+  margin: 0 0 16px;
+  color: #0f4c81;
+}
+
+.local-links-intro {
+  font-size: 1rem;
+  line-height: 1.75;
+  margin-bottom: 20px;
+  color: #333333;
+}
+
+.local-links-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 12px;
+}
+
+.local-links-grid li {
+  background: #f5f8fb;
+  border: 1px solid #e1ebf3;
+  border-radius: 10px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.local-links-grid li:hover {
+  border-color: #0f4c81;
+  box-shadow: 0 4px 12px rgba(15, 76, 129, 0.08);
+}
+
+.local-links-grid a {
+  display: block;
+  padding: 14px 16px;
+  font-weight: 600;
+  color: #0f4c81;
+  text-decoration: none;
+  line-height: 1.45;
+}
+
+.local-links-grid a:hover {
+  color: #4080b7;
+}
+
+/* Variante pages services (fond blanc intégré) */
+.local-links-section--service {
+  margin-top: 40px;
+}
+
+/* Variante hub zone Val-de-Marne (déjà sur fond blanc .vdm-container) */
+.local-links-section--zone h2 {
+  margin-top: 0;
+}
+
+/* CTA article blog → page locale */
+.pp-local-page-cta {
+  margin-top: 28px;
+  padding: 22px 24px;
+  background: #eef3f7;
+  border-left: 4px solid #0f4c81;
+}
+
+.pp-local-page-cta p {
+  margin-bottom: 12px;
+  line-height: 1.65;
+}
+
+.pp-local-page-cta .pp-side-btn {
+  display: inline-block;
+  margin-top: 4px;
+}
+
+@media (max-width: 768px) {
+  .local-links-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .local-links-section h2 {
+    font-size: 1.35rem;
+  }
+}

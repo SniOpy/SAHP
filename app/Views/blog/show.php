@@ -21,6 +21,20 @@ if ($coverRaw !== '') {
 
 <section class="pp-article">
 
+  <?php if (!empty($isAdminPreview)): ?>
+    <?php $previewIsDraft = (int) ($post['is_published'] ?? 0) !== 1; ?>
+    <div class="pp-preview-banner" role="status">
+      <span class="pp-preview-banner-text">
+        Mode prévisualisation —
+        <?= $previewIsDraft ? "cet article n'est pas publié" : 'cet article est déjà publié' ?>
+      </span>
+      <span class="pp-preview-banner-actions">
+        <a href="<?= BASE_URL ?>/admin/articles/index.php">Retour à la liste</a>
+        <a href="<?= BASE_URL ?>/admin/articles/edit.php?id=<?= (int) ($adminPreviewArticleId ?? ($post['id'] ?? 0)) ?>">Modifier l'article</a>
+      </span>
+    </div>
+  <?php endif; ?>
+
   <!-- HERO -->
   <div class="pp-hero">
     <div class="pp-hero-inner">
@@ -59,6 +73,9 @@ if ($coverRaw !== '') {
         $content = $post['content'] ?? '';
         echo blog_prepare_content_html_for_output($content);
         blog_render_faq_schema_from_content($content);
+
+        require_once APP_PATH . '/helpers/local_pages.php';
+        sahp_render_blog_local_page_cta((string) ($post['slug'] ?? ''));
         ?>
 
 

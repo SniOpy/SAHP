@@ -420,33 +420,7 @@ $cards = array_slice($posts, 0, 3);
 
   </div>
 
-  <div class="home-faq-wrap">
-    <?php
-    require_once APP_PATH . '/helpers/faq.php';
-    sahp_render_faq([
-      [
-        'q' => 'Quels types d\'interventions d\'assainissement proposez-vous en Île-de-France ?',
-        'a' => '<p>On couvre l\'ensemble de la chaîne : <a href="' . BASE_URL . '/debouchage">débouchage</a> de WC, éviers et colonnes, <a href="' . BASE_URL . '/curage">curage haute pression</a>, <a href="' . BASE_URL . '/pompage">pompage et vidange</a> de fosses, <a href="' . BASE_URL . '/inspection">inspection caméra</a> et contrats de <a href="' . BASE_URL . '/maintenance-pro">maintenance</a> pour les professionnels. Chaque intervention commence par un diagnostic : on ne facture pas une prestation lourde si un débouchage ciblé suffit.</p>',
-      ],
-      [
-        'q' => 'Intervenez-vous en urgence le soir et le week-end ?',
-        'a' => '<p>Oui, nos équipes sont mobilisables 24h/24 et 7j/7, y compris les jours fériés. Pour un <a href="' . BASE_URL . '/urgence">débordement actif</a>, le plus rapide reste l\'appel téléphonique au 01.76.24.28.84. On vous indique un délai d\'arrivée réaliste et ce que vous pouvez faire en attendant (couper l\'eau, ne plus utiliser les sanitaires concernés).</p>',
-      ],
-      [
-        'q' => 'Comment obtenir un devis gratuit pour un débouchage ou un curage ?',
-        'a' => '<p>Remplissez notre <a href="' . BASE_URL . '/devis">formulaire de devis</a> en trois champs — nom, téléphone, type de prestation — ou appelez-nous directement. On vous rappelle généralement dans la journée pour préciser le contexte (type de bâtiment, symptômes, urgence ou non) et vous donner une fourchette tarifaire avant déplacement.</p>',
-      ],
-      [
-        'q' => 'Travaillez-vous avec les particuliers, les syndics et les entreprises ?',
-        'a' => '<p>Les trois. En maison individuelle, on intervient pour des bouchons ponctuels ou un entretien préventif. Pour les syndics et gestionnaires, on gère les colonnes d\'immeuble, les réseaux graisseux de restauration et les plannings d\'entretien annuel. Nos références incluent des collectivités et des grands comptes en Île-de-France.</p>',
-      ],
-      [
-        'q' => 'Dans quelles zones géographiques intervenez-vous autour de Paris ?',
-        'a' => '<p>Notre base est à Valenton (94). On intervient sur Paris et toute l\'Île-de-France, ainsi que dans l\'Oise (60), l\'Eure (27) et l\'Eure-et-Loir (28). Pour une adresse en limite de zone, contactez-nous : on confirme la faisabilité et le délai avant de planifier le camion.</p>',
-      ],
-    ], 'Questions fréquentes');
-    ?>
-  </div>
+
 
   <div class="reviews-container">
     <div class="reviews-mascotte">
@@ -457,6 +431,34 @@ $cards = array_slice($posts, 0, 3);
         decoding="async"
         width="200"
         height="auto" />
+    </div>
+
+    <div class="home-faq-wrap">
+      <?php
+      require_once APP_PATH . '/helpers/faq.php';
+      sahp_render_faq([
+        [
+          'q' => 'Quels types d\'interventions d\'assainissement proposez-vous en Île-de-France ?',
+          'a' => '<p>On couvre l\'ensemble de la chaîne : <a href="' . BASE_URL . '/debouchage">débouchage</a> de WC, éviers et colonnes, <a href="' . BASE_URL . '/curage">curage haute pression</a>, <a href="' . BASE_URL . '/pompage">pompage et vidange</a> de fosses, <a href="' . BASE_URL . '/inspection">inspection caméra</a> et contrats de <a href="' . BASE_URL . '/maintenance-pro">maintenance</a> pour les professionnels. Chaque intervention commence par un diagnostic : on ne facture pas une prestation lourde si un débouchage ciblé suffit.</p>',
+        ],
+        [
+          'q' => 'Intervenez-vous en urgence le soir et le week-end ?',
+          'a' => '<p>Oui, nos équipes sont mobilisables 24h/24 et 7j/7, y compris les jours fériés. Pour un <a href="' . BASE_URL . '/urgence">débordement actif</a>, le plus rapide reste l\'appel téléphonique au 01.76.24.28.84. On vous indique un délai d\'arrivée réaliste et ce que vous pouvez faire en attendant (couper l\'eau, ne plus utiliser les sanitaires concernés).</p>',
+        ],
+        [
+          'q' => 'Comment obtenir un devis gratuit pour un débouchage ou un curage ?',
+          'a' => '<p>Remplissez notre <a href="' . BASE_URL . '/devis">formulaire de devis</a> en trois champs — nom, téléphone, type de prestation — ou appelez-nous directement. On vous rappelle généralement dans la journée pour préciser le contexte (type de bâtiment, symptômes, urgence ou non) et vous donner une fourchette tarifaire avant déplacement.</p>',
+        ],
+        [
+          'q' => 'Travaillez-vous avec les particuliers, les syndics et les entreprises ?',
+          'a' => '<p>Les trois. En maison individuelle, on intervient pour des bouchons ponctuels ou un entretien préventif. Pour les syndics et gestionnaires, on gère les colonnes d\'immeuble, les réseaux graisseux de restauration et les plannings d\'entretien annuel. Nos références incluent des collectivités et des grands comptes en Île-de-France.</p>',
+        ],
+        [
+          'q' => 'Dans quelles zones géographiques intervenez-vous autour de Paris ?',
+          'a' => '<p>Notre base est à Valenton (94). On intervient sur Paris et toute l\'Île-de-France, ainsi que dans l\'Oise (60), l\'Eure (27) et l\'Eure-et-Loir (28). Pour une adresse en limite de zone, contactez-nous : on confirme la faisabilité et le délai avant de planifier le camion.</p>',
+        ],
+      ], 'Questions fréquentes');
+      ?>
     </div>
 
   </div>

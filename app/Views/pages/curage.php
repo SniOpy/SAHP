@@ -100,9 +100,9 @@
 
     <div class="page-pricing-wrapper">
       <div class="page-pricing-card pricing-category">
-        <h3 class="category-title">
-          Curage de canalisation
-        </h3>
+        <div class="pricing-ttc-bar">
+          <h3 class="pricing-ttc-title">Tarifs</h3>
+        </div>
         <div class="pricing-list">
           <div class="pricing-item">
             <span class="service-name">Curage de canalisation jusqu'à 10 mètres linéaires</span>
@@ -126,6 +126,20 @@
         </div>
       </div>
     </div>
+
+    <?php
+    require_once APP_PATH . '/helpers/local_pages.php';
+    sahp_render_service_local_links(
+        'curage',
+        'Curage canalisation dans le Val-de-Marne',
+        'Entretien et curage haute pression de vos canalisations dans le 94 :'
+    );
+    sahp_render_service_local_links(
+        'hydrocurage',
+        'Hydrocurage canalisation dans le Val-de-Marne',
+        'Nettoyage des réseaux encrassés par jet haute pression dans le Val-de-Marne :'
+    );
+    ?>
 
     <?php
     require_once APP_PATH . '/helpers/faq.php';

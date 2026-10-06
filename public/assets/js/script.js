@@ -209,15 +209,18 @@
     const hasPrices = card.querySelector('.service-price[data-price-ht]');
     if (!hasPrices) return;
 
-    const bar = document.createElement('div');
-    bar.className = 'pricing-ttc-bar';
+    let bar = card.querySelector('.pricing-ttc-bar');
+    if (!bar) {
+      bar = document.createElement('div');
+      bar.className = 'pricing-ttc-bar';
+      card.insertBefore(bar, card.firstChild);
+    }
     const btn = document.createElement('button');
     btn.type = 'button';
     btn.className = 'pricing-ttc-btn';
     btn.setAttribute('aria-pressed', 'false');
     btn.textContent = 'Afficher en TTC';
     bar.appendChild(btn);
-    card.insertBefore(bar, card.firstChild);
 
     btn.addEventListener('click', () => {
       const showTtc = btn.getAttribute('aria-pressed') !== 'true';
