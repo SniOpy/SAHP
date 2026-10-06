@@ -65,9 +65,9 @@ $routes = [
     'tarifs'  => 'tarifs.php',
     'documents/brochure'  => 'documents/brochure.php',
     'documents/plaquette' => 'documents/plaquette.php',
-    'equipes/sm'          => 'equipes/sm.php',
-    'equipes/fm'          => 'equipes/fm.php',
-    'equipes/sahp'        => 'equipes/sahp.php',
+    'equipes/SM'          => 'equipes/sm.php',
+    'equipes/FM'          => 'equipes/fm.php',
+    'equipes/SAHP'        => 'equipes/sahp.php',
 ];
 
 /* =====================================================
