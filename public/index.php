@@ -6,10 +6,35 @@ require_once __DIR__ . '/../app/config/config.php';
 require_once APP_PATH . '/helpers/seo.php';
 
 // URL demandée (on retire uniquement le préfixe /sahp/public, pas les segments qui contiennent « sahp »)
-$request = trim(
-    (string) preg_replace('#^(?:/sahp)?(?:/public)?(?=/|$)#i', '', (string) parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)),
-    '/'
+$path = (string) preg_replace(
+    '#^(?:/sahp)?(?:/public)?(?=/|$)#i',
+    '',
+    (string) parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)
 );
+$hasTrailingSlash = str_ends_with($path, '/') && $path !== '/';
+$request = trim($path, '/');
+
+// Cartes d'équipe : forme canonique /equipes/sm/ (minuscules + slash final)
+$teamPages = [
+    'equipes/sm' => true,
+    'equipes/fm' => true,
+    'equipes/sahp' => true,
+];
+foreach (array_keys($teamPages) as $teamKey) {
+    if (strcasecmp($request, $teamKey) !== 0) {
+        continue;
+    }
+    if ($request !== $teamKey || ! $hasTrailingSlash) {
+        $target = rtrim((string) BASE_URL, '/') . '/' . $teamKey . '/';
+        $query = (string) parse_url((string) $_SERVER['REQUEST_URI'], PHP_URL_QUERY);
+        if ($query !== '') {
+            $target .= '?' . $query;
+        }
+        header('Location: ' . $target, true, 301);
+        exit;
+    }
+    break;
+}
 
 // Contexte SEO partagé avec le layout (canonical, Open Graph, Twitter)
 $canonicalPath = null;
@@ -77,7 +102,7 @@ if (preg_match('#^paroles-de-pro/([a-z0-9-]+)$#i', $request, $matches)) {
    ROUTES CLASSIQUES
 ===================================================== */ elseif (array_key_exists($request, $routes)) {
     $view  = VIEWS_PATH . '/pages/' . $routes[$request];
-    $canonicalPath = $request;
+    $canonicalPath = isset($teamPages[$request]) ? $request . '/' : $request;
 
     $seo = sahp_seo_for_path($request);
     if ($seo !== null) {
