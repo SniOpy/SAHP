@@ -143,6 +143,7 @@ function get_critical_css(): string
 /* Critical CSS - Above the fold */
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{overflow-x:hidden}
+img{max-width:100%;height:auto}
 body{background:linear-gradient(90deg,#4080b7 0%,#5ed0c2 100%);font-family:Roboto,sans-serif;color:#fff;min-height:100vh;font-size:1rem;line-height:1.6}
 h1,h2,h3{font-family:Montserrat,sans-serif;font-weight:700}
 .navbar{max-width:1350px;margin:20px auto;padding:0 16px;display:flex;align-items:center;justify-content:space-between;position:relative;background:rgba(255,255,255,.9);border:1px solid rgba(255,255,255,.25);border-radius:20px;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 10px 40px rgba(0,0,0,.15)}
