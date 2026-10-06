@@ -214,7 +214,9 @@ $vdmVilles = [
 
       <div class="page-pricing-wrapper">
         <div class="page-pricing-card pricing-category">
-          <h3 class="category-title">Débouchage de canalisation</h3>
+          <div class="pricing-ttc-bar">
+            <h3 class="pricing-ttc-title">Tarifs</h3>
+          </div>
           <div class="pricing-list">
             <div class="pricing-item">
               <span class="service-name">Débouchage / dégorgement de canalisation</span>

@@ -100,9 +100,9 @@
 
     <div class="page-pricing-wrapper">
       <div class="page-pricing-card pricing-category">
-        <h3 class="category-title">
-          Curage de canalisation
-        </h3>
+        <div class="pricing-ttc-bar">
+          <h3 class="pricing-ttc-title">Tarifs</h3>
+        </div>
         <div class="pricing-list">
           <div class="pricing-item">
             <span class="service-name">Curage de canalisation jusqu'à 10 mètres linéaires</span>

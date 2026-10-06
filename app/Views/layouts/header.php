@@ -42,12 +42,12 @@
           class="dropdown-menu"
           id="dropdown-services"
           role="menu">
-          <a href="<?= BASE_URL ?>/debouchage" role="menuitem">Débouchage canalisation</a>
-          <a href="<?= BASE_URL ?>/curage" role="menuitem">Curage canalisation</a>
-          <a href="<?= BASE_URL ?>/curage" role="menuitem">Hydrocurage</a>
-          <a href="<?= BASE_URL ?>/inspection" role="menuitem">Inspection vidéo canalisation</a>
+          <a href="<?= BASE_URL ?>/debouchage" role="menuitem">Débouchage </a>
+          <a href="<?= BASE_URL ?>/curage" role="menuitem">Curage </a>
+          <a href="<?= BASE_URL ?>/inspection" role="menuitem">Inspection vidéo </a>
           <a href="<?= BASE_URL ?>/pompage" role="menuitem">Pompage / Vidange</a>
           <a href="<?= BASE_URL ?>/urgence" role="menuitem">Urgence assainissement</a>
+          <a href="<?= BASE_URL ?>/tarifs" role="menuitem">NOS TARIFS</a>
         </div>
 
       </div>
