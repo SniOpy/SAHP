@@ -23,6 +23,7 @@ $adminHeaderDisplayName = htmlspecialchars(
             <a href="<?= BASE_URL ?>/admin/index.php">Tableau de bord</a>
             <a href="<?= BASE_URL ?>/admin/articles/index.php">Articles</a>
             <a href="<?= BASE_URL ?>/admin/articles/create.php">Ajouter un article</a>
+            <a href="<?= BASE_URL ?>/admin/espace-medias/index.php">Espace médias</a>
         </nav>
 
         <div class="admin-panel-header-actions">

@@ -138,6 +138,10 @@ function sahp_seo_map(): array
             'title' => 'FM | SAHP Assainissement',
             'description' => "Carte de visite FM, équipe SAHP Assainissement en Île-de-France.",
         ],
+        'espace-medias' => [
+            'title' => 'Espace médias : logos, plaquettes et photos | SAHP',
+            'description' => "Espace médias SAHP Assainissement : logos, cartes de visite, QR codes, plaquettes et photos d'intervention à télécharger pour nos partenaires et clients.",
+        ],
         'equipes/SAHP' => [
             'title' => 'SAHP | Équipe SAHP Assainissement',
             'description' => "Carte de visite SAHP Assainissement, entreprise d'assainissement en Île-de-France.",

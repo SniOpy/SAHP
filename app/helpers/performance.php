@@ -123,6 +123,10 @@ function get_css_files_for_page(string $page): array
         case '404':
             $css[] = 'pages/404.css';
             break;
+
+        case 'espace-medias':
+            $css[] = 'pages/espace-medias.css';
+            break;
     }
 
     /* Grands écrans (>= 1920px) – chargé en dernier */

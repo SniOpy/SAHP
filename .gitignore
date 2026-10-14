@@ -39,5 +39,34 @@ httpd-vhosts.conf
 
 ############################
 # UPLOADS (si contenu dynamique)
+# Les fichiers envoyés ne sont jamais versionnés ; seules les protections (.htaccess, index.php) le sont.
 ############################
-/public/uploads/
+/public/uploads/*
+!/public/uploads/blog/
+/public/uploads/blog/*
+!/public/uploads/blog/.gitkeep
+!/public/uploads/blog/.htaccess
+!/public/uploads/espace-medias/
+/public/uploads/espace-medias/*
+!/public/uploads/espace-medias/thumbs/
+/public/uploads/espace-medias/thumbs/*
+!/public/uploads/espace-medias/thumbs/.htaccess
+!/public/uploads/espace-medias/thumbs/index.php
+
+############################
+# ESPACE MÉDIAS : originaux et classement (jamais versionnés)
+############################
+/data/espace-medias/*
+!/data/espace-medias/.htaccess
+!/data/espace-medias/index.php
+!/data/espace-medias/storage/
+/data/espace-medias/storage/*
+!/data/espace-medias/storage/.htaccess
+!/data/espace-medias/storage/index.php
+
+############################
+# ADMIN : tentatives de connexion
+############################
+/data/security/*
+!/data/security/.htaccess
+!/data/security/index.php

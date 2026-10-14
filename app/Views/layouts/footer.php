@@ -63,6 +63,8 @@
       <div class="footer-legal-links">
         <a href="<?= BASE_URL ?>/plan-site">Plan du site</a>
         <span>-</span>
+        <a href="<?= BASE_URL ?>/espace-medias">Espace médias</a>
+        <span>-</span>
         <a href="<?= BASE_URL ?>/gestion-cookies">Gestion des cookies</a>
         <span>-</span>
         <a href="<?= BASE_URL ?>/politique-confidentialite">Politique de confidentialité</a>

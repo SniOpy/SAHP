@@ -1,0 +1,75 @@
+/* =========================
+   ADMIN ESPACE MÉDIAS (/admin/espace-medias/)
+   Complète admin-panel.css ; boutons, vignettes et notification viennent de pages/espace-medias.css
+========================= */
+
+.mk-admin { color: #0f4c81; }
+.mk-admin code { font-size: 13px; }
+.mk-admin .admin-panel-help a { color: #0f4c81; font-weight: 600; }
+.mk-admin .admin-panel-subtitle .mk-meta { font-family: 'Roboto', sans-serif; font-weight: 400; }
+.mk-back { font-weight: 600; color: #0f4c81; text-decoration: none; display: inline-block; margin-bottom: 12px; }
+.mk-back:hover { text-decoration: underline; }
+
+/* ---- Formulaires ---- */
+.mk-form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px 16px; margin-top: 16px; }
+.mk-field { display: flex; flex-direction: column; gap: 6px; }
+.mk-field.mk-full { grid-column: 1 / -1; }
+.mk-field.mk-field-end { justify-content: flex-end; }
+.mk-field label { font-size: 14px; font-weight: 600; color: #0f4c81; }
+.mk-hint { font-size: 12px; color: #4c4949; font-weight: 400; }
+.mk-admin input[type=text],
+.mk-admin input[type=number],
+.mk-admin input[type=file],
+.mk-admin select,
+.mk-admin textarea {
+  font: inherit; font-family: 'Roboto', sans-serif; font-size: 15px; padding: 10px 12px;
+  border: 1px solid rgba(15, 76, 129, 0.35); border-radius: 12px; background: #fff; color: #1f2d3d; width: 100%;
+}
+.mk-admin textarea { min-height: 80px; resize: vertical; }
+.mk-admin input:focus,
+.mk-admin select:focus,
+.mk-admin textarea:focus { outline: 2px solid #5ed0c2; outline-offset: 1px; border-color: #5ed0c2; }
+.mk-check { display: flex; align-items: center; gap: 10px; font-size: 14px; cursor: pointer; margin-top: 6px; }
+.mk-check input { width: 18px; height: 18px; accent-color: #0f4c81; }
+.mk-form-actions { margin-top: 18px; display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.mk-admin .admin-auth-submit.mk-submit { width: auto; min-width: 180px; margin-top: 0; }
+.mk-admin .admin-auth-submit.mk-submit:disabled { opacity: .7; cursor: wait; transform: none; }
+
+/* ---- Zone de dépôt ---- */
+.mk-dropzone { position: relative; border: 2px dashed #b9cce3; border-radius: var(--mk-radius); background: var(--mk-blue-soft); padding: 28px 20px; text-align: center; cursor: pointer; transition: .15s; display: block; }
+.mk-dropzone:hover, .mk-dropzone.mk-over { border-color: var(--mk-blue); background: #dbe9fb; }
+.mk-dropzone strong { display: block; font-size: 16px; color: var(--mk-blue); }
+.mk-dropzone span { font-size: 13px; color: var(--mk-muted); }
+.mk-dropzone input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+.mk-file-list { list-style: none; margin: 10px 0 0; padding: 0; font-size: 13px; color: var(--mk-muted); }
+.mk-file-list li { padding: 3px 0; }
+
+/* ---- Liste des fichiers ---- */
+.mk-list { display: flex; flex-direction: column; }
+.mk-row { display: grid; grid-template-columns: 72px 1fr auto; gap: 14px; align-items: center; padding: 12px 0; border-top: 1px solid rgba(15, 76, 129, 0.12); }
+.mk-cat-title + .mk-row { border-top: 0; }
+.mk-mini { width: 72px; height: 54px; border-radius: 8px; overflow: hidden; background: #f7f9fc; display: flex; align-items: center; justify-content: center; border: 1px solid var(--mk-line); }
+.mk-mini img { width: 100%; height: 100%; object-fit: contain; padding: 4px; display: block; }
+.mk-mini .mk-file-icon { width: 28px; height: 36px; }
+.mk-info { min-width: 0; }
+.mk-info strong { display: block; font-size: 15px; color: #1f2d3d; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mk-info .mk-meta { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.mk-pill { font-size: 11.5px; font-weight: 600; padding: 2px 8px; border-radius: 99px; background: var(--mk-blue-soft); color: var(--mk-blue); }
+.mk-pill.mk-off { background: #eef0f3; color: var(--mk-muted); }
+.mk-tools { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+.mk-tools form { margin: 0; }
+.mk-cat-title { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--mk-muted); margin: 22px 0 4px; }
+.mk-cat-title:first-child { margin-top: 0; }
+.mk-admin .mk-empty { padding: 28px; }
+
+/* ---- Page de modification ---- */
+.mk-edit-preview { display: flex; gap: 18px; align-items: flex-start; flex-wrap: wrap; margin-bottom: 18px; }
+.mk-edit-preview .mk-thumb { width: 240px; border: 1px solid var(--mk-line); border-radius: 10px; }
+.mk-edit-preview .mk-thumb img { display: block; }
+.mk-edit-preview .mk-meta a { color: #0f4c81; font-weight: 600; }
+
+@media (max-width: 640px) {
+  .mk-row { grid-template-columns: 56px 1fr; }
+  .mk-mini { width: 56px; height: 44px; }
+  .mk-tools { grid-column: 1 / -1; justify-content: flex-start; }
+}

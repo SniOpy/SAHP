@@ -36,6 +36,7 @@ if ($viewDir === 'blog' && $viewBasename === 'show') {
     'pc' => 'pc',
     'gestion-cookies' => 'gestion-cookies',
     'plansite' => 'plansite',
+    'espace-medias' => 'espace-medias',
     '404' => '404',
   ];
   $currentPage = $pageMap[$viewBasename] ?? '';
@@ -76,6 +77,9 @@ $cssFiles = get_css_files_for_page($currentPage);
   );
   ?>
   <meta name="description" content="<?= htmlspecialchars($layoutMetaDescription, ENT_QUOTES, 'UTF-8') ?>">
+  <?php if (!empty($robotsNoindex)): ?>
+  <meta name="robots" content="noindex, nofollow">
+  <?php endif; ?>
   <meta name="cookie-consent-version" content="1">
 
   <?php

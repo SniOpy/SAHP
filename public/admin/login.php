@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/../../app/config/config.php';
 require_once __DIR__ . '/includes/auth.php';
+require_once __DIR__ . '/includes/admin_csrf.php';
+require_once __DIR__ . '/includes/login_throttle.php';
 
 if (isAdminAuthenticated()) {
     header('Location: ' . BASE_URL . '/admin/index.php');
@@ -17,7 +19,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = trim($_POST['username'] ?? '');
     $password = (string) ($_POST['password'] ?? '');
 
-    if ($username === '' || $password === '') {
+    if (!verifyAdminCsrfTokenFromPost()) {
+        $errorMessage = 'Session expirée, veuillez réessayer.';
+    } elseif (adminLoginIsBlocked()) {
+        $errorMessage = 'Trop de tentatives. Réessayez dans 15 minutes.';
+    } elseif ($username === '' || $password === '') {
         $errorMessage = 'Identifiants invalides.';
     } else {
         try {
@@ -25,11 +31,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $isAuthenticated = $adminUser !== null && verifyAdminPassword($password, $adminUser['password_hash']);
 
             if ($isAuthenticated) {
+                adminLoginResetAttempts();
                 loginAdminUser($adminUser);
                 header('Location: ' . BASE_URL . '/admin/index.php');
                 exit;
             }
 
+            adminLoginRecordFailure();
+            usleep(400000);
             $errorMessage = 'Identifiant ou mot de passe incorrect.';
         } catch (Throwable $exception) {
             error_log('[SAHP admin login] ' . $exception->getMessage());
@@ -50,6 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
     <title>Connexion admin | SAHP Assainissement</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -77,6 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <?php endif; ?>
 
             <form method="post" action="<?= BASE_URL ?>/admin/login.php" class="admin-auth-form" novalidate>
+                <input type="hidden" name="csrf_token" value="<?= htmlspecialchars(ensureAdminCsrfToken(), ENT_QUOTES, 'UTF-8') ?>">
                 <div class="admin-field-group">
                     <label for="username">Identifiant</label>
                     <input

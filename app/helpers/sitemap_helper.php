@@ -59,6 +59,11 @@ function sitemap_static_pages(): array
         'tarifs',
     ];
 
+    $mediaKitConfig = require __DIR__ . '/../config/espace-medias.php';
+    if (empty($mediaKitConfig['noindex'])) {
+        $paths[] = 'espace-medias';
+    }
+
     // Pages locales service + ville (registre central, routes live uniquement)
     $paths = array_merge($paths, sahp_local_pages_live_routes());
     $paths = array_values(array_unique($paths));

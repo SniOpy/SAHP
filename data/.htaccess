@@ -1,0 +1,2 @@
+# Données internes (SQL, cache, Espace médias, sécurité) : lues par PHP uniquement, jamais servies
+Require all denied
