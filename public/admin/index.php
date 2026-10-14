@@ -32,11 +32,12 @@ $adminUsername = (string) ($_SESSION[ADMIN_SESSION_USERNAME_KEY] ?? 'admin');
 <main class="admin-panel-main">
     <div class="admin-panel-container card-glass">
         <h1 class="admin-panel-page-title">Bienvenue <?= htmlspecialchars($adminUsername, ENT_QUOTES, 'UTF-8') ?></h1>
-        <p class="admin-dashboard-text">Tableau de bord admin. Vous pouvez créer des articles de blog en base de données.</p>
+        <p class="admin-dashboard-text">Tableau de bord admin. Vous pouvez créer des articles de blog en base de données et gérer les fichiers de l'Espace médias.</p>
 
         <div class="admin-dashboard-actions">
             <a class="admin-auth-submit" href="<?= BASE_URL ?>/admin/articles/index.php">Liste des articles</a>
             <a class="admin-auth-submit" href="<?= BASE_URL ?>/admin/articles/create.php">Ajouter un article</a>
+            <a class="admin-auth-submit" href="<?= BASE_URL ?>/admin/espace-medias/index.php">Espace médias</a>
         </div>
     </div>
 </main>

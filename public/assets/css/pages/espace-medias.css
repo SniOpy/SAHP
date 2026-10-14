@@ -1,0 +1,125 @@
+/* =========================
+   ESPACE MÉDIAS (/espace-medias)
+   Classes préfixées mk- ; partagées avec l'admin (pages/admin-espace-medias.css)
+========================= */
+
+.mk-page,
+.mk-admin,
+.mk-toast {
+  --mk-blue: #0069D0;
+  --mk-blue-dark: #00509f;
+  --mk-blue-soft: #e8f1fc;
+  --mk-green: #73C70F;
+  --mk-green-dark: #5ea30a;
+  --mk-ink: #0b2545;
+  --mk-muted: #5b6b80;
+  --mk-line: #e1e8f0;
+  --mk-bg: #f4f7fb;
+  --mk-card: #ffffff;
+  --mk-danger: #d93a3a;
+  --mk-radius: 14px;
+  --mk-shadow: 0 1px 2px rgba(11, 37, 69, .06), 0 6px 20px rgba(11, 37, 69, .06);
+}
+
+.mk-page {
+  margin-top: 20px;
+  color: var(--mk-ink);
+  background: var(--mk-bg);
+  line-height: 1.5;
+}
+
+.mk-page img { max-width: 100%; display: block; }
+.mk-page a { color: var(--mk-blue); }
+.mk-wrap { max-width: 1180px; margin: 0 auto; padding: 0 20px; }
+
+/* ---- Bandeau ---- */
+.mk-hero { position: relative; background: linear-gradient(135deg, var(--mk-blue) 0%, #0a7fe8 100%); color: #fff; padding: 56px 0 96px; overflow: hidden; }
+.mk-hero h1 { margin: 0 0 10px; font-size: clamp(28px, 4vw, 42px); font-weight: 700; letter-spacing: -.5px; }
+.mk-hero p { margin: 0; max-width: 640px; font-size: 16px; opacity: .92; }
+.mk-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; background: rgba(255,255,255,.14); padding: 6px 12px; border-radius: 99px; margin-bottom: 18px; }
+.mk-eyebrow::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--mk-green); }
+.mk-waves { position: absolute; left: 0; right: 0; bottom: -1px; width: 100%; height: 70px; }
+
+/* ---- Barre d'outils ---- */
+.mk-toolbar { position: relative; margin-top: -40px; z-index: 2; background: #fff; border-radius: var(--mk-radius); box-shadow: var(--mk-shadow); padding: 16px; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.mk-search { flex: 1 1 260px; position: relative; }
+.mk-search input { width: 100%; font: inherit; font-size: 15px; padding: 11px 14px 11px 40px; border: 1px solid var(--mk-line); border-radius: 10px; background: var(--mk-bg); color: var(--mk-ink); }
+.mk-search input:focus { outline: 2px solid var(--mk-blue); outline-offset: 0; background: #fff; }
+.mk-search svg { position: absolute; left: 13px; top: 50%; transform: translateY(-50%); width: 18px; height: 18px; color: var(--mk-muted); }
+.mk-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.mk-chip { font: inherit; font-size: 13px; font-weight: 500; border: 1px solid var(--mk-line); background: #fff; color: var(--mk-ink); padding: 8px 14px; border-radius: 99px; cursor: pointer; white-space: nowrap; }
+.mk-chip small { color: var(--mk-muted); font-weight: 400; margin-left: 4px; }
+.mk-chip:hover { border-color: var(--mk-blue); color: var(--mk-blue); }
+.mk-chip[aria-pressed="true"] { background: var(--mk-blue); border-color: var(--mk-blue); color: #fff; }
+.mk-chip[aria-pressed="true"] small { color: rgba(255,255,255,.8); }
+
+/* ---- Sections ---- */
+.mk-content { padding: 32px 0 64px; }
+.mk-section { margin-top: 36px; }
+.mk-section-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
+.mk-section-head h2 { margin: 0; font-size: 22px; font-weight: 700; display: flex; align-items: center; gap: 10px; }
+.mk-section-head h2::before { content: ""; width: 6px; height: 22px; border-radius: 3px; background: linear-gradient(var(--mk-blue), var(--mk-green)); }
+.mk-section-head h2 small { font-size: 14px; color: var(--mk-muted); font-weight: 500; }
+
+.mk-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; }
+
+/* ---- Cartes ---- */
+.mk-card { background: var(--mk-card); border-radius: var(--mk-radius); box-shadow: var(--mk-shadow); overflow: hidden; display: flex; flex-direction: column; transition: transform .15s ease, box-shadow .15s ease; }
+.mk-card:hover { transform: translateY(-2px); box-shadow: 0 2px 4px rgba(11,37,69,.06), 0 12px 28px rgba(11,37,69,.1); }
+.mk-card[hidden], .mk-section[hidden] { display: none; }
+.mk-thumb { aspect-ratio: 4 / 3; background: #f7f9fc; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid var(--mk-line); position: relative; overflow: hidden; }
+.mk-thumb img { width: 100%; height: 100%; object-fit: contain; padding: 14px; }
+.mk-thumb.mk-cover img { object-fit: cover; padding: 0; }
+.mk-checker { background-color: #fff; background-image: linear-gradient(45deg, #eef2f7 25%, transparent 25%), linear-gradient(-45deg, #eef2f7 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #eef2f7 75%), linear-gradient(-45deg, transparent 75%, #eef2f7 75%); background-size: 16px 16px; background-position: 0 0, 0 8px, 8px -8px, -8px 0; }
+.mk-thumb button.mk-zoom { all: unset; position: absolute; inset: 0; cursor: zoom-in; }
+.mk-thumb button.mk-zoom:focus-visible { outline: 3px solid var(--mk-blue); outline-offset: -3px; }
+.mk-file-icon { width: 64px; height: 80px; color: var(--mk-blue); }
+.mk-card-body { padding: 16px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+.mk-card h3 { margin: 0; font-size: 16px; font-weight: 600; line-height: 1.35; }
+.mk-desc { margin: 0; font-size: 13.5px; color: var(--mk-muted); }
+.mk-meta { font-size: 12.5px; color: var(--mk-muted); }
+.mk-actions { display: flex; gap: 8px; margin-top: auto; padding-top: 10px; flex-wrap: wrap; }
+
+/* ---- Boutons ---- */
+.mk-btn { font: inherit; font-size: 14px; font-weight: 600; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 16px; border-radius: 10px; border: 1px solid transparent; cursor: pointer; text-decoration: none; transition: background .15s, color .15s, border-color .15s; line-height: 1.2; }
+.mk-btn svg { width: 16px; height: 16px; flex: none; }
+.mk-page a.mk-btn-primary, .mk-btn-primary { background: var(--mk-blue); color: #fff; flex: 1; }
+.mk-page a.mk-btn-primary:hover, .mk-btn-primary:hover { background: var(--mk-blue-dark); }
+.mk-btn-auto { flex: 0 0 auto; }
+.mk-btn-green { background: var(--mk-green); color: #fff; }
+.mk-btn-green:hover { background: var(--mk-green-dark); }
+.mk-page a.mk-btn-ghost, .mk-btn-ghost { background: #fff; color: var(--mk-ink); border-color: var(--mk-line); }
+.mk-page a.mk-btn-ghost:hover, .mk-btn-ghost:hover { border-color: var(--mk-blue); color: var(--mk-blue); }
+.mk-btn-icon { padding: 10px; }
+.mk-btn-danger { background: #fff; color: var(--mk-danger); border-color: #f2caca; }
+.mk-btn-danger:hover { background: var(--mk-danger); color: #fff; }
+.mk-btn-sm { font-size: 13px; padding: 7px 12px; }
+
+/* ---- États vides et aide ---- */
+.mk-empty { text-align: center; padding: 64px 20px; color: var(--mk-muted); }
+.mk-empty strong { display: block; color: var(--mk-ink); font-size: 18px; margin-bottom: 6px; }
+.mk-help { margin-top: 48px; text-align: center; font-size: 14px; color: var(--mk-muted); }
+.mk-help a { font-weight: 500; text-decoration: none; }
+
+/* ---- Visionneuse ---- */
+dialog.mk-lightbox { border: 0; padding: 0; margin: auto; background: transparent; max-width: min(1100px, 94vw); max-height: 92vh; }
+dialog.mk-lightbox::backdrop { background: rgba(6, 20, 40, .82); }
+.mk-lightbox figure { margin: 0; background: #fff; color: var(--mk-ink); border-radius: var(--mk-radius); overflow: hidden; display: flex; flex-direction: column; max-height: 92vh; }
+.mk-lb-img { background: #f7f9fc; display: flex; align-items: center; justify-content: center; min-height: 200px; overflow: auto; }
+.mk-lightbox img { max-height: 75vh; width: auto; max-width: 100%; object-fit: contain; display: block; }
+.mk-lightbox figcaption { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 16px; flex-wrap: wrap; }
+.mk-lightbox figcaption strong { font-size: 15px; }
+.mk-lb-close { position: fixed; top: 16px; right: 16px; width: 44px; height: 44px; border-radius: 50%; border: 0; background: #fff; color: var(--mk-ink); font-size: 24px; cursor: pointer; line-height: 1; }
+
+/* ---- Notification ---- */
+.mk-toast { position: fixed; left: 50%; bottom: 24px; transform: translate(-50%, 20px); background: var(--mk-ink); color: #fff; padding: 12px 18px; border-radius: 10px; font-size: 14px; font-weight: 500; opacity: 0; pointer-events: none; transition: .2s; z-index: 1000; }
+.mk-toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+@media (max-width: 640px) {
+  .mk-hero { padding: 40px 0 84px; }
+  .mk-toolbar { margin-top: -36px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mk-page *, .mk-admin * { transition: none !important; }
+}

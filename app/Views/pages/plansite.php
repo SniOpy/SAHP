@@ -90,9 +90,15 @@
       <li>Carte Google Maps</li>
     </ul>
 
-    <h2>7. Pied de page</h2>
+    <h2>7. Espace médias</h2>
+    <ul>
+      <li><a href="<?= BASE_URL ?>/espace-medias">Espace médias</a> : logos, cartes de visite, QR codes, plaquettes et photos à télécharger</li>
+    </ul>
+
+    <h2>8. Pied de page</h2>
     <ul>
       <li>Rappel des coordonnées</li>
+      <li>Lien vers l’Espace médias</li>
       <li>Mentions légales</li>
       <li>Conditions générales de prestations de services</li>
       <li>Politique de confidentialité</li>

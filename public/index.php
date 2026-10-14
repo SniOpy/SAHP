@@ -68,7 +68,14 @@ $routes = [
     'equipes/SM'          => 'equipes/sm.php',
     'equipes/FM'          => 'equipes/fm.php',
     'equipes/SAHP'        => 'equipes/sahp.php',
+    'espace-medias'       => 'espace-medias.php',
 ];
+
+// Espace médias : téléchargements servis avant tout rendu de page
+if ($request === 'espace-medias/telecharger') {
+    require APP_PATH . '/helpers/media_kit_download.php';
+    exit;
+}
 
 /* =====================================================
    ✅ ROUTING DYNAMIQUE : /paroles-de-pro/slug
@@ -103,6 +110,11 @@ if (preg_match('#^paroles-de-pro/([a-z0-9-]+)$#i', $request, $matches)) {
 ===================================================== */ elseif (array_key_exists($request, $routes)) {
     $view  = VIEWS_PATH . '/pages/' . $routes[$request];
     $canonicalPath = isset($teamPages[$request]) ? $request . '/' : $request;
+
+    if ($request === 'espace-medias') {
+        require_once APP_PATH . '/helpers/media_kit.php';
+        $robotsNoindex = (bool) km_cfg('noindex');
+    }
 
     $seo = sahp_seo_for_path($request);
     if ($seo !== null) {

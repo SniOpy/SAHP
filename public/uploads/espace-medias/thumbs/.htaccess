@@ -1,0 +1,9 @@
+# Miniatures générées par l'Espace médias : images uniquement, aucun script
+Options -Indexes
+<FilesMatch "\.(?!(png|jpe?g)$)[^.]+$">
+  Require all denied
+</FilesMatch>
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set Cache-Control "public, max-age=604800"
+</IfModule>

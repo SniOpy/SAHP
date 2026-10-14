@@ -1,0 +1,2 @@
+# Code applicatif : inclus par public/index.php, jamais appelé directement
+Require all denied
