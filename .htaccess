@@ -1,40 +1,51 @@
 RewriteEngine On
 
 # =====================================================
-# SÉCURITÉ : BLOQUER FICHIERS SENSIBLES
+# SÉCURITÉ : BLOQUER FICHIERS ET DOSSIERS SENSIBLES
 # =====================================================
-<FilesMatch "(\.env|\.git|\.htaccess|composer\.(json|lock)|phpunit\.xml|\.DS_Store)$">
+# .env, .env.example, .env.bak, .env.local… + fichiers de config
+<FilesMatch "^(\.env.*|\.htaccess|\.user\.ini|\.gitignore|\.DS_Store|composer\.(json|lock)|phpunit\.xml)$">
   Require all denied
 </FilesMatch>
+
+# Dossiers cachés (.git, .svn, .vscode, .idea) : 404 quel que soit le chemin
+RedirectMatch 404 /\.(git|svn|vscode|idea)(/|$)
+
+# Dépendances Composer et scripts : lus par PHP uniquement, jamais servis
+RedirectMatch 404 ^/(sahp/)?(vendor|scripts)(/|$)
 
 Options -Indexes
 
 # =====================================================
 # PRODUCTION sahp-idf.fr : URLs propres (sans /sahp/public visible)
 # =====================================================
-RewriteCond %{HTTP_HOST} ^(www\.)?sahp-idf\.fr$ [NC]
 
 # Anciennes URLs /sahp/public/... → redirection 301 vers la racine du site
+RewriteCond %{HTTP_HOST} ^(www\.)?sahp-idf\.fr$ [NC]
 RewriteRule ^sahp/public/?(.*)$ /$1 [R=301,L]
 
 # Accueil : servir public/ sans afficher /sahp/public dans la barre d'adresse
+RewriteCond %{HTTP_HOST} ^(www\.)?sahp-idf\.fr$ [NC]
 RewriteRule ^$ sahp/public/ [L]
 
 # Fichiers et pages : réécriture interne vers sahp/public/
+RewriteCond %{HTTP_HOST} ^(www\.)?sahp-idf\.fr$ [NC]
 RewriteCond %{REQUEST_URI} !^/sahp/public/ [NC]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ sahp/public/$1 [L]
 
 # =====================================================
-# DÉVELOPPEMENT LOCAL (WAMP) : comportement historique
+# DÉVELOPPEMENT LOCAL (WAMP) : http://localhost/sahp/
 # =====================================================
+
+# localhost/sahp/ → localhost/sahp/public/
 RewriteCond %{HTTP_HOST} !^(www\.)?sahp-idf\.fr$ [NC]
+RewriteRule ^$ /sahp/public/ [L,R=301]
 
-RewriteRule ^$ sahp/public/ [L,R=301]
-
+# localhost/sahp/contact → sahp/public/contact (sans changer l'URL)
 RewriteCond %{HTTP_HOST} !^(www\.)?sahp-idf\.fr$ [NC]
 RewriteCond %{REQUEST_URI} !^/sahp/public/ [NC]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ sahp/public/$1 [L]
+RewriteRule ^(.*)$ /sahp/public/$1 [L]
